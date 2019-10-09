@@ -1,0 +1,42 @@
+<%
+String sTabActiveColor="tabActiveBackground";
+String sTabInactiveColor="tabInactiveBackground";
+String sTabTextActiveColor="blacklinks";
+String sTabTextInactiveColor="whitelinks";
+String sTabBorderColor=" bgcolor='#ffffff'";
+String sTabHeight="25";
+%>
+<!-- DYNAMIC TABS-->
+<table cellpadding="0" cellspacing="0" border="0">
+<tr><td colspan="<%=sTabNames.length*3%>" height=1 bgcolor="#ffffff"><img src="img.gif" height=1 width=1 border="0" alt=""/></td></tr>
+<tr>
+<!-- icons,  texts and links -->
+<% 
+for (int jt=0; jt<sTabNames.length; jt++)
+	{
+	// content spans 2 for active.
+	String sLinkClass=sTabTextInactiveColor;
+	String sRowspan=" class='"+sTabInactiveColor+"'";
+	if (jt==nTabActive)
+	   {
+	   sLinkClass=sTabTextActiveColor;
+	   sRowspan=" class='"+sTabActiveColor+"'";
+	   }
+	%>
+<td valign="top" width="1"<%=sTabBorderColor%>><img src="img.gif" height=<%=sTabHeight%> width=1 border="0" alt=""/></td>
+<td height="<%=sTabHeight%>" id='td_<%=jt%>' <%=sRowspan%> valign="middle" style="HEIGHT: <%=sTabHeight%>px" nowrap>
+  <%
+  if (sTabIcons[jt].length()>0)
+	  {%>
+	  &nbsp;<img src="/DesInventar/images/<%=sTabIcons[jt]%>" border="0" alt="<%=sTabNames[jt]%>"/><%
+	  }
+	  else
+	  out.print("&nbsp;&nbsp;");
+	  %>
+	  &nbsp;<a href="<%=sTabLinks[jt]%>" id='link_<%=jt%>' class="<%=sLinkClass%>"><%=sTabNames[jt]%></a>&nbsp;</td>
+<%}%>
+<td valign="top" width="1" <%=sTabBorderColor%>><img src="img.gif" height=<%=sTabHeight%> width=1 border="0" alt=""/></td>
+</tr>
+<!-- bottom borders for inactive tabs -->
+</table>
+

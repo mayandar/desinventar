@@ -1,0 +1,10 @@
+truncate wordsdocs;
+delete from wordsdocs;
+truncate words;
+delete from words;
+truncate extension;
+delete from extension;
+truncate media_file;
+delete from media_file;
+truncate fichas cascade;
+delete from fichas;

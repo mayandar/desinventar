@@ -1,0 +1,25 @@
+<%
+//  depending where it is comming from...
+String sFromPage=countrybean.not_null(request.getParameter("frompage"));
+// get current page name
+String sThisPage=request.getServletPath();
+// get action
+String sDestination=countrybean.not_null(request.getParameter("actiontab"));
+// reroute only if processing submit from itself
+if (sThisPage.equals(sFromPage) && !sDestination.equals(sFromPage) && (sFromPage.indexOf(sDestination)<0) && sDestination.length()>0)
+	{
+	 if (sDestination.startsWith("/DesInventar"))
+	 	sDestination=sDestination.substring(12);
+    // System.out.println("from "+sFromPage+" in this page "+sThisPage+" to "+sDestination+" , ACTION="+request.getParameter("action"));
+    // response.sendRedirect(sDestination);
+	%><jsp:forward page="<%=sDestination%>"/><%
+	// failsafe:
+	%>
+	<script language="JavaScript">
+	window.location="<%=sDestination%>";
+	</script>
+	<%
+	}
+else
+	{
+%>

@@ -1,0 +1,67 @@
+<%!
+    public HashMap hmStandardEvents=new HashMap();	
+
+	public String getStandardEventCode(String sDICode)
+	{
+	return	(String)(hmStandardEvents.get(sDICode));
+	}
+	
+	public void initWebDisasterDataService ()
+	 {
+	 
+		hmStandardEvents.put("ALLUVION","AL");
+		hmStandardEvents.put("FLOOD","FL");
+		hmStandardEvents.put("LANDSLIDE","LS");
+		hmStandardEvents.put("FLASH FLOOD","FF");
+		hmStandardEvents.put("RAINS","RN");
+		hmStandardEvents.put("HEAVY RAIN","RN");
+		hmStandardEvents.put("WINDSTORM","VW");
+		hmStandardEvents.put("STRONG WIND","VW");
+		hmStandardEvents.put("STORM","ST");
+		hmStandardEvents.put("SURGE","SS");
+		hmStandardEvents.put("HIGH TIDE","SS");
+		hmStandardEvents.put("EARTHQUAKE","EQ");
+		hmStandardEvents.put("CYCLONE","TC");
+		hmStandardEvents.put("HURRICANE","TC");
+		hmStandardEvents.put("FROST","FT");
+		hmStandardEvents.put("HAILSTORM","HS");
+		hmStandardEvents.put("DROUGHT","DR");
+		hmStandardEvents.put("MUDSLIDE","MS");
+		hmStandardEvents.put("AVALANCHE","AV");
+		hmStandardEvents.put("TSUNAMI","TS");
+		hmStandardEvents.put("FIRE","FR");
+		hmStandardEvents.put("FOREST FIRE","WF");
+		hmStandardEvents.put("WILD FIRE","WF");
+		hmStandardEvents.put("EPIDEMIC","EP");
+		hmStandardEvents.put("PLAGUE","IN");
+		hmStandardEvents.put("BIOLOGICAL","BI");
+		hmStandardEvents.put("ERUPTION","VO");
+		hmStandardEvents.put("THUNDER STORM","TS");
+		hmStandardEvents.put("ELECTRIC STORM","TS");
+		hmStandardEvents.put("THUNDERSTORM","TS");
+		hmStandardEvents.put("LIGHTNING","TS");
+		hmStandardEvents.put("SNOWSTORM","SN");
+		hmStandardEvents.put("SNOW STORM","SN");
+		hmStandardEvents.put("HEAT WAVE","HT");
+		hmStandardEvents.put("HEATWAVE","HT");
+		hmStandardEvents.put("TORNADO","TO");
+		hmStandardEvents.put("COLD WAVE","CW");
+		hmStandardEvents.put("COLDWAVE","CW");
+	
+		/*
+		hmStandardEvents.put("ACCIDENT","");
+		hmStandardEvents.put("EXPLOSION","");
+		hmStandardEvents.put("LEAK","");
+		hmStandardEvents.put("STRUCTURE","");
+		hmStandardEvents.put("PANIC","");
+		hmStandardEvents.put("INTOXICATION","");
+		hmStandardEvents.put("SEDIMENTATION","");
+		hmStandardEvents.put("COASTLINE","");
+		hmStandardEvents.put("LIQUEFACTION","");
+		hmStandardEvents.put("OTHER","");
+		hmStandardEvents.put("CONTAMINATION","");
+		hmStandardEvents.put("FOG","");
+		*/
+	 }
+
+%>

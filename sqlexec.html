@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>Remote SQL Console </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body>
+<H2>Remote SQL Console</H2>
+<form  name="sqlexec" action="/DesInventar/servlet/sqlexec" method="post">
+<FONT size=4>Enter sql to be executed:</FONT><br>
+<TEXTAREA cols=80 name=sql rows=5></TEXTAREA><br>
+<!--INSERT values in input tags. !!!one INPUT per line-->
+Max. Results:<input size='4'  type='text' name='nResults' maxlength="5"  value='500'>&nbsp;&nbsp;
+start at: <input  type='text' size='4' name='nStart' maxlength="5" value='0'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+User/Schema:<INPUT name='schema' size='15' value=''>&nbsp;&nbsp;&nbsp;
+Password:<INPUT name='password'  size='15' type="text" value=''>
+<br>
+Driver:<input type="text" size=40 name='driver' value=''>&nbsp;&nbsp;&nbsp;
+Conn.String:<input type="text" size=40 name='connstring' value=''><br>
+
+<INPUT name=submit type=submit value='Submit Query'>
+</form>

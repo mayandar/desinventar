@@ -1,0 +1,51 @@
+<%
+String sLevelLayers="";
+String sLayersControl="";
+sLayersControl="<table border=0 cellpadding=0 cellspacing=0 class=bss><tr><td><strong>"+countrybean.getTranslation("Layers")+"</strong></td></tr>"
+   +"<form name='maplayers' method='post'>"; 
+
+boolean bDisplayEvents=false;
+if (request.getParameter("displayevents")!=null)
+	bDisplayEvents=true;
+sLayersControl+="<tr><td><input type='checkbox' name='displayevents' value='Y'"+countrybean.strChecked(bDisplayEvents)+">"+countrybean.getTranslation("Events aprox. location")+"</td></tr>";
+
+if (request.getParameter("refreshmap")!=null)
+{
+if (countrybean.imLayerMaps!=null)
+	for (int k=0; k<countrybean.imLayerMaps.length; k++)
+		if(countrybean.imLayerMaps[k]!=null)
+			countrybean.imLayerMaps[k].visible=countrybean.not_null(request.getParameter("mlayer"+k)).equals("Y")?1:0;
+for (int k=0; k<3; k++)
+ 	if(countrybean.lmMaps[k]!=null)
+			countrybean.lmMaps[k].projection_system=countrybean.not_null(request.getParameter("llayer"+k)).equals("Y")?1:0;
+}
+else // force higher resolution layers to non visible initially
+  for (int k=countrybean.level_map+1; k<3; k++)
+	 if(countrybean.lmMaps[k]!=null)
+   	  countrybean.lmMaps[k].projection_system=0;
+
+// for (int k=Math.max(0,countrybean.level_map-1); k<countrybean.level_map; k++)
+for (int k=2; k>=0; k--)
+ if(countrybean.lmMaps[k]!=null && countrybean.asLevels[k].length()>0)
+   {
+   sLayersControl+="<tr><td><input type='checkbox' name='llayer"+k+"' value='Y'"+countrybean.strChecked(countrybean.lmMaps[k].projection_system)+">"
+	      +htmlServer.htmlEncode(countrybean.asLevels[k])+"</td></tr>";
+   if (countrybean.lmMaps[k].projection_system==1)
+   		sLevelLayers+=",level"+k;
+   }
+if (countrybean.imLayerMaps!=null)
+{
+for (int k=0; k<countrybean.imLayerMaps.length; k++)
+	if(countrybean.imLayerMaps[k]!=null)
+	{
+	if (countrybean.imLayerMaps[k].visible>0)
+	sLevelLayers+=",layer"+k;
+	sLayersControl+="<tr><td><input type='checkbox' name='mlayer"+k+"' value='Y'"+countrybean.strChecked(countrybean.imLayerMaps[k].visible)+">"
+	      +htmlServer.htmlEncode(countrybean.getLocalOrEnglish(countrybean.imLayerMaps[k].layer_name,countrybean.imLayerMaps[k].layer_name_en))+"</td></tr>";
+	}
+}
+sLayersControl+="<tr><td><input type=submit name='refreshmap' value='"+countrybean.getTranslation("Refresh")+"'></td></tr></form></table>";
+
+if (bDisplayEvents)
+	sLevelLayers+=",events";
+%>

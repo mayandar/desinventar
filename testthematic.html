@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>DesConsultar on-line Thematic Map</title>
+<link rel="stylesheet" href="OL_style.css" type="text/css" />
+
+<style type="text/css">
+	#map {
+		width: 100%;
+		height: 100%;
+		border: 1px solid black;
+	}
+
+	#text {
+		position: absolute;
+		bottom: 0px;
+		left:0px;
+		width: 512px;
+	}
+.dragme{position:relative;}
+</style>
+
+<script src="/DesInventar/OpenLayers.js"></script>
+
+</head>
+
+<script language="javascript">
+
+var ie=document.all;
+var nn6=document.getElementById&&!document.all;
+var isdrag=false;
+var x,y;
+var dobj;
+
+function movemouse(e)
+{
+  if (isdrag)
+  {
+    dobj.style.left = nn6 ? tx + e.clientX - x : tx + event.clientX - x;
+    dobj.style.top  = nn6 ? ty + e.clientY - y : ty + event.clientY - y;
+    return false;
+  }
+}
+
+function selectmouse(e) 
+{
+  var fobj       = nn6 ? e.target : event.srcElement;
+  var topelement = nn6 ? "HTML" : "BODY";
+
+  while (fobj.tagName != topelement && fobj.className != "dragme")
+  {
+    fobj = nn6 ? fobj.parentNode : fobj.parentElement;
+  }
+
+  if (fobj.className=="dragme")
+  {
+    isdrag = true;
+    dobj = fobj;
+    tx = parseInt(dobj.style.left+0);
+    ty = parseInt(dobj.style.top+0);
+    x = nn6 ? e.clientX : event.clientX;
+    y = nn6 ? e.clientY : event.clientY;
+    document.onmousemove=movemouse;
+    return false;
+  }
+}
+
+document.onmousedown=selectmouse;
+document.onmouseup=new Function("isdrag=false");
+
+</script>
+<script type="text/javascript">
+
+        // OL Map object 
+		var map;
+		
+		function addLayer(sLayerName, sUrl, sLayer)
+		{
+			var lay = new OpenLayers.Layer.WMS(sLayerName, sURL, 
+					{'layers':sLayer, 'transparent':false, 'format':'png' },
+					{'isBaseLayer':true });
+			lay.setVisibility(true);
+			map.addLayer(lay);
+		
+		}
+				
+
+ 
+            function init(){
+				// create the basic OpenLayers Map object:	
+                map = new OpenLayers.Map('map'
+				, {
+                    controls: [
+                        new OpenLayers.Control.Navigation()
+                        ,new OpenLayers.Control.PanZoomBar()
+                        ,new OpenLayers.Control.LayerSwitcher({'ascending':false})
+                        ,new OpenLayers.Control.ScaleLine()
+                        ,new OpenLayers.Control.MousePosition()
+                        //,new OpenLayers.Control.OverviewMap()
+						,new OpenLayers.Control.KeyboardDefaults()
+                    ]});
+	
+		   // DesInventar Thematic map.	If no background, it becomes the base layer
+		   
+           var level0 = new OpenLayers.Layer.WMS( "DesInventar","http://"+window.location.hostname+":80/DesInventar/jsmapserv?transparencyf=1.0&rnd=8321",
+				                                        {layers: 'effects,level1,level0', 'transparent':true, 'format':'png' },
+														{'isBaseLayer':true} );
+			level0.setVisibility(true);
+			map.addLayer(level0);
+				
+			// if background is requested, several alternatives are given from metacarta 
+			
+                map.addControl(new OpenLayers.Control.LayerSwitcher());				
+				bounds = new OpenLayers.Bounds(-81.73545,-4.227549,-66.847556,13.393863);				
+                map.zoomToExtent(bounds);
+				
+
+				this.touchhandler = new TouchHandler( map, 4 );
+
+
+            }
+        </script>
+<body marginheight="0" topmargin="0" leftmargin="0"  marginwidth="0" class="bodyclass"  bgcolor="#C9C8A9" onLoad="init()">
+<meta name="description" content="DesInventar Sendai Server 10.1 Official Open Source Project site. A UNDRR initiative to compile disaster databases, sponsored by the United Nations International Strategy for Disaster Reduction UNDRR and United Nations Development Program UNDP" />
+<meta name="keywords" content="DesInventar, Disaster database, loss databases, risk assessment, disaster impacts, climate change, Flood, Drought, Earthquake, Cyclone, Landslide, Tsunami, Fire " />
+<meta name="author" content="LA RED - UNDRR" />
+<link href="/DesInventar/html/desinventar.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<script type="text/javascript" src="/DesInventar/html/header.js"></script>
+<div  id="topheader" class="mainheader_headder">
+  <div class="mainheader_headderbase" >
+	<div id="ribbon"></div>
+	<div class="wrapper" style="margin-top: -5px;">
+		<ul>
+			<li style="width:110px; font-size:20px; font-weight:500">UNDRR</li>
+			<li>DesInventar Sendai</li>
+			<li style="float: right;margin-right:90px"><img alt="Image unavailable" src="/DesInventar/images/icon-grid-menu.gif" /></li>
+		</ul>
+	</div>
+  </div>
+</div>
+<div id="topnavigation" class="mainheader_mainnav" style="width: 100%; margin-top: -17px;">
+  <div class="mainheader_navbase" >
+   <ul>
+ 		<li style="width: 170px; height: 50px;margin-left:0px;margin-top:0px;">
+			<ul style="margin-left:0px;margin-top:0px;">
+				<li style="margin-left:0px;font-size:17px;width: 420px; height: 15px;">
+					<ul style="display:inline;white-space:nowrap;">
+					<li style="margin-left:0px;"><div class="mainheader_square" style="background-color: #af1d32;"></div></li>
+					<li style="margin-left:5px;"><div class="mainheader_square" style="background-color: #923c85;"></div></li>
+					<li style="margin-left:5px;"><div class="mainheader_square" style="background-color: #e26837;"></div></li>
+					<li style="margin-left:5px;"><div class="mainheader_square" style="background-color: #04aaa0;"></div></li>
+					</ul>
+				</li>
+				<li id="sendai_framework">SENDAI FRAMEWORK</li>
+				<li id="disaster_risk_reduction">FOR DISASTER RISK REDUCTION</li>
+			</ul>
+        </li>
+        <li>
+			 <ul class="mainheader_top_menu"  style="position:absoulte;top:50px;">
+				<li style="width: 70px;margin-left:20px;"><a href="/">HOME</a></li>
+				<li style="width: 95px;"><a href="/DesInventar/index.jsp">Analysis</a></li>
+				<li style="width: 165px;"><a href="/DesInventar/inv/index.jsp">Administration</a></li>
+				<li style="width: 120px;"><a href="/DesInventar/download.jsp">Download</a></li>
+				<li style="width: 70px;"><a href="/DesInventar/about.jsp">About</a></li>
+				<li style="width: 135px;"><a href="javascript:getBookmark()">Get bookmark</a></li>
+             </ul>
+        </li>
+        <li style="position:absolute;top:40px;left:750px;">
+            <ul class="mainheader_headericons" style="white-space:nowrap;">
+                <li style="margin-right:7px;">
+                    <img alt="Image unavailable" height="28" width="28" src="/DesInventar/images/u57.jpg" style="vertical-align:middle"/>
+                    <span>DesInventar</span>
+                </li>
+                <li>
+                    <form name="lang" >
+                        <select class="bss"  style="margin-left: 13px;margin-right:7px;margin-top: -27px;" name="langselect" onChange="switchLanguage()">
+                            <option value='EN' selected>English</option>
+                            <option value='ES'>Espa&ntilde;ol</option>
+                            <option value='PT'>Português</option>
+                            <option value='FR'>Fran&ccedil;ais</option>
+                            <option value='RU'>Russian</option>
+                            <option value='ZN'>Chinese</option>
+                            <option value='AR'>Arabic</option>
+                            <option value='AL'>Albanian</option>
+                            <option value='ID'>Bahasa</option>
+                            <option value='IR'>Farsi</option>
+                            <option value='LA'>Lao</option>
+                            <option value='TH'>Thai</option>
+                            <option value='MN'>Mongolian</option>
+                            <option value='SR'>Serbian</option>
+                            <option value='VN'>Vietnamese</option>
+                        </select>
+                    </form>
+                </li>
+                <li>
+                    <a href="javascript:doHelp()"><img alt="Image unavailable" src="/DesInventar/images/questioncircle.jpg"  style="vertical-align:middle"/></a>
+                    <a href="/DesInventar/inv/logout.jsp"><img alt="Image unavailable" src="/DesInventar/images/logout.jpg"  style="vertical-align:middle"/></a>
+                </li>
+            </ul>
+        </li>
+   </ul>
+  </div>
+</div>
+
+
+
+
+	<script language="JavaScript">
+	var sCurrentParameters="?bookmark=1&countrycode=col&maxhits=100&lang=EN&logic=AND&sortby=0&frompage=/thematic_def.jsp&_range=,1.0,10.0,100.0,1000.0,10000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0&_color=@23ffff88,@23ffcc00,@23ff8800,@23ff0000,@23bb0000,@23770000,,,,,,,,,&_legend=,,,,,,,,,,,,,,&chartColor=1&chartX=1000&chartY=600&chartTitle=&chartSubTitle=&showValues=0&legendType=0&level_rep=0&level_map=1&dissagregate_map=0&_variables=1";	
+	function getBookmark()
+	{
+	var newURL=window.location;
+	newURL=newURL+"?";
+	var pos=newURL.indexOf("?");
+    newURL=newURL.substring(0,pos);
+	window.location=newURL+sCurrentParameters;
+	} 
+	</script>
+<!-- DYNAMIC TABS-->
+<!-- 
+<div id="di_tabs" class="mainnav" style="background-color:#00728A; height:29px;position:absolute;">
+ -->
+<div id="di_tabs" class="mainnav" style="background-color:#4c4c4c; height:29px;position:absolute;">
+ 
+  <div class="navbase">
+    <ul>
+
+<li style='border-right:1px solid #000000; height:29px'><a href="javascript:routeTo('profiletab.jsp')"><img style="position:relative; top:4px;" src="/DesInventar/images/check.gif" border="0" alt="Profile"/>&nbsp;&nbsp;Profile</a></li>
+    <li style='border-right:1px solid #000000; height:29px'><a href="javascript:routeTo('main.jsp')"><img style="position:relative; top:4px;" src="/DesInventar/images/icon_query.gif" border="0" alt="Query"/>&nbsp;&nbsp;Query</a></li>
+    <li style='border-right:1px solid #000000; height:29px'><a href="javascript:routeTo('results.jsp')"><img style="position:relative; top:4px;" src="/DesInventar/images/icon_viewdata.gif" border="0" alt="View data"/>&nbsp;&nbsp;View data</a></li>
+    <li style='border-right:1px solid #000000; height:29px'><a href="javascript:routeTo('maps.jsp')"><img style="position:relative; top:4px;" src="/DesInventar/images/icon_viewmap.gif" border="0" alt="View map"/>&nbsp;&nbsp;View map</a></li>
+    <li style='border-right:1px solid #000000; height:29px'><a href="javascript:routeTo('graphics.jsp')"><img style="position:relative; top:4px;" src="/DesInventar/images/icon_charts.gif" border="0" alt="Charts"/>&nbsp;&nbsp;Charts</a></li>
+    <li style='border-right:1px solid #000000; height:29px'><a href="javascript:routeTo('definestats.jsp')"><img style="position:relative; top:4px;" src="/DesInventar/images/icon_statistics.gif" border="0" alt="Statistics"/>&nbsp;&nbsp;Statistics</a></li>
+    <li style='border-right:1px solid #000000; height:29px'><a href="javascript:routeTo('generator.jsp')"><img style="position:relative; top:4px;" src="/DesInventar/images/icon_reports.gif" border="0" alt="Reports"/>&nbsp;&nbsp;Reports</a></li>
+    <li style='border-right:1px solid #000000;background-color:#808080; border-bottom-color:#ffffff; height:29px'><a style='color:#000000; ' href="javascript:routeTo('thematic_def.jsp')"><img style="position:relative; top:4px;" src="/DesInventar/images/icon_thematic.gif" border="0" alt="Thematic"/>&nbsp;&nbsp;Thematic</a></li>
+    <li style='border-right:1px solid #000000; height:29px'><a href="javascript:routeTo('definextab.jsp')"><img style="position:relative; top:4px;" src="/DesInventar/images/xtab.gif" border="0" alt="Crosstab"/>&nbsp;&nbsp;Crosstab</a></li>
+    
+   </ul>
+  <form name='datalang' style="float:right;margin-bottom:0;margin-top:5;">&nbsp;<input type="Checkbox" onclick="dataLanguage()" name='datalanguage' value="Y" CHECKED>English Data&nbsp;</form>
+  </div>
+</div>
+   
+ 
+
+<table width="100%" border="1" class="pageBackground" rules="none"><tr><td valign="top">
+<table border="0">
+ <tr>
+  <td align="left" nowrap><font color="Blue">Region: </font><a href="javascript:routeTo('main.jsp')"><font class='regionlink'>
+
+ <b><i>Colombia</i></b></font></a>
+  - [col]&nbsp;&nbsp;
+ </td>
+ <td align="center" width="300"><span class="subTitle">Thematic Map Generator</span>
+ </td>
+ <td align="right">&nbsp;&nbsp;<a href="javascript:routeTo('thematic_def.jsp')" class='linkText'>Back to thematic definition...</a>&nbsp;
+&nbsp;|&nbsp;<a href="javascript:routeTo('thematic_google.jsp')" class='linkText'>Google Map</a>
+&nbsp;|&nbsp;<a href="javascript:routeTo('thematic_VE.jsp')" class='linkText'>Virtual Earth</a>
+&nbsp;|&nbsp;<a href="/DesInventar/thematic_kml.jsp" class='linkText'>KML</a>
+&nbsp;|&nbsp;<a href="/DesInventar/thematic_svg.jsp" class='linkText'>SVG</a>
+&nbsp;&nbsp;|&nbsp;<font size="1">Background::</font><a href="javascript:sendBaseLayerOn()" class='linkText'>ON</a>
+<a href="javascript:sendBaseLayerOff()" class='linkText'>OFF</a>
+<form name="flayers" method='post' action="thematic_OL.jsp">
+ <input type='hidden' name='showcodes'  value=''>
+ <input type='hidden' name='usebaselayer'>
+</form>
+<script language="JavaScript">
+function sendBaseLayerOn()
+{
+document.flayers.usebaselayer.value="Y";
+document.flayers.submit();
+}
+
+function sendBaseLayerOff()
+{
+document.flayers.usebaselayer.value="N";
+document.flayers.submit();
+}
+</script>
+</td>
+</tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" id="map_canvasTable">
+<tr><td align="center" colspan="2">
+<span class="title"></span>
+</td></tr>
+ <tr>
+	<td id="map_cell" align="left"   bgcolor="#ffffff" width="90%">
+        <div id="map" style="font-size:8px;"></div>
+	</td>
+	<td align="left" valign="top">
+	<!-- LEGEND --><img class='dragme' src='/DesInventar/MapLegendServer?mappingfunction=11&transparencyf=1.0&rnd=53430' border=0><br><br>
+	<!-- DI Layers --><table border=0 cellpadding=0 cellspacing=0 class=bss><tr><td><strong>Layers</strong></td></tr><form name='maplayers' method='post'><tr><td><input type='checkbox' name='displayevents' value='Y'>Events aprox. location</td></tr><tr><td><input type='checkbox' name='llayer1' value='Y' CHECKED>Municipio</td></tr><tr><td><input type='checkbox' name='llayer0' value='Y' CHECKED>Departamento</td></tr><tr><td><input type=submit name='refreshmap' value='Refresh'></td></tr></form></table>
+    </td>
+ </tr>
+ <tr>
+	<td colspan="2" class='bss'>Double-click to zoom in, and drag to pan. Use controls to zoom in/out or hold down the shift key and drag to zoom to a region.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To copy the map use Alt-PrtSc; To copy the legend right-click, copy and paste special as file.</td>
+ </tr>
+<tr><td colspan="2"class="bss"></td></tr>
+<form name="desinventar" method='post' action="thematic_OL.jsp">
+<INPUT type='hidden'  name="actiontab" id="actiontab">
+<INPUT type='hidden'  name="frompage" value="/thematic_OL.jsp">
+</form>
+</td>
+</tr>
+</table>
+<script language="JavaScript">
+<!--
+
+function submitForm(istart)
+{
+document.desinventar.nStart.value=istart;
+document.desinventar.submit();
+}
+
+function resizeDlg(){
+    var idW=1000;
+	var idH=750;
+	
+	idH = window.outerHeight-150; 
+	idW = window.outerWidth; 
+	
+var overhead=0; //135;
+idH=Math.max(idH-overhead,512);
+idW=Math.max(idW-15,512);
+document.getElementById("map_cell").height=idH;
+document.getElementById("map").height=idH;
+document.getElementById("map_canvasTable").height=idH;
+document.getElementById("map_canvasTable").width=idW;
+}
+window.onresize = resizeDlg;
+resizeDlg();
+
+// -->
+</script>
+
+</td>
+</tr>
+</table>
+ <table id="footertable" width = "1000" border="0">
+        <tr> 
+		  <td valign="top" align="left"> <a href="http://www.UNDRR.org"><img border="0" alt="ISDR site" height="32" width="100" src="/DesInventar/images/logo-isdr.gif"></a></td>
+          <td valign="top" ><div align="center"><A href="mailto:serje AT un.org"><font face="Comic Sans MS"><IMG align=absMiddle alt="e-mail us" border=0 src="/DesInventar/images/escrivenos.gif"></font></a></div></td>
+<!--
+          <td valign="top" align="center"><a href="http://www.undp.org/"><img src="/DesInventar/images/undp.gif" border="0"  alt="UNDP"></a>&nbsp;&nbsp;&nbsp;</td>
+-->
+          <td valign="top" align="right"><a href="https://www.desinventar.net"><img src="/DesInventar/images/di_logo_STD.png" alt="DesInventar Open Source Server" border="0" height="32"/></a>
+          </td>
+ 
+
+        </tr> 
+ </table>
+
+<script language="javascript">
+// check that this is running as a portlet. If so, remove the headers and footer.
+if (window!=window.top)
+	{
+	document.getElementById("topnavigation").style.display='none';
+	document.getElementById("topheader").style.display='none';
+	document.getElementById("footertable").style.display='none';
+	}
+</script>
+<br/>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+</body>
+</html>

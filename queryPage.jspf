@@ -1,0 +1,402 @@
+<%
+if (request.getParameter("newquery")!=null)
+	{
+	countrybean.init();
+	countrybean.getLevelsFromDB(con);
+	MapUtil map = new MapUtil();
+	countrybean.level_map=map.calculateBestLevel(con, countrybean);
+	}
+MapUtil.validateSelected(con,countrybean);
+String sCauseDisplayField="causa";
+if (countrybean.getDataLanguage().equals("EN"))
+	sCauseDisplayField="causa_en";
+%>
+
+<script src="/DesInventar/xmlHttp.js"></script>
+<script language="javascript">
+<!-- 
+
+function save_Query()
+{
+with (document.desinventar)
+	{
+	saveQuery.value="saveQuery";
+	submit();
+	}
+}
+
+function loadDone(oReturn)
+{
+if (oReturn && oReturn=="loadOK"){
+	window.location="/DesInventar/main.jsp";
+  }
+}
+
+function load_Query()
+{
+var sLoaderUrl = '/DesInventar/load_query.jsp?sql=y';
+dReturn = showDialogSz(sLoaderUrl, 'loadDone', '', 250, 500, "no");
+}
+
+
+
+
+function newQuery()
+{
+with (document.desinventar)
+	{
+	sKeyWord.value="";
+	eventos.selectedIndex=-1;
+	level0.selectedIndex=-1;
+	fromyear.value="";
+	frommonth.value="";
+	fromday.value="";
+	toyear.value="";
+	tomonth.value="";
+	today.value="";
+	muertos.checked=false;
+	heridos.checked=false;
+	desaparece.checked=false;
+	vivdestruidas.checked=false;
+	vivafectadas.checked=false;
+	damnificados.checked=false;
+	afectados.checked=false;
+	evacuados.checked=false;
+	reubicados.checked=false;
+	roads.checked=false;
+	hectares.checked=false;
+	livestock.checked=false;
+	schools.checked=false;
+	water.checked=false;
+	sewerage.checked=false;
+	health.checked=false;
+	education.checked=false;
+	industries.checked=false;
+	transportation.checked=false;
+	communications.checked=false;
+	power.checked=false;
+	relief.checked=false;
+	agriculture.checked=false;
+	other.checked=false;
+	education.checked=false;
+	hospitals.checked=false;
+	sortby.selectedIndex=0;
+	causas.selectedIndex=-1;
+	maxhits.selectedIndex=3;
+	// clears level 1
+	level1.selectedIndex=-1;
+	for (nSel=level1.length-1; nSel>=0; nSel--)
+	level1.options[nSel]=null;
+	// clears level 2
+	level2.selectedIndex=-1;
+	for (nSel=level2.length-1; nSel>=0; nSel--)
+	level2.options[nSel]=null;
+	for (nSel=0; nSel<14; nSel++)
+		{
+		sMinEffect[nSel].value='';
+		sMaxEffect[nSel].value='';
+		}
+    sExpertWhere.value='';
+    sDisabledExpertWhere.value='';
+	}
+}
+
+function  callbackL1(request)
+{
+loadList(request,document.desinventar.level1);
+}
+
+function  callbackL2(request)
+{
+loadList(request,document.desinventar.level2);
+}
+
+function  loadList(request,list)
+{
+	var responseTXT = request.responseText;
+	var sCode=responseTXT.substring(0,6);
+	if (sCode=="%%OK%%")
+		{
+		responseTXT=responseTXT.substring(7);
+		sCode="";
+		var sOption="";
+		j=0;
+		while (responseTXT.length>3)
+			{
+			if (sCode.length>0)
+			   {
+			   list.options[j]=new Option;
+			   list.options[j].value=sCode;
+			   list.options[j].text=sOption;
+			   j++;
+			   }
+			pos=responseTXT.indexOf("\n");
+			sCode=responseTXT.substring(0,pos);
+			responseTXT=responseTXT.substring(pos+1);
+			pos=responseTXT.indexOf("\n");
+			sOption=responseTXT.substring(0,pos);
+			responseTXT=responseTXT.substring(pos+1);
+			}
+		}
+}
+
+function checkLevel0()
+{
+with (document.desinventar)
+  {
+	GeoServerUrl="/DesInventar/util/geoserver.jsp?level=1";
+	for (j=0; j<level0.options.length; j++)
+		if (level0.options[j].selected)
+			GeoServerUrl+="&code="+level0.options[j].value;
+	document.getElementById("level1").innerHTML="";		
+	document.getElementById("level2").innerHTML="";
+	sendHttpRequest("GET", GeoServerUrl, callbackL1);   
+	}
+}
+
+function checkLevel1()
+{
+with (document.desinventar)
+  {
+	GeoServerUrl="/DesInventar/util/geoserver.jsp?level=2";
+	for (j=0; j<level1.options.length; j++)
+		if (level1.options[j].selected)
+			GeoServerUrl+="&code="+level1.options[j].value;
+	document.getElementById("level2").innerHTML="";		
+	sendHttpRequest("GET", GeoServerUrl, callbackL2)   
+  }
+}
+
+function expertDone(oReturn)
+{
+if (oReturn){
+  if (oReturn==' ') 
+  		oReturn='';
+  document.desinventar.sExpertWhere.value=oReturn;
+  document.desinventar.sDisabledExpertWhere.value=oReturn;
+  }
+}
+
+function getExpertString()
+{
+return document.desinventar.sExpertWhere.value;
+}
+
+function expertArgs()
+{
+	this.sExpertWhere = document.desinventar.sExpertWhere.value;
+}
+
+function openExpert()
+{
+var sPickerUrl = '/DesInventar/expert.jsp?sql=y';
+dReturn = showDialogSz(sPickerUrl, 'expertDone', new expertArgs(), 450, 700, "no");
+}
+
+// -->
+</script>
+<!-- TABS TOP -->
+<form name="desinventar" id="desinventar" method="POST" action='/DesInventar<%=request.getServletPath()%>' style=" margin-top:-15px;">
+<input type="hidden" name="usrtkn" id="usrtkn" value="<%=countrybean.userHash%>"> 
+<table width="1000" border="0" class="pageBackground" rules="none">
+<tr><td valign="top">
+<table width="100%" border="0" rules="none" class="pageBackground">
+<tr><td align="left"><font color="Blue"><%=countrybean.getTranslation("Region")%></font><font class='regionlink'>
+<b><i><jsp:getProperty name ="countrybean" property="countryname"/></i></b></font>
+ - [<jsp:getProperty name ="countrybean" property="countrycode"/>]</td><td align="center">&nbsp; &nbsp;
+ <span class="subTitle"><%=countrybean.getTranslation("QueryDefinition")%></span></td><td align="right" class="bss">
+ &nbsp; &nbsp; <%=countrybean.getTranslation("Keywordsearch")%> <input name='sKeyWord' type='text' class='bss' size='20' maxlength="50" value="<%=htmlServer.htmlEncode(countrybean.sKeyWord)%>">
+</td>
+</tr>
+</table>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" rules="none">
+<tr>
+    <td colspan=6>
+      <SPAN class=bs><%=countrybean.getTranslation("ExplainQuery")%></SPAN>
+	</td>
+</tr>
+<tr style="height:8px">
+<td class='boxheader' valign="bottom"  style="height:8px" width='20%'>&nbsp;<%=htmlServer.htmlEncode(countrybean.getTranslation("Disastertype"))%></td>
+<td class='boxheader' valign="bottom"  style="height:8px" width='20%'>&nbsp;&nbsp;&nbsp;<%=htmlServer.htmlEncode(countrybean.asLevels[0]) %><!-- Provincia/Estado/Depto --></td>
+<td class='boxheader' valign="bottom"  style="height:8px" width='20%'>&nbsp;&nbsp;&nbsp;<%=htmlServer.htmlEncode(countrybean.asLevels[1]) %><!-- Municipio --></td>
+<td class='boxheader' valign="bottom"  style="height:8px" width='20%'>&nbsp;&nbsp;&nbsp;<%=htmlServer.htmlEncode(countrybean.not_null(countrybean.asLevels[2]).length()==0?countrybean.getTranslation("Level")+" 2 ":htmlServer.htmlEncode(countrybean.asLevels[2]))%><!-- Municipio --></td>
+<td class='boxheader' valign="bottom"  style="height:8px" width='20%'>&nbsp;&nbsp;&nbsp;<%=htmlServer.htmlEncode(countrybean.getTranslation("Cause"))%></td>
+</tr>
+</table>
+<table width="100%" cellspacing="0" cellpadding="1" border="0" rules="none" class="IE_Table">
+<tr><td valign="top" width='20%'>
+	 <SELECT name="eventos" style="WIDTH:100%;" size=10 multiple class=bs>
+     <inv:selectEvent connection="<%= con %>" language="<%=countrybean.getDataLanguage()%>" 
+	      approved='<%=request.getServletPath().indexOf("/inv/")>=0?99:0%>'
+	      selected="<%=countrybean.asEventos%>"/></SELECT>
+     </td><td valign="top" width='20%'><SELECT name="level0"  id="level0" style="WIDTH:100%;" size=10 multiple  class="bs" onchange="checkLevel0()" >
+       <inv:selectLevel0 connection="<%= con %>"  selected="<%=countrybean.asNivel0%>"/>
+	 </SELECT><input type="hidden" name="name0" value="">    
+    </td><td valign="top" width='20%'><SELECT name="level1" id="level1" style="WIDTH:100%;" size=10 multiple class='bs' onchange="checkLevel1()">
+     <%if (countrybean.asNivel0!=null && countrybean.asNivel0.length>0)
+	   {%>
+	 	<inv:selectLevel1 connection="<%= con %>"   selected="<%=countrybean.asNivel1%>" level0Code="<%=countrybean.asNivel0%>"/>
+     <%}%>  		
+     </SELECT><input type="hidden" name="name1" value="">    
+	 </td>
+    <td valign="top" width='20%'><SELECT name="level2" id="level2" style="WIDTH:100%;" size=10 multiple class='bs'>
+     <%if (countrybean.asNivel1!=null && countrybean.asNivel1.length>0)
+	   {%>
+     <inv:selectLevel2 connection="<%= con %>"   selected="<%=countrybean.asNivel2%>" level1Code="<%=countrybean.asNivel1%>"/>
+     <%}%>  		
+     </SELECT>    
+	 </td>
+    <td valign="top" width='20%'>
+	 <SELECT name="causas" style="WIDTH:100%;" size=10 multiple class='bs'>
+	    <inv:select tablename='causas' selected='<%=countrybean.asCausas%>' connection='<%= con %>' fieldname="<%=sCauseDisplayField%>" codename='causa' ordername='causa'/>
+     </SELECT>    
+	 </td>
+  </tr>
+<tr><td colspan=6 valign="top" align="center"><font class=bss><%=countrybean.getTranslation("ExplainQuery2")%><br> 
+<font class='instruction'><%=countrybean.getTranslation("NOTESelectionsOf")%> <!--NOTE: Selections of --><%=htmlServer.htmlEncode(countrybean.asLevels[1]) %> <%=countrybean.getTranslation("NOTESelectionsOf2")%> <!--have precedence over  selections of --><%=htmlServer.htmlEncode(countrybean.asLevels[0]) %> </font></font>
+ </td></tr>
+</table>
+<table width="100%" cellspacing="0" cellpadding="1" border="1" class="IE_Table">
+<tr>
+  <td width="60%"><font class='boxheader'><%=countrybean.getTranslation("Selectonlyeventswith")%><!--Select only events with:--></FONT>
+   <table  cellspacing="0" cellpadding="0" border="0" WIDTH='100%'>
+    <tr><td valign="top" class="bss" height="8"><input type="checkbox" name="muertos" value="Y" <%=countrybean.strChecked(countrybean.killed)%>><%=countrybean.getTranslation("Deaths")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[0]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[0]%>" size="4" maxlength="10"></td>
+	    <td valign="top" class="bss" height="8"><input type="checkbox" name="heridos" value="Y" <%=countrybean.strChecked(countrybean.injured)%>><%=countrybean.getTranslation("Injured")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[1]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[1]%>" size="4" maxlength="10"></td></tr>
+    <tr><td valign="top" class="bss" height="8"><input type="checkbox" name="vivdestruidas" value="Y" <%=countrybean.strChecked(countrybean.destroyedHouses)%>><%=countrybean.getTranslation("DestroyedHouses")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[2]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[2]%>" size="4" maxlength="10"></td>
+	    <td valign="top" class="bss" height="8"><input type="checkbox" name="vivafectadas" value="Y" <%=countrybean.strChecked(countrybean.affectedHouses)%>><%=countrybean.getTranslation("AffectedHouses")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[3]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[3]%>" size="4" maxlength="10"></td></tr>
+    <tr><td valign="top" class="bss" height="8"><input type="checkbox" name="damnificados" value="Y" <%=countrybean.strChecked(countrybean.victims)%>><%=countrybean.getTranslation("Victims")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[4]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[4]%>" size="4" maxlength="10"></td>
+	    <td valign="top" class="bss" height="8"><input type="checkbox" name="afectados" value="Y" <%=countrybean.strChecked(countrybean.affected)%>><%=countrybean.getTranslation("Affected")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[5]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[5]%>" size="4" maxlength="10"></td></tr>
+    <tr><td valign="top" class="bss" height="8"><input type="checkbox" name="evacuados" value="Y" <%=countrybean.strChecked(countrybean.evacuated)%>><%=countrybean.getTranslation("Evacuated")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[6]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[6]%>" size="4" maxlength="10"></td>
+	    <td valign="top" class="bss" height="8"><input type="checkbox" name="reubicados" value="Y" <%=countrybean.strChecked(countrybean.relocated)%>><%=countrybean.getTranslation("Relocated")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[7]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[7]%>" size="4" maxlength="10"></td></tr>
+	<td valign="top" class="bss" height="8"><input type="checkbox" name="hospitals" value="Y" <%=countrybean.strChecked(countrybean.relocated)%>><%=countrybean.getTranslation("Hospitals")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[8]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[8]%>" size="4" maxlength="10"></td>
+	   <td valign="top" class="bss" height="8"><input type="checkbox" name="desaparece" value="Y" <%=countrybean.strChecked(countrybean.missing)%>><%=countrybean.getTranslation("Missing")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[9]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[9]%>" size="4" maxlength="10"></td></tr>
+	<tr><td valign="top" class="bss" height="8" nowrap><input type="checkbox" name="roads" value="Y" <%=countrybean.strChecked(countrybean.roads)%>><%=countrybean.getTranslation("Damagesinroads")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[10]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[10]%>" size="4" maxlength="10"></td>
+	    <td valign="top" class="bss" height="8" nowrap><input type="checkbox" name="hectares" value="Y" <%=countrybean.strChecked(countrybean.hectares)%>><%=countrybean.getTranslation("Damagesincrops")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[11]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[11]%>" size="4" maxlength="10"></td></tr>
+	<tr><td valign="top" class="bss" height="8"><input type="checkbox" name="livestock" value="Y" <%=countrybean.strChecked(countrybean.livestock)%>><%=countrybean.getTranslation("Catle")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[12]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[12]%>" size="4" maxlength="10"></td>
+	   <td valign="top" class="bss" height="8"><input type="checkbox" name="schools" value="Y" <%=countrybean.strChecked(countrybean.schools)%>><%=countrybean.getTranslation("Educationcenters")%></td><td nowrap class="bss" height="8"><input type="text" name="sMinEffect" value="<%=countrybean.sMinEffect[13]%>" size="3" maxlength="8">...<input type="text" name="sMaxEffect" value="<%=countrybean.sMaxEffect[13]%>" size="4" maxlength="10"></td></tr>
+   </table> 
+  </td>
+  <td valign="top"><font class='boxheader'><%=countrybean.getTranslation("Selecteventsthataffected")%></FONT>
+   <table  cellspacing="0" cellpadding="0" border="0" WIDTH='100%'>
+    <tr><td class=bss height="9"><input type="checkbox" name="water" value="Y" <%=countrybean.strChecked(countrybean.water)%>>&nbsp;<%=countrybean.getTranslation("Water")%></td>
+	    <td class=bss height="9"><input type="checkbox" name="sewerage" value="Y" <%=countrybean.strChecked(countrybean.sewerage)%>>&nbsp;<%=countrybean.getTranslation("Sewerage")%></td></tr>
+    <tr><td class=bss height="9"><input type="checkbox" name="health" value="Y" <%=countrybean.strChecked(countrybean.health)%>>&nbsp;<%=countrybean.getTranslation("Health")%></td>
+       <td class=bss height="9"><input type="checkbox" name="education" value="Y" <%=countrybean.strChecked(countrybean.education)%>>&nbsp;<%=countrybean.getTranslation("Education")%></td></tr>
+	<tr><td class=bss height="9"><input type="checkbox" name="industries" value="Y" <%=countrybean.strChecked(countrybean.industries)%>>&nbsp;<%=countrybean.getTranslation("Industrial")%></td>
+	   <td class=bss height="9"><input type="checkbox" name="transportation" value="Y" <%=countrybean.strChecked(countrybean.transportation)%>>&nbsp;<%=countrybean.getTranslation("Transportation")%></td></tr>
+    <tr><td class=bss height="9"><input type="checkbox" name="communications" value="Y" <%=countrybean.strChecked(countrybean.communications)%>>&nbsp;<%=countrybean.getTranslation("Communications")%></td>
+       <td class=bss height="9"><input type="checkbox" name="power" value="Y" <%=countrybean.strChecked(countrybean.power)%>>&nbsp;<%=countrybean.getTranslation("Power")%></td></tr>
+	<tr><td class=bss height="9"><input type="checkbox" name="relief" value="Y" <%=countrybean.strChecked(countrybean.relief)%>>&nbsp;<%=countrybean.getTranslation("Relief")%></td>
+       <td class=bss height="9"><input type="checkbox" name="agriculture" value="Y" <%=countrybean.strChecked(countrybean.agriculture)%>>&nbsp;<%=countrybean.getTranslation("Agriculture")%></td></tr>
+    <tr><td class=bss height="9"><input type="checkbox" name="other" value="Y" <%=countrybean.strChecked(countrybean.other)%>>&nbsp;<%=countrybean.getTranslation("Othersectors")%></td>
+	   <td></td></tr>
+   </table> 
+  </td>
+  <td  width="10%" valign="top" class=bs><font class='boxheader'><%=countrybean.getTranslation("Logic")%></FONT><br>
+     <input type="radio" name="logic" value="OR"<%=countrybean.strChecked(countrybean.logic,"OR")%>>&nbsp;<%=countrybean.getTranslation("OR")%><br>
+     <input type="radio" name="logic" value="AND"<%=countrybean.strChecked(countrybean.logic,"AND")%>>&nbsp;<%=countrybean.getTranslation("AND")%></td>
+</tr>
+<tr valign="top" class=bs>
+  <td colspan=2>
+  <font class='boxheader'>&nbsp;&nbsp;<%=countrybean.getTranslation("Daterange")%></FONT>
+  <table  cellspacing="0" cellpadding="0" border="0">
+    <tr>
+     <td class=bss><%=countrybean.getTranslation("From")%></td>
+     <td ><input type="text" class="bs" name="fromyear" size="5" maxlength="5"  value="<%=countrybean.numToStr(countrybean.fromyear)%>">
+          <input type="text" class="bs" name="frommonth" size="3" maxlength="3" value="<%=countrybean.numToStr(countrybean.frommonth)%>">
+          <input type="text" class="bs" name="fromday" size="3" maxlength="3" value="<%=countrybean.numToStr(countrybean.fromday)%>">
+     </td>
+     <td class=bss>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=countrybean.getTranslation("To")%></td>
+     <td class=bs> <input type="text" class="bs" name="toyear" size="5" maxlength="5" value="<%=countrybean.numToStr(countrybean.toyear)%>">
+          <input type="text" class="bs" name="tomonth" size="3"  style="" maxlength="3" value="<%=countrybean.numToStr(countrybean.tomonth)%>">
+          <input type="text" class="bs" name="today" size="3"  style="" maxlength="3" value="<%=countrybean.numToStr(countrybean.today)%>">
+     </td>
+	 <td class=bss>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=countrybean.getTranslation("GLIDEnumber")%></td>
+     <td class=bs><input type="text" class="bs" name="glide" style="" size="15" maxlength="15" value="<%=htmlServer.htmlEncode(countrybean.sGlide)%>">
+     </td>
+<% if (request.getServletPath().indexOf("/inv/")>=0){%>
+	 <td class=bss>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=countrybean.getTranslation("Approved")%></td>
+     <td class=bs>
+	 <select name='nApproved'>
+  <option value='-1'<%=countrybean.strSelected(-1,countrybean.nApproved)%>><%=countrybean.getTranslation("All")%></option>
+  <option value='0'<%=countrybean.strSelected(0,countrybean.nApproved)%>><%=countrybean.getTranslation("Approved")%></option>
+  <option value='1'<%=countrybean.strSelected(1,countrybean.nApproved)%>><%=countrybean.getTranslation("Draft")%></option>
+  <option value='2'<%=countrybean.strSelected(2,countrybean.nApproved)%>><%=countrybean.getTranslation("Review")%></option>
+  <option value='3'<%=countrybean.strSelected(3,countrybean.nApproved)%>><%=countrybean.getTranslation("Rejected")%></option>
+  <option value='4'<%=countrybean.strSelected(4,countrybean.nApproved)%>><%=countrybean.getTranslation("Support")%></option>
+  </select></td>
+<%}%>  
+	</tr>
+   </table>
+   </td>
+   <td rowspan="4" valign="middle">
+<% if (request.getServletPath().indexOf("/inv/")>=0){%>
+	<input class="bss" type='submit' name='goButton' onClick="goto('resultstab.jsp');return false;" value='<%=countrybean.getTranslation("EditData")%>'><br>
+<%}
+else{%>
+	<input class="bss" type='submit' name='goButton' onClick="routeTo('results.jsp');return false;" value='<%=countrybean.getTranslation("ViewData")%>'><br>
+<%}%>  
+	<input class="bss" type='submit' name='newquery' value='<%=countrybean.getTranslation("NewQuery")%>'><br>
+	<input class="bss" type='button' name='saveq' value='<%=countrybean.getTranslation("SaveQuery")%>' onclick="save_Query()"><br>
+	<input class="bss" type='button' name='loadq' value='<%=countrybean.getTranslation("LoadQuery")%>' onclick="load_Query()"><br>
+   </td>
+  </tr>
+<!--  Start of Expert -->
+<tr valign="top" class=bs>
+  <td colspan=2>
+  <table  cellspacing="0" cellpadding="0" border="0">
+    <tr>
+     <td class=bss><%=countrybean.getTranslation("ExpertSelection")%></td>
+     <td><input type="text" class="bss" name="sDisabledExpertWhere" size="80" maxlength="255" disabled ondblclick="openExpert()" value="<%=htmlServer.htmlEncode(Parser.translateExpertExpression(countrybean.sExpertWhere, Parser.hmVarTrans))%>"/>&nbsp;&nbsp;
+		 <input type="hidden" name="sExpertWhere" value="<%=htmlServer.htmlEncode(Parser.translateExpertExpression(countrybean.sExpertWhere, Parser.hmVarTrans))%>"/>	 
+		<input class="bss" type='button' name='expertbutton' value='<%=countrybean.getTranslation("Expert")%>' onclick="openExpert()"/>
+		<img src="/DesInventar/images/arr_left.gif" border="0">
+		<input class="bss" type='button' name='expertClearbutton' value='<%=countrybean.getTranslation("Clear")%>' onclick="sDisabledExpertWhere.value='';sExpertWhere.value='';"/>
+     </td> 
+	</tr>
+   </table>
+   </td>
+  </tr>
+  
+<!--  Expert end -->
+
+  <tr>
+    <td colspan=2 align="center" class=bss>
+   <%=countrybean.getTranslation("Sortresultsby")%>&nbsp;<select name="sortby" class="bss" >&nbsp;&nbsp;
+   <option value="0"<%=countrybean.strSelected(countrybean.sortby,"0")%>><%=countrybean.getTranslation("Entry.order")%>
+   <option value="1"<%=countrybean.strSelected(countrybean.sortby,"1")%>><%=countrybean.getTranslation("DataCard.Serial")%>
+   <option value="2"<%=countrybean.strSelected(countrybean.sortby,"2")%>><%=countrybean.getTranslation("Geography.Event.Date")%>
+   <option value="3"<%=countrybean.strSelected(countrybean.sortby,"3")%>><%=countrybean.getTranslation("Geography.Date.Event")%>
+   <option value="4"<%=countrybean.strSelected(countrybean.sortby,"4")%>><%=countrybean.getTranslation("Event.Geography.Date")%>
+   <option value="5"<%=countrybean.strSelected(countrybean.sortby,"5")%>><%=countrybean.getTranslation("Event.Date.Geography")%>
+   <option value="6"<%=countrybean.strSelected(countrybean.sortby,"6")%>><%=countrybean.getTranslation("Date.Geography.Event")%>
+   <option value="7"<%=countrybean.strSelected(countrybean.sortby,"7")%>><%=countrybean.getTranslation("Date.Event.Geography")%>
+   </select>
+   &nbsp;&nbsp;&nbsp;<%=countrybean.getTranslation("Hitsperpage")%> &nbsp;
+   <select name="maxhits">
+   <option value="50"<%=countrybean.strSelected(countrybean.nMaxhits,50)%>>50
+   <option value="100"<%=countrybean.strSelected(countrybean.nMaxhits,100)%>>100
+   <option value="200"<%=countrybean.strSelected(countrybean.nMaxhits,200)%>>200
+   <option value="300"<%=countrybean.strSelected(countrybean.nMaxhits,300)%>>300
+   <option value="500<%=countrybean.strSelected(countrybean.nMaxhits,500)%>">500
+   </select>
+   </td>
+</tr>
+<INPUT type='hidden'  name="actiontab" id="actiontab">
+<INPUT type='hidden'  name="saveQuery">
+<INPUT type='hidden'  name="frompage" value="<%=request.getServletPath()%>">
+</form>
+
+<iframe id="geoserver" name="geoserver" height="0" width="0" frameborder="0" src=""> </iframe>
+<%
+ // returns the connection to the pool
+ dbCon.close();
+if (request.getParameter("saveQuery")!=null && request.getParameter("saveQuery").length()>1)
+ {
+%>
+<script language="JavaScript">
+frames.geoserver.location.href ="/DesInventar/servlet/saveQuery?ext=x.qry";
+document.desinventar.saveQuery.value='';
+</script>
+<%}%>
+

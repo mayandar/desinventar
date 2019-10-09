@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>
+Test of GeoCode applet and servlet!!
+</title>
+<script language="javascript">
+<!-- 
+function jsLoadPars()
+{
+document.geoserver.sSetCountryCode(document.data.country.value);
+document.geoserver.sSetLevelCode(document.data.gcode.value);
+document.geoserver.sSetLevel(document.data.level.value);
+
+document.data.returl.value=document.geoserver.sGetCodeBase();
+
+return false;
+}
+
+function jsTransfer()
+{
+document.geoserver.startTransfer();
+document.data.ncodes.value=document.geoserver.sGetCodeNumber();
+return false;
+}
+
+
+function jsGetCode()
+{
+document.data.retcode.value=document.geoserver.sGetCode(document.data.ncode.value);
+document.data.retname.value=document.geoserver.sGetName(document.data.ncode.value);
+return false;
+}
+// -->
+</script>
+
+
+</head>
+
+<body>
+<applet name="geoserver" code="codeReceiver.class" align="baseline" width="4" height="4" MAYSCRIPT>
+</applet>
+<h2>GeoCode test</h2>
+
+<form name='data'>
+
+Country:<input name="country" size=3 value="CO"><br>
+Level:<input name="level" size=4 value="1"><br>
+Code to search:<input name="gcode" size=10 value="15"><br>
+<br>
+# of codes returned:<input name="ncodes" size=8 value="0"><br>
+code to get:<input name="ncode" size=10 value=""><br>
+code returned:<input name="retcode" size=10 value=""><br>
+name returned:<input name="retname" size=60 value=""><br>
+base URL returned <input name="returl" size=60 value=""><br>
+
+click here to load parameters
+<input type="button" name="params" value="Load parameters" onClick="return jsLoadPars()"><br>
+click here to start transfer
+<input type="button" name="start" value="Start transfer" onClick="return jsTransfer()"><br>
+click here to get a code/name
+<input type="button" name="getc" value="get Code/Name" onClick="return jsGetCode()"><br>
+
+</form>
+
+</body>
+</html>

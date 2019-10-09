@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+  <!-- SERVLET DEFINITIONS -->
+  <servlet>
+    <servlet-name>DbInitializer</servlet-name>
+	<display-name>Startup</display-name>
+    <servlet-class>org.lared.desinventar.servlet.DbInitializer</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>GeocodeServer</servlet-name>
+    <servlet-class>org.lared.desinventar.servlet.GeocodeServer</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GraphServer</servlet-name>
+    <servlet-class>org.lared.desinventar.servlet.GraphServer</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MapServer</servlet-name>
+    <servlet-class>org.lared.desinventar.servlet.ThematicMapServer</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MapLegendServer</servlet-name>
+    <servlet-class>org.lared.desinventar.servlet.MapLegendServer</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>WebMapService</servlet-name>
+    <servlet-class>org.lared.desinventar.servlet.WebMapServer</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>saveQuery</servlet-name>
+    <servlet-class>org.lared.desinventar.util.saveQuery</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PdfProfileServer</servlet-name>
+    <servlet-class>org.lared.desinventar.servlet.PDFProfile</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>sqlexec</servlet-name>
+    <servlet-class>org.lared.desinventar.servlet.sqlexec</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>webobj</servlet-name>
+    <servlet-class>org.lared.desinventar.servlet.webobj</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MediaServer</servlet-name>
+    <servlet-class>org.lared.desinventar.servlet.StreamServlet</servlet-class>
+  </servlet>
+
+  <!-- SERVLET MAPPINGS -->
+  <servlet-mapping>
+    <servlet-name>GeocodeServer</servlet-name>
+    <url-pattern>/GeocodeServer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GraphServer</servlet-name>
+    <url-pattern>/GraphServer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MapServer</servlet-name>
+    <url-pattern>/MapServer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MapLegendServer</servlet-name>
+    <url-pattern>/MapLegendServer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WebMapService</servlet-name>
+    <url-pattern>/jsmapserv</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>saveQuery</servlet-name>
+    <url-pattern>/servlet/saveQuery</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>PdfProfileServer</servlet-name>
+    <url-pattern>/servlet/PdfProfileServer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>sqlexec</servlet-name>
+    <url-pattern>/servlet/sqlexec</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>webobj</servlet-name>
+    <url-pattern>/servlet/webobj</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MediaServer</servlet-name>
+    <url-pattern>/MediaServer</url-pattern>
+  </servlet-mapping>
+
+
+<servlet>
+    <servlet-name>AccessDenied</servlet-name>
+    <servlet-class>org.lared.desinventar.servlet.accessdenied</servlet-class>
+  </servlet>
+
+<servlet-mapping>
+   <servlet-name>AccessDenied</servlet-name>
+   <url-pattern>*.mdb</url-pattern>
+</servlet-mapping>
+
+ <security-constraint>
+    <web-resource-collection>                     
+        <web-resource-name>Default personal access database</web-resource-name>                     
+     	 <url-pattern>/desinventar.mdb/</url-pattern>
+
+	<web-resource-name>restricted methods</web-resource-name>
+	 <url-pattern>/*</url-pattern>
+	 <http-method>TRACE</http-method>
+	 <http-method>PUT</http-method>
+	 <http-method>OPTIONS</http-method>
+	 <http-method>DELETE</http-method>
+     </web-resource-collection>
+
+    <auth-constraint>
+    <role-name>nobody</role-name>             
+    </auth-constraint>     
+ </security-constraint>  
+
+
+<security-role>             
+   <description>The role for nobody</description>
+   <role-name>nobody</role-name>                       
+</security-role>
+
+
+  <session-config>
+    <session-timeout>30</session-timeout>
+    <cookie-config>       
+      <http-only>true</http-only> 
+    </cookie-config> 
+  </session-config>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+
+<error-page> 
+  <error-code>500</error-code>  
+  <location>/html/500.html</location> 
+</error-page> 
+
+<error-page> 
+  <error-code>404</error-code> 
+  <location>/html/404.html</location> 
+</error-page> 
+
+</web-app>

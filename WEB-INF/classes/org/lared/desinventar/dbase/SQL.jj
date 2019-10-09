@@ -1,0 +1,434 @@
+/**
+* Java parser for simple SQL
+*/
+// Look at
+// http://www.javaworld.com/javaworld/jw-12-1996/jw-12-jack-1.html
+// http://www.javaworld.com/javaworld/jw-12-1996/jw-12-jack-2.html
+// http://www.javaworld.com/javaworld/jw-12-1996/jw-12-jack-3.html
+
+options
+{
+	IGNORE_CASE = true;
+	JAVA_UNICODE_ESCAPE = true;
+	STATIC=false;
+}
+
+PARSER_BEGIN(SQL)
+
+package org.lared.desinventar.dbase.dbase;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import org.lared.desinventar.dbase.Text;
+import java.sql.SQLException;
+
+public class SQL
+{
+	SQLStatement sqlStatement = new SQLStatement();
+
+	// Where tracking data:
+	Where where = null;		// The current where comparison section.
+
+	InputStream stream = System.in;	// Default stream.
+
+	 public static void main(String args[])
+	 {
+	 	int i;
+	 	String sql = args[0];
+	 	System.out.println("SQL = [" + sql + "]");
+
+	 	final int MAX_COLUMN = 79;
+	 	for (i = 1; i < MAX_COLUMN; i++)
+	 		System.out.print(i % 10);
+ 		System.out.println();
+	 	for (i = 1; i < MAX_COLUMN; i++)
+	 		if (i % 10 == 0 || i ==1)
+		 		System.out.print(i / 10);
+		 	else System.out.print(" ");
+	 	System.out.println();
+
+		SQL parser = new SQL(sql);
+		try {
+			parser.Statement();
+			SQLStatement st = parser.getStatement();
+			st.complete();
+			System.out.println(st);
+		} catch (ParseException pe) {
+			System.out.println(pe.getMessage());
+			System.out.println("SQL Parser:  Encountered errors during parse.");
+		} catch (SQLException se) {
+			System.out.println(se.getMessage());
+			System.out.println("SQL Parser:  Encountered errors during parse.");
+		}
+	}
+
+	/**
+	* Constructor for a string.
+	*
+	* @param sql String SQL statement.
+	*/
+	public SQL(String s)
+	{
+		this(new ByteArrayInputStream(s.getBytes()));
+		sqlStatement.sqlSource = s;
+	}
+
+	public SQLStatement getStatement()
+	{
+		return sqlStatement;
+	}
+
+	/**
+	* Return the value of a literal as an object.
+	*
+	* @param literal String literal.
+	* @return Object of the type representing this literal.
+	*/
+	public Object getLiteralType(String literal)
+	{
+//System.out.println("getLiteralType: [" + literal + "]");
+		Object o = null;
+
+		if (literal.startsWith("'"))
+		{
+			literal = literal.substring(1);
+			literal = literal.substring(0, literal.length() - 1);
+
+			// Replace the remaining escaped quotes with single quotes.
+			literal = Text.replace(literal, "''", "'");
+
+			return literal;
+		}
+
+		// It's either a number (double) or a string (field name).
+		try {
+			o = new Double( Double.parseDouble(literal));
+		} catch (NumberFormatException nfe1) {
+			try {
+				if (literal.startsWith("0X") || literal.startsWith("0x"))
+				{
+					String n = literal.substring(2);
+					o = new Integer( Integer.parseInt(n, 16));
+					o = new Double( ((Integer)o).intValue());
+				}
+			} catch (NumberFormatException nfe2) {
+				// It's a string.
+//System.out.println("getLiteralType: Nothing interesting apparently: [" + literal + "]");
+			}
+		}
+
+		return o;
+	}
+
+}
+
+PARSER_END(SQL)
+
+// Tokens we can ignore.
+SKIP :
+{
+  " " | "\t" | "\n" | "\r"
+}
+
+// Reserved words.
+TOKEN :
+{
+	<SELECT: "SELECT" >
+	| <UPDATE: "UPDATE" >
+	| <INSERT: "INSERT" >
+	| <WHERE: "WHERE" >
+	| <FROM: "FROM" >
+	| <INTO: "INTO" >
+	| <VALUES: "VALUES" >
+	| <AS: "AS" >
+	| <SET: "SET" >
+	| <NULL: "NULL" >
+	| <LIKE: "LIKE" >
+	| <ALL: "ALL" >
+	| <DISTINCT: "DISTINCT" >
+	| <DISTINCTROW: "DISTINCTROW" >
+	| <TOP: "TOP" >
+	| <PERCENT: "PERCENT" >
+	| <GROUP: "GROUP" >
+	| <BY: "BY" >
+	| <HAVING: "HAVING" >
+	| <ORDER: "ORDER" >
+	| <ASC: "ASC" >
+	| <DESC: "DESC" >
+	| <COMPUTE: "COMPUTE" >
+	| <FOR: "FOR" >
+	| <XDEFAULT: "DEFAULT" >	// Named XDEFAULT to avoid conflict with JavaCC keyword.
+	| <CREATE: "CREATE" >
+	| <VIEW: "VIEW" >
+	| <DROP: "DROP" >
+	| <TABLE: "TABLE" >
+	| <INDEX: "INDEX" >
+	| <DELETE: "DELETE" >
+	| <DATABASE: "DATABASE" >
+	| <ALTER: "ALTER" >
+	| <WITH: "WITH" >
+	| <UNIQUE: "UNIQUE" >
+	| <PRIMARY: "PRIMARY" >
+	| <ADD: "ADD" >
+	| <COLUMN: "COLUMN" >
+	| <CONSTRAINT: "CONSTRAINT" >
+	| <KEY: "KEY" >
+	| <REFERENCES: "REFERENCES" >
+	| <FOREIGN: "FOREIGN" >
+	| <NOT: "NOT" >
+	| <AND: "AND" >
+	| <OR: "OR" >
+}
+
+
+// Special characters
+TOKEN :
+{
+	<LPAREN: "(" >
+	| <RPAREN: ")" >
+	| <COMMA: "," >
+	| <NE: "<>" >
+	| <LE: "<=" >
+	| <GE: ">=" >
+	| <GT: ">" >
+	| <LT: "<" >
+	| <EQ: "=" >
+	| <STAR: "*" >
+}
+
+// Literal values aka constants.
+TOKEN :
+{
+	<LITERAL :
+		(["0"-"9"])+
+		| (["0"-"9"])+ "." (["0"-"9"])*
+		| (["0"-"9"])* "." (["0"-"9"])+
+		| "0X" (["0"-"9","a"-"f"])+
+		| "'" (~["'"] | "''")* "'"
+	  >
+}
+
+// IDENTIFIERS - Dbase limits these to 11 characters, in ASCII.
+
+TOKEN :
+{
+	< IDENTIFIER: <LETTER> (<LETTER>|<DIGIT>)* >
+	|
+	< #LETTER: ["A"-"Z", "$", "_"] >
+  	| < #DIGIT: ["0"-"9"] >
+}
+
+// All the statements we know.
+void Statement() :
+{}
+{
+	Insert() | Update() | Select() | Delete() <EOF>
+}
+
+// The SELECT statement.
+void Select() :
+{
+//System.out.println("Select found");
+	sqlStatement.type = SQLStatement.STATEMENT_SELECT;
+}
+{
+	<SELECT> FieldOrStar()  <FROM> Table() ( Where() )?
+}
+
+// The UPDATE statement.
+void Update() :
+{
+//System.out.println("Update found");
+	sqlStatement.type = SQLStatement.STATEMENT_UPDATE;
+}
+{
+// update customer set E_MAIL='kburks@tshsc.com', FAX='', HOMEPHONE='678-297-7937', WORKPHONE='678-297-7937', SOURCE='Online', STREET='7265 Brassfield Dr.', CITY='Cumming', STATE='GA', ZIP='30041' where CUSTNUMBER=%C
+	<UPDATE> Table() <SET> Field() <EQ> Value() (<COMMA> Field() <EQ> Value())* Where()
+}
+
+// The INSERT statement.
+void Insert() :
+{
+//System.out.println("Insert found");
+	sqlStatement.type = SQLStatement.STATEMENT_INSERT;
+}
+{
+// insert into ordhead (CUSTOMERNU, ORDERNUMBE, SHIPATTN, SHIPSTREET, SHCITYSTAT, SHIPVia, shipcharge, OrderDate, AMOUNTPAID, TaxAmount, PONO, EXPIREDATE, CARDNUMBER, PAYMETHOD) values (%C, %O, '', '', 'Cumming / GA / 30041 / USA', 'UPS', 8.87, '2000-12-09', 104.81, 0.0, 0, '2003-12-01', '5424180224936382', 'Maste')
+	<INSERT> (<INTO>)? Table() <LPAREN> Field() (<COMMA> Field())* <RPAREN> <VALUES> <LPAREN> Value() (<COMMA> Value())* <RPAREN>
+}
+
+// The DELETE statement.
+void Delete() :
+{
+	sqlStatement.type = SQLStatement.STATEMENT_DELETE;
+}
+{
+	// Delete FROM table WHERE ...
+	<DELETE> <FROM> Table() Where()
+}
+
+void Table() :
+{
+	Token t;
+}
+{
+	 t = <IDENTIFIER>
+	 {
+	 	sqlStatement.tableName.add(t.image);
+//System.out.println("Table found: " + t.image);
+	 }
+}
+
+// Accept a field list or a '*'.
+void FieldOrStar() :
+{
+	Token star;
+}
+{
+	(Field()  (<COMMA> Field()  )*)
+	| star = <STAR> {
+		sqlStatement.fields.add(star.image);
+	}
+}
+
+void Field() :
+{
+	Token f;
+}
+{
+	f = <IDENTIFIER> {
+//System.out.println("Field found: " + f);
+		sqlStatement.fields.add(f.image);
+	}
+}
+
+void Where() :
+{}
+{
+	<WHERE>  (WhereNot() )? WhereField() WhereCompare() WhereValue() ( WhereConj() (WhereNot() )? WhereField() WhereCompare() WhereValue())*
+	{
+//System.out.println("Where clause parsed and added");
+	}
+}
+
+void WhereField() :
+{
+	Token wf;
+
+	// This is a likely place to start a new Where.
+	if (where == null)
+		where = new Where();
+}
+{
+	wf = <IDENTIFIER> {
+
+//System.out.println("WhereField found: " + wf);
+		where.field = wf.image;
+	}
+}
+
+void WhereValue() :
+{
+	Token wv;
+	FieldValue fv = new FieldValue();
+}
+{
+	wv = <IDENTIFIER> {
+		// This is the last part of a where section found, add the where to the sqlStatment where list.
+		fv.type = FieldValue.FIELD;
+		fv.value = wv.image;
+		where.fValue = fv;
+
+		// Save this Where and start a new Where, since this is the last token to be picked up in a Where comparison.
+		sqlStatement.whereList.add(where);
+		where = null;
+	}
+	| wv = <LITERAL> {
+		fv.type = FieldValue.LITERAL;
+		fv.value = getLiteralType(wv.image);	// Replace two quotes (an escaped quote)  with a single one.
+		where.fValue = fv;
+
+		// Save this Where and start a new Where, since this is the last token to be picked up in a Where comparison.
+		sqlStatement.whereList.add(where);
+		where = null;
+	}
+
+}
+
+void WhereCompare() :
+{
+	Token op;
+}
+{
+	op = <NE> {
+		where.operator = Where.COMPARITOR_NOTEQUAL;
+	}
+	| op = <GT> {
+		where.operator = Where.COMPARITOR_GT;
+	}
+	| op = <LT> {
+		where.operator = Where.COMPARITOR_LT;
+	}
+	| op = <LE> {
+		where.operator = Where.COMPARITOR_LTEQ;
+	}
+	| op = <GE> {
+		where.operator = Where.COMPARITOR_GTEQ;
+	}
+	|  op = <EQ> {
+		where.operator = Where.COMPARITOR_EQUAL;
+	}
+}
+
+void WhereNot() :
+{
+	// This is a likely place to start a new Where.
+	if (where == null)
+		where = new Where();
+}
+{
+	<NOT> {
+//System.out.println("WhereNot: operator = true");
+		where.notOperator = true;
+	}
+}
+
+void WhereConj() :
+{
+	Token conj;
+
+	// This is a likely place to start a new Where.
+	if (where == null)
+		where = new Where();
+}
+{
+	conj = <AND> {
+		where.conjunction = Where.CONJ_AND;
+	}
+	 | conj = <OR> {
+		where.conjunction = Where.CONJ_OR;
+//System.out.println("SQL Parser: Conjunction: " + conj.image);
+	}
+}
+
+void Value() :
+{
+	Token val;
+	FieldValue fv = new FieldValue();
+}
+{
+	val = <IDENTIFIER> {
+//System.out.println("Val found: (field)" + val);
+		fv = new FieldValue();
+		fv.type = FieldValue.FIELD;
+		fv.value = val.image;
+		sqlStatement.values.add(fv);
+	}
+	| val = <LITERAL> {
+//System.out.println("Val found: (literal)" + val);
+		fv = new FieldValue();
+		fv.type = FieldValue.LITERAL;
+		fv.value = getLiteralType(val.image);	// Replace two quotes (an escaped quote)  with a single one.
+		sqlStatement.values.add(fv);
+	}
+}

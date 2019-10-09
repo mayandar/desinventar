@@ -1,0 +1,1102 @@
+﻿<style>
+.bs { font-family:Arial, Helvetica, Lucida, sans-serif; font-size: 12px; font-style: normal; vertical-align:text-top;}
+.bss { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal;vertical-align:text-top;}
+
+
+fieldset {
+    width:95%;
+    margin:2em auto;
+    background:#d7d4d4;
+    border:1px solid #999596;
+    border-radius:5px;
+    padding:5px;
+    position:relative;
+}
+
+legend {
+  width:90%;
+  border:1px solid #999596;
+  text-align:center;
+  background:white;
+  font-family:Arial, Helvetica, sans-serif; 
+  font-size:12px;
+  padding-top:3px; 
+  padding-bottom:3px;
+  
+  }
+
+.vertical-divider{
+	clear: both;
+	position: relative;
+	
+}
+h3 {
+	font-size: 16px;
+	font-weight:bold;
+	margin-bottom:1px;
+	padding-bottom:1px;
+}
+
+.vertical-divider:after {
+	clear: both;
+	content: " ";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+.vertical-divider .column:not(:first-child):after, .vertical-divider .columns:not(:first-child):after{
+	background: #FFFFFF;
+	bottom: 0;
+	content: " ";
+	margin-left: -10px;
+	position: absolute;
+	top: 0;
+	width: 1px;
+}
+
+/* Very simple grid for example */
+.container { position: relative; width: 960px; margin: 20px auto; padding: 0; }
+
+.container .column, .container .columns { float: left; display: inline; margin-left: 10px; margin-right: 10px; margin-top:2px;}
+
+.container .one-sixth.column { width: 160px; }
+
+.container .two-sixth.column { width: 300px; }
+.container .three-sixth.column { width: 600px; }
+.container .four-sixth.column { width: 900px; }
+
+::-webkit-input-placeholder {
+    font-style: italic;
+	font-weight: normal;
+	font-size: 8px;
+    color: gray;
+	text-align: left;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    font-style: italic;
+	font-weight: bold;
+	font-size: 8px;
+    color: blue;  
+	text-align: right;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  font-style: italic;
+	font-weight: bold;
+	font-size: 8px;
+    color: blue;  
+	text-align: right;
+}
+
+:-ms-input-placeholder {  
+    font-style: italic;
+	font-weight: bold;
+	font-size: 8px;
+    color: blue;  
+	text-align: right;
+}
+
+
+div.vertical-line{
+  width: 3px; /* Line width */
+  background-color: black; /* Line color */
+ 
+  float: left; 
+}
+
+.verticalLine {
+  border-left: solid gray;
+  padding-left:3px;
+}
+
+.r {
+color: red;
+}
+
+.header_1 {
+ font-family:Arial, Helvetica, sans-serif;	
+ font-style: italic;
+ font-weight: bold;
+ font-size: 24px;
+}
+.header_2 {
+ font-family:Arial, Helvetica, sans-serif;	
+ font-weight: bold;
+ font-size: 18px;
+}
+.header_3 {
+ font-family:Arial, Helvetica, sans-serif;	
+ font-weight: bold;
+ font-size: 14px;
+}
+
+
+</style>
+
+
+  
+
+<div class="container vertical-divider ">
+
+  <div class="column three-sixth">
+    <div class='header_2'>Meta A del Marco de Sendai</div>
+    <p>Por favor registre en esta sección las pérdidas humanas (número de personas) que se requieren para medir la Meta A, número de muertos y número de desaparecidos que se atribuyen al desastre.
+    Estos campos serán utilizados para calcular los Indicadores A2, A3, B2, B5 y otros. Cuando sea posible, entre también los datos desagregados 
+    donde puede usar el boton con &Sigma; para calcular el total sumando el subgrupo por sexo. </p>  
+  </div>
+</div>
+
+<div class="container vertical-divider">
+  <div class="column one-sixth bss">
+    <div class='header_3'> Número de Muertos (A-2)</div>
+    <fieldset>
+    <legend>Total muertes(Sub-indicador A-2a):</legend>   
+    <input type="text" name="muertos" value="" size="7" placeholder="Number"  class="bss" onchange="chkLoss(muertos, hay_muertos)" >
+    <INPUT type="CHECKBOX" name="hay_muertos" VALUE="-1" >
+    <input type="button" NAME="ALK" value="&Sigma;" onclick="addLoss(muertos, DEATHS_FEMALE, DEATHS_MALE, hay_muertos);" />
+    </fieldset>
+  </div> 
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Por sexo:</legend>
+    Mujeres:<br />
+    <input type="text" name="DEATHS_FEMALE" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Hombres:<br />
+    <input type="text" name="DEATHS_MALE" value="" size="7" placeholder="Number" class="bss">
+	</fieldset>
+  </div> 
+  <div class="column one-sixth bss">       
+    <fieldset>
+    <legend>Por edad:</legend>
+    Menores (0-14):<br />
+    <input type="text" name="DEATHS_CHILDREN" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Adultos (15-64):<br />
+    <input type="text" name="DEATHS_ADULTS" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Mayores (65+):<br />
+    <input type="text" name="DEATHS_ELDER" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div>
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Otras desagregaciones:</legend>   
+    Discapacitados:<br />
+    <input type="text" name="DEATHS_DISABLED" value="" size="7" placeholder="Number" class="bss">
+    <br />    
+    Bajo la línea nacional de pobreza:<br />
+    <input type="text" name="DEATHS_POOR" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div> 
+</div>
+
+
+<div class="container vertical-divider">
+   <div class="column one-sixth bss">
+    <div class='header_3'>Número de desaparecidos (A-3)</div>
+    <fieldset>
+    <legend>Total desaparecidos (Sub-indicador A-3a):</legend>
+    <input type="text" name="desaparece" value="" size="7" placeholder="Number"   class="bss" onchange="chkLoss(desaparece, hay_deasparece)">
+    <INPUT type="CHECKBOX" name="hay_deasparece" VALUE="-1" >
+    <input type="button" NAME="ALM" value="&Sigma;" onclick="addLoss(desaparece, MISSING_Mujeres, MISSING_MALE, hay_deasparece)" /> 
+    </fieldset>
+  </div> 
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Por sexo:</legend>
+    Mujeres:<br />
+    <input type="text" name="MISSING_FEMALE" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Hombres:<br />
+    <input type="text" name="MISSING_MALE" value="" size="7" placeholder="Number" class="bss">
+	</fieldset>
+  </div> 
+  <div class="column one-sixth bss">       
+    <fieldset>
+    <legend>Por edad:</legend>
+    Menores (0-14):<br />
+    <input type="text" name="MISSING_CHILDREN" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Adultos (15-64):<br />
+    <input type="text" name="MISSING_ADULTS" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Mayores (65+)<br />
+    <input type="text" name="MISSING_ELDER" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div>
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Otras desagregaciones:</legend>   
+    Discapacitados:<br />
+    <input type="text" name="MISSING_DISABLED" value="" size="7" placeholder="Number" class="bss">
+    <br />    
+    Bajo la línea nacional de pobreza:<br />
+    <input type="text" name="MISSING_POOR" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div> 
+</div>
+
+<hr />
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_2'>Meta B del Marco de Sendai</div>
+  <p>Por favor registre en esta sección los impactos humanos y físicos que se requieren para calcular los Indicadores B2, B3, B4 and B5</p>  
+  </div>
+</div>
+
+
+<div class="container vertical-divider">
+   <div class="column one-sixth bss">
+    <div class='header_3'>Heridos y/o Enfermos (B-2)</div>
+    <fieldset>
+    <legend>Total Heridos y/o Enfermos(Indicador B-2):</legend>
+    <input type="text" name="heridos" value="" size="7" placeholder="Number"   class="bss" onchange="chkLoss(heridos, hay_heridos)">
+    <INPUT type="CHECKBOX" name="hay_heridos" VALUE="-1" >
+    <input type="button" NAME="ALM" value="&Sigma;" onclick="addLoss(desaparece, INJURED_FEMALE, INJURED_MALE, hay_deasparece)" /> 
+    </fieldset>
+  </div> 
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Por sexo:</legend>
+    Mujeres:<br />
+    <input type="text" name="INJURED_FEMALE" value="" size="7" maxlength="7" placeholder="Number" class="bss">
+    <br />
+    Hombres:<br />
+    <input type="text" name="INJURED_MALE" value="" size="7" placeholder="Number" class="bss">
+	</fieldset>
+  </div> 
+  <div class="column one-sixth bss">       
+    <fieldset>
+    <legend>Por edad:</legend>
+    Menores (0-14):<br />
+    <input type="text" name="INJURED_CHILDREN" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Adultos (15-64):<br />
+    <input type="text" name="INJURED_ADULTS" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Mayores (65+)<br />
+    <input type="text" name="INJURED_ELDER" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div>
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Otras desagregaciones:</legend>   
+    Discapacitados:<br />
+    <input type="text" name="INJURED_DISABLED" value="" size="7" placeholder="Number" class="bss">
+    <br />    
+    Bajo la línea nacional de pobreza:<br />
+    <input type="text" name="INJURED_POOR" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div> 
+</div>
+
+<div class="container vertical-divider">
+
+ <div class="column one-sixth bss">   
+    <div class='header_3'>Impacto en viviendas dañadas (B-3)</div>
+    <fieldset>
+    <legend>Población viviendo en viviendas dañadas:</legend>  
+    Número de Dviviendas dañadas(Sub-indicador B-3a):<br />
+    <input type="text" name="vivafec" value="" size="7" placeholder="Number" class="bss" onchange="chkLoss(vivafec, hay_vivafec)">
+    <INPUT type="CHECKBOX" name="hay_vivafec" VALUE="-1" >
+    <br />
+    Número de personas viviendo en estas viviendas(Indicador B-3):<br />
+    <input type="text" name="LIVING_DMGD_DWELLINGS" value="" size="7" placeholder="Number"   class="bss" onchange="chkLoss(LIVING_DMGD_DWELLINGS, hay_afectados)">
+    <input type="button" NAME="ADWDD" value="&Sigma;" onclick="addLoss(LIVING_DMGD_DWELLINGS, LIVING_DMGD_DWELLINGS_FEMALE, LIVING_DMGD_DWELLINGS_MALE, hay_afectados)" /> 
+    </fieldset>
+  </div> 
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Por sexo:</legend>
+    Mujeres:<br />
+    <input type="text" name="LIVING_DMGD_DWELLINGS_FEMALE" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Hombres:<br />
+    <input type="text" name="LIVING_DMGD_DWELLINGS_MALE" value="" size="7" placeholder="Number" class="bss">
+	</fieldset>
+  </div> 
+  <div class="column one-sixth bss">       
+    <fieldset>
+    <legend>Por edad:</legend>
+    Menores (0-14):<br />
+    <input type="text" name="LIVING_DMGD_DWELLINGS_CHILDREN" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Adultos (15-64):<br />
+    <input type="text" name="LIVING_DMGD_DWELLINGS_ADULTS" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Mayores (65+)<br />
+    <input type="text" name="LIVING_DMGD_DWELLINGS_ELDER" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div>
+
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Otras desagregaciones:</legend>   
+    Discapacitados:<br />
+    <input type="text" name="LIVING_DMGD_DWELLINGS_DISABLED" value="" size="7" placeholder="Number" class="bss">
+    <br />    
+    Bajo la línea nacional de pobreza:<br />
+    <input type="text" name="LIVING_DMGD_DWELLINGS_POOR" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div> 
+</div>
+
+<div class="container vertical-divider">
+
+ <div class="column one-sixth bss">   
+    <div class='header_3'>Impactos en viviendas destruídas (B-4)</div>
+    <fieldset>
+    <legend>Población viviendo en viviendas destruídas:</legend>  
+    Número de viviendas destruídas (Sub-indicador B-4a):<br />
+    <input type="text" name="vivdest" value="" size="7" placeholder="Number" class="bss" onchange="chkLoss(vivdest, hay_vivdest)">
+    <INPUT type="CHECKBOX" name="hay_vivdest" VALUE="-1" >
+    <br />   
+    Número de Personas viviendo en estas viviendas(Indicador B-4):<br />
+    <input type="text" name="LIVING_DSTR_DWELLINGS" value="" size="7" placeholder="Number"   class="bss" onchange="chkLoss(LIVING_DSTR_DWELLINGS, hay_afectados)">
+    <input type="button" NAME="ADWDD" value="&Sigma;" onclick="addLoss(LIVING_DSTR_DWELLINGS, LIVING_DSTR_DWELLINGS_FEMALE, LIVING_DSTR_DWELLINGS_MALE, hay_afectados)" /> 
+    </fieldset>
+  </div> 
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Por sexo:</legend>
+    Mujeres:<br />
+    <input type="text" name="LIVING_DSTR_DWELLINGS_FEMALE" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Hombres:<br />
+    <input type="text" name="LIVING_DSTR_DWELLINGS_MALE" value="" size="7" placeholder="Number" class="bss">
+	</fieldset>
+  </div> 
+  <div class="column one-sixth bss">       
+    <fieldset>
+    <legend>Por edad:</legend>
+    Menores (0-14):<br />
+    <input type="text" name="LIVING_DSTR_DWELLINGS_CHILDREN" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Adultos (15-64):<br />
+    <input type="text" name="LIVING_DSTR_DWELLINGS_ADULTS" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Mayores (65+)<br />
+    <input type="text" name="LIVING_DSTR_DWELLINGS_ELDER" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div>
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Otras desagregaciones:</legend>   
+    Discapacitados:<br />
+    <input type="text" name="LIVING_DSTR_DWELLINGS_DISABLED" value="" size="7" placeholder="Number" class="bss">
+    <br />    
+    Bajo la línea nacional de pobreza:<br />
+    <input type="text" name="LIVING_DSTR_DWELLINGS_POOR" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div> 
+</div>
+  
+
+
+
+<div class="container vertical-divider">
+ <div class="column one-sixth bss">   
+    <div class='header_3'>Impacto en Medios de Vida (B-5)</div>
+    <fieldset>
+    <legend>Población cuyos medios de vida fueron afectados(Indicador B-5):</legend>  
+    <input type="text" name="LIVELIHOOD_AFCTD" value="" size="7" placeholder="Number"   class="bss" onchange="chkLoss(LIVELIHOOD_AFCTD, hay_afectados)">
+    <input type="button" NAME="ALLI" value="&Sigma;" onclick="addLoss(LIVELIHOOD_AFCTD, LIVELIHOOD_FEMALE, LIVELIHOOD_MALE, hay_afectados)" /> 
+    </fieldset>
+  </div> 
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Por sexo:</legend>
+    Mujeres:<br />
+    <input type="text" name="LIVELIHOODS_FEMALE" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Hombres:<br />
+    <input type="text" name="LIVELIHOODS_MALE" value="" size="7" placeholder="Number" class="bss">
+	</fieldset>
+  </div> 
+  <div class="column one-sixth bss">       
+    <fieldset>
+    <legend>Por edad:</legend>
+    Menores (0-14):<br />
+    <input type="text" name="LIVELIHOODS_CHILDREN" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Adultos (15-64):<br />
+    <input type="text" name="LIVELIHOODS_ADULTS" value="" size="7" placeholder="Number" class="bss">
+    <br />
+    Mayores (65+)<br />
+    <input type="text" name="LIVELIHOODS_ELDER" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div>
+  <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Otras desagregaciones:</legend>   
+    Discapacitados:<br />
+    <input type="text" name="LIVELIHOODS_DISABLED" value="" size="7" placeholder="Number" class="bss">
+    <br />    
+    Bajo la línea nacional de pobreza:<br />
+    <input type="text" name="LIVELIHOODS_POOR" value="" size="7" placeholder="Number" class="bss">
+  	</fieldset>
+  </div> 
+</div>
+
+  
+
+<hr />
+<div class="container vertical-divider ">
+  <div class="column two-sixth">
+    <div class='header_2'>Otras pérdidas Humanas y Económicas(DesInventar)</div>
+  </div>
+</div>
+<div class="container vertical-divider">
+    <div class="column one-sixth bss">
+    <fieldset>
+    <legend>Número de evacuados:</legend>
+    <input type="text" name="evacuados" value="" size="7" placeholder="Number" class="bss" onchange="chkLoss(evacuados, hay_evacuados)">
+    <INPUT type="CHECKBOX" name="hay_evacuados" VALUE="-1" >
+    </fieldset>
+  </div> 
+ <div class="column one-sixth bss">   
+    <fieldset>
+    <legend>Estimado del Número de afectados:</legend>  
+    <input type="text" name="afectados" value="" size="7" placeholder="Number"  class="bss" onchange="chkLoss(afectados, hay_afectados)">
+    <INPUT type="CHECKBOX" name="hay_afectados" VALUE="-1" >
+    </fieldset>
+  </div> 
+ <div class="column one-sixth">   
+    <fieldset>
+    <legend>Número de Damnificados:</legend>  
+    <input type="text" name="damnificados" value="" size="7" placeholder="Number"   class="bss" onchange="chkLoss(damnificados, hay_damnificados)">
+	<INPUT type="CHECKBOX" name="hay_damnificados" VALUE="-1" >
+  	</fieldset>     
+  </div>
+ <div class="column one-sixth">   
+    <fieldset>
+    <legend>Número de Reubicados:<br />&nbsp;</legend>  
+    <input type="text" name="reubicados" value="" size="7" placeholder="Number"   class="bss" onchange="chkLoss(reubicados, hay_reubicados)">
+    <INPUT type="checkbox" name="hay_reubicados" VALUE="-1" >
+  	</fieldset>     
+  </div>
+  
+</div>
+</div>
+<div class="container vertical-divider">
+    <div class="column one-sixth bss">
+    <fieldset>
+    <legend>Pérdida económica total(moneda local):</legend>
+    <input type="text" name="valorloc" value="" size="15" placeholder="Number" class="bss" onchange="autosave(valorloc)">
+    </fieldset>
+  </div> 
+    <div class="column one-sixth bss">
+    <fieldset>
+    <legend>Pérdida económica total (USD$):</legend>
+    <input type="text" name="valorus" value="" size="15" placeholder="Number" class="bss" onchange="autosave(valorus)">
+    </fieldset>
+  </div> 
+ <div class="column two-sixth">   
+    <fieldset>
+    <legend>Otras pérdidas (descripción):</legend>  
+    <input type="text" name="otros" value="" size="30" maxloen='60' placeholder="Text"   class="bss" onchange="autosave(otros)">
+  	</fieldset>     
+  </div>
+ <div class="column one-sixth">   
+    <fieldset>
+    <legend>Magnitud del fenómeno:<br />&nbsp;</legend>  
+    <input type="text" name="magnitude2" value="" size="15" maxloen='25' placeholder="Text"   class="bss" onchange="autosave(magnitude2)">
+  	</fieldset>     
+  </div>
+  
+</div>
+
+<hr />
+
+  
+
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_2'>Metas C y D del Marco de Sendai</div>
+  <p>Por favor registre en esta sección los daños y pérdidas en activos productivos,
+   Infraestructura crítica y disrupción de servicios básicos. </p>  
+  </div>
+</div>
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Daños y pérdidas en Agricultura (C-2)</div>
+  </div>
+</div>
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Pérdidas en cultivos agrícolas (C-2C)</div>
+     <br />
+     <input name="agropecuario" value="-1" type="checkbox" style="display:inline;" /> Sector Agropecuario afectado?
+  </div>
+</div>
+<div class="container vertical-divider bss">
+ <div class="column four-sixth bss">
+  <fieldset>
+    <legend>Pérdida económica y daño fisico en Cultivos (C-2Ca):</legend>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>Pérdida económica en cultivos afectados (dañados o destruídos):<br /> 
+            <input type="text" name="LOSS_CROPS" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Total Hectáreas of cultivos afectados: <br />
+            <input type="text" name="nhectareas" value="" size="12" placeholder="Number">
+            <input type="button" NAME="ALC2C" value="&Sigma;" onclick="addLoss(nhectareas,HA_DMGD, HA_DSTR, agropecuario)" /> 
+            </td>
+            <td>
+            Hectáreas dañadas:<br />
+            <input type="text" name="HA_DMGD" value="" size="12" placeholder="Number">
+            </td>
+            <td>
+            Hectáreas destruídas:<br />
+            <input type="text" name="HA_DSTR" value="" size="12" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>    
+  </div>
+</div>
+<!--@@@-Sendai:C-2C -->
+<div class="container vertical-divider" id="disaggregation_button_1">
+  <div class="column three-sixth">
+  <input type="button" name="add_crops" value="Agregar otros cultivos" onclick="add_disaggegation(1)">
+  </div>
+</div>
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Agricultural Livestock Loss (C-2L)</div>
+  </div>
+</div>
+<div class="container vertical-divider bss">
+ <div class="column four-sixth">
+    <fieldset>
+    <legend>Daños físicos en Livestock (C-2La):</legend>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>
+            Total pérdidas por crops affected:<br /> 
+            <input type="text" name="LOSS_LIVESTOCK_TOTAL" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Número de animales afectados or perdidos: <br />
+            <input type="text" name="LIVESTOCK_TOTAL" value="" size="7" placeholder="Number">
+            <input type="button" NAME="ALC2La" value="&Sigma;" onclick="addLoss(LIVESTOCK_TOTAL,LIVESTOCK_DMGD, cabezas, agropecuario)" /> 
+            </td>
+            <td>
+            Número de animales afectados:<br />
+            <input type="text" name="LIVESTOCK_DMGD" value="" size="7" placeholder="Number">
+            </td>
+            <td>
+            Número de animales perdidos:<br />
+            <input type="text" name="cabezas" value="" size="7" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>    
+  </div>   
+</div>
+<!--@@@-Sendai:C-2L -->
+<div class="container vertical-divider" id="disaggregation_button_2">
+  <div class="column three-sixth">
+  <input type="button" name="add_livestock" value="Agregar otros tipos de Ganado/animales" onclick="add_disaggegation(2)">
+  </div>
+</div>
+
+
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Agricultural Forestry Loss (C-2FO)</div>
+  </div>
+</div>
+<div class="container vertical-divider bss">
+ <div class="column four-sixth">
+    <fieldset>
+    <legend>Pérdida económica y daño fisico en Bosques (C-2FOa):</legend>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>
+            Pérdida económica en  Bosques afectados:<br /> 
+            <input type="text" name="LOSS_FOREST_TOTAL" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Número de Hectáreas of Bosques afectados: <br />
+            <input type="text" name="HA_FOREST_TOTAL" value="" size="15" placeholder="Number">
+            <input type="button" NAME="ALC2FOa" value="&Sigma;" onclick="addLoss(HA_FOREST_TOTAL,HA_FOREST_DMGD, HA_FOREST_DSTR, agropecuario)" /> 
+            </td>
+            <td>
+            Número de Hectáreas dañadas:<br />
+            <input type="text" name="HA_FOREST_DMGD" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Número de Hectáreas destruídas:<br />
+            <input type="text" name="HA_FOREST_DSTR" value="" size="15" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>    
+  </div>    
+</div>
+
+<!--@@@-Sendai:C-2FO -->
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Impactos en Aquiulture Loss (C-2A)</div>
+  </div>
+</div>
+<div class="container vertical-divider bss">
+ <div class="column four-sixth">
+    <fieldset>
+    <legend>Pérdida económica y daño fisico to Acuicultura (C-2Aa):</legend>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>
+            Total pérdidas por Acuicultura:<br /> 
+            <input type="text" name="LOSS_AQUACULTURE_TOTAL" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Número de Hectáreas of Acuicultura afectadas: <br />
+            <input type="text" name="HA_AQUACULTURE_TOTAL" value="" size="15" placeholder="Number">
+            <input type="button" NAME="ALC2Aa" value="&Sigma;" onclick="addLoss(HA_AQUACULTURE_TOTAL,HA_AQUACULTURE_DMGD, HA_AQUACULTURE_DSTR, agropecuario)" /> 
+            </td>
+            <td>
+            Número de Hectáreas dañadas:<br />
+            <input type="text" name="HA_AQUACULTURE_DMGD" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Número de Hectáreas destruídas:<br />
+            <input type="text" name="HA_AQUACULTURE_DSTR" value="" size="15" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>    
+  </div>    
+</div>
+<!--@@@-Sendai:C-2A -->
+
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Agricultural Fisheries Loss (C-2FI)</div>
+  </div>
+</div>
+<div class="container vertical-divider bss">
+ <div class="column four-sixth">
+    <fieldset>
+    <legend>Pérdida económica y daño fisico en sector Pesquero (C-2FIa):</legend>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>
+            Pérdida económica en embarcaciones afectadas:<br /> 
+            <input type="text" name="LOSS_VESSELS_TOTAL" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Número de embarcaciones afectadas: <br />
+            <input type="text" name="VESSELS_TOTAL" value="" size="7" placeholder="Number">
+            <input type="button" NAME="ALC2FIa" value="&Sigma;" onclick="addLoss(VESSELS_TOTAL,VESSELS_DMGD, VESSELS_DSTR, agropecuario)" /> 
+            </td>
+            <td>
+            Número de embarcaciones dañadas:<br />
+            <input type="text" name="VESSELS_DMGD" value="" size="7" placeholder="Number">
+            </td>
+            <td>
+            Número de embarcaciones destruídas:<br />
+            <input type="text" name="VESSELS_DSTR" value="" size="7" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>    
+  </div>
+    
+</div>
+<!--@@@-Sendai:C-2FI -->
+
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Pérdidas en inventario agrícola almacenado (insumos y productos) (C-2LB)</div>
+  </div>
+</div>
+
+<div class="container vertical-divider bss">
+ <div class="column four-sixth">
+   <fieldset>
+    <legend>Pérdida económica y daño fisico en inventario almacenado(C-2LBa):</legend>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>
+            Pérdida económica en inventario agricola almacenado:<br />
+            <input type="text" name="STOCK_LOSS_AFCTD" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Número de instalaciones con inventario afectadas<br />
+            <input type="text" name="STOCK_FACILITIES_AFCTD" value="" size="7" placeholder="Number">
+            <input type="button" NAME="ALC2LBa" value="&Sigma;" onclick="addLoss(STOCK_FACILITIES_AFCTD,STOCK_FACILITIES_DMGD, STOCK_FACILITIES_DSTR, agropecuario)" /> 
+            </td>
+            <td>
+            Número de instalaciones con inventario dañadas:<br />
+            <input type="text" name="STOCK_FACILITIES_DMGD" value="" size="7" placeholder="Number">
+            </td>
+            <td>
+            Número de instalaciones con inventario destruídas:<br />
+            <input type="text" name="STOCK_FACILITIES_DSTR" value="" size="7" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>    
+  </div>
+</div>
+<!--@@@-Sendai:C-2LB -->
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Pérdidas en Activos Productivos Agrópecuarios (C-2LA) </div>
+  </div>
+</div>
+<div class="container vertical-divider bss">
+ <div class="column four-sixth">
+   <fieldset>
+    <legend>Pérdida económica y daño físico en activos productivos agropecuarios(C-2LAa):</legend>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>
+            Pérdida económica en  activos productivos agropecuarios:<br />
+            <input type="text" name="AGRI_ASSETS_LOSS_AFCTD" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Número de activos productivos agropecuarios:<br />
+            <input type="text" name="AGRI_ASSETS_AFCTD" value="" size="7" placeholder="Number">
+            <input type="button" NAME="ALC2LAa" value="&Sigma;" onclick="addLoss(AGRI_ASSETS_AFCTD,AGRI_ASSETS_DMGD, AGRI_ASSETS_DSTR, agropecuario)" /> 
+            </td>
+            <td>
+            Número de activos productivos agropecuarios dañados:<br />
+            <input type="text" name="AGRI_ASSETS_DMGD" value="" size="7" placeholder="Number">
+            </td>
+            <td>
+            Número de activos productivos agropecuarios destruídos:<br />
+            <input type="text" name="AGRI_ASSETS_DSTR" value="" size="7" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>    
+  </div>
+</div>
+<!--@@@-Sendai:C-2LA -->
+
+<hr/>
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Daños y pérdidas  en otros Activos Productivos (C-3)</div>
+ 		<br />
+		<input name="industrias" value="-1" type="checkbox" style="display:inline;" />Sector Industrial/Servicios afectado?
+  </div>
+</div>
+<div class="container vertical-divider bss">
+ <div class="column four-sixth">
+   <fieldset>
+    <legend>Pérdida económica y daño físico en otros Activos Productivos (C-3):</legend>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>
+            Pérdida económica en otros Activos Productivos:<br />
+            <input type="text" name="PRODUCTIVE_ASSETS_LOSS_AFCTD" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Número total de instalaciones productivas afectadas(C-3A):<br />
+            <input type="text" name="PRODUCTIVE_ASSETS_AFCTD" value="" size="7" placeholder="Number">
+            <input type="button" NAME="ALC2LAa" value="&Sigma;" onclick="addLoss(PRODUCTIVE_ASSETS_AFCTD,PRODUCTIVE_ASSETS_DMGD, PRODUCTIVE_ASSETS_DSTR, agropecuario)" /> 
+            </td>
+            <td>
+            Número de instalaciones dañadas:<br />
+            <input type="text" name="PRODUCTIVE_ASSETS_DMGD" value="" size="7" placeholder="Number">
+            </td>
+            <td>
+            Número de instalaciones destruídas:<br />
+            <input type="text" name="PRODUCTIVE_ASSETS_DSTR" value="" size="7" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>    
+  </div>
+</div>
+<!--@@@-Sendai:C-3 -->
+<div class="container vertical-divider " id="disaggregation_button_8">
+  <div class="column three-sixth">
+  <input type="button" name="add_assets" value="Agregar otros activos productivos/sectores" onclick="add_disaggegation(8)">
+  </div>
+</div>
+
+<hr/>
+<div class="container vertical-divider">
+  <div class="column two-sixth bss">
+    <div class='header_3'>Sector Vivienda (C-4)</div>  
+     <fieldset>
+    <legend>Viviendas Afectadas (dañadas o destruídas):</legend>
+    Total Número de Viviendas (datos tomados de Meta B):<br />
+    <input type="text" name="HOUSES_TOTAL" value="" size="7" placeholder="Number" class="bss">
+    <input type="button" NAME="ADWHS" value="&Sigma;" onclick="addLoss(HOUSES_TOTAL, vivafec, vivdest, hay_afectados)" />     
+  	</fieldset>
+    <br />`
+  </div>     
+
+<div class="column two-sixth bss">   
+    <div class='header_3'>Pérdida económica</div>
+    <fieldset>
+    <legend>Costo de Viviendas dañadas / destruídas:</legend>  
+    Total (Indicador C-4):<br />
+    <input type="text" name="LOSS_DWELLINGS" value="" size="15" placeholder="Number"   class="bss" onchange="chkLoss(LOSS_DWELLINGS, hay_afectados)">
+    <input type="button" NAME="ALDW" value="&Sigma;" onclick="addLoss(LOSS_DWELLINGS, LOSS_DWELLINGS_DMGD, LOSS__DWELLINGSDSTR, hay_afectados)" /> 
+    <hr />
+    Pérdida economica en Viviendas dañadas:<br />
+    <input type="text" name="LOSS_DWELLINGS_DMGD" value="" size="15" placeholder="Number" class="bss" onchange="chkLoss(LOSS_DWELLINGS_DMGD, hay_vivafec)">
+    <br />
+    Pérdida economica en Viviendas destruídas:<br />
+    <input type="text" name="LOSS__DWELLINGSDSTR" value="" size="15" placeholder="Number" class="bss" onchange="chkLoss(LOSS__DWELLINGSDSTR, hay_vivdest)">
+    <br />   
+  	</fieldset>     
+    <br />   
+  </div>
+</div>
+<!--@@@-Sendai:C-4 -->
+
+<hr/>
+
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Daños y pérdidas en Infraestructura Crítica (C-5, D-2, D-3, D-4)</div>
+  </div>
+</div>
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Daños y pérdidas en el Sector Salud (C-5, D-2)</div>
+  </div>
+</div>
+
+<div class="container vertical-divider bss">
+  <div class="column four-sixth">
+    <fieldset>
+    <legend>Pérdida económica y daño fisico a instalaciones de salud (D-2):</legend>   
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>
+            Pérdida económica en el sector salud(C-5):<br />
+            <input type="text" name="LOSS_HEALTH_FACILITIES" value="" size="12" placeholder="Number">
+            </td>
+            <td>
+            Total instalaciones afectadas (dañadas o destuídas) (D-2):<br />
+            <input type="text" name="nhospitales" value="" size="7" placeholder="Number">
+            <input type="button" NAME="ALHEALTH" value="&Sigma;" onclick="addLoss(nhospitales, HEALTH_FACILITIES_DMGD, HEALTH_FACILITIES_DSTR, salud)" /> 
+            </td>
+            <td>
+            Número de instalaciones dañadas:<br />
+            <input type="text" name="HEALTH_FACILITIES_DMGD" value="" size="7" placeholder="Number">
+            </td>
+            <td>
+            Número de instalaciones destruídas:<br />
+            <input type="text" name="HEALTH_FACILITIES_DSTR" value="" size="7" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>
+  </div>
+</div>
+<!--@@@-Sendai:D-2 -->
+
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Daños y pérdidas en el Sector Educación (C-5, D-3)</div>
+  </div>
+</div>
+
+
+<div class="container vertical-divider bss">
+  <div class="column four-sixth">
+     <fieldset>
+    <legend>Pérdida económica y daño fisico en instalaciones de Educación (C-5, D-3):</legend>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>
+            Pérdida economica total en sector Educación (for C-5):<br />
+            <input type="text" name="LOSS_EDUCATION" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Total instalaciones afectadas(D-3):<br />
+            <input type="text" name="nescuelas" value="" size="7" placeholder="Number">
+            <input type="button" NAME="ALEDU" value="&Sigma;" onclick="addLoss(nescuelas, EDUCATION_DMGD, EDUCATION_DSTR, educacion)" /> 
+            </td>
+            <td>
+            Número de instalaciones dañadas:<br />
+            <input type="text" name="EDUCATION_DMGD" value="" size="7" placeholder="Number">
+            </td>
+            <td>
+            Número de instalaciones destruídas:<br />
+            <input type="text" name="EDUCATION_DSTR" value="" size="7" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>
+  </div>
+</div>
+<!--@@@-Sendai:D-3 -->
+  
+  
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Daños y pérdidas en otras infrastructuras críticas (C-5, D-4)</div>
+  </div>
+</div>
+
+
+<div class="container vertical-divider bss">
+  <div class="column four-sixth">
+    <fieldset>
+    <legend>Pérdida económica y Número de instalaciones/unidades de otras infrastructuras (C-5, D-4):</legend>     
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="bss">
+        <tr>
+            <td>
+            Total Pérdida económica en otras Infrastructuras (for C-5):<br />
+            <input type="text" name="LOSS_INFRASTRUCTURES" value="" size="15" placeholder="Number">
+            </td>
+            <td>
+            Número de otras infrastructuras dañads o destruidas(D-4):<br />
+            <input type="text" name="NUMBER_INFRASTRUCTURES" value="" size="7" placeholder="Number">
+            <input type="button" NAME="ALEDOI" value="&Sigma;" onclick="addLoss(NUMBER_INFRASTRUCTURES, NUMBER_DMGD_INFRASTRUCTURES, NUMBER_DSTR_INFRASTRUCTURES, null)" /> 
+            </td>
+            <td>
+             Número de infrastructuras dañadas:<br />
+            <input type="text" name="NUMBER_DMGD_INFRASTRUCTURES" value="" size="7" placeholder="Number">
+            </td>
+            <td>
+            Número de infrastructuras destruídas:<br />
+            <input type="text" name="NUMBER_DSTR_INFRASTRUCTURES" value="" size="7" placeholder="Number">
+            </td>
+        </tr>
+    </table>
+  	</fieldset>
+  </div>
+  
+</div>
+
+
+<!--@@@-Sendai:C-5 -->
+<div class="container vertical-divider " id="disaggregation_button_9">
+  <div class="column three-sixth">
+  <input type="button" name="add_assets" value="Agregar otras infraestructuras" onclick="add_disaggegation(9)">
+  </div>
+</div>
+
+
+<hr/>
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Daños y pérdidas en el Patrimonio Cultural (C-6)</div>
+  </div>
+</div>
+
+<div class="container vertical-divider bss">
+  <div class="column two-sixth">
+   <fieldset>
+    <legend>Patrimonio Cultural:</legend>    
+    Costo de rehabilitación/reconstrucción of activos inmuebles (C-6a):<br />
+    <input type="text" name="LOSS_CULTURAL_FIXED" value="" size="15" placeholder="Number">
+    <br />
+    Costo de rehabilitación/restauración de activos movibles (C-6b):<br />
+    <input type="text" name="LOSS_CULTURAL_MOBILE_DMGD" value="" size="15" placeholder="Number">
+    <br />
+    Pérdida económica en activos movibles destruídos (C-6c):<br />
+    <input type="text" name="LOSS_CULTURAL_MOBILE_DSTR" value="" size="15" placeholder="Number">
+    <br />
+    Número de Monumentos/inmuebles dañadas (C-6d):<br />
+    <input type="text" name="CULTURAL_FIXED_DMGD" value="" size="7" placeholder="Number">
+    <br />
+    Número de Monumentos/inmuebles destruídos (C-6e):<br />
+    <input type="text" name="CULTURAL_FIXED_DSTR" value="" size="7" placeholder="Number">
+    <br />
+    Número de activos culturales movibles dañados (C-6f):<br />
+    <input type="text" name="CULTURAL_MOBILE_DMGD" value="" size="7" placeholder="Number">
+    <br />
+    Número de activos culturales mobibles destruídos (C-6g):<br />
+    <input type="text" name="CULTURAL_MOBILE_DSTR" value="" size="7" placeholder="Number">
+    <br />
+    <br />
+    </fieldset>
+  </div>
+ </div>
+ 
+<hr/>
+<div class="container vertical-divider ">
+  <div class="column three-sixth">
+    <div class='header_3'>Interrupciones de Serviciós Básicos (D-6)</div>
+  </div>
+</div>
+<div class="container vertical-divider bss">
+     <div class="column two-sixth">
+     <fieldset>
+     <legend>Serviciós Básicos interrumpidos o afectados:</legend>    
+        <br />
+		<input name="salud" value="-1" type="checkbox" style="display:inline;" />Salud (D-6)
+        <br />
+        <input name="educacion" value="-1" type="checkbox" style="display:inline;" />Educación (D-7)
+        <br/>
+    	<input name="transporte" value="-1" type="checkbox" style="display:inline;" />Transporte (D-8)
+        <br />
+		<input name="energia" value="-1" type="checkbox" style="display:inline;" />Electricidad y Energía (D-8)
+        <br />
+		<input name="comunicaciones" value="-1" type="checkbox" style="display:inline;" />Comunicaciones (D-8)
+		<br />
+		<input name="acueducto" value="-1" type="checkbox" style="display:inline;" />Acueductos (D-8)
+		<br />
+		<input name="socorro" value="-1" type="checkbox" style="display:inline;" />Socorro (D-8)
+        <br />
+        <input name="alcantarillado" value="-1" type="checkbox" style="display:inline;" />Alcantarillado (D-8)
+        <br/>
+		<input name="comunicaciones" value="-1" type="checkbox" style="display:inline;" />Sector gobierno (D-8)
+        <br />
+        <input name="agropecuario" value="-1" type="checkbox" style="display:inline;" />Agropecuario/Alimentación (D-8)
+ 		<br />
+		<input name="industrias" value="-1" type="checkbox" style="display:inline;" />Industrial/Servicios (D-8)
+        <br />
+        <input name="hay_otros" value="-1" type="checkbox" style="display:inline;" />Otros servicios	 (D-8)			
+    </fieldset>
+  	
+  </div>
+</div>
+
+<hr/>  
+<br clear="all" />
+<fieldset>
+    <legend>Comentarios&nbsp;&nbsp;</legend>
+	<TEXTAREA name="di_comments" value="" style="width: 960px; height:72px; text-align:left;"></textarea>	
+</fieldset>
+<fieldset>
+    <legend>Reporte</legend>
+    Recolector: <input name="fechapor" id="fechapor" type="text" value="" placeholder="User Name"  />   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    Fecha:
+     <input name="fechafec" id="fechafec" type="text" value="" placeholder="date"  />
+     <br />
+  	</fieldset>
+</form>
+
+<script language="javascript">
+
+var sThisHref=window.location.href;
+if (sThisHref.indexOf("/inv/")<0)
+	{
+	document.getElementById("disaggregation_button_1").style.visibility='hidden';
+	document.getElementById("disaggregation_button_2").style.visibility='hidden';
+	document.getElementById("disaggregation_button_8").style.visibility='hidden';
+	document.getElementById("disaggregation_button_9").style.visibility='hidden';
+	}
+</script>

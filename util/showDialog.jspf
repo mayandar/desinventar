@@ -1,0 +1,72 @@
+<%
+boolean bIEBrowser = (request.getHeader("User-Agent").indexOf("MSIE")>0);
+boolean bIEdge = (request.getHeader("User-Agent").indexOf("Edge")>0);
+%>
+
+
+<script language="javascript">
+
+var oArgs;
+var oResults;
+var sShowDialogReturn;
+var oShowDialogOtherArgs;
+
+function DialogArgs(parentWindow, url, otherArgs)
+{
+	this.parentWindow = parentWindow;
+	this.url = url;
+	this.otherArgs = otherArgs;
+}
+	
+function showDialog(url, sReturnProc)
+{
+	return showDialogSz(url, sReturnProc, null, 435, 605, "no");
+}
+
+function showDialog(url, sReturnProc, otherArgs)
+{
+	return showDialogSz(url, sReturnProc, otherArgs, 435, 605, "no");
+}
+
+function showDialogSz(url, sReturnProc, otherArgs, iHeight, iWidth)
+{
+	return showDialogSz(url, sReturnProc, otherArgs, iHeight, iWidth, "no")
+}
+
+function showDialogSz(url, sReturnProc, otherArgs, iHeight, iWidth, sScrollbars)
+{
+	if (sReturnProc == "") sReturnProc = null;
+	
+<%
+if (bIEBrowser) { %>
+		var now = new Date;
+		oArgs = new DialogArgs(window, url, otherArgs);
+        oResults = window.showModalDialog(url+"&ts="+now.getTime(), oArgs, "resizable:yes;status:no;help:no;scroll:"+sScrollbars+";dialogHeight:" + iHeight + "px;dialogWidth:" + iWidth + "px");
+		if (sReturnProc != null) 
+		    eval(sReturnProc + "(oResults)");
+		return oResults;
+<%	} else { %>
+		sShowDialogReturn = sReturnProc;
+		oShowDialogOtherArgs = otherArgs; // not used in DI for now.
+		document.helpwindow=window.open(url,'nonmodalwindow','width=' + iWidth + ',height=' + iHeight + ',left=10,screenX=10,top=50,screenY=50,scrollbars='+sScrollbars+',resizable=yes');
+        document.helpwindow.focus();
+		return null;
+}
+
+function dialogResults(oResults)
+{
+ 		if (sShowDialogReturn != null) eval(sShowDialogReturn + "(oResults)");
+<%	} %>
+}
+
+function showNonModalDialog(url, sReturnProc, otherArgs)
+{
+		var now = new Date;
+		document.helpwindow=window.open(url+"&ts="+now.getTime(),'window2','width=300,height=300,left=10,screenX=10,top=50,screenY=50,scrollbars=no,resizable=yes');
+        document.helpwindow.focus();
+		return null;
+}
+
+
+</script>
+

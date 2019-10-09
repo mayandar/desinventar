@@ -1,0 +1,33 @@
+<option value='eventos.nombre<%=sLangSuffix%>'<%=countrybean.strSelected(countrybean.bVariableIsSelected("eventos.nombre"+sLangSuffix))%>><%=countrybean.getTranslation("Event")%></option>
+<option value='fichas.level0 as "<%=countrybean.getTranslation("Code")%> <%=countrybean.asLevels[0] %>"'<%=countrybean.strSelected(countrybean.bVariableIsSelected("fichas.level0"))%>><%=countrybean.getTranslation("Code")%> - <%=htmlServer.htmlEncode(countrybean.asLevels[0]) %></option>
+<option value='lev0_name<%=sLangSuffix%> as "<%=countrybean.asLevels[0]%>"'<%=countrybean.strSelected(countrybean.bVariableIsSelected("lev0_name"+sLangSuffix))%>><%=htmlServer.htmlEncode(countrybean.asLevels[0]) %></option>
+<option value='fichas.level1 as "<%=countrybean.getTranslation("Code")%> <%=countrybean.asLevels[1] %>"'<%=countrybean.strSelected(countrybean.bVariableIsSelected("fichas.level1"))%>><%=countrybean.getTranslation("Code")%> - <%=htmlServer.htmlEncode(countrybean.asLevels[1]) %></option>
+<option value='lev1_name<%=sLangSuffix%> as "<%=countrybean.asLevels[1]%>"'<%=countrybean.strSelected(countrybean.bVariableIsSelected("lev1_name"+sLangSuffix))%>><%=htmlServer.htmlEncode(countrybean.asLevels[1]) %></option>
+<% if (countrybean.asLevels[2].length()>0){%>
+<option value='fichas.level2 as "<%=countrybean.getTranslation("Code")%> <%=countrybean.asLevels[2] %>"'<%=countrybean.strSelected(countrybean.bVariableIsSelected("fichas.level2"))%>><%=countrybean.getTranslation("Code")%> - <%=htmlServer.htmlEncode(countrybean.asLevels[2]) %></option>
+<option value='lev2_name<%=sLangSuffix%> as "<%=countrybean.asLevels[2]%>"'<%=countrybean.strSelected(countrybean.bVariableIsSelected("lev2_name"+sLangSuffix))%>><%=htmlServer.htmlEncode(countrybean.asLevels[2]) %></option>
+<option value='lugar as "<%=countrybean.getTranslation("Place")%>"'<%=countrybean.strSelected(countrybean.bVariableIsSelected("lugar"))%>><%=countrybean.getTranslation("Place")%></option>
+<%}%>
+<%
+String sDateVar="";
+	{ // just to keep these vars private
+	String sVar1=countrybean.sqlCharNumber("fechano");
+	String sVar2=countrybean.sqlCharNumber("fechames");
+	String sVar3=countrybean.sqlCharNumber("fechadia");
+	sDateVar=countrybean.sqlConcat(sVar1,"'/'");
+	sDateVar=countrybean.sqlConcat(sDateVar,countrybean.sqlConcat(sVar2,"'/'"));
+	sDateVar=countrybean.sqlConcat(sDateVar,sVar3);
+	sDateVar="(" +sDateVar+") as DateYMD";
+	}
+int level=0;
+String sCommentsVar="di_comments as Comments";
+%>
+<option value="<%=sDateVar%>"<%=countrybean.strSelected(countrybean.bVariableIsSelected(sDateVar))%>><%=countrybean.getTranslation("Date")%></option>
+<option value='<%=sCommentsVar%>'<%=countrybean.strSelected(countrybean.bVariableIsSelected(sCommentsVar))%>><%=countrybean.getTranslation("Comments")%></option>
+<option value='causas.causa<%=sLangSuffix%>'<%=countrybean.strSelected(countrybean.bVariableIsSelected("causas.causa"+sLangSuffix))%>><%=countrybean.getTranslation("Cause")%></option>
+<option value='fichas.descausa'<%=countrybean.strSelected(countrybean.bVariableIsSelected("fichas.descausa"))%>><%=countrybean.getTranslation("DescriptionCause")%></option>
+<option value='fichas.fuentes'<%=countrybean.strSelected(countrybean.bVariableIsSelected("fichas.fuentes"))%>><%=countrybean.getTranslation("Source")%></option>
+<option value='fichas.magnitud2'<%=countrybean.strSelected(countrybean.bVariableIsSelected("fichas.magnitud2"))%>><%=countrybean.getTranslation("Magnitude")%></option>
+<option value='fichas.glide'<%=countrybean.strSelected(countrybean.bVariableIsSelected("fichas.glide"))%>><%=countrybean.getTranslation("GLIDEnumber")%></option>
+<option value='fichas.otros'<%=countrybean.strSelected(countrybean.bVariableIsSelected("fichas.otros"))%>><%=countrybean.getTranslation("Othersectors")%></option>
+

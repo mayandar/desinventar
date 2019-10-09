@@ -1,0 +1,46 @@
+<%
+extension woExtension = new extension();
+woExtension.loadExtension(con,countrybean);
+
+// allocates a dictionary object to read each record
+org.lared.desinventar.webobject.Dictionary dct = new org.lared.desinventar.webobject.Dictionary();
+for (int k = 0; k < woExtension.vFields.size(); k++)
+    {
+    dct = (org.lared.desinventar.webobject.Dictionary) woExtension.vFields.get(k);
+    boolean bIsNumeric=false;
+    if (dct.nDataType==Types.DECIMAL
+       || dct.nDataType==Types.DOUBLE
+       || dct.nDataType==Types.FLOAT
+       || dct.nDataType==Types.NUMERIC
+       || dct.nDataType==Types.REAL
+       || dct.nDataType==Types.SMALLINT
+       || dct.nDataType==Types.INTEGER
+	   )
+		bIsNumeric=true;
+	 String sDescription=countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en).trim();
+	 String sField=dct.nombre_campo;
+	 if (sDescription==null || sDescription.length()==0)
+			sDescription=sField;
+	 if (!bNumericVariablesOnly || bIsNumeric)
+	   if (sField!=null)
+			{  // TODO:  the following should 
+		  %><option value='extension.<%=htmlServer.htmlEncode(sField.toLowerCase())%>'<%=countrybean.strSelected(countrybean.bVariableIsSelected("extension."+htmlServer.htmlEncode(sField.toLowerCase())))%>><%=EncodeUtil.htmlEncode(sDescription)%></option>
+		  <%}      
+	}
+    for (int aj=0; aj<3; aj++)
+    	if (countrybean.laAttrs[aj]!=null && countrybean.laAttrs[aj].table_level==aj && countrybean.laAttrs[aj].table_name.length()>0 && countrybean.laAttrs[aj].table_code.length()>0)
+		{
+		attributes aAttribs = new attributes();
+		aAttribs.loadAttributes(con,countrybean,aj);
+		
+		java.util.ArrayList varFields=aAttribs.vFields;
+	 	if (bNumericVariablesOnly)
+			varFields=aAttribs.nFields;
+		// allocates a dictionary object to read each record
+		for (int k = 0; k < varFields.size(); k++)
+		    {
+			String sField=(String) (varFields.get(k));
+		  %><option value='DA_<%=aj%>.<%=htmlServer.htmlEncode(sField.toLowerCase())%>'<%=countrybean.strSelected(countrybean.bVariableIsSelected("DA_"+aj+"."+htmlServer.htmlEncode(sField.toLowerCase())))%>><%=htmlServer.htmlEncode(sField)%></option>
+		  <%}	
+		}
+%>		

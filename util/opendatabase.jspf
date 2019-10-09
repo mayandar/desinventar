@@ -1,0 +1,81 @@
+<%@ page contentType="text/html; charset=UTF-8" %><%@ page import="org.lared.desinventar.system.*" %><%
+request.setCharacterEncoding("UTF-8"); 
+// if this runs in an IFRAME under IE, this will allow cookies to stay...just magic!
+((HttpServletResponse)response).addHeader("P3P", "CP=\"CAO PSA OUR\"");
+((HttpServletResponse)response).addHeader("X-Frame-Options", "SAMEORIGIN");
+// load language code (if available)
+if (request.getParameter("lang")!=null)
+	countrybean.setLanguage(request.getParameter("lang"));
+// load DATA language code (if available)
+if (request.getParameter("datalng")!=null)
+	countrybean.setDataLanguage(request.getParameter("datalng"));
+// load country code (if available)
+if (request.getParameter("countrycode")!=null)
+	{
+
+	//System.out.println("country code:"+request.getParameter("countrycode"));
+	
+	countrybean.init();
+	countrybean.countrycode=request.getParameter("countrycode");
+	if (countrybean.countrycode.length()>6)
+		countrybean.countrycode=countrybean.countrycode.substring(0,6);
+	// Load the country object from the DesInventar (default) database
+	dbConnection dbDefaultCon; 
+	Connection dcon; 
+	boolean bdConnectionOK=false; 
+	Sys.getProperties();
+	// opens the Default database 
+	dbDefaultCon=new dbConnection();
+	bdConnectionOK = dbDefaultCon.dbGetConnectionStatus();
+	if (bdConnectionOK)
+	{
+	dcon=dbDefaultCon.dbGetConnection();
+	}  // opening dB!!
+	else
+	{
+	%><jsp:forward page="/connectionError.jsp"/><%
+	}
+	
+	// now it should read the names of the levels. 
+	// It is done in the bean, so it can be reused as properties...
+	countrybean.country.scountryid=countrybean.countrycode;
+	int n_rows=countrybean.country.getWebObject(dcon);
+	countrybean.countryname=countrybean.country.scountryname;
+	countrybean.dbType=countrybean.country.ndbtype;
+	// MUST return this connection!
+	dbDefaultCon.close();
+	if (n_rows==0) // the country was not found
+		countrybean.countrycode="";
+	}
+
+// checks for a session alive variable, or we have a new valid countrycode
+if (countrybean.countrycode.length()==0)
+	{
+	%><jsp:forward page="/index.jsp"/><%
+	}	
+// opens the database 
+// get current resource name
+String strPage=request.getServletPath();
+// Declaration of default Dabatase variables available to the page 
+dbConnection dbCon=null;
+// this is just a shortcut, easier to remember
+int dbType=countrybean.country.ndbtype; 
+Connection con=null; 
+Statement stmt=null; 
+ResultSet rset=null; 
+boolean bConnectionOK=false; 
+// opens the database 
+dbCon=new dbConnection(countrybean.country.sdriver,countrybean.country.sdatabasename,
+                      countrybean.country.susername,countrybean.country.spassword);
+bConnectionOK = dbCon.dbGetConnectionStatus();
+if (bConnectionOK)
+	{	
+	con=dbCon.dbGetConnection();
+	// now it should read the names of the levels. 
+	countrybean.getLevelsFromDB(con);
+	}
+else
+	{
+	%><jsp:forward page="/connectionError.jsp"/><%
+	}	
+%>

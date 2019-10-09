@@ -1,0 +1,550 @@
+<%
+String sSuffix=countrybean.getLocalOrEnglish("","_en");
+String sDetails="";
+String sSqlDetails="";
+// load geographic unit spec (if available)
+boolean bGeo=false;
+String sLevel0=countrybean.not_null(request.getParameter("level0"));
+if (sLevel0.length()>0)
+	{
+	bGeo=true;
+	sLevel0=dbutils.validateLevel0(con,sLevel0);
+	sDetails="&_level0="+sLevel0;
+    sSqlDetails=" AND fichas.level0='"+sLevel0+"'";
+	}
+// load event type spec (if available)
+boolean bHazard=false;
+String sHazard=countrybean.not_null(request.getParameter("eventos"));
+sHazard=URLDecoder.decode(sHazard.replace("@","%"),"UTF-8");
+if (sHazard.length()>0)
+	{
+	bHazard=true;
+	sHazard=dbutils.validateHazard(con,sHazard);
+	sDetails+="&_eventos="+URLEncoder.encode(sHazard,"UTF-8").replace("%","@");
+    sSqlDetails+=" AND fichas.evento='"+sHazard+"'";
+	}
+sDetails+="&rndp="+String.valueOf((int)(Math.random()*99999));
+// gets this URL
+String sRequest=new String(request.getRequestURL());
+// gets the hostname
+URL thisURL=new URL(sRequest);
+String sHost=thisURL.getProtocol()+"://"+thisURL.getHost();
+int nPort=request.getLocalPort();
+if (nPort!=80)
+   sHost+=":"+nPort;
+String  sSql="";
+String sRealPath=getServletConfig().getServletContext().getRealPath("/");
+
+lev0 geoUnit=new lev0();
+eventos evUnit=new eventos();
+if (bHazard){
+evUnit.nombre=sHazard;
+evUnit.getWebObject(con);
+countrybean.asEventos=new String[1];
+countrybean.asEventos[0]=sHazard;
+countrybean.bHayEventos=true;
+// countrybean.countryname+="&nbsp;&nbsp;-&nbsp;&nbsp;"+countrybean.getLocalOrEnglish(evUnit.nombre,evUnit.nombre_en);
+}
+if (bGeo){
+
+geoUnit.lev0_cod=sLevel0;
+geoUnit.getWebObject(con);
+countrybean.asNivel0=new String[1];
+countrybean.asNivel0[0]=sLevel0;
+countrybean.bHayNivel0=true;
+//countrybean.countryname+="&nbsp;&nbsp;-&nbsp;&nbsp;"+countrybean.getLocalOrEnglish(geoUnit.lev0_name,geoUnit.lev0_name_en);
+}
+countrybean.country.scountryname=countrybean.countryname;
+%>
+<font class='title'><%=countrybean.countryname +"&nbsp;&nbsp;&nbsp;&nbsp;"+htmlServer.htmlEncode(countrybean.getLocalOrEnglish(evUnit.nombre,evUnit.nombre_en))
+											   +"&nbsp;&nbsp;&nbsp;&nbsp;"+htmlServer.htmlEncode(countrybean.getLocalOrEnglish(geoUnit.lev0_name,geoUnit.lev0_name_en))
+%></font>
+<br><br>
+<%=countrybean.getTranslation("Profile")%>:<br>
+<%=countrybean.getTranslation("ExplainProfile")%>&nbsp;&nbsp;&nbsp;<a href="#more_info"><%=countrybean.getTranslation("Click here for more info")%></a>
+
+<%
+if (thisURL.getHost().equals("localhost") || thisURL.getHost().equals("desinventar")) {%>
+&nbsp;&nbsp;&nbsp;<a href="<%=sHost%>/DesInventar/servlet/PdfProfileServer?countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&lang=<%=countrybean.getLanguage()+sDetails%>"">PDF version</a><br>
+<%}%>
+<br>
+<% 
+
+// Obtain basic statistics
+boolean bKilled=true;
+boolean bHousing=true;
+boolean bAffected=true;
+sSql="SELECT sum(1) as nrecs, sum(0.0+fichas.muertos) as killed, sum(0.0+fichas.vivdest)+sum(0.0+fichas.vivafec) as housing, sum(0.0+fichas.damnificados)+sum(0.0+fichas.afectados) as affected from fichas where  (fichas.approved is null or fichas.approved=0)";
+try{
+	  stmt=con.createStatement();
+	  rset=stmt.executeQuery(sSql);
+	  if (rset.next())
+	  	{
+		bHousing=(rset.getDouble("housing")>0);
+		bAffected=(rset.getDouble("affected")>0);
+		}
+	 rset.close();
+ 	 stmt.close();
+	 }
+catch (Exception eSql)
+	{
+	out.println("<!-- "+eSql.toString()+" -->");
+	}	 
+
+
+
+// Composition only makes sense for multi-hazard profiles...
+if (!bHazard)
+{%>
+<strong><font class='title'><%=countrybean.getTranslation("Composition of Disasters")%></FONT></strong><br><br>
+<table width="800" cellspacing="0" cellpadding="2" border="1">
+</tr>
+<tr>
+    <td align="center">
+    <strong><%=countrybean.getTranslation("Deaths")%></strong><br/>
+	<img src='<%=sHost%>/DesInventar/GraphServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/graphics.jsp&chartType=5&chartMode=3&chartSubMode=1&periodType=1&seasonType=4&chart3D=2&chartColor=1&chartX=500&chartY=450&chartTitle=&chartSubTitle=&chartMaxY=0.0&chartMaxY=0.0&chartRanges=50&_color=%2300BFFF,%23FF8C00,%23006400,%23800000,%23FF1493,%2300FFFF,%23CD5C5C,%23FFA07A,%2300FF7A,%23A07AFF,,,,,&_variables=fichas.muertos<%=sDetails%>' border=0>	
+	</td>
+    <td align="center" width="50%"><strong><%=countrybean.getTranslation("DataCards")%></strong><br/>
+	<img src='<%=sHost%>/DesInventar/GraphServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/graphics.jsp&chartType=5&chartMode=3&chartSubMode=1&periodType=1&seasonType=4&chart3D=2&chartColor=1&chartX=500&chartY=450&chartTitle=&chartSubTitle=&chartMaxY=0.0&chartMaxY=0.0&chartRanges=50&_color=%2300BFFF,%23FF8C00,%23006400,%23800000,%23FF1493,%2300FFFF,%23CD5C5C,%23FFA07A,%2300FF7A,%23A07AFF,,,,,&_variables=1<%=sDetails%>' border=0>	
+	</td>
+</tr>
+<tr>
+<%if (bAffected){%>	
+    <td align="center"><strong><%=countrybean.getTranslation("Affected")%> + <%=countrybean.getTranslation("Victims")%></strong><br/>
+		<img src='<%=sHost%>/DesInventar/GraphServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/graphics.jsp&chartType=5&chartMode=3&chartSubMode=1&periodType=1&seasonType=4&chart3D=2&chartColor=1&chartX=500&chartY=450&chartTitle=&chartSubTitle=&chartMaxY=0.0&chartMaxY=0.0&chartRanges=50&_color=%2300BFFF,%23FF8C00,%23006400,%23800000,%23FF1493,%2300FFFF,%23CD5C5C,%23FFA07A,%2300FF7A,%23A07AFF,,,,,&_variables=fichas.afectados,fichas.damnificados<%=sDetails%>' border=0>	
+	</td>
+<% }
+  if (bHousing){%>	
+    <td align="center"><strong><%=countrybean.getTranslation("DestroyedHouses")%> + <%=countrybean.getTranslation("AffectedHouses")%></strong><br/>
+    	<img src='<%=sHost%>/DesInventar/GraphServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/graphics.jsp&chartType=5&chartMode=3&chartSubMode=1&periodType=1&seasonType=4&chart3D=2&chartColor=1&chartX=500&chartY=450&chartTitle=&chartSubTitle=&chartMaxY=0.0&chartMaxY=0.0&chartRanges=50&_color=%2300BFFF,%23FF8C00,%23006400,%23800000,%23FF1493,%2300FFFF,%23CD5C5C,%23FFA07A,%2300FF7A,%23A07AFF,,,,,&_variables=fichas.vivdest,fichas.vivafec<%=sDetails%>' border=0>	
+	</td>
+<% }%>
+</tr>
+</table>
+<br/><br/>
+<%} // end of COmposition analysis. Temporal analysis ALWAYS applies
+%>
+<strong><font class='title'><%=countrybean.getTranslation("Temporal Behaviour")%></FONT></strong><br><br>
+<table width="100%" cellspacing="0" cellpadding="2" border="1">
+<tr>
+    <td align="center" width="30%"><strong><%=countrybean.getTranslation("Deaths")%><!-- Country or Region --></strong><br/>
+	<img src='<%=sHost%>/DesInventar/GraphServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/graphics.jsp&chartType=1&chartMode=2&chartSubMode=1&periodType=1&seasonType=4&chart3D=1&chartColor=1&chartX=700&chartY=250&chartTitle=&chartSubTitle=&chartMaxY=0.0&chartMaxY=0.0&chartRanges=50&_color=%2300BFFF,%23FF8C00,%23006400,%23800000,%23FF1493,%2300FFFF,%23CD5C5C,%23FFA07A,%2300FF7A,%23A07AFF,,,,,&_variables=fichas.muertos&bRegression=Y<%=sDetails%>' border=0>	
+	</td>
+</tr>
+<tr>
+    <td align="center" width="30%"><strong><%=countrybean.getTranslation("DataCards")%><!-- Period --></strong><br/>
+	<img src='<%=sHost%>/DesInventar/GraphServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/graphics.jsp&chartType=1&chartMode=2&chartSubMode=1&periodType=1&seasonType=4&chart3D=1&chartColor=1&chartX=700&chartY=250&chartTitle=&chartSubTitle=&chartMaxY=0.0&chartMaxY=0.0&chartRanges=50&_color=%2322aa00,%23FF8C00,%23006400,%23800000,%23FF1493,%2300FFFF,%23CD5C5C,%23FFA07A,%2300FF7A,%23A07AFF,,,,,&_variables=1&bRegression=Y<%=sDetails%>' border=0>	
+	</td>
+</tr>
+<% if (bHousing){%>
+<tr>
+    <td align="center"><strong><%=countrybean.getTranslation("DestroyedHouses")%> , <%=countrybean.getTranslation("AffectedHouses")%></strong><br/>
+	<img src='<%=sHost%>/DesInventar/GraphServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/graphics.jsp&chartType=9&chartMode=2&chartSubMode=2&periodType=1&seasonType=4&chart3D=1&chartColor=1&chartX=700&chartY=250&chartTitle=&chartSubTitle=&chartMaxY=0.0&chartMaxY=0.0&chartRanges=50&_color=%2300BFFF,%23FF8C00,%23006400,%23800000,%23FF1493,%2300FFFF,%23CD5C5C,%23FFA07A,%2300FF7A,%23A07AFF,,,,,&_variables=fichas.vivdest,fichas.vivafec&bRegression=Y<%=sDetails%>' border=0>	
+	</td>
+</tr>
+<%}
+if (bAffected){%>
+<tr>
+    <td align="center"><strong><%=countrybean.getTranslation("Affected")%>, <%=countrybean.getTranslation("Victims")%></strong><br/>>
+	<img src='<%=sHost%>/DesInventar/GraphServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/graphics.jsp&chartType=9&chartMode=2&chartSubMode=2&periodType=1&seasonType=4&chart3D=1&chartColor=1&chartX=700&chartY=250&chartTitle=&chartSubTitle=&chartMaxY=0.0&chartMaxY=0.0&chartRanges=50&_color=%2322aa00,%23FF8C00,%23006400,%23800000,%23FF1493,%2300FFFF,%23CD5C5C,%23FFA07A,%2300FF7A,%23A07AFF,,,,,&_variables=fichas.afectados,fichas.damnificados&bRegression=Y<%=sDetails%>' border=0>	
+	</td>
+</tr>
+</table>
+<br/><br/>
+<%}
+
+int level_map=1;
+int level_rep=0;
+
+double xm=-180;
+double ym=-90;
+double xx=180;
+double yy=90;
+MapTransformation mt=new MapTransformation();
+
+countrybean.getLevelsFromDB(con);
+MapUtil.getExtents(countrybean.level_rep, sLevel0, mt, con, countrybean);
+xm=mt.xminif;
+ym=mt.yminif;
+xx=mt.xmaxif;
+yy=mt.ymaxif;
+String sMapSize="&WIDTH=512&HEIGHT=512";
+
+if (yy-ym>0 && xx-xm>0)
+  if (yy-ym<xx-xm)
+	sMapSize="&WIDTH=512&HEIGHT="+( (int) (512 * ((yy-ym)/(xx-xm))));
+  else
+	sMapSize="&HEIGHT=512&WIDTH="+( (int) (512 * ((xx-xm)/(yy-ym))));
+
+int nTransf=0;
+if (countrybean.lmMaps[0]!=null) // default DI map with scaling by 10000 transformation... TODO: check transf type
+	nTransf=countrybean.extendedParseInt(countrybean.lmMaps[0].filetype);
+if (nTransf==0)
+	    {
+        xm/=10000.0;
+        ym/=10000.0;
+	    xx/=10000.0;
+	    yy/=10000.0;
+    	}
+
+	// calculate the bounding box:
+	String bBox="BBOX="+xm+"%2C"+ym+"%2C"+xx+"%2C"+yy;
+	countrybean.asVariables=new String[1];
+	
+	countrybean.asVariables[0]="fichas.Muertos as \""+countrybean.getTranslation("Deaths")+"\"";
+	countrybean.bHayVariables = true;
+    // this heuristically tries to suggest a good mapping level
+	level_map=MapUtil.calculateBestLevel(con, countrybean);
+	countrybean.level_map=level_map;
+    MapUtil.calculateRanges("isolegend",con,countrybean);
+    for (int j=0; j<8; j++)
+		countrybean.asMapRanges[j]=ChartServer.getNiceMaximum(countrybean.asMapRanges[j]);
+	String sRanges="";
+	for (int j=0; j<countrybean.asMapRanges.length; j++)
+		sRanges+=","+countrybean.asMapRanges[j];	
+// maps only make sense if there is detail available
+if (!bGeo || (level_map>0))
+{%>
+<strong><font class='title'><%=countrybean.getTranslation("Spatial Distribution")%></FONT></strong><br><br>
+<table width="100%" cellspacing="0" cellpadding="2" border="1">
+<tr>
+  <td align="center" width="30%"><strong><%=countrybean.getTranslation("Deaths")%></strong><br/>
+  <table width="100%" cellspacing="2" cellpadding="2" border="0">
+    <tr>
+        <td align="right">
+        <img src='<%=sHost%>/DesInventar/MapLegendServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&<%=bBox%>&level=<%=level_rep%>&level_map=<%=level_map%>&transparencyf=1&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&sExpertVariable=&frompage=/thematic_def.jsp&_range=<%=sRanges%>&_color=%23ffff88,%23ffcc00,%23ff8800,%23ff0000,%23bb0000,%23770000,,,,,,,,,&_legend=,,,,,,,,,,,,,,&chartColor=1&chartX=512&chartY=512&chartTitle=&chartSubTitle=&showValues=0&legendType=0&level_rep=0&level_map=1&_variables=fichas.muertos&LAYERS=effects%2Clevel<%=level_map%>&&TRANSPARENT=true&FORMAT=png&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG:4326<%=sMapSize%><%=sDetails%>' border=0>
+        </td>
+        <td align="left" width=100%>
+        <img src='<%=sHost%>/DesInventar/jsmapserv?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&<%=bBox%>&level=<%=level_rep%>&level_map=<%=level_map%>&transparencyf=1&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&sExpertVariable=&frompage=/thematic_def.jsp&_range=<%=sRanges%>&_color=%23ffff88,%23ffcc00,%23ff8800,%23ff0000,%23bb0000,%23770000,,,,,,,,,&_legend=,,,,,,,,,,,,,,&chartColor=1&chartX=512&chartY=512&chartTitle=&chartSubTitle=&showValues=0&legendType=0&level_rep=0&level_map=1&_variables=fichas.muertos&LAYERS=effects%2Clevel<%=level_map%>&&TRANSPARENT=true&FORMAT=png&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG:4326<%=sMapSize%><%=sDetails%>' border=0>	
+        </td>
+    </tr>
+    </table>
+  </td>
+</tr>
+</table>
+
+<table width="100%" cellspacing="0" cellpadding="2" border="1">
+<tr>
+    <td align="center" colspan=2>
+    <strong><%=countrybean.getTranslation("DataCards")%><!-- Period --></strong><br/>
+<%
+	countrybean.asVariables[0]="1 as \""+countrybean.getTranslation("DataCards")+"\"";
+    MapUtil.calculateRanges("isolegend",con,countrybean);
+	sRanges="";
+    for (int j=0; j<8; j++)
+		countrybean.asMapRanges[j]=ChartServer.getNiceMaximum(countrybean.asMapRanges[j]);
+	for (int j=0; j<countrybean.asMapRanges.length; j++)
+		sRanges+=","+countrybean.asMapRanges[j];	
+%>
+  <table width="100%" cellspacing="2" cellpadding="2" border="0">
+     <tr>
+	<td align="right">
+	<img src='<%=sHost%>/DesInventar/MapLegendServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&<%=bBox%>&level=<%=level_rep%>&level_map=<%=level_map%>&transparencyf=1&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&sExpertVariable=&frompage=/thematic_def.jsp&_range=<%=sRanges%>&_color=%23e4dacc,%23c9b499,%23ad8f66,%23926933,%23774400,%233c2200,,,,,,,,,&_legend=,,,,,,,,,,,,,,&chartColor=1&chartX=512&chartY=512&chartTitle=&chartSubTitle=&showValues=0&legendType=0&level_rep=0&level_map=1&_variables=1&LAYERS=effects%2Clevel<%=level_map%>&&TRANSPARENT=true&FORMAT=png&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG:4326&<%=sMapSize%><%=sDetails%>' border=0>	
+	</td>
+    <td align="left">
+	<img src='<%=sHost%>/DesInventar/jsmapserv?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&<%=bBox%>&level=<%=level_rep%>&level_map=<%=level_map%>&transparencyf=1&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&sExpertVariable=&frompage=/thematic_def.jsp&_range=<%=sRanges%>&_color=%23e4dacc,%23c9b499,%23ad8f66,%23926933,%23774400,%233c2200,,,,,,,,,&_legend=,,,,,,,,,,,,,,&chartColor=1&chartX=512&chartY=512&chartTitle=&chartSubTitle=&showValues=0&legendType=0&level_rep=0&level_map=1&_variables=1&LAYERS=effects%2Clevel<%=level_map%>&&TRANSPARENT=true&FORMAT=png&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG:4326<%=sMapSize%><%=sDetails%>' border=0>	
+	</td>
+    </tr>
+    </table>
+  </td>  
+</tr>
+</table>
+<% 
+countrybean.asVariables=new String[2];
+if (bHousing){%>
+<table width="100%" cellspacing="0" cellpadding="2" border="1">
+<tr>
+  <td align="center" colspan=2><strong><%=countrybean.getTranslation("DestroyedHouses")%> + <%=countrybean.getTranslation("AffectedHouses")%></strong><br/>
+  <table width="100%" cellspacing="2" cellpadding="2" border="0">
+     <tr>
+<%
+	countrybean.asVariables[0]="fichas.vivdest";
+	countrybean.asVariables[1]="fichas.vivafec";
+    MapUtil.calculateRanges("isolegend",con,countrybean);
+    for (int j=0; j<8; j++)
+		countrybean.asMapRanges[j]=ChartServer.getNiceMaximum(countrybean.asMapRanges[j]);
+	sRanges="";
+	for (int j=0; j<countrybean.asMapRanges.length; j++)
+		sRanges+=","+countrybean.asMapRanges[j];	
+%>
+	<td align="right">
+	<img src='<%=sHost%>/DesInventar/MapLegendServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&<%=bBox%>&level=<%=level_rep%>&level_map=<%=level_map%>&transparencyf=1&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&sExpertVariable=&frompage=/thematic_def.jsp&_range=<%=sRanges%>&_color=%23cce7cc,%2399cf99,%2366b866,%2333a033,%23008800,%23004400,,,,,,,,,&_legend=,,,,,,,,,,,,,,&chartColor=1&chartX=512&chartY=512&chartTitle=&chartSubTitle=&showValues=0&legendType=0&level_rep=0&level_map=1&_variables=fichas.vivdest,fichas.vivafec&LAYERS=effects%2Clevel<%=level_map%>&&TRANSPARENT=true&FORMAT=png&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG:4326<%=sMapSize%><%=sDetails%>' border=0>	
+	</td>
+    <td align="left">
+	<img src='<%=sHost%>/DesInventar/jsmapserv?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&<%=bBox%>&level=<%=level_rep%>&level_map=<%=level_map%>&transparencyf=1&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&sExpertVariable=&frompage=/thematic_def.jsp&_range=<%=sRanges%>&_color=%23cce7cc,%2399cf99,%2366b866,%2333a033,%23008800,%23004400,,,,,,,,,&_legend=,,,,,,,,,,,,,,&chartColor=1&chartX=512&chartY=512&chartTitle=&chartSubTitle=&showValues=0&legendType=0&level_rep=0&level_map=1&_variables=fichas.vivdest,fichas.vivafec&LAYERS=effects%2Clevel<%=level_map%>&&TRANSPARENT=true&FORMAT=png&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG:4326<%=sMapSize%><%=sDetails%>' border=0>	
+	</td>
+  </tr>
+</table>
+</td>    
+</tr>
+</table>
+<%}
+if (bAffected){%>
+<table width="100%" cellspacing="0" cellpadding="2" border="1">
+<tr>
+  <td colspan=2 align="center"><strong><%=countrybean.getTranslation("Affected")%> + <%=countrybean.getTranslation("Victims")%></strong><br/>
+  <table width="100%" cellspacing="2" cellpadding="2" border="0">
+     <tr>
+<%
+	countrybean.asVariables[0]="fichas.afectados";
+	countrybean.asVariables[1]="fichas.damnificados";
+    MapUtil.calculateRanges("isolegend",con,countrybean);
+    for (int j=0; j<8; j++)
+		countrybean.asMapRanges[j]=ChartServer.getNiceMaximum(countrybean.asMapRanges[j]);
+	sRanges="";
+	for (int j=0; j<countrybean.asMapRanges.length; j++)
+		sRanges+=","+countrybean.asMapRanges[j];	
+%>
+	<td align="right">
+	<img src='<%=sHost%>/DesInventar/MapLegendServer?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&<%=bBox%>&level=<%=level_rep%>&level_map=<%=level_map%>&transparencyf=1&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&sExpertVariable=&frompage=/thematic_def.jsp&_range=<%=sRanges%>&_color=%23c4dddd,%2388bbbb,%234d9999,%23117777,%230b4f4f,%23062828,,,,,,,,,&_legend=,,,,,,,,,,,,,,&chartColor=1&chartX=512&chartY=512&chartTitle=&chartSubTitle=&showValues=0&legendType=0&level_rep=0&level_map=1&_variables=fichas.afectados,fichas.damnificados&LAYERS=effects%2Clevel<%=level_map%>&<%=sDetails%>' border=0 >	
+	</td>
+    <td align="left">
+	<img src='<%=sHost%>/DesInventar/jsmapserv?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&<%=bBox%>&level=<%=level_rep%>&level_map=<%=level_map%>&transparencyf=1&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&sExpertVariable=&frompage=/thematic_def.jsp&_range=<%=sRanges%>&_color=%23c4dddd,%2388bbbb,%234d9999,%23117777,%230b4f4f,%23062828,,,,,,,,,&_legend=,,,,,,,,,,,,,,&chartColor=1&chartX=512&chartY=512&chartTitle=&chartSubTitle=&showValues=0&legendType=0&level_rep=0&level_map=1&_variables=fichas.afectados&LAYERS=effects%2Clevel<%=level_map%>&&TRANSPARENT=true&FORMAT=png&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG:4326<%=sMapSize%><%=sDetails%>' border=0>	
+	</td>
+	</tr>
+   </table> 
+</td>
+</tr>
+</table>
+<%}
+} // end geo section
+%>
+<tr>
+    <td align="center"><BR/><BR/><BR/>
+     <strong><font size="+1" class='title'><%=countrybean.getTranslation("Statistics")%></FONT></strong><br><br>
+</tr>
+<% 
+// Composition only makes sense for multi-hazard profiles...
+String slabelHD=countrybean.getTranslation("DestroyedHouses").trim();
+int isp=slabelHD.indexOf(" ");
+if (isp>0)
+ slabelHD= slabelHD.substring(0,isp)+"<br/>"+slabelHD.substring(isp);
+String slabelHA=countrybean.getTranslation("AffectedHouses").trim();
+isp=slabelHA.indexOf(" ");
+if (isp>0)
+ slabelHA= slabelHA.substring(0,isp)+"<br/>"+slabelHA.substring(isp);
+
+if (!bHazard)
+{%>
+<tr>
+    <td align="center"><BR/><BR/>
+     <strong><font class='subtitle'><%=countrybean.getTranslation("Composition of Disasters")%></FONT></strong>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <a href="javascript:window.location='<%=sHost%>/DesInventar/stats_excel.jsp?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&maxhits=100&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/definestats.jsp&bSum=Y&_stat=eventos.nombre<%=sSuffix%>,,&nlevels=1&_variables=1,fichas.muertos,fichas.heridos,fichas.desaparece,fichas.vivdest,fichas.vivafec,fichas.damnificados,fichas.afectados,fichas.reubicados,fichas.evacuados,fichas.valorus,fichas.valorloc,fichas.nescuelas,fichas.nhospitales,fichas.nhectareas,fichas.cabezas,fichas.kmvias<%=sDetails%>'" class='linkText'><%=countrybean.getTranslation("getitasExcel")%></a>
+<BR/>
+</tr>
+
+<!-- Start stat: EVENTS -->
+<tr>	
+    <td align="left">
+<table cellspacing="1" cellpadding="1" border="1" width="700" class="bss">
+<tr height="20">
+<th height="20"><%=countrybean.getTranslation("Event")%></th><th> <%=countrybean.getTranslation("DataCards")%></th>
+<th> <%=countrybean.getTranslation("Deaths")%></th><th> <%=countrybean.getTranslation("Injured")%></th>
+<th> <%=countrybean.getTranslation("Missing")%></th><th> <%=slabelHD%></th>
+<th> <%=slabelHA%></th>
+<th> <%=countrybean.getTranslation("Affected")%></th>
+<th> <%=countrybean.getTranslation("Victims")%></th>
+<th> <%=countrybean.getTranslation("Relocated")%></th>
+<th> <%=countrybean.getTranslation("Evacuated")%></th>
+<th> <%=countrybean.getTranslation("LossesUSD")%></th>
+<th> <%=countrybean.getTranslation("LossesLocal")%></th>
+<th> <%=countrybean.getTranslation("Educationcenters")%></th> 
+<th> <%=countrybean.getTranslation("Hospitals")%></th>
+<th> <%=countrybean.getTranslation("Damagesincrops")%></th>
+<th> <%=countrybean.getTranslation("Catle")%></th>
+<th> <%=countrybean.getTranslation("Damagesinroads")%></th>
+</tr>
+<%
+  sSql="SELECT eventos.nombre"+sSuffix+",sum(1) as C0L__0, sum(0.0+fichas.muertos) as C0L__1, sum(0.0+fichas.heridos) as C0L__2, sum(0.0+fichas.desaparece) as C0L__3, sum(0.0+fichas.vivdest) as C0L__4, sum(0.0+fichas.vivafec) as C0L__5, sum(0.0+fichas.afectados) as C0L__6,sum(0.0+fichas.damnificados) as C0L__6a, sum(0.0+fichas.reubicados) as C0L__7, sum(0.0+fichas.evacuados) as C0L__8, sum(0.0+fichas.valorus) as C0L__9, sum(0.0+fichas.valorloc) as C0L__10, sum(0.0+fichas.nescuelas) as C0L__11, sum(0.0+fichas.nhospitales) as C0L__12, sum(0.0+fichas.nhectareas) as C0L__13, sum(0.0+fichas.cabezas) as C0L__14, sum(0.0+fichas.kmvias) as C0L__15  from  (((((fichas left join eventos on eventos.nombre=fichas.evento) left join lev0 on lev0.lev0_cod=fichas.level0) left join lev1 on lev1.lev1_cod=fichas.level1) left join lev2 on lev2.lev2_cod=fichas.level2) left join causas on causas.causa=fichas.causa)  left join extension on fichas.clave = extension.clave_ext  where  (fichas.approved is null or fichas.approved=0) "+sSqlDetails+" group by eventos.nombre"
+                +sSuffix+" order by eventos.nombre"+sSuffix;
+  try{
+	  stmt=con.createStatement();
+	  rset=stmt.executeQuery(sSql);
+	  while (rset.next())
+	  	{
+		out.print("<tr><td align='right'>"+countrybean.not_null(rset.getString(1))+"</td>");
+		for (int j=2; j<19; j++)
+			{
+				double dNum=rset.getDouble(j);
+				out.print("<td align='right'>"+(dNum==0.0?"":webObject.formatDouble(rset.getDouble(j),0))+"</td>");	
+			}
+		out.println("</tr>");
+		}
+	 rset.close();
+ 	 stmt.close();
+	 }
+catch (Exception eSql)
+	{
+	out.println("<!-- "+eSql.toString()+" -->");
+	}	 
+%>
+     </table>
+	</td>
+</tr>
+<!-- End stat Events-->
+<%}
+// maps only make sense if there is detail available
+if (!bGeo || (level_map>0))
+{
+
+%>
+<tr>
+    <td align="center"><BR/><BR/>
+     <strong><font class='subtitle'><%=countrybean.getTranslation("Spatial Distribution")%></FONT></strong> 
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     
+     <a href="javascript:window.location='<%=sHost%>/DesInventar/stats_excel.jsp?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&maxhits=100&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/definestats.jsp&bSum=Y&_stat=lev0_name<%=sSuffix%>,,&nlevels=1&_variables=1,fichas.muertos,fichas.heridos,fichas.desaparece,fichas.vivdest,fichas.vivafec,fichas.damnificados,fichas.afectados,fichas.reubicados,fichas.evacuados,fichas.valorus,fichas.valorloc,fichas.nescuelas,fichas.nhospitales,fichas.nhectareas,fichas.cabezas,fichas.kmvias<%=sDetails%>'" class='linkText'><%=countrybean.getTranslation("getitasExcel")%></a>
+
+     
+      <BR/>
+</tr>
+
+<!-- Start stat: GEO - LEVEL 0 -->
+<tr>	
+    <td align="left">
+<table cellspacing="1" cellpadding="1" border="1" width="700" class="bss">
+<tr height="20">
+<th height="20"><%=countrybean.getTranslation("Geography")%></th>
+<th><%=countrybean.getTranslation("Code")%></th>
+<th> <%=countrybean.getTranslation("DataCards")%></th>
+<th> <%=countrybean.getTranslation("Deaths")%></th><th> <%=countrybean.getTranslation("Injured")%></th>
+<th> <%=countrybean.getTranslation("Missing")%></th><th> <%=slabelHD%></th>
+<th> <%=slabelHA%></th>
+<th> <%=countrybean.getTranslation("Affected")%></th>
+<th> <%=countrybean.getTranslation("Victims")%></th>
+<th> <%=countrybean.getTranslation("Relocated")%></th>
+<th> <%=countrybean.getTranslation("Evacuated")%></th>
+<th> <%=countrybean.getTranslation("LossesUSD")%></th>
+<th> <%=countrybean.getTranslation("LossesLocal")%></th>
+<th> <%=countrybean.getTranslation("Educationcenters")%></th> 
+<th> <%=countrybean.getTranslation("Hospitals")%></th>
+<th> <%=countrybean.getTranslation("Damagesincrops")%></th>
+<th> <%=countrybean.getTranslation("Catle")%></th>
+<th> <%=countrybean.getTranslation("Damagesinroads")%></th>
+</tr>
+<%
+if (bGeo)
+  sSql="SELECT lev1_name"+sSuffix+", max(lev1_cod) as code0,sum(1) as C0L__0,  sum(0.0+fichas.muertos) as C0L__1, sum(0.0+fichas.heridos) as C0L__2, sum(0.0+fichas.desaparece) as C0L__3, sum(0.0+fichas.vivdest) as C0L__4, sum(0.0+fichas.vivafec) as C0L__5, sum(0.0+fichas.afectados) as C0L__6,sum(0.0+fichas.damnificados) as C0L__6a, sum(0.0+fichas.reubicados) as C0L__7, sum(0.0+fichas.evacuados) as C0L__8, sum(fichas.valorus) as C0L__9, sum(fichas.valorloc) as C0L__10, sum(0.0+fichas.nescuelas) as C0L__11, sum(0.0+fichas.nhospitales) as C0L__12, sum(fichas.nhectareas) as C0L__13, sum(0.0+fichas.cabezas) as C0L__14, sum(fichas.kmvias) as C0L__15   (((((fichas left join eventos on eventos.nombre=fichas.evento) left join lev0 on lev0.lev0_cod=fichas.level0) left join lev1 on lev1.lev1_cod=fichas.level1) left join lev2 on lev2.lev2_cod=fichas.level2) left join causas on causas.causa=fichas.causa)  left join extension on fichas.clave = extension.clave_ext  where   (fichas.approved is null or fichas.approved=0) "+sSqlDetails+" group by lev1_name"+sSuffix+" order by lev1_name"+sSuffix;
+else
+  sSql="SELECT lev0_name"+sSuffix+", max(lev0_cod) as code0,sum(1) as C0L__0,   sum(0.0+fichas.muertos) as C0L__1, sum(0.0+fichas.heridos) as C0L__2, sum(0.0+fichas.desaparece) as C0L__3, sum(0.0+fichas.vivdest) as C0L__4, sum(0.0+fichas.vivafec) as C0L__5, sum(0.0+fichas.afectados) as C0L__6,sum(0.0+fichas.damnificados) as C0L__6a, sum(0.0+fichas.reubicados) as C0L__7, sum(0.0+fichas.evacuados) as C0L__8, sum(fichas.valorus) as C0L__9, sum(fichas.valorloc) as C0L__10, sum(0.0+fichas.nescuelas) as C0L__11, sum(0.0+fichas.nhospitales) as C0L__12, sum(fichas.nhectareas) as C0L__13, sum(0.0+fichas.cabezas) as C0L__14, sum(fichas.kmvias) as C0L__15   from  (((((fichas left join eventos on eventos.nombre=fichas.evento) left join lev0 on lev0.lev0_cod=fichas.level0) left join lev1 on lev1.lev1_cod=fichas.level1) left join lev2 on lev2.lev2_cod=fichas.level2) left join causas on causas.causa=fichas.causa)  left join extension on fichas.clave = extension.clave_ext  where   (fichas.approved is null or fichas.approved=0) "+sSqlDetails+" group by lev0_name"+sSuffix+" order by lev0_name"+sSuffix;
+  try{
+	  stmt=con.createStatement();
+	  rset=stmt.executeQuery(sSql);
+	  while (rset.next())
+	  	{
+		out.print("<tr><td>"+countrybean.not_null(rset.getString(1))+"</td><td>"+countrybean.not_null(rset.getString(2))+"</td>");
+		for (int j=3; j<20; j++)
+			{
+				double dNum=rset.getDouble(j);
+				out.print("<td align='right'>"+(dNum==0.0?"":webObject.formatDouble(rset.getDouble(j),0))+"</td>");	
+			}
+		out.println("</tr>");
+		}
+	 rset.close();
+ 	 stmt.close();
+	 }
+catch (Exception eSql)
+	{
+	out.println("<!-- "+eSql.toString()+" -->");
+	}	 
+%>
+	</table>
+	</td>
+</tr>
+<!-- End stat LEVEL0-->
+<%}%>
+
+<tr>
+    <td align="center"><BR/><BR/>
+     <strong><font class='subtitle'><%=countrybean.getTranslation("Temporal Behaviour")%></FONT></strong>
+ 	   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <a href="javascript:window.location='<%=sHost%>/DesInventar/stats_excel.jsp?bookmark=1&countrycode=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&maxhits=100&lang=<%=countrybean.getLanguage()%>&logic=AND&sortby=0&frompage=/definestats.jsp&bSum=Y&_stat=fichas.fechano,,&nlevels=1&_variables=1,fichas.muertos,fichas.heridos,fichas.desaparece,fichas.vivdest,fichas.vivafec,fichas.damnificados,fichas.afectados,fichas.reubicados,fichas.evacuados,fichas.valorus,fichas.valorloc,fichas.nescuelas,fichas.nhospitales,fichas.nhectareas,fichas.cabezas,fichas.kmvias<%=sDetails%>'" class='linkText'><%=countrybean.getTranslation("getitasExcel")%></a>
+<BR/>
+</tr>
+<!-- Start stat: YEAR -->
+<tr>	
+    <td align="left">
+<table cellspacing="1" cellpadding="1" border="1" width="700" class="bss">
+<tr height="20">
+<th height="20"><%=countrybean.getTranslation("Year")%></th><th> <%=countrybean.getTranslation("DataCards")%></th>
+<th> <%=countrybean.getTranslation("Deaths")%></th><th> <%=countrybean.getTranslation("Injured")%></th>
+<th> <%=countrybean.getTranslation("Missing")%></th><th> <%=slabelHD%></th>
+<th> <%=slabelHA%></th>
+<th> <%=countrybean.getTranslation("Affected")%></th>
+<th> <%=countrybean.getTranslation("Victims")%></th>
+<th> <%=countrybean.getTranslation("Relocated")%></th>
+<th> <%=countrybean.getTranslation("Evacuated")%></th>
+<th> <%=countrybean.getTranslation("LossesUSD")%></th>
+<th> <%=countrybean.getTranslation("LossesLocal")%></th>
+<th> <%=countrybean.getTranslation("Educationcenters")%></th> 
+<th> <%=countrybean.getTranslation("Hospitals")%></th>
+<th> <%=countrybean.getTranslation("Damagesincrops")%></th>
+<th> <%=countrybean.getTranslation("Catle")%></th>
+<th> <%=countrybean.getTranslation("Damagesinroads")%></th>
+</tr>
+<%
+  sSql="SELECT fichas.fechano,sum(1) as C0L__0,  sum(0.0+fichas.muertos) as C0L__1, sum(0.0+fichas.heridos) as C0L__2, sum(0.0+fichas.desaparece) as C0L__3, sum(0.0+fichas.vivdest) as C0L__4, sum(0.0+fichas.vivafec) as C0L__5, sum(0.0+fichas.afectados) as C0L__6, sum(0.0+fichas.damnificados) as C0L__6a, sum(0.0+fichas.reubicados) as C0L__7, sum(0.0+fichas.evacuados) as C0L__8, sum(fichas.valorus) as C0L__9, sum(fichas.valorloc) as C0L__10, sum(0.0+fichas.nescuelas) as C0L__11, sum(0.0+fichas.nhospitales) as C0L__12, sum(fichas.nhectareas) as C0L__13, sum(0.0+fichas.cabezas) as C0L__14, sum(fichas.kmvias) as C0L__15  from  (((((fichas left join eventos on eventos.nombre=fichas.evento) left join lev0 on lev0.lev0_cod=fichas.level0) left join lev1 on lev1.lev1_cod=fichas.level1) left join lev2 on lev2.lev2_cod=fichas.level2) left join causas on causas.causa=fichas.causa)  left join extension on fichas.clave = extension.clave_ext  where   (fichas.approved is null or fichas.approved=0) "+sSqlDetails+" group by fichas.fechano order by fichas.fechano" ;
+  try{
+	  stmt=con.createStatement();
+	  rset=stmt.executeQuery(sSql);
+	  while (rset.next())
+	  	{
+		out.print("<tr><td>"+rset.getString(1)+"</td>");
+		for (int j=2; j<19; j++)
+			{
+				double dNum=rset.getDouble(j);
+				out.print("<td align='right'>"+(dNum==0.0?"":webObject.formatDouble(rset.getDouble(j),0))+"</td>");	
+			}
+		out.println("</tr>");
+		}
+	 rset.close();
+ 	 stmt.close();
+	 }
+catch (Exception eSql)
+	{
+	out.println("<!-- "+eSql.toString()+" -->");
+	}	 
+%>
+     </table>
+	</td>
+</tr>
+<!-- End stat YEAr-->
+
+<tr><td align="center">
+<a name="more_info" id="more_info"></a>
+
+<div  style="width=500" id="countrytiphere">
+<%=CountryTip.getInstance().getCountryTipHTML(countrybean.country, countrybean)%>
+<br>
+</div>
+</td></tr>
+
+
+</table>
+</td></tr>
+</table>
+<br>
+
+<% 	// close the database object 
+	dbCon.close(); 
+	countrybean.asVariables=null;
+%>
+
+<script language="JavaScript">
+
+function getParameter(param)
+{
+	var sSub="";
+	var sURL=window.location+"&";
+	var pos=sURL.indexOf(param);
+	if (pos>0)
+	{
+		sSub=sURL.substring(pos+param.length+1);
+		// looks for start of following parameter (& is guaranteed)
+	    sSub=sSub.substring(0,sSub.indexOf("&"));
+	}
+	return sSub;	
+}
+
+</script>

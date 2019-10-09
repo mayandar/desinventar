@@ -1,0 +1,2222 @@
+
+	<style>
+		
+    .tabs {
+      position: relative;   
+      min-height: 4450px; /* This part sucks */
+	  width: 1000px;
+      clear: both;
+      margin: 25px 0;
+	
+    }
+    .tab {
+      float: left;
+    }
+    .tab label {
+      background: #eee; 
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      margin-left: -1px; 
+      position: relative;
+      left: 1px; 
+	  
+    }
+    .tab [type=radio] {
+      display: none;   
+    }
+		
+    .content {
+      position: absolute;
+      top: 28px;
+      left: 0;
+      background: white;
+      right: 0;
+      bottom: 0;
+      padding: 2px;
+      border: 1px solid #ccc; 
+
+	  
+    }
+
+    [type=radio]:checked ~ label {
+      background: white;
+      border-bottom: 1px solid white;
+      z-index: 2;
+    }
+    [type=radio]:checked ~ label ~ .content {
+      z-index: 1;
+    }
+	
+	
+#horizontalForm fieldset
+{
+	display: block;
+	margin: 0 0 3em 0;
+	padding: 0 1em 1em 1em;
+}
+
+#horizontalForm fieldset.radio
+{
+	margin: 1em 0 2em 0;
+}
+
+#horizontalForm fieldset.radio input
+{
+	clear: both;
+	float: left;
+	width: auto;
+	
+}
+
+#horizontalForm fieldset.radio label
+{
+	font-weight: normal;
+}
+
+#horizontalForm input
+{
+	display: block;
+	text-align: right;
+	width: 9em;
+}
+
+#horizontalForm input.submit
+{
+	clear: both;
+}
+
+#horizontalForm label
+{
+	float: left;
+	display: block;
+	margin: 1em 1em 0 0;
+	font-weight: normal;
+	font-size: 9px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#horizontalForm select
+{
+	display: block;
+}
+
+
+
+#horizontalForm2 fieldset
+{
+	display: block;
+	margin: 0 0 3em 0;
+	padding: 0 1em 1em 1em;
+	
+}
+
+#horizontalForm2 fieldset.radio
+{
+	margin: 1em 0 2em 0;
+}
+
+#horizontalForm2 fieldset.radio input
+{
+	clear: both;
+	float: left;
+	width: auto;
+	
+	
+}
+
+#horizontalForm2 fieldset.radio label
+{
+	font-weight: normal;
+	
+}
+
+#horizontalForm2 input
+{
+	display: inline!important;
+	width: 8em;
+	text-align: right;
+	
+}
+
+#horizontalForm2 input.submit
+{
+	clear: both;
+}
+
+#horizontalForm2 label
+{
+	display: block;
+	margin: 1em 1em 0 0;
+	font-weight: normal;
+	font-size: 9px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	
+}
+
+#horizontalForm2 select
+{
+	display: block;
+}
+
+.left
+{ 
+float:left;
+width: 75%;
+ }
+ 
+.right
+{ 
+text-align:top;
+width: 25%;
+display: inline;
+text-align:right;
+ }
+ 
+::-webkit-input-placeholder {
+    font-style: italic;
+	font-weight: bold;
+	font-size: 10px;
+    color: blue;
+}
+ 
+::-moz-placeholder {
+    font-style: italic;
+    font-weight: bold;
+	font-size: 10px;
+    color: blue;
+}
+
+:-ms-input-placeholder {
+    display:block;
+    float:left;
+    margin:1px;
+    padding:1px;
+   
+}
+
+
+.inner-box .col {
+    display:block;
+    float:left;
+    margin:1px;
+    padding:1px;
+    width:19%;
+}
+	
+	
+	.bordure {
+	height: auto;
+	border-right: 1px solid #ccc;
+}
+
+	.bordure_left {
+	height: auto;
+	border-left: 1px solid #ccc;
+	
+}
+
+
+	t {
+	font-size: 11px;
+	font-weight: bold;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	
+	}
+	
+	ti {
+	font-size: 11px;
+	font-style: italic;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	
+	}
+	
+	m {
+	font-size: 11px;
+	font-weight: bold;
+	color: red;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+		}
+	
+	
+
+	</style>
+
+
+<script language="javascript">
+
+function doAlert(field)
+{
+	alert("Totals of "+field+" are inconsistent, please review");
+	return false;
+}
+
+function checkKilled()
+{
+with (document.desinventar)
+	{
+	if (muertos.value+
+		NUMBER_OF_DEATHS_NO_MALE.value+
+		NUMBER_OF_DEATHS_NO_FEMALE.value+
+		NUMBER_OF_DEATHS_NO_CHILDREN.value  !=0) hay_muertos.checked=true;
+	if (muertos.value==0 &&
+		NUMBER_OF_DEATHS_NO_MALE.value!=0 &&
+		NUMBER_OF_DEATHS_NO_FEMALE.value!=0 &&
+		NUMBER_OF_DEATHS_NO_CHILDREN.value!=0)
+			addKilled();	
+	if (Number(NUMBER_OF_DEATHS_NO_MALE.value)+Number(NUMBER_OF_DEATHS_NO_FEMALE.value)+Number(NUMBER_OF_DEATHS_NO_CHILDREN.value)>muertos.value && muertos.value>0)
+		doAlert("deaths");
+	}
+}
+
+function addKilled()
+{
+with (document.desinventar)
+    muertos.value=Number(NUMBER_OF_DEATHS_NO_MALE.value)+ Number(NUMBER_OF_DEATHS_NO_FEMALE.value)+	Number(NUMBER_OF_DEATHS_NO_CHILDREN.value);		
+}
+
+
+
+function checkInjured()
+{
+with (document.desinventar)
+	{
+	if (heridos.value+
+	    NUMBER_OF_INJURIES_NO_I_MAJOR.value+
+		NUMBER_OF_INJURI_I_MAJOR_MEN.value+
+		NUMBER_OF_INJUR_I_MAJOR_WOMEN.value+
+		NUMBER_OF_INJUR_MAJOR_CHILDREN.value+
+		NUMBER_OF_INJUR_NO_II_MINOR.value+
+		NUMBER_OF_INJUR__II_MINOR_MEN.value+
+		NUMBER_OF_INJUR_II_MINOR_WOMEN.value+
+		NUMBER_OF_INJU_MINOR_CHILDREN.value  >0)
+			hay_heridos.checked=true;
+
+	if (NUMBER_OF_INJURIES_NO_I_MAJOR.value==0 &&
+		NUMBER_OF_INJURI_I_MAJOR_MEN.value!=0 &&
+		NUMBER_OF_INJUR_I_MAJOR_WOMEN.value!=0 &&
+		NUMBER_OF_INJUR_MAJOR_CHILDREN.value!=0)
+			NUMBER_OF_INJURIES_NO_I_MAJOR.value=Number(NUMBER_OF_INJURI_I_MAJOR_MEN.value)+Number(NUMBER_OF_INJUR_I_MAJOR_WOMEN.value)+	Number(NUMBER_OF_INJUR_MAJOR_CHILDREN.value);
+	if (NUMBER_OF_INJUR_NO_II_MINOR.value==0 &&
+		NUMBER_OF_INJUR__II_MINOR_MEN.value!=0 &&
+		NUMBER_OF_INJUR_II_MINOR_WOMEN.value!=0 &&
+		NUMBER_OF_INJU_MINOR_CHILDREN.value!=0)
+			NUMBER_OF_INJUR_NO_II_MINOR.value=Number(NUMBER_OF_INJUR__II_MINOR_MEN.value)+Number(NUMBER_OF_INJUR_II_MINOR_WOMEN.value)+Number(NUMBER_OF_INJU_MINOR_CHILDREN.value);
+	if (heridos.value==0 && 
+		NUMBER_OF_INJURIES_NO_I_MAJOR.value!=0 &&
+		NUMBER_OF_INJUR_NO_II_MINOR.value!=0)
+			heridos.value=Number(NUMBER_OF_INJURIES_NO_I_MAJOR.value)+Number(NUMBER_OF_INJUR_NO_II_MINOR.value);
+
+	if (NUMBER_OF_INJURIES_NO_I_MAJOR.value>0 &&
+	    NUMBER_OF_INJURIES_NO_I_MAJOR.value< Number(NUMBER_OF_INJURI_I_MAJOR_MEN.value)+Number(NUMBER_OF_INJUR_I_MAJOR_WOMEN.value)+Number(NUMBER_OF_INJUR_MAJOR_CHILDREN.value))
+		    doAlert("injured major");	
+	if (NUMBER_OF_INJUR_NO_II_MINOR.value>0 &&
+		NUMBER_OF_INJUR_NO_II_MINOR.value<(Number(NUMBER_OF_INJUR__II_MINOR_MEN.value)+Number(NUMBER_OF_INJUR_II_MINOR_WOMEN.value)+Number(NUMBER_OF_INJU_MINOR_CHILDREN.value)))
+		    doAlert("injured minor");
+	if (heridos.value>0 && (heridos.value!=Number(NUMBER_OF_INJURIES_NO_I_MAJOR.value)+Number(NUMBER_OF_INJUR_NO_II_MINOR.value)))
+		    doAlert("all injured");
+	}
+}
+
+function addInjured()
+{
+with (document.desinventar)
+	{
+	NUMBER_OF_INJURIES_NO_I_MAJOR.value=Number(NUMBER_OF_INJURI_I_MAJOR_MEN.value)+Number(NUMBER_OF_INJUR_I_MAJOR_WOMEN.value)+	Number(NUMBER_OF_INJUR_MAJOR_CHILDREN.value);
+	NUMBER_OF_INJUR_NO_II_MINOR.value=Number(NUMBER_OF_INJUR__II_MINOR_MEN.value)+Number(NUMBER_OF_INJUR_II_MINOR_WOMEN.value)+Number(NUMBER_OF_INJU_MINOR_CHILDREN.value);
+	heridos.value=Number(NUMBER_OF_INJURIES_NO_I_MAJOR.value)+Number(NUMBER_OF_INJUR_NO_II_MINOR.value);
+	}
+}
+
+
+function checkAffected()
+{
+with (document.desinventar)
+	{
+	if (afectados.value!=0) hay_afectados.checked=true;	
+	if (VILLAGESAFFECTED.value!=0) hay_afectados.checked=true;	
+	if (FAMILIES_AFFECTED.value!=0) hay_afectados.checked=true;	
+	}
+}
+
+function sumDestroyed()
+{
+var sum=0;
+with (document.desinventar)
+	sum=Number(HOUSES_AFF_RURAL_KUCHHA_FULLY.value)+
+		Number(HOUSES_AFF_RURAL_PUCCA_FULLY.value)+
+		Number(HOUSES_AFF_URBAN_KUCHHA_FULLY.value)+
+		Number(HOUSES_AFF_URBAN_PUCCA_FULLY.value);
+return sum;
+}
+
+function sumAffected()
+{
+var sum=0;
+with (document.desinventar)
+	sum=Number(HOUSES_AFF_RURAL_KUCHHA_PARTIA.value)+
+		Number(HOUSES_AFF_RURAL_PUCCA_PARTIAL.value)+
+		Number(HOUSES_AFF_URBAN_KUCHHA_PARTIA.value)+
+		Number(HOUSES_AFF_URBAN_PUCCA_PARTIAL.value);
+return sum;
+}
+
+
+function sumRural()
+{
+var sum=0;
+with (document.desinventar)
+	sum=Number(HOUSES_AFF_RURAL_KUCHHA_FULLY.value)+
+		Number(HOUSES_AFF_RURAL_KUCHHA_PARTIA.value)+
+		Number(HOUSES_AFF_RURAL_PUCCA_FULLY.value)+
+		Number(HOUSES_AFF_RURAL_PUCCA_PARTIAL.value);
+return sum;
+}
+
+function sumUrban()
+{
+var sum=0;
+with (document.desinventar)
+	sum=Number(HOUSES_AFF_URBAN_KUCHHA_FULLY.value)+
+		Number(HOUSES_AFF_URBAN_KUCHHA_PARTIA.value)+
+		Number(HOUSES_AFF_URBAN_PUCCA_FULLY.value)+
+		Number(HOUSES_AFF_URBAN_PUCCA_PARTIAL.value);
+return sum;
+}
+
+function addUrban()
+{
+document.desinventar.HOUSES_AFF_URBAN.value=sumUrban();
+}
+
+function addRural()
+{
+document.desinventar.HOUSES_AFF_RURAL.value=sumRural();
+}
+
+function addAffected()
+{
+document.desinventar.vivafec.value=sumAffected();
+}
+
+function addDestroyed()
+{
+document.desinventar.vivdest.value=sumDestroyed();
+}
+
+
+
+function checkHousing()
+{
+with (document.desinventar)
+	{
+	if (vivdest.value!=0) hay_vivdest.checked=true;
+	if (sumDestroyed()>0) hay_vivdest.checked=true;
+	if (vivafec.value!=0) hay_vivafec.checked=true;
+	if (sumAffected()>0) hay_vivafec.checked=true;
+	if (HOUSES_AFF_URBAN.value>0 && Number(HOUSES_AFF_URBAN.value)<sumUrban())
+		    doAlert("Urban housing");
+	if (HOUSES_AFF_RURAL.value>0 && Number(HOUSES_AFF_RURAL.value)<sumRural())
+		    doAlert("Rural housing");
+	if (vivafec.value>0 && Number(vivafec.value)<sumAffected())
+		    doAlert("Partially damaged housing");
+	if (vivdest.value>0 && Number(vivdest.value)<sumDestroyed())
+		    doAlert("Fully damaged housing");
+	}
+}
+
+
+function checkHectares()
+{
+with (document.desinventar)
+	{
+	if (Number(nhectareas.value)+	
+		Number(FOOD_GRAINS_II_PROD_LOST_TONS.value)+
+		Number(CASH_CROPS_PRODUCTION_LOST_TON.value)+
+		Number(HORTICULTURAL_PROD_LOST_TONS.value)+
+		Number(FOOD_GRAINS_I_AFFECTED_HECTRS.value)+
+		Number(CASH_CROPS_SOWN_AFFECTED_HECTR.value)+
+		Number(HORTICULTURAL_SOWN_AFFECTED_HE.value)>0) 
+		agropecuario.checked=true;
+	}
+}
+
+function addHectares()
+{
+with (document.desinventar)
+	{
+	nhectareas.value=
+		Number(FOOD_GRAINS_I_AFFECTED_HECTRS.value)+
+		Number(CASH_CROPS_SOWN_AFFECTED_HECTR.value)+
+		Number(HORTICULTURAL_SOWN_AFFECTED_HE.value);
+	}
+}
+
+
+function sumLivestock()
+{
+var sum=0;
+with (document.desinventar)
+    {
+	sum=Number(NUMBER_OF_ANIMAL_I_COW.value)+
+		Number(NUMBER_OF_ANIMAL_II_BUFFALO.value)+
+		Number(NUMBER_OF_ANIMAL_III_SHEEP.value)+
+		Number(NUMBER_OF_ANIMAL_IV_GOATS.value)+
+		Number(NUMBER_OF_ANIMAL_V_CAMELS.value)+
+		Number(NUMBER_OF_ANIMAL_HORSEMULEDONK.value)+
+		Number(NUMBER_OF_ANIMAL_VII_POULTRYDU.value)+
+		Number(NUMBER_OF_ANIMAL_VIII_PIGS.value)+
+		Number(NUMBER_OF_ANIMAL_NO_IX_OTHERS.value);
+    }
+return sum;
+}
+
+
+function checkLivestock()
+{
+with (document.desinventar)
+	{
+	if (cabezas.value+sumLivestock()>0)
+	 		agropecuario.checked=true;
+	if (cabezas.value>0 && cabezas.value<sumLivestock())
+		    doAlert("Livestock");
+	}
+}
+
+function addLivestock()
+{
+with (document.desinventar)
+    {
+	cabezas.value=sumLivestock();
+    }
+}
+
+
+
+function sumPrimary()
+{
+var sum=0;
+with (document.desinventar)
+	sum=Number(PRIMARY_SCHOOLS_NO_PARTIALLY.value)+Number(PRIMARY_SCHOOLS_NO_FULLY.value);
+return sum;
+}
+
+function sumSecondary()
+{
+var sum=0;
+with (document.desinventar)
+	sum=Number(SECONDARY_SCHOO_NO_PARTIALLY.value)+Number(SECONDARY_SCHOOLS_NO_FULLY.value);
+return sum;
+}
+
+function sumOtherSchools()
+{
+var sum=0;
+with (document.desinventar)
+	sum=Number(OTHER_SCHOOLS_NO_FULLY.value)+Number(OTHER_SCHOOLS_NO_PARTIALLY.value);
+return sum;
+}
+
+function addPrimary()
+{
+with (document.desinventar)
+	PRIMARY_SCHOOLS_NO.value=sumPrimary();
+}
+
+function addSecondary()
+{
+with (document.desinventar)
+	SECONDARY_SCHOOLS_NO.value=sumSecondary();
+}
+
+function addOtherSchools()
+{
+with (document.desinventar)
+	OTHER_SCHOOLS_NO.value=sumOtherSchools();
+}
+
+
+function checkSchools()
+{
+with (document.desinventar)
+	{
+	if (nescuelas.value!=0 || sumPrimary()>0 || sumSecondary()>0 ||  sumOtherSchools()>0) 
+		educacion.checked=true;
+	}
+}
+
+function chknHospitales()
+{
+with (document.desinventar)
+	{
+	if (nhospitales.value!=0) salud.checked=true;
+	}
+}
+
+function chkKmVias()
+{
+with (document.desinventar)
+	{
+	if (kmvias.value!=0) transporte.checked=true;
+	}
+}
+
+
+
+</script>
+    <div class="tabs"> 
+       <div class="tab">
+           <input type="radio" id="tab-1" VALUE="" name="tab-group-1" checked>
+           <label for="tab-1">FORMAT I</label>           
+           <div id="horizontalForm" class="content">
+           <fieldset>
+				<legend>
+					BASIC INFORMATION
+				</legend>				
+				<label>
+					Affected people (total)
+					<input name="afectados" type="text" value="" placeholder="Number" onChange="checkAffected()"  />
+				</label>
+				<label>
+					Villages affected
+					<input name="VILLAGESAFFECTED" type="text" value="" placeholder="Number" onChange="checkAffected()"  />
+				</label>
+				
+				<label>
+					Families affected
+					<input name="FAMILIES_AFFECTED" type="text" value="" placeholder="Number" onChange="checkAffected()" />
+				</label>
+				<label>
+					if not 0 or unknown <input name="hay_afectados" value="-1" type="checkbox" />
+                </label>
+			
+			</fieldset>
+			
+			
+			<fieldset>
+				<legend>
+					LIVES
+				</legend>
+					
+				
+				
+				<div class="inner-box clearfix">
+					<div class="col col-1, bordure">
+					<t>Number of deaths</t><br />
+						<label>
+							Male
+							<input name="NUMBER_OF_DEATHS_NO_MALE" type="text" value="" placeholder="Number" onChange="checkKilled()" />
+						</label>
+						
+						<label>
+							Female
+							<input name="NUMBER_OF_DEATHS_NO_FEMALE" type="text" value="" placeholder="Number" onChange="checkKilled()" />
+						</label>
+						<label>
+							Children (&lt; 14 years)
+							<input name="NUMBER_OF_DEATHS_NO_CHILDREN" type="text" value="" placeholder="Number" onChange="checkKilled()" />
+						</label>
+						<label>
+							<m>Total*</m>						
+							<input name="muertos" type="text" value="" placeholder="Number" onChange="checkKilled()"  />
+                    		<input type="button" NAME="ALK" value="+" style="width:25px; float:right; margin-top:-20px;" onclick="addKilled()" />					
+							<br />
+							if not 0 or unknown<input name="hay_muertos" value="-1" type="checkbox" style="display:inline;" />
+						</label>
+						
+					</div>
+					
+														
+					
+					<div class="col col-3">
+						<t>People with major injuries</t><br />
+						<label>
+							 Male
+							<input name="NUMBER_OF_INJURI_I_MAJOR_MEN" type="text" value="" placeholder="Number" onChange="checkInjured()"  />
+						</label>
+						
+						<label>
+							Female
+							<input name="NUMBER_OF_INJUR_I_MAJOR_WOMEN" type="text" value="" placeholder="Number" onChange="checkInjured()"  />
+						</label>
+						<label>
+							Children (&lt; 14 years)
+							<input name="NUMBER_OF_INJUR_MAJOR_CHILDREN" type="text" value="" placeholder="Number" onChange="checkInjured()"  />
+						</label>
+						<label>
+							<m>Total</m>
+							<input name="NUMBER_OF_INJURIES_NO_I_MAJOR" type="text" value="" placeholder="Number" onChange="checkInjured()"  />
+						</label>
+						
+						
+					</div>
+					
+					<div class="col col-4">
+						<t>People with minor injuries</t><br />
+						<label>
+							Male
+							<input name="NUMBER_OF_INJUR__II_MINOR_MEN" type="text" value="" placeholder="Number" onChange="checkInjured()" />
+						</label>
+						
+						<label>
+							Female
+							<input name="NUMBER_OF_INJUR_II_MINOR_WOMEN" type="text" value="" placeholder="Number" onChange="checkInjured()" />
+						</label>
+						<label>
+							Children (&lt; 14 years)
+							<input name="NUMBER_OF_INJU_MINOR_CHILDREN" type="text" value="" placeholder="Number" onChange="checkInjured()" />
+						</label>
+						<label>
+							<m>Total</m>
+							<input name="NUMBER_OF_INJUR_NO_II_MINOR" type="text" value="" placeholder="Number" onChange="checkInjured()"  />
+						</label>
+						
+					</div>
+
+					<div class="col col-5">
+					<t>Total Number of injured people</t><br />	
+						<label>
+							<m>Total*</m>
+							<input name="heridos" type="text" value="" placeholder="Number" onChange="checkInjured()"  />&nbsp;&nbsp;&nbsp;
+							<input type="button" NAME="ALI" value="+" style="width:25px; float:right; margin-top:-20px;  margin-left:25px;" onclick="addInjured()" />					
+							if not 0 or unknown<input name="hay_heridos" value="-1" type="checkbox" />
+                            <br/>
+                            
+						</label>
+						
+					</div>
+					
+						 <br clear="all" />
+						<br /><t>Others</t><br />
+						
+						<label>
+							Missing
+							<input name="desaparece" type="text" value="" placeholder="Number" onChange="chkDesaparece()"  />
+							<br />
+									if not 0 or unknown<input name="hay_deasparece" value="-1" type="checkbox" />
+						</label>
+						<label>
+							Relocated
+							<input name="reubicados" type="text" value="" placeholder="Number" onChange="checkReubicados()"  />
+							<br />
+									if not 0 or unknown<input name="hay_reubicados" value="-1" type="checkbox" />
+						</label>
+						
+						<label>
+							Evacuated
+							<input name="evacuados" type="text" value="" placeholder="Number" onChange="checkEvacuados()"  />
+							<br />
+									if not 0 or unknown<input name="hay_evacuados" value="-1" type="checkbox" />
+						</label>
+					
+					
+
+				</div>
+				
+			</fieldset>
+			
+			
+			<fieldset>
+				<legend>
+					LIVESTOCK
+				</legend>
+				
+				<div class="inner-box clearfix">
+					
+					<div class="col col-1">
+					
+						<label>
+							Cows
+							<input name="NUMBER_OF_ANIMAL_I_COW" type="text" value="" placeholder="Number" onChange="checkLivestock()" />
+						</label>
+						
+						<label>
+							Buffalos
+							<input name="NUMBER_OF_ANIMAL_II_BUFFALO" type="text" value="" placeholder="Number" onChange="checkLivestock()" />
+						</label>
+						<label>
+							Sheeps
+							<input name="NUMBER_OF_ANIMAL_III_SHEEP" type="text" value="" placeholder="Number" onChange="checkLivestock()" />
+						</label>
+					
+					</div>
+					
+					<div class="col col-2">
+					
+						<label>
+							Goats
+							<input name="NUMBER_OF_ANIMAL_IV_GOATS" type="text" value="" placeholder="Number" onChange="checkLivestock()" />
+						</label>
+						<label>
+							Camels
+							<input name="NUMBER_OF_ANIMAL_V_CAMELS" type="text" value="" placeholder="Number" onChange="checkLivestock()" />
+						</label>
+						<label>
+							Horses/mules/Donkeys
+							<input name="NUMBER_OF_ANIMAL_HORSEMULEDONK" type="text" value="" placeholder="Number" onChange="checkLivestock()" />
+						</label>
+					
+					</div>
+					
+					<div class="col col-3">
+					
+						<label>
+							Poultry/ducks
+							<input name="NUMBER_OF_ANIMAL_VII_POULTRYDU" type="text" value="" placeholder="Number" onChange="checkLivestock()" />
+						</label>
+						<label>
+							Pigs
+							<input name="NUMBER_OF_ANIMAL_VIII_PIGS" type="text" value="" placeholder="Number" onChange="checkLivestock()" />
+						</label>
+						<label>
+							Others
+							<input name="NUMBER_OF_ANIMAL_NO_IX_OTHERS" type="text" value="" placeholder="Number" onChange="checkLivestock()" />
+						</label>
+					
+					</div>
+					<div class="col col-4">
+					
+						<label>
+						<m>Number of animal perished*</m>
+						<input name="cabezas" type="text" value="" placeholder="Number" onChange="checkLivestock()"  />
+                        <input type="button" NAME="ALS" value="+" style="width:25px; float:right; margin-top:-20px;  margin-left:25px;" onclick="addLivestock()" />					
+						
+                        </label>
+					
+					</div>
+				</div>
+			</fieldset>
+			
+			<fieldset>
+				<legend>
+					AGRICULTURE
+				</legend>
+			
+				<div class="inner-box clearfix">
+
+					<div class="col col-1">
+						<label>
+							Season
+							<select name="AGRICULTUAL_SEASON">
+								<option selected="selected" VALUE="">...</option>
+								<option VALUE="1">Rabi</option>
+								<option VALUE="2">Kharif</option>
+							</select>
+						</label>
+						<label>
+							<m>Area affected*</m>
+							<input name="nhectareas" type="text" value="" placeholder="Hectares" onChange="checkHectares()"  /><br/>
+                            <input type="button" NAME="ALAg" value="+" style="width:25px; float:right; margin-top:-5px;  margin-left:25px;" onclick="addHectares()" />					
+						</label>
+					</div>
+					<div class="col col-2">
+						<t>Food grains</t> <br />
+						<label>
+							<m>Sown area affected*</m>
+							<input name="FOOD_GRAINS_I_AFFECTED_HECTRS" type="text" value="" placeholder="Hectares" onChange="checkHectares()"  />
+						</label>
+						<label>
+							Production lost
+							<input name="FOOD_GRAINS_II_PROD_LOST_TONS" type="text" value="" placeholder="Ton" onChange="checkHectares()"  />
+						</label>
+						
+					</div>
+					<div class="col col-3">
+						<t>Cash crops</t> <br />
+						<label>
+							<m>Sown area affected*</m>
+							<input name="CASH_CROPS_SOWN_AFFECTED_HECTR" type="text" value="" placeholder="Hectares" onChange="checkHectares()" />
+						</label>
+						<label>
+							Production lost
+							<input name="CASH_CROPS_PRODUCTION_LOST_TON" type="text" value="" placeholder="Ton" onChange="checkHectares()" />
+						</label>
+					</div>
+					<div class="col col-4">
+					 <t>Horticultural crops</t> <br />
+						<label>
+							<m>Sown area affected*</m>
+							<input name="HORTICULTURAL_SOWN_AFFECTED_HE" type="text" value="" placeholder="Hectares" onChange="checkHectares()" />
+						</label>
+						<label>
+							Production lost
+							<input name="HORTICULTURAL_PROD_LOST_TONS" type="text" value="" placeholder="Ton" onChange="checkHectares()" />
+						</label>
+					</div>
+					<div class="col col-5">
+					 <t>Trees</t> <br />
+						<label>
+							Trees uprooted
+							<input name="TREES_UPROTED_NO" type="text" value="" placeholder="Number" onChange="checkHectares()" />
+						</label>
+
+					</div>
+					
+
+				</div>
+				</fieldset>
+			
+			
+				<fieldset>
+				<legend>
+					HOUSING
+				</legend>
+				<div class="inner-box clearfix">
+
+					<div class="col col-2">
+						<ti>Kuchha</ti> <br />
+						<label>
+							Fully damaged
+							<input name="HOUSES_AFF_RURAL_KUCHHA_FULLY" type="text" value="" placeholder="Number" onChange=" checkHousing()" />
+						</label>
+						<label>
+							Partially damaged
+							<input name="HOUSES_AFF_RURAL_KUCHHA_PARTIA" type="text" value="" placeholder="Number" onChange=" checkHousing()"  />
+						</label>
+						
+						<br clear="all" />
+						<br />
+						<ti>Pucca</ti> <br />
+						<label>
+							Fully damaged
+							<input name="HOUSES_AFF_RURAL_PUCCA_FULLY" type="text" value="" placeholder="Number" onChange=" checkHousing()" />
+						</label>
+						<label>
+							Partially damaged
+							<input name="HOUSES_AFF_RURAL_PUCCA_PARTIAL" type="text" value="" placeholder="Number" onChange=" checkHousing()" />
+						</label>
+						
+						
+					</div>
+					<div class="col col-1, bordure">
+						<t>Rural</t> <br />
+						<label>
+							Total
+							<input name="HOUSES_AFF_RURAL" type="text" value="" placeholder="Number" onChange="checkHousing()" /><br/>
+                            <input type="button" NAME="AHAR" value="+" style="width:25px; float:right; margin-top:-5px;  margin-left:25px;" onclick="addRural()" />					
+						</label>
+						
+					</div>
+
+					
+						
+					<div class="col col-4">
+						
+						<ti>Kuchha</ti> <br />
+						<label>
+							Fully damaged
+							<input name="HOUSES_AFF_URBAN_KUCHHA_FULLY" type="text" value="" placeholder="Number" onChange=" checkHousing()"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="HOUSES_AFF_URBAN_KUCHHA_PARTIA" type="text" value="" placeholder="Number" onChange=" checkHousing()"  />
+						</label>
+						
+						<br clear="all" />
+						<br />
+						<ti>Pucca</ti> <br />
+						<label>
+							Fully damaged
+							<input name="HOUSES_AFF_URBAN_PUCCA_FULLY" type="text" value="" placeholder="Number" onChange=" checkHousing()"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="HOUSES_AFF_URBAN_PUCCA_PARTIAL" type="text" value="" placeholder="Number" onChange=" checkHousing()" />
+						</label>
+					</div>
+					<div class="col col-3">
+						<t>Urban</t> <br />
+						<label>
+							Total
+							<input name="HOUSES_AFF_URBAN" type="text" class="mytext" value="" placeholder="Number" onChange=" checkHousing()" /><br/>
+                            <input type="button" NAME="AHAU" value="+" style="width:25px; float:right; margin-top:-5px;  margin-left:25px;" onclick="addUrban()" />					
+						</label>
+						
+					</div>
+					<div class="col col-5">
+					
+						<label>
+							<m>Total Fully damaged* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</m>
+							<input name="vivdest" type="text" value="" placeholder="Number" onChange="checkHousing()" />
+                            <input type="button" NAME="AHD" value="+" style="width:25px; float:right; margin-top:-20px;  margin-left:25px;" onclick="addDestroyed()" />					
+							<br />
+									if not 0 or unknown<input name="hay_vivdest" value="-1"  type="checkbox"  />
+						</label>
+						
+						<label>
+							<m>Total Partially damaged* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</m>
+							<input name="vivafec" type="text" value="" placeholder="Number" onChange="checkHousing()"  />
+                            <input type="button" NAME="AHA1" value="+" style="width:25px; float:right; margin-top:-20px;  margin-left:25px;" onclick="addDamaged()" />					
+							<br />
+									if not 0 or unknown<input name="hay_vivafec" value="-1"  type="checkbox" />
+						</label>
+						
+						
+						
+					</div>
+				</div>
+				</fieldset>
+				
+				<fieldset>
+				<legend>
+					INFRASTRUCTURE
+				</legend>
+			
+				<div class="inner-box clearfix">
+
+					<div class="col col-1">
+						<t>Roads</t> <br />
+						<label>
+							National highway
+							<input name="ROAD_LENGTH_DAMAGE_NATL_HIGHWA" type="text" value="" placeholder="mts"  />
+						</label>
+						<label>
+							State highway
+							<input name="ROAD_LENGTH_DAMAGE_STATE_HIGHW" type="text" value="" placeholder="mts"  />
+						</label>
+						<label>
+							District road
+							<input name="ROAD_LENGTH_DAMAGE_DISTRICT_RO" type="text" value="" placeholder="mts"  />
+						</label>
+						<label>
+							Others
+							<input name="ROAD_LENGTH_DAMAGE_MTS_OTHERS" type="text" value="" placeholder="mts"  />
+						</label>
+						<label>
+							<m>Total length damaged</m>
+							<input name="kmvias" type="text" value="" placeholder="mts" onChange="chkKmVias()" />
+						</label>
+						<br clear="all" />
+						<br />
+						
+						<ti>Villages disconnected</ti> <br />
+						<label>
+							Total
+							<input name="VILLAGES_DISCON_LITY_I_NUMBER" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Number of days
+							<input name="VILLAGES_DISCON_ILITY_II_DAYS" type="text" value="" placeholder="Number"  />
+						</label>
+						
+					</div>
+					<div class="col col-2">
+						<t>Mototable Bridges</t> 
+						<br clear="all" />
+						<label>
+							Fully damaged
+							<input name="BRIDGES_MOTORABLE_NO_FULLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="BRIDGES_MOTORAB__NO_PARTIALLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="BRIDGES_MOTORABLE_NO" type="text" value="" placeholder="Number"  />
+						</label>
+						<br clear="all" />
+						<br />
+						<t>Pedestrian bridges</t> <br />
+						<label>
+							Fully damaged
+							<input name="BRIDGES_PEDESTRIAN_NO_FULLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="BRIDGES_PEDESTRIAN_NO_PARTIALL" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="BRIDGES_PEDESTRIAN_NO" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							<m>Total bridges</m>
+							<input name="BRIDGES_NO" type="text" value="" placeholder="Number"  />
+						</label>
+					</div>	
+						
+					
+										
+					<div class="col col-3">
+					 <t>Water Supply</t> <br />
+					 <br clear="all" />
+					 <ti>Pipe line trunk</ti> <br />
+						<label>
+							Fully damaged
+							<input name="WATER_SUPPLY_P__FULLY_DAMAGED" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="WATER_SUPPLY_P_PARTIALLY_DAMAG" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="WATER_SUPPLY_PIPE_TRUNK_NO" type="text" value="" placeholder="Number"  />
+						</label>
+						<br clear="all" />
+						<br />
+					 <ti>Pipe line distribution</ti> <br />
+						<label>
+							Fully damaged
+							<input name="WATER_SUPPLY_P_FULLY_DAMAGED" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="WATER_SUPPLY_P_PARTIALLY_DAMA" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="WATER_SUPPLY_P_DISTRIBUTION_NO" type="text" value="" placeholder="Number"  />
+						</label>
+						
+					<br clear="all" />
+						<br />
+					 <ti>Pumping station</ti> <br />
+						<label>
+							Fully damaged
+							<input name="WATER_SUPPLY_PMP_FULLY_DAMAGED" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="WATER_SUPPLY_PMP_PTIALLY_DAMAG" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="WATER_SUPPLY_PUMPNG_STATION_NO" type="text" value="" placeholder="Number"  />
+						</label>
+					</div>
+					<div class="col col-4">
+					 <t>&nbsp;</t>
+					<br clear="all" />
+						<br />
+					 <ti>Overhead reservoirs</ti> <br />
+						<label>
+							Fully damaged
+							<input name="WATER_SUPPLY_OVH__FULLY_DAMAGE" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="WATER_SUPPLY_OVH_PTIALLY_DAMAG" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="WATER_SUPPLY_OVHEAD_RESERVOIRS" type="text" value="" placeholder="Number"  />
+						</label>
+
+					 <br clear="all" />
+					 <br />
+					 <ti>Water treatment plant</ti> <br />
+						<label>
+							Fully damaged
+							<input name="WATER_SUPPLY_TRTP_FULLY_DAMAGE" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="WATER_SUPPLY_TRP_PRTIAL_DAMAGE" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="WATER_SUPPLY_TREATMENT_PLANT" type="text" value="" placeholder="Number"  />
+						</label>
+						<br clear="all" />
+						<br />
+					 <ti>Drinking water tanks</ti> <br />
+						<label>
+							Fully damaged
+							<input name="WATER_SUPPLY_DRK_FULLY_DAMAGED" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="WATER_SUPPLY_DRK_PRTIALLY_DAMA" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="WATER_SUPPLY_DRK_WATER_TANKS_N" type="text" value="" placeholder="Number"  />
+						</label>
+					</div>
+					
+					<div class="col col-5">
+					 <t>&nbsp;</t> 
+					 <br clear="all" />
+						<br />
+					 <ti>Drinking water wells</ti> <br />
+						<label>
+							Fully damaged
+							<input name="WATER_SUPPLY_DRKWL_FULLY_DAMAG" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="WATER_SUPPLY_DRKWL_PRTIAL_DAMA" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="WATER_SUPPLY_DRK_WATER_WELLS_N" type="text" value="" placeholder="Number"  />
+						</label>
+						<br />
+					 <br clear="all" />
+					 <ti>Others</ti> <br />
+						<label>
+							Type (Name)
+							<input name="WATER_SUPPLY_OTHERS" type="text" value="" placeholder="Description"  />
+						</label>
+						<label>
+							Fully damaged
+							<input name="WATER_SUPPLY_OTHER_FULLY_DAMAG" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="WATER_SUPPLY_OTH_PARTIAL_DAMAG" type="text" value="" placeholder="Number"  />
+						</label>
+					</div>
+					<br clear="all" />
+					<hr />
+					
+					<div class="col col-1">
+					 <t>Sewerage System</t> <br />
+					 <br clear="all" />
+					 <ti>Trunk</ti> <br />
+						<label>
+							Fully damaged
+							<input name="SEWERAGE_SYSTE__FULLY_DAMAGED" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="SEWERAGE_SYSTE_PARTIAL_DAMAGED" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="SEWERAGE_SYSTEM_TRUNK_NO" type="text" value="" placeholder="Number"  />
+						</label>
+					</div>
+					
+					<div class="col col-2">
+					 <t>&nbsp;</t> <br />
+					 <br clear="all" />
+					 <ti>Distribution system</ti> <br />
+						<label>
+							Fully damaged
+							<input name="SEWERAGE_SYSTE_DS_FULLY_DAMAGE" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="SEWERAGE_SYSTE_DS_PARTL_DAMAGE" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="SEWERAGE_SYSTEM_DSTRIBUTION_NO" type="text" value="" placeholder="Number"  />
+						</label>
+					</div>
+					
+					<div class="col col-3">
+					 <t>&nbsp;</t> <br />
+					 <br clear="all" />
+					 <ti>Treatment plant</ti> <br />
+						<label>
+							Fully damaged
+							<input name="SEWERAGE_SYSTE_TR_FULLY_DAMAGE" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="SEWERAGE_SYSTE_PARTIALLY_DAMA" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="SEWERAGE_SYSTEM_TRMENT_PLANT_N" type="text" value="" placeholder="Number"  />
+						</label>
+					</div>
+					
+					<div class="col col-4">
+					 <t>Irrigation damaged</t> <br />
+					 
+						<label>
+							Breach canal 
+							<input name="IRRIGATION_BREACH_DAMAGED_NUMB" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Breach of dam 
+							<input name="IRRIGATION_BREACH_DAM_DAM_NUMB" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Irrigation tank 
+							<input name="IRRIGATION_IRR_TANK_DAMAGED_NO" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Irrigation wells
+							<input name="IRRIGATION_WELLS_DAMAGED_NUMBE" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Reservoirs 
+							<input name="IRRIGATION_RESRVR_DAMAGED_NUMB" type="text" value="" placeholder="Number"  />
+						</label>
+					</div>
+					
+					<div class="col col-5">
+					 <t>Electricity</t> <br />
+					 
+						<br clear="all" />
+					 <ti>High tension lines</ti> <br />
+						<label>
+							Length damaged
+							<input name="ELECTRICITY_HT_DAMAGED_LENGTH" type="text" value="" placeholder="mts"  />
+						</label>
+						<label>
+							Number of days
+							<input name="ELECTRICITY_HT_GED_NO_OF_DAYS" type="text" value="" placeholder="Number"  />
+						</label>
+							
+							<br clear="all" />
+							<br />
+					 <ti>Low tension lines</ti> <br />
+						<label>
+							Length damaged
+							<input name="ELECTRICITY_LT_DAMAGED_LENGTH" type="text" value="" placeholder="mts"  />
+						</label>
+						<label>
+							Number of days
+							<input name="ELECTRICITY_LT_GED_NO_OF_DAYS" type="text" value="" placeholder="Number"  />
+						</label>
+						
+							<br clear="all" />
+							<br />
+					 <ti>Transformers</ti> <br />
+						<label>
+							Total
+							<input name="ELECTRICITY_TRANS_DAMAGED_NUMB" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Number of days
+							<input name="ELECTRICITY_TRANS_DAMAGED_NDAY" type="text" value="" placeholder="Number"  />
+						</label>
+						
+						<br clear="all" />
+							<br />
+					 <ti>Substations</ti> <br />
+						<label>
+							Total
+							<input name="ELECTRICITY_SUBST_DAMAGED_NUMB" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Number of days
+							<input name="ELECTRICITY_SUBST_DAMAGED__NDA" type="text" value="" placeholder="Number"  />
+						</label>
+					</div>
+					<br clear="all" />
+					<hr />
+					<div class="col col-1">
+					 <t>Buidlings</t> <br />
+					 <br clear="all" />
+					 <ti>Primary Schools</ti> <br />
+						<label>
+							Fully damaged
+							<input name="PRIMARY_SCHOOLS_NO_FULLY" type="text" value="" placeholder="Number"  onChange="checkSchools()"/>
+						</label>
+						<label>
+							Partially damaged
+							<input name="PRIMARY_SCHOOLS_NO_PARTIALLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="PRIMARY_SCHOOLS_NO" type="text" value="" placeholder="Number" onChange="checkSchools()" />
+						</label>
+						<br clear="all" />
+						<br />
+					 <ti>Secondary Schools</ti> <br />
+						<label>
+							Fully damaged
+							<input name="SECONDARY_SCHOOLS_NO_FULLY" type="text" value="" placeholder="Number"  onChange="checkSchools()"/>
+						</label>
+						<label>
+							Partially damaged
+							<input name="SECONDARY_SCHOO_NO_PARTIALLY" type="text" value="" placeholder="Number" onChange="checkSchools()"/>
+						</label>
+						<label>
+							Total
+							<input name="SECONDARY_SCHOOLS_NO" type="text" value="" placeholder="Number" onChange="checkSchools()"/>
+						</label>
+						<br clear="all" />
+						<br />
+					 <ti>Other Schools</ti> <br />
+						<label>
+							Fully damaged
+							<input name="OTHER_SCHOOLS_NO_FULLY" type="text" value="" placeholder="Number" onChange="checkSchools()"/>
+						</label>
+						<label>
+							Partially damaged
+							<input name="OTHER_SCHOOLS_NO_PARTIALLY" type="text" value="" placeholder="Number" onChange="checkSchools()"/>
+						</label>
+						<label>
+							Total
+							<input name="OTHER_SCHOOLS_NO" type="text" value="" placeholder="Number" onChange="checkSchools()"/>
+						</label>
+						<label>
+							<m>Total all schools</m>
+							<input name="nescuelas" type="text" value="" placeholder="Number" onChange="checkSchools()"/>
+						</label>
+					</div>
+					<div class="col col-2">
+					 <t>&nbsp;</t> <br />
+					 <br clear="all" />
+					 <ti>Community Centers</ti> <br />
+						<label>
+							Fully damaged
+							<input name="COMMUNITY_CENTER_NO_FULLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="COMMUNITY_CENTER_NO_PARTIALLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="COMMUNITY_CENTER_NO" type="text" value="" placeholder="Number"  />
+						</label>
+						
+					</div>
+					
+					<div class="col col-3">
+					 <t>&nbsp;</t> <br />
+					 <br clear="all" />
+					 <ti>Health Centers</ti> <br />
+						<label>
+							Dispensaries
+							<input name="HEALTH_CENTERS_DISPENSARIES" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							PHCS
+							<input name="HEALTH_CENTERS_PHCS" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Hospitals (DH/SDH)
+							<input name="HEALTH_CENTERS_HOSPITALS_DHSDH" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="nhospitales" type="text" value="" placeholder="Number" onChange=" chknHospitales()" />
+						</label>
+						
+					</div>
+					
+					<div class="col col-4">
+					 <t>&nbsp;</t> <br />
+					 <br clear="all" />
+					 <ti>Government building</ti> <br />
+						<label>
+							Fully damaged
+							<input name="OTHER_GOVT_BUILDING_FULLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="OTHER_GOVT_BUILDING_PARTIALLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="OTHER_GOVT_BUILDING_NO" type="text" value="" placeholder="Number"  />
+						</label>
+						
+					</div>
+					
+					<div class="col col-5">
+					 <t>&nbsp;</t> <br />
+					 <br clear="all" />
+					 <ti>Commercial building (shops)</ti> <br />
+						<label>
+							Fully damaged
+							<input name="SHOPS_COMMERCIAL_FULLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="SHOPS_COMMERCIAL_PARTIALLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="SHOPS_COMMERCIAL" type="text" value="" placeholder="Number"  />
+						</label>
+						
+						<br clear="all" />
+						<br />
+					 <ti>Commercial building (other)</ti> <br />
+						<label>
+							Fully damaged
+							<input name="SHOPS_OTHER_COMMERCIAL_FULLY" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Partially damaged
+							<input name="SHOPS_OTHER_COMMERCIAL_PART" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total
+							<input name="SHOPS_OTHER_COMMERCIAL" type="text" value="" placeholder="Number"  />
+						</label>
+						
+					</div>
+					
+					<br clear="all" />
+					<hr />
+					<div class="col col-1">
+					 <t>Telecommunication</t> <br />
+					 <br clear="all" />
+					 <ti>Telecom disrupted</ti> <br />
+						<label>
+							Lan telephone
+							<input name="OTHER_UT_LANDTEL_NDAYS" type="text" value="" placeholder="Number of days"  />
+						</label>
+						<label>
+							Mobile telephone
+							<input name="OTHER_UT_MOBTEL_NDAYS" type="text" value="" placeholder="Number of days"  />
+						</label>
+						
+					</div>
+					<div class="col col-2">
+					 <t>&nbsp;</t> <br />
+					 <br clear="all" />
+					 <ti>Villages disconnected</ti> <br />
+						<label>
+							Total
+							<input name="OTHER_UT_VILLAGES_DISCON_NO" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Number of days
+							<input name="OTHER_UT_VILLAGES_DISCON_NDAYS" type="text" value="" placeholder="Number of days"  />
+						</label>
+						
+					</div>
+					
+					
+				</div>
+				</fieldset>
+				
+				  <fieldset>
+				<legend>
+					ECONOMIC SECTORS AFFECTED
+				</legend>
+				<div class="col col-1">
+								
+				<label>
+					<input name="transporte" value="-1" type="checkbox" style="display:inline;" />Transportation<br /><br />
+					<input name="agropecuario" value="-1" type="checkbox" style="display:inline;" />Agriculture<br /><br />
+					<input name="energia" value="-1" type="checkbox" style="display:inline;" />Power and Energy	<br /><br />
+					<input name="hay_otros" value="-1" type="checkbox" style="display:inline;" />Other sectors
+                </label>
+				<label>
+					<input name="socorro" value="-1" type="checkbox" style="display:inline;" />Relief<br /><br />
+					<input name="alcantarillado" value="-1" type="checkbox" style="display:inline;" />Sewerage<br /><br />
+					<input name="educacion" value="-1" type="checkbox" style="display:inline;" />Education<br /><br />
+					<input name="salud" value="-1" type="checkbox" style="display:inline;" />Health sector
+                </label>
+				<label>
+					<input name="comunicaciones" value="-1" type="checkbox" style="display:inline;" />Communications<br /><br />
+					<input name="acueducto" value="-1" type="checkbox" style="display:inline;" />Water supply<br /><br />
+					<input name="industrias" value="-1" type="checkbox" style="display:inline;" />Industries
+                </label>
+				</div>
+				<br clear="all" />
+				<br />
+				
+				<div class="col col-1">
+					 <ti>Summary of Economic loss</ti> <br />
+						<label>
+							Total losses (Rs in Lakhs)
+							<input name="valorloc" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Total losses (in USD$)
+							<input name="valorus" type="text" value="" placeholder="Number"  />
+						</label>
+				</div>
+				<br clear="all" />
+				<br />
+				
+				<div class="col col-1">
+					 <ti>Other information</ti> <br />
+						<label>
+							Magnitude
+							<input name="magnitud2" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Latitude
+							<input name="latitude" id="latitude" type="text" value="" placeholder="Number"  />
+						</label>
+						<label>
+							Longitude
+							<input name="longitude" id="longitude" type="text" value="" placeholder="Number"  />
+						</label>
+				</div>
+				
+								
+				<div class="col col-2">
+					 
+						<label>
+							Date of reporting
+							<input name="fechafec" id="fechafec" type="text" value="" placeholder="date"  />
+						</label>
+						<label>
+							Data collector
+							<input name="fechapor" id="fechapor" type="text" value="" placeholder="User Name"  />
+						</label>
+				</div>
+				<br clear="all" />
+				<br />
+						<label>					
+						Comments&nbsp;&nbsp;
+						<br />
+						<TEXTAREA name="di_comments" value="" style="width: 900px; height:60px; text-align:left;"></textarea>
+						</label>
+									
+			</fieldset>
+								
+			</div> 
+       </div>
+        
+       <div class="tab">
+           <input type="radio" id="tab-2" name="tab-group-1">
+           <label for="tab-2">FORMAT II</label>
+           
+           <div id="horizontalForm2" class="content">
+		  	   
+              <fieldset>
+				<legend>
+					GRATUITOUS RELIEF
+				</legend>
+				
+				<label>
+					<span class="left">
+					Ex-Gratia payment to the families of deceased persons 
+					</span>
+					<span class="right">
+					<input name="EX_GRATI_DECEASED_PERSONS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="EX_GRATIA__DECEASED_PERSONS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)" />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Ex-Gratia payment for loss of a limb or eyes 
+					</span>
+					<span class="right">
+					<input name="EX_GRATIA_PA_LIMB_OR_EYES_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="EX_GRATIA_PAYMEN_EYES_TOTAL_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Grievous injury requiring hospitalization  
+					</span>
+					<span class="right">
+					<input name="GRIEVOUS__HOSPITALIZATION_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="GRIEV_HOSPITALIZATION_TOTAL_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Clothing and utensils/household goods for families whose houses have been washed away/fully damaged/severely inundated for more than a week due to a natural calamity 
+					</span>
+					<span class="right">
+					<input name="CLOTHING_NATURAL_CALAMITY_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="CLOTHING_AND__CALAMITY_OTAL_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Gratuitous relief for families in dire need of immediate sustenance after a calamity
+					</span>	
+					<span class="right">
+					<input name="GRATUITOUS_RELIE_CALAMITY_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="GRATUITOUS_RELIE_A_CALAMITY_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+			</fieldset>
+			
+			  <fieldset>
+				<legend>
+					SEARCH AND RESCUE OPERATIONS
+				</legend>
+				
+				<label>
+					<span class="left">
+					Cost of search and rescue measures/evacuation of people affected/likely to be affected  
+					</span>	
+					<span class="right">
+					<input name="COST_OF_SEARC_BE_AFFECTED_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="COST_OF_SEAR_TO_BE_AFFECTED_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Hiring of boats for carrying immediate relief and saving lives  
+					</span>	
+					<span class="right">
+					<input name="HIRING_OF_BO_SAVING_LIVES_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="HIRING_OF_BOAT_SAVING_LIVES_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				
+			</fieldset>
+			
+			<fieldset>
+				<legend>
+					RELIEF MEASURES
+				</legend>
+				
+				<label>
+					<span class="left">
+					Provision of temporary accommodation, food, clothing, medical care, etc. for people affected/evacuated and sheltered in relief camps  
+					</span>	
+					<span class="right">
+					<input name="PROVISION_OF_RELIEF_CAMPS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="PROVISION_OF_T_RELIEF_CAMPS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Air dropping essential supplies  
+					</span>	
+					<span class="right">
+					<input name="AIR_DROPPING_SUPPLIES_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="AIR_DROPPING_SUPPLIES_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Provision of emergency supply of drinking water in rural areas and urban areas    
+					</span>	
+					<span class="right">
+					<input name="PROVISION_OF__URBAN_AREAS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="PROVISION_OF_EM_URBAN_AREAS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				
+			</fieldset>
+			
+			<fieldset>
+				<legend>
+					CLEARANCE OF AFFECTED AREAS
+				</legend>
+				
+				<label>
+					<span class="left">
+					Clearance of debris in public areas    
+					</span>	
+					<span class="right">
+					<input name="CLEARANCE_OF_PUBLIC_AREAS_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="CLEARANCE_OF_D_PUBLIC_AREAS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Draining off flood water in affected areas    
+					</span>	
+					<span class="right">
+					<input name="DRAINING_O_AFFECTED_AREAS_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="DRAINING_OFF_AFFECTED_AREAS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Disposal of dead bodies/Carcases      
+					</span>	
+					<span class="right">
+					<input name="DISPOSAL__BODIES_CARCASES_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="DISPOSAL_OF_BODIES_CARCASES_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				
+			</fieldset>
+			
+			<fieldset>
+				<legend>
+					AGRICULTURE
+				</legend>
+				<br />
+				<t>Assistance to small and marginal farmers for:</t>
+				<br />
+				<ti>Assistance for land and other loss</ti> <br />
+				<label>
+					<span class="left">
+					Desilting of agricultural land      
+					</span>	
+					<span class="right">
+					<input name="DESILTING_OF_LAND_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="DESILTING_OF_LAND_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Removal of debris on agricultural land in hilly areas      
+					</span>	
+					<span class="right">
+					<input name="REMOVAL_OF__INHILLY_AREAS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="REMOVAL_OF_DE_INHILLY_AREAS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Desilting/Restoration/Repair of fish farms        
+					</span>	
+					<span class="right">
+					<input name="DESILTING_RESTORATI_FARMS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="DESILTING_RESTOR_FISH_FARMS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Loss of substantial portion or land caused by landslide, avalanche, change of course of rivers           
+					</span>	
+					<span class="right">
+					<input name="LOSS_OF_SUBSTAN_OF_RIVERS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="LOSS_OF_SUBSTANTI_OF_RIVERS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				
+				<br clear="all" />
+				
+						
+				<ti>Agriculture input subsidy where crop loss was 50% and above</ti> <br />
+				<label>
+					<span class="left">
+					For agriculture crops, horticulture crops and annual plantation crops           
+					</span>	
+					<span class="right">
+					<input name="INPUT_SU_PLANTATION_CROPS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="INPUT_SUBS_PLANTATION_CROPS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Perennial crops  
+					</span>	
+					<span class="right">
+					<input name="INPUT_SUB_PERENNIAL_CROPS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="INPUT_SUBSI_PERENNIAL_CROPS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Sericulture 
+					</span>	
+					<span class="right">					
+					<input name="INPUT_SUBSIDY_SERICULTURE_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="INPUT_SUBSIDY_SERICULTURE_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<br />
+				<t>Input subsidy to farmers other then small &amp; marginal farmers</t>
+				<br />
+				<ti>Assistance for land and other loss</ti> <br />
+				<label>
+					<span class="left">
+					Rain fed areas      
+					</span>	
+					<span class="right">
+					<input name="INPUT_SUBSIDY_A_FED_AREAS_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="INPUT_SUBSIDY_A_FED_AREAS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Areas under assured irrigation        
+					</span>	
+					<span class="right">
+					<input name="INPUT__ASSURED_IRRIGATION_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="INPUT_SU_ASSURED_IRRIGATION_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)" />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Area under perennial crops         
+					</span>	
+					<span class="right">
+					<input name="INPUT_AREA_PERENNIAL_CROPS_UN" type="text" value="" placeholder="Unit"  />
+					<input name="INPUT_AREA_PERENNIAL_CROPS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+			</fieldset>
+			
+			<fieldset>
+				<legend>
+					ANIMAL HUSBANDRY
+				</legend>
+				<br />
+				<t>Assistance to small and marginal farmers/agricultural labourers</t>
+				<label>
+					<span class="left">
+					Replacement of draught animals, milch animals or animals used for haulage 
+					</span>	
+					<span class="right">
+					<input name="REPLACEMENT_O_FOR_HAULAGE_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="REPLACEMENT_OF__FOR_HAULAGE_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Provision of fodder/feed concentrate in the cattle camps      
+					</span>	
+					<span class="right">
+					<input name="PROVISION_OF_CATTLE_CAMPS_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="PROVISION_OF_F_CATTLE_CAMPS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Water supply in cattle camps        
+					</span>	
+					<span class="right">
+					<input name="WATER_SUPPLY_CATTLE_CAMPS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="WATER_SUPPLY_I_CATTLE_CAMPS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Additional cost of medicines and vaccine (calamity related requirements)         
+					</span>	
+					<span class="right">
+					<input name="ADDITIONAL_C_REQUIREMENTS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="ADDITIONAL_COS_REQUIREMENTS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Transport of fodder outside cattle camps         
+					</span>	
+					<span class="right">
+					<input name="TRANSPORT_OF_CATTLE_CAMPS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="TRANSPORT_OF_F_CATTLE_CAMPS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+			</fieldset>
+			<fieldset>
+				<legend>
+					FISHERY 
+				</legend>
+				<br />
+				<t>Assitance to fisherman to repair/replacement of boats, nets-damaged or lost</t>
+				<label>
+					<span class="left">
+					Boat
+					</span>	
+					<span class="right">
+					<input name="ASSISTANCE_TO_FIS_OF_BOAT_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="ASSISTANCE_TO_FISHE_OF_BOAT_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Dugout-Canoe      
+					</span>	
+					<span class="right">
+					<input name="ASSISTANCE_T_DUGOUT_CANOE_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="ASSISTANCE_TO__DUGOUT_CANOE_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Catamaran         
+					</span>	
+					<span class="right">
+					<input name="ASSISTANCE_T_OF_CATAMARAN_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="ASSISTANCE_TO__OF_CATAMARAN_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Nets        
+					</span>	
+					<span class="right">
+					<input name="ASSISTANCE_TO_FIS_OF_NETS_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="ASSISTANCE_TO_FISHE_OF_NETS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Input subsidy for fish seed farm         
+					</span>	
+					<span class="right">
+					<input name="INPUT_SUBSIDY_F_SEED_FARM_UNIT" type="text" value="" placeholder="Unit"  />
+					<input name="INPUT_SUBSIDY_FOR_SEED_FARM_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+			</fieldset>
+			
+			<fieldset>
+				<legend>
+					HANDICRAFTS / HANDLOOM - ASSISTANCE TO ARTISANS
+				</legend>
+				<label>
+					<span class="left">
+					Subsidy for repair/replacement of damaged tools/equipments  
+					</span>	
+					<span class="right">
+					<input name="SUBSIDY__TOOLS_EQUIPMENTS_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="SUBSIDY_FO_TOOLS_EQUIPMENTS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Subsidy for loss of raw material/goods in process/finished goods        
+					</span>	
+					<span class="right">
+					<input name="SUBSIDY_FO_FINISHED_GOODS_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="SUBSIDY_FOR__FINISHED_GOODS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+			</fieldset>	
+			
+			<fieldset>
+				<legend>
+					HOUSING
+				</legend>
+				<br />
+				<t>Assitance for repair / restoration of damaged houses</t>
+				<br />
+				<ti>Fully damaged/destroyed</ti>
+				
+				<label>
+					<span class="left">
+					Pucca house 
+					</span>	
+					<span class="right">
+					<input name="ASSISTANCE_FO_PUCCA_HOUSE_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="ASSISTANCE_FOR__PUCCA_HOUSE_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Kutcha house        
+					</span>	
+					<span class="right">
+					<input name="ASSISTANCE_F_KUTCHA_HOUSE_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="ASSISTANCE_FOR_KUTCHA_HOUSE_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				
+				<br />
+				<ti>Severely damaged houses</ti>
+				
+				<label>
+					<span class="left">
+					Pucca house 
+					</span>	
+					<span class="right">
+					<input name="ASSISTANCE_DAMAGED_PUCCA_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="ASSISTANCE_DAMAGED_PUCCA_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Kutcha house        
+					</span>	
+					<span class="right">
+					<input name="ASSISTANCE_DAMAGED_KUTCHA_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="ASSISTANCE_DAMAGED_KUTCHA_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  /> 
+					</span>
+				</label>
+				<br />
+				<ti>Partially damaged houses</ti>
+				
+				<label>
+					<span class="left">
+					Both pucca/kutcha (other than hut) where damage is minimum of 15%
+					</span>	
+					<span class="right">
+					<input name="ASSISTA_DAMAGED_DESTROYED_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="ASSISTANC_DAMAGED_DESTROYED_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<br />
+				<t>Other</t>
+				<label>
+				<span class="left">
+					Huts (damaged/Destroyed)      
+					</span>	
+					<span class="right">
+					<input name="AS_DAMAGED_DESTROYED_HUT_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="AS_DAMAGED_DESTROYED_HUT_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Cattle shed attached with house      
+					</span>	
+					<span class="right">
+					<input name="ASSIST_FOR_HOUSE_W_SHED_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="ASSIST_FOR_HOUSE_W_SHED_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+			</fieldset>	
+			
+			<fieldset>
+				<legend>
+					REPAIR / RESTAURATION OF IMMEDIATE NATURE OF THE DAMAGED INFRASTRUCTURE
+				</legend>
+				<br />
+				<t>Infrastructure in eligible sectors</t>
+				<label>
+					<span class="left">
+					Roads &amp; Bridges  
+					</span>	
+					<span class="right">
+					<input name="REPAIR_RESTORATIO_BRIDGES_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="REPAIR_RESTOR_ROADS_BRIDGES_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Drinking Water Supply Works         
+					</span>	
+					<span class="right">
+					<input name="REPAIR_RESTO_SUPPLY_WORKS_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="REPAIR_RESTORA_SUPPLY_WORKS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Irrigation         
+					</span>	
+					<span class="right">
+					<input name="REPAIR_RESTORA_IRRIGATION_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="REPAIR_RESTORATI_IRRIGATION_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Power (restoration cost of elect supply)           
+					</span>	
+					<span class="right">
+					<input name="REPAIR_RESTO_ELECT_SUPPLY_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="REPAIR_RESTORA_ELECT_SUPPLY_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Schools         
+					</span>	
+					<span class="right">
+					<input name="REPAIR_RESTORATIO_SCHOOLS_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="REPAIR_RESTORATION_SCHOOLS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Primary Health Centres          
+					</span>	
+					<span class="right">
+					<input name="REPAIR_RESTORATIO_CENTRES_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="REPAIR_RESTO_HEALTH_CENTRES_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+				<label>
+				<span class="left">
+					Community assets owned by Panchayats         
+					</span>	
+					<span class="right">
+					<input name="REPAIR_RESTORA_PANCHAYATS_UNIT" type="text" value="" placeholder="Unit" />
+					<input name="REPAIR_RESTORATI_PANCHAYATS_RS" type="text" value="" placeholder="Tot.(Rs in Lakhs)"  />
+					</span>
+				</label>
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					PROCUREMENT OF ESSENTIAL SEARCH, RESCUE AND EVACUATION EQUIPMENTS
+				</legend>
+				<br />
+				<t>Including communication equipments, etc. for response to disaster</t>
+				<label>
+					<span class="left">
+					Number of Sub-Divisions and Blocks affected  
+					</span>	
+					<span class="right">
+					<input name="NUMBER_OF__AND_BLOCKS_AFFECTED" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Number of people affected  
+					</span>	
+					<span class="right">
+					<input name="NUMBER_OF_PEOPLE_AFFECTED" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Number of Relief Camps  
+					</span>	
+					<span class="right">
+					<input name="NUMBER_OF_RELIEF_CAMPS" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				<br />
+				<ti>Number of Persons in relief camps</ti>
+				<label>
+					<span class="left">
+					Male
+					</span>	
+					<span class="right">
+					<input name="NUMBER_OF_PE_RELIEF_CAMPS_MALE" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Female 
+					</span>	
+					<span class="right">
+					<input name="NUMBER_OF__RELIEF_CAMPS_FEMALE" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Children (&lt; 14 year)
+					</span>	
+					<span class="right">
+					<input name="NUMBER_O_RELIEF_CAMPS_CHILDREN" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				
+				<br clear="all" />
+				<br clear="all" />
+				
+				<label>
+					<span class="left">
+					Number of cattle camps  
+					</span>	
+					<span class="right">
+					<input name="NUMBER_OF_CATTLE_CAMPS" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Number of cattle in cattle camps 
+					</span>	
+					<span class="right">
+					<input name="NUMBER_OF_CATT_IN_CATTLE_CAMPS" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Number of helicopter deployed for evacuation
+					</span>	
+					<span class="right">
+					<input name="NUMBER_DEPLOYED_FOR_EVACUATION" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Number of boats deployed
+					</span>	
+					<span class="right">
+					<input name="NUMBER_OF_BOATS_DEPLOYED" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				<label>
+					<span class="left">
+					Number of SAR teams/personnel deployed
+					</span>	
+					<span class="right">
+					<input name="NUMBE_TEAMS_PERSONNEL_DEPLOYED" type="text" value="" style="width: 16em;" placeholder="No./Value/Quantity" />
+					</span>
+				</label>
+				
+			</fieldset>	
+              
+           </div> 
+       </div>
+                 
+    </div>
+    

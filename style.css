@@ -1,0 +1,137 @@
+.bf {  font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#000000; font-weight : normal;}
+.bs {  font-family: Tahoma, Arial, sans-serif; font-size: 9pt; color:#000000; font-weight : normal;}
+.bss {  font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#000000; font-weight : normal;}
+
+.basefontLargeBold { font-family: Tahoma, Arial, sans-serif; font-size: 12pt;  font-weight: bold; color: #000000 }
+.basefontLarge { font-family: Tahoma, Arial, sans-serif; font-size: 12pt; color: #000000 }
+.basefont {  font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#000000; font-weight : normal;}
+.basefontBold { font-family: Tahoma, Arial, sans-serif; font-size: 10pt ; font-weight: bold; color: #000000}
+.basefontBlue { font-family: Tahoma, Arial,  sans-serif; font-size: 10pt; color: #677fa4;}
+.basefontGray {  font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:CCCCCC; font-weight : normal;}
+.basefontDarkGray {  font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:333333; font-weight : normal;}
+.basefontBlueBold { font-family: Tahoma, Arial, sans-serif; font-weight: bold; font-size: 10pt; color: #677fa4;}
+.basefontWhite { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#ffffff; font-weight : normal; }
+.basefontSmall {  font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#000000; font-weight : normal;}
+.basefontSmallGray {  font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:CCCCCC; font-weight : normal;}
+.basefontSmallWhite { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#ffffff; font-weight : normal; }
+.basefontSmallBlue { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#677fa4; font-weight : normal; }
+.basefontSmall_Small {  font-family: Tahoma, Arial, sans-serif; font-size: 7pt; color:#000000; font-weight : normal;}
+.basefontSmallSmallGray {  font-family: Tahoma, Arial, sans-serif; font-size: 7pt; color:CCCCCC; font-weight : normal;}
+.basefontSmallSmallWhite { font-family: Tahoma, Arial, sans-serif; font-size: 7pt; color:#ffffff; font-weight : normal; }
+.basefontSmallSmallBlue { font-family: Tahoma, Arial, sans-serif; font-size: 7pt; color:#677fa4; font-weight : normal; }
+
+.titleText { font-family: Tahoma, Arial,  sans-serif; font-size: 12pt; color: #000000 ; font-weight: bold}
+.subTitleText { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color: #000000; ; font-weight: bold}
+.titleTextBlue { font-family: Tahoma, Arial, sans-serif; font-size: 12pt; color:333366; font-weight : bold;  }
+.subtitleTextBlue { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:333366; font-weight : bold; }
+.titleTextWhite { font-family: Tahoma, Arial, sans-serif; font-size: 12pt; color:ffffff; font-weight : bold;  }
+.subtitleTextWhite { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:ffffff; font-weight : bold; }
+
+.bodyText { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color: #000000 }
+.smallBodyText { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9pt; color: #000000 }
+
+.warningLarge {	font-family: Tahoma, Arial, sans-serif; font-size: 12pt; color: #cc0033; font-weight : normal;}
+.warningLargeBold {	font-family: Tahoma, Arial, sans-serif; font-size: 13pt; color: #cc0033; font-weight : bold;}
+.warning {	font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color: #cc0033; font-weight : normal;}
+.warningBold {	font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color: #cc0033; font-weight : bold;}
+.warningSmall {	font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color: #cc0033; font-weight : normal;}
+.warningSmallBold {	font-family: Tahoma, Arial, sans-serif; font-size: 11px; color: #cc0033; font-weight : bold;}
+
+.closetext {font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 8pt; color: #ffffff; font-weight: bold}
+.closetext:Visited {font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 8pt; color: #ffffff; font-weight: bold}
+.closetext:Active {font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 8pt; color: #ffffff; font-weight: bold}
+.closetext:Link {font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 8pt; color: #ffffff; font-weight: bold}
+.closetext:Hover {font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 8pt; color: #ffffff; text-decoration : none; font-weight: bold}
+
+.bluelinks { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#6666CC; font-weight : normal; text-decoration: none}
+.bluelinks:Visited { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#6666CC; font-weight : normal; text-decoration: none}
+.bluelinks:Active { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#6666CC; font-weight : normal; text-decoration: none}
+.bluelinks:Hover { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#224883; font-weight : normal; text-decoration: none}
+
+.blacklinks { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#000000; font-weight : bold; text-decoration: none}
+.blacklinks:Visited { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#000000; font-weight : bold; text-decoration: none}
+.blacklinks:Active { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#000000; font-weight : bold; text-decoration: none}
+.blacklinks:Hover { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#000000; font-weight : bold; text-decoration: none}
+
+.whitelinks { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#ffffff; font-weight : normal; text-decoration: none}
+.whitelinks:Visited { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#ffffff; font-weight : normal; text-decoration: none}
+.whitelinks:Active { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#ffffff; font-weight : normal; text-decoration: none}
+.whitelinks:Hover { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#ffffff; font-weight : normal; text-decoration: none}
+
+
+.linksunder{ font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#677fa4; font-weight : normal; text-decoration: underline}
+.linksunder:Visited { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#677fa4; font-weight :  normal; text-decoration: underline}
+.linksunder:Active { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#677fa4; font-weight :  normal; text-decoration: underline}
+.linksunder:Hover { font-family: Tahoma, Arial, sans-serif; font-size: 8pt; color:#677fa4; font-weight :  normal; text-decoration: underline}
+.linksunder2 { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#677fa4; font-weight : bold; text-decoration: underline}
+.linksunder2:Visited { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#677fa4; font-weight :  bold; text-decoration: underline}
+.linksunder2:Active { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#677fa4; font-weight :  bold; text-decoration: underline}
+.linksunder2:Hover { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color:#677fa4; font-weight :  bold; text-decoration: underline}
+
+.tableSpacingLeft { padding-left: 0px}
+.tableSpacingRight { padding-right: 0pt; padding-left: 5px}
+.textField {  width: 320px}
+
+.linkTextBold { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ; font-weight: bold; color: #677fa4;  text-decoration : none}
+.linkTextBold:Visited { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ; font-weight: bold; color: #677fa4;  text-decoration : none}
+.linkTextBold:Active { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ; font-weight: bold; color: #677fa4;  text-decoration : none}
+.linkTextBold:Link { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ; font-weight: bold; color: #677fa4;  text-decoration : none}
+.linkTextBold:Hover { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ; font-weight: bold; color: #000000;  text-decoration : none;}
+.linkText { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ;  color: 0;  text-decoration : none}
+.linkText:Visited { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 10px ; color: #677fa4;  text-decoration : none}
+.linkText:Active { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 10px ;  color: #677fa4;  text-decoration : none}
+.linkText:Link { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 10px ;  color: #677fa4;  text-decoration : none}
+.linkText:Hover { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 10px ;  color: #000000;  text-decoration : none;}
+.linkTextSmall { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9px ;  color: #677fa4;  text-decoration : none}
+.linkTextSmall:Visited { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9px ; color: #677fa4;  text-decoration : none}
+.linkTextSmall:Active { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9px ;  color: #677fa4;  text-decoration : none}
+.linkTextSmall:Link { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9px ;  color: #677fa4;  text-decoration : none}
+.linkTextSmall:Hover { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9px ;  color: #000000;  text-decoration : none;}
+.linkTextBlue { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ;  color: #011B7E;  text-decoration : none}
+.linkTextBlue:Visited { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ; color: #011B7E;  text-decoration : none}
+.linkTextBlue:Active { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ;  color: #011B7E;  text-decoration : none}
+.linkTextBlue:Link { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ;  color: #011B7E;  text-decoration : none}
+.linkTextBlue:Hover { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 11px ;  color: #1C8DC4;  text-decoration : none;}
+
+
+.listMenuLarge {  width: 135px}
+.listMenuMedium { width: 85px}
+.listMenuSmall { width: 50px}
+.textFieldSmall { width: 70px}
+
+.closetextsmall {font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9pt; color: #ffffff; }
+.closetextsmall:Visited {font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9pt; color: #ffffff;}
+.closetextsmall:Active {font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9pt; color: #ffffff; }
+.closetextsmall:Link {font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9pt; color: #ffffff; }
+.closetextsmall:Hover {font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 9pt; color: #ffffff; text-decoration : none;}
+.univers {  }
+.requirements { font-family: Tahoma, Arial, sans-serif; font-size: 10pt; color: #FFFFFF; font-weight: normal; ; font-style: normal}
+B { font-weight : bold;}		
+I { font-style: italic; }
+form {  border-top-width: 0pt; border-right-width: 0pt; border-bottom-width: 0pt; border-left-width: 0px}
+
+body,p,div,span,th,td,dl,dd,dt 
+             { font-family:  Tahoma, Arial,  Helvetica, sans-serif; font-size: 10pt; font-style: normal;}
+
+.bgDarkDark {background : #224883}
+.bgDark {background : #0000ac}
+.bgMedium {background : #6484b6}
+.bgLight {background : #93A6C3}
+.bgLightLight {background : #D9DDE2}
+			 
+adefault:Visited {font-family: Tahoma, Arial,  Helvetica, sans-serif; font-size: 8pt; color: #000000; text-decoration : none ; font-weight: bold}
+adefault:Active {font-family: Tahoma, Arial,  Helvetica, sans-serif; font-size: 8pt; color: #000000; text-decoration : none; font-weight: bold}
+adefault:Link {font-family:  Tahoma, Arial,  Helvetica, sans-serif; font-size: 8pt; color: #000000; text-decoration : none; 	font-weight: bold}
+adefault:Hover {font-family: Tahoma, Arial,  Helvetica, sans-serif; font-size: 8pt; color: #747474; text-decoration : none;  font-weight: bold}
+
+.monotype{ font-family:Courier new;  font-size: 9pt ;  color: #000000;  text-decoration : none;	}
+.minifont {  font-family: "Courier New", Courier, mono; font-size: 10; font-style: normal; font-weight: normal; font-variant: normal}
+.newfont {  font-family: "Times New Roman", Courier; font-size: x-small; font-style: normal; font-weight: normal; font-variant: normal};
+
+.body { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 12; font-style: normal;}
+.body1 { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 10; font-style: normal;}
+.body2 { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 15; font-style: normal;}
+.body3 { font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 18; font-style: normal;}
+.bodyb16{color:navy;font-family: Tahoma, Arial, Helvetica, sans-serif;	font-size: 16;	font-style: normal;}
+.bodyr { color: "red"; font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 12; font-style: normal;}
+

@@ -1,0 +1,1954 @@
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <!-- Effects -->
+                  <td class="bs"><!-- vars with checks -->
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                      <td colspan="9"><hr /></td>
+                      </tr>
+                      <tr>
+                      <td colspan="9"><b>FORMAT I</b></td>
+                      </tr>
+                      <tr>
+                      <td colspan="9"><hr /></td>
+                      </tr>
+
+                      <tr>
+                        <td class="bs" align="right">Affected Population (total):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="afectados" VALUE=""  onChange=" chkAfectados()"><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left" nowrap="nowrap"><INPUT type="CHECKBOX" name="hay_afectados" VALUE="-1" ></td>
+                        <td class="bs" align="right">Villages Affected:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="VILLAGESAFFECTED" VALUE=""  onChange=" chkAfectados()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right">Families Affected:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="FAMILIES_AFFECTED" VALUE=""  onChange=" chkAfectados()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+
+                      <tr>
+                        <td class="bs" align="right">Percentage pop. affected (%):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="PERCENTAGEAFFECTED" VALUE=""  onChange=" chkAfectados()"></td>
+                        <td class="bs" align="left" nowrap="nowrap">
+                        <!--<INPUT type="CHECKBOX" name="hay_damnificados" VALUE="-1" >-->
+                        </td>
+
+                        <td class="bs" align="right">&nbsp;Relocated:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="reubicados" VALUE=""  onChange=" chkReubicados()"></td>
+                        <td class="bs" align="left"><INPUT type="checkbox" name="hay_reubicados" VALUE="-1" ></td>
+                        <td class="bs" align="right">Evacuated:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="evacuados" VALUE=""  onChange=" chkEvacuados()"></td>
+                        <td class="bs" align="left"><INPUT type="CHECKBOX" name="hay_evacuados" VALUE="-1" ></td>
+
+                      </tr>
+
+                      <tr>
+                      <td colspan="9"><hr /></td>
+                      </tr>
+
+                      
+                      <tr>
+                        <td class="bs" align="right" nowrap>Deaths:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="muertos" VALUE="" onChange=" chkMuertos()"><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left"><INPUT type="CHECKBOX" name="hay_muertos" VALUE="-1" ></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Injured: </td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="heridos" VALUE=""  onChange=" chkHeridos()"><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left"><INPUT type="CHECKBOX" name="hay_heridos" VALUE="-1" ></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Missing: </td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="desaparece" VALUE=""  onChange=" chkDesaparece()"></td>
+                        <td class="bs" align="left"><INPUT type="CHECKBOX" name="hay_deasparece" VALUE="-1" ></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap>Deaths male:</td>
+                        <td class="bs"> <input name='NUMBER_OF_DEATHS_NO_MALE' type='text' value="" size='6' maxlength='10' onChange=" chkMuertos()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Injured Major: </td>
+                        <td class="bs"><input name='NUMBER_OF_INJURIES_NO_I_MAJOR' type='text' value="" size='6' maxlength='10' onChange=" chkHeridos()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Injured Minor: </td>
+                        <td class="bs"><input name='NUMBER_OF_INJUR_NO_II_MINOR' type='text' value="" size='6' maxlength='10' onChange=" chkHeridos()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      
+                      <tr>
+                        <td class="bs" align="right" nowrap>Deaths female:</td>
+                        <td class="bs"> <input name='NUMBER_OF_DEATHS_NO_FEMALE' type='text' value="" size='6' maxlength='10' onChange=" chkMuertos()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Injured Major men: </td>
+                        <td class="bs"><input name='NUMBER_OF_INJURI_I_MAJOR_MEN' type='text' value="" size='6' maxlength='10' onChange=" chkHeridos()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Injured Minor men: </td>
+                        <td class="bs"><input name='NUMBER_OF_INJUR__II_MINOR_MEN' type='text' value="" size='6' maxlength='10' onChange=" chkHeridos()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap>Deaths children:</td>
+                        <td class="bs"> <input name='NUMBER_OF_DEATHS_NO_CHILDREN' type='text' value="" size='6' maxlength='10' onChange=" chkMuertos()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Injured Major women: </td>
+                        <td class="bs"><input name='NUMBER_OF_INJUR_I_MAJOR_WOMEN' type='text' value="" size='6' maxlength='10' onChange=" chkHeridos()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Injured Minor women: </td>
+                        <td class="bs"><input name='NUMBER_OF_INJUR_II_MINOR_WOMEN' type='text' value="" size='6' maxlength='10' onChange=" chkHeridos()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap></td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Injured Major children: </td>
+                        <td class="bs"><input name='NUMBER_OF_INJUR_MAJOR_CHILDREN' type='text' value="" size='6' maxlength='10' onChange=" chkHeridos()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Injured Minor children: </td>
+                        <td class="bs"><input name='NUMBER_OF_INJU_MINOR_CHILDREN' type='text' value="" size='6' maxlength='10' onChange=" chkHeridos()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      
+
+
+                      <tr>
+                      <td colspan="9"><hr /><br /></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap><strong>Livestock</strong></td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;<strong>Agriculture</strong> </td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;<strong>Housing</strong> </td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                      <td colspan="9"><hr /></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right">&nbsp;Livestok perished (total):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="cabezas" VALUE=""  onChange=" chkCabezas()"><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Agricultural Season:</td>
+                        <td class="bs"><select name="AGRICULTUAL_SEASON">
+                         				<option value=""></option>
+                                        <option value="1">Rabi</option>
+                                        <option value="2">Kharif</option>
+                                        </select><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Affected houses partially (total):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="vivafec" VALUE=""  onChange=" chkVivafec()"><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left"><INPUT type="CHECKBOX" name="hay_vivafec" VALUE="-1" ></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap>&nbsp;Animal perished (cows):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="NUMBER_OF_ANIMAL_I_COW" VALUE=""  onChange=" chkCabezas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Food grains sown area affected (hects):</td>
+                        <td class="bs"><INPUT type="TEXT" size="8" maxlength="12" name="FOOD_GRAINS_I_AFFECTED_HECTRS" VALUE=""  onChange=" chkNhectareas()"><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Affected houses fully (total):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="vivdest" VALUE=""  onChange=" chkVivdest()"><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left"><INPUT type="CHECKBOX" name="hay_vivdest" VALUE="-1" ></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap>&nbsp;Animal perished (buffalos):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="NUMBER_OF_ANIMAL_II_BUFFALO" VALUE=""  onChange=" chkCabezas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Food grains production lost (tons): </td>
+                        <td class="bs"><INPUT type="TEXT" size="8" maxlength="12" name="FOOD_GRAINS_II_PROD_LOST_TONS" VALUE=""  onChange=" chkNhectareas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Affected houses Rural:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="HOUSES_AFF_RURAL" VALUE=""  onChange=" chkVivafec()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap>&nbsp;Animal perished (sheeps):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="NUMBER_OF_ANIMAL_III_SHEEP" VALUE=""  onChange=" chkCabezas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Cash crops sown area affected (hectr): </td>
+                        <td class="bs"><INPUT type="TEXT" size="8" maxlength="12" name="CASH_CROPS_SOWN_AFFECTED_HECTR" VALUE=""  onChange=" chkNhectareas()"><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Affected houses Rural kuchha</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="HOUSES_AFF_RURAL_KUCHHA" VALUE=""  onChange=" chkVivafec()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap>&nbsp;Animal perished (goats):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="NUMBER_OF_ANIMAL_IV_GOATS" VALUE=""  onChange=" chkCabezas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Cash crops production lost (tons):</td>
+                        <td class="bs"><INPUT type="TEXT" size="8" maxlength="12" name="CASH_CROPS_PRODUCTION_LOST_TON" VALUE=""  onChange=" chkNhectareas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Affected houses Rural kuchha fully:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="HOUSES_AFF_RURAL_KUCHHA_FULLY" VALUE=""  onChange=" chkVivafec()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap>&nbsp;Animal perished (camels):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="NUMBER_OF_ANIMAL_V_CAMELS" VALUE=""  onChange=" chkCabezas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Horticultural crops sown area affected (hectr):</td>
+                        <td class="bs"><INPUT type="TEXT" size="8" maxlength="40" name="HORTICULTURAL_SOWN_AFFECTED_HE" VALUE=""  onChange=" chkNhectareas()"><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Affected houses Rural kuchha partially:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="HOUSES_AFF_RURAL_KUCHHA_PARTIA" VALUE=""  onChange=" chkVivafec()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      
+                      <tr>
+                        <td class="bs" align="right" nowrap>&nbsp;Horses/mules/donkeys:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="NUMBER_OF_ANIMAL_HORSEMULEDONK" VALUE=""  onChange=" chkCabezas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Horticultural crops production lost (tons): </td>
+                        <td class="bs"><INPUT type="TEXT" size="8" maxlength="40" name="HORTICULTURAL_PROD_LOST_TONS" VALUE=""  onChange=" chkNhectareas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Affected houses Rural pucca:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="HOUSES_AFF_RURAL_PUCCA" VALUE=""  onChange=" chkVivafec()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap>&nbsp;Poultry/ducks:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="NUMBER_OF_ANIMAL_VII_POULTRYDU" VALUE=""  onChange=" chkCabezas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Trees uprooted (no):</td>
+                        <td class="bs"><INPUT type="TEXT" size="8" maxlength="40" name="TREES_UPROTED_NO" VALUE=""  onChange=" chkNhectareas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Affected houses Rural pucca fully: </td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="HOUSES_AFF_RURAL_PUCCA_FULLY" VALUE=""  onChange=" chkVivafec()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap>&nbsp;Animal perished (pigs):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="NUMBER_OF_ANIMAL_VIII_PIGS" VALUE=""  onChange=" chkCabezas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Agricultural Area affected Hects.:</td>
+                        <td class="bs"><INPUT type="TEXT" size="8" maxlength="40" name="AREA_AFFECTED_HECTRS" VALUE=""  onChange=" chkNhectareas()"><b><font color="red">*</font></b></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Affected houses Rural pucca partially:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="HOUSES_AFF_RURAL_PUCCA_PARTIAL" VALUE=""  onChange=" chkVivafec()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap>&nbsp;Animal perished (other):</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="NUMBER_OF_ANIMAL_NO_IX_OTHERS" VALUE=""  onChange=" chkCabezas()"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap></td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Affected houses Urban.:</td>
+                        <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="HOUSES_AFF_URBAN" VALUE=""  onChange=" chkVivafec()"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                      <td></td><td></td><td></td>
+                      <td></td><td></td><td></td>
+                      <td align="right" class="bs">Affected houses Urban kuchha:</td>
+                      <td align="left" class="bs"><input name='HOUSES_AFF_URBAN_KUCHHA' type='text' value="" size='6' maxlength='10'>
+                      </td>
+                    </tr>
+                    
+                      <tr>
+                      <td></td><td></td><td></td>
+                      <td></td><td></td><td></td>
+                      <td align="right" class="bs">Affected houses Urban kuchha fully:</td>
+                      <td align="left" class="bs"><input name='HOUSES_AFF_URBAN_KUCHHA_FULLY' type='text' value="" size='6' maxlength='10'>
+                      </td>
+                    </tr>
+                    
+                      <tr>
+                      <td></td><td></td><td></td>
+                      <td></td><td></td><td></td>
+                      <td align="right" class="bs" nowrap="nowrap">Affected houses Urban kuchha partially:</td>
+                      <td align="left" class="bs">
+                        <input name='HOUSES_AFF_URBAN_KUCHHA_PARTIA' type='text' value="" size='6' maxlength='10'>
+                      </td>
+                    </tr>
+                    
+                      <tr>
+                      <td></td><td></td><td></td>
+                      <td></td><td></td><td></td>
+                      <td align="right" class="bs">Affected houses Urban pucca:</td>
+                      <td align="left" class="bs">
+                        <input name='HOUSES_AFF_URBAN_PUCCA' type='text' value="" size='6' maxlength='10'>
+                      </td>
+                    </tr>
+                    
+                      <tr>
+                      <td></td><td></td><td></td>
+                      <td></td><td></td><td></td>
+                      <td align="right" class="bs">Affected houses Urban pucca fully:</td>
+                      <td align="left" class="bs">
+                         <input name='HOUSES_AFF_URBAN_PUCCA_FULLY' type='text' value="" size='6' maxlength='10'>
+                      </td>
+                    </tr>
+                    
+                      <tr>
+                      <td></td><td></td><td></td>
+                      <td></td><td></td><td></td>
+                      <td align="right" class="bs">Affected houses Urban pucca partially:</td>
+                      <td align="left" class="bs">
+                        <input name='HOUSES_AFF_URBAN_PUCCA_PARTIAL' type='text' value="" size='6' maxlength='10'>
+                      </td>
+                    </tr>
+                      <tr>
+                      <td colspan="9"><hr /><br /></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap><strong>Roads and Bridges</strong></td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;<strong>Water Supply</strong> </td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;<strong>Sewerage System</strong> </td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                      <td colspan="9"><hr /></td>
+                      </tr>
+                      <tr>
+						<td colspan='3' valign="top"><!-- roads-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td class="bs" align="right">Road length damaged (mts) all roads: </td>
+                            <td class="bs"><INPUT type="TEXT" size="8" maxlength="40" name="kmvias" VALUE=""  onChange=" chkKmVias()"><b><font color="red">*</font></b></td>
+                          </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Road length damaged (mts) national highway:</td>
+                                      <td align="left" class="bs">
+                                        <input name='ROAD_LENGTH_DAMAGE_NATL_HIGHWA' type='text' value="" size='9' maxlength='20'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Road length damaged (mts) state highway:</td>
+                                      <td align="left" class="bs">
+                                        <input name='ROAD_LENGTH_DAMAGE_STATE_HIGHW' type='text' value="" size='9' maxlength='20'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Road length damaged (mts) district road:</td>
+                                      <td align="left" class="bs">
+                                        <input name='ROAD_LENGTH_DAMAGE_DISTRICT_RO' type='text' value="" size='9' maxlength='20'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Road length damaged (mts) others:</td>
+                                      <td align="left" class="bs">
+                                        <input name='ROAD_LENGTH_DAMAGE_MTS_OTHERS' type='text' value="" size='9' maxlength='20'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Villages disconnected to transportation No.:</td>
+                                      <td align="left" class="bs">
+                                        <input name='VILLAGES_DISCON_LITY_I_NUMBER' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Villages disconnected to transportation Days:</td>
+                                      <td align="left" class="bs">
+                                        <input name='VILLAGES_DISCON_ILITY_II_DAYS' type='text' value="" size='6' maxlength='20'>              </td>           
+                                         </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>BRIDGES (no):</td>
+                                      <td align="left" class="bs">
+                                        <input name='BRIDGES_NO' type='text' value="" size='6' maxlength='10'><b><font color="red">*</font></b>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>BRIDGES (no) motorable :</td>
+                                      <td align="left" class="bs">
+                                        <input name='BRIDGES_MOTORABLE_NO' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>BRIDGES (no) motorable fully:</td>
+                                      <td align="left" class="bs">
+                                        <input name='BRIDGES_MOTORABLE_NO_FULLY' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>BRIDGES (no) motorable partially:</td>
+                                      <td align="left" class="bs">
+                                        <input name='BRIDGES_MOTORAB__NO_PARTIALLY' type='text' value="" size='6' maxlength='10'>              </td>           
+                                         </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>BRIDGES (no) pedestrian :</td>
+                                      <td align="left" class="bs">
+                                        <input name='BRIDGES_PEDESTRIAN_NO' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>BRIDGES (no) pedestrian fully:</td>
+                                      <td align="left" class="bs">
+                                        <input name='BRIDGES_PEDESTRIAN_NO_FULLY' type='text' value="" size='6' maxlength='10'>              </td>           
+                                         </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>BRIDGES (no) pedestrian partially:</td>
+                                      <td align="left" class="bs">
+                                        <input name='BRIDGES_PEDESTRIAN_NO_PARTIALL' type='text' value="" size='6' maxlength='10'>              </td>           
+                                         </tr>
+                        
+                        </table>
+                        </td>
+						<td colspan='3' valign="top"><!-- water-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Water supply pipe line:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_PIPE_LINE' type='checkbox' value="1" > <b><font color="red">*</font></b>             </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Pipe line trunk (no):</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_PIPE_TRUNK_NO' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Pipe line trunk (no) fully damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_P__FULLY_DAMAGED' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Pipe line trunk (no) partially damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_P_PARTIALLY_DAMAG' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Pipe line distribution (no):</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_P_DISTRIBUTION_NO' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Pipe line distribution (no) fully damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_P_FULLY_DAMAGED' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Pipe line distribution (no) partially damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_P_PARTIALLY_DAMA' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Pumping station (no):</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_PUMPNG_STATION_NO' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Pumping station (no) fully damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_PMP_FULLY_DAMAGED' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Pumping station (no) partially damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_PMP_PTIALLY_DAMAG' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Overhead reservoirs:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_OVHEAD_RESERVOIRS' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Overhead reservoirs fully damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_OVH__FULLY_DAMAGE' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Overhead reservoirs partially damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_OVH_PTIALLY_DAMAG' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Water treatment plant:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_TREATMENT_PLANT' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Water treatment plant fully damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_TRTP_FULLY_DAMAGE' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Water treatment plant partially damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_TRP_PRTIAL_DAMAGE' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Drinking Water Tanks (no.):</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_DRK_WATER_TANKS_N' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Drinking Water Tanks (no.) fully damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_DRK_FULLY_DAMAGED' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Drinking Water Tanks (no.) partially damage:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_DRK_PRTIALLY_DAMA' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Drinking Water Wells (no.):</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_DRK_WATER_WELLS_N' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Drinking Water Wells (no.) fully damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_DRKWL_FULLY_DAMAG' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Drinking Water Wells (no.) partially damage:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_DRKWL_PRTIAL_DAMA' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Others (please mention):</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_OTHERS' type='text' value="" size='20' maxlength='50'>              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Others (please mention) fully damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_OTHER_FULLY_DAMAG' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'> Others (please mention) partially damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='WATER_SUPPLY_OTH_PARTIAL_DAMAG' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                        
+                        </table>                        
+                        </td>
+						<td colspan='3' valign="top"><!-- sewerage-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Sewerage system trunk (no):</td>
+                          <td align="left" class="bs">
+                            <input name='SEWERAGE_SYSTEM_TRUNK_NO' type='text' value="" size='6' maxlength='10'>              </td>            
+                            </tr>
+                        <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Trunk (no) fully damaged:</td>
+                                      <td align="left" class="bs">
+                                        <input name='SEWERAGE_SYSTE__FULLY_DAMAGED' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Trunk (no) partially damaged:</td>
+                                      <td align="left" class="bs">
+                                        <input name='SEWERAGE_SYSTE_PARTIAL_DAMAGED' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Sewerage system distribution (no):</td>
+                                      <td align="left" class="bs">
+                                        <input name='SEWERAGE_SYSTEM_DSTRIBUTION_NO' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Distribution (no) fully damaged:</td>
+                                      <td align="left" class="bs">
+                                        <input name='SEWERAGE_SYSTE_DS_FULLY_DAMAGE' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Distribution (no) partially damaged:</td>
+                                      <td align="left" class="bs">
+                                        <input name='SEWERAGE_SYSTE_DS_PARTL_DAMAGE' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Sewerage treatment plant (no):</td>
+                                      <td align="left" class="bs">
+                                        <input name='SEWERAGE_SYSTEM_TRMENT_PLANT_N' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Sewerage treatment plant (no) fully damaged:</td>
+                                      <td align="left" class="bs">
+                                        <input name='SEWERAGE_SYSTE_TR_FULLY_DAMAGE' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Sewerage treatment plant (no) partially dama:</td>
+                                      <td align="left" class="bs">
+                                        <input name='SEWERAGE_SYSTE_PARTIALLY_DAMA' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+
+                        </table>                        
+                        </td>
+					  </tr>
+                      
+                      
+                      
+                      <tr>
+                      <td colspan="9"><hr /><br /></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap><strong>Irrigation</strong></td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;<strong>Electricity</strong> </td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;<strong>Education Sector</strong> </td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                      <td colspan="9"><hr /></td>
+                      </tr>
+                      <tr>
+						<td colspan='3' valign="top"><!-- Irrigation-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+                                         <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>IRRIGATION affected:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_AFFECTED' type='checkbox' value="1">              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Breach of canal damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_BREACH_CANAL_DAMAGE'  type='checkbox' value="1">              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Breach of canal damaged number:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_BREACH_DAMAGED_NUMB' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Breach of dam damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_BREACH_DAM_DAMAGED'  type='checkbox' value="1">              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Breach of dam damaged number:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_BREACH_DAM_DAM_NUMB' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Irrigation tank damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_IRR_TANK_DAMAGED'  type='checkbox' value="1">              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Irrigation tank damaged number:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_IRR_TANK_DAMAGED_NO' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Irrigation wells damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_WELLS_DAMAGED'  type='checkbox' value="1">              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Irrigation wells damaged number:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_WELLS_DAMAGED_NUMBE' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Reservoirs damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_RESERVOIRS_DAMAGED'  type='checkbox' value="1">              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Reservoirs damaged number:</td>
+                                          <td align="left" class="bs">
+                                            <input name='IRRIGATION_RESRVR_DAMAGED_NUMB' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                       
+                        </table>
+                        </td>
+						<td colspan='3' valign="top"><!-- Electricity-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>High tension lines damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_HT_LINES_DAMAGED' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>High tension lines damaged length:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_HT_DAMAGED_LENGTH' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>High tension lines damaged No of days:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_HT_GED_NO_OF_DAYS' type='text' value="" size='6' maxlength='20'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Low tension lines damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_LT__LINES_DAMAGED' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Low tension lines damaged length:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_LT_DAMAGED_LENGTH' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Low tension lines damaged No of days:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_LT_GED_NO_OF_DAYS' type='text' value="" size='6' maxlength='20'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Transformers damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_TRANSFORMERS_DAMAG' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Transformers damaged number:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_TRANS_DAMAGED_NUMB' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Transformers damaged No of days:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_TRANS_DAMAGED_NDAY' type='text' value="" size='6' maxlength='20'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Substations damaged:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_SUBSTATIONS_DAMAGE' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Substations damaged number:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_SUBST_DAMAGED_NUMB' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Substations damaged No of days:</td>
+                                          <td align="left" class="bs">
+                                            <input name='ELECTRICITY_SUBST_DAMAGED__NDA' type='text' value="" size='6' maxlength='20'>              </td>           
+                                             </tr>
+                        
+                        </table>
+                        </td>
+						<td colspan='3' valign="top"><!-- Education-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td class="bs" align="right">&nbsp;Education centers (total no.):</td>
+                                <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="nescuelas" VALUE=""  onChange=" chkNescuelas()"></td>
+                              </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Primary schools (no):</td>
+                                          <td align="left" class="bs">
+                                            <input name='PRIMARY_SCHOOLS_NO' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Primary schools (no) partially:</td>
+                                          <td align="left" class="bs">
+                                            <input name='PRIMARY_SCHOOLS_NO_PARTIALLY' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Primary schools (no) fully:</td>
+                                          <td align="left" class="bs">
+                                            <input name='PRIMARY_SCHOOLS_NO_FULLY' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Secondary schools (no):</td>
+                                          <td align="left" class="bs">
+                                            <input name='SECONDARY_SCHOOLS_NO' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Secondary schools (no) partially:</td>
+                                          <td align="left" class="bs">
+                                            <input name='SECONDARY_SCHOO_NO_PARTIALLY' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Secondary schools (no) fully:</td>
+                                          <td align="left" class="bs">
+                                            <input name='SECONDARY_SCHOOLS_NO_FULLY' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                        
+                        </table>
+                        </td>
+					  </tr>
+                      
+                      <tr>
+                      <td colspan="9"><hr /><br /></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap><strong>Community & Health</strong></td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;<strong>Government</strong> </td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;<strong>Commercial Sector</strong> </td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                      <td colspan="9"><hr /></td>
+                      </tr>
+                      <tr>
+						<td colspan='3' valign="top"><!-- health-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                             <td align="right" class="bs" nowrap='nowrap'>Community Center (no.):</td>
+                                          <td align="left" class="bs">
+                                            <input name='COMMUNITY_CENTER_NO' type='text' value="" size='6' maxlength='10'>              </td>            
+                                            </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Community Center (no.) partially:</td>
+                                          <td align="left" class="bs">
+                                            <input name='COMMUNITY_CENTER_NO_PARTIALLY' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Community Center (no.) fully:</td>
+                                          <td align="left" class="bs">
+                                            <input name='COMMUNITY_CENTER_NO_FULLY' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                          <tr>
+                            <td class="bs" align="right">&nbsp;Health facilities (all, no.):</td>
+                            <td class="bs"><INPUT type="TEXT" size="6" maxlength="12" name="nhospitales" VALUE=""  onChange=" chknHospitales()"></td>
+                          </tr>                                             
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Health centers (no) dispensaries:</td>
+                                          <td align="left" class="bs">
+                                            <input name='HEALTH_CENTERS_DISPENSARIES' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Health centers (no) PHCs:</td>
+                                          <td align="left" class="bs">
+                                            <input name='HEALTH_CENTERS_PHCS' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                                        <tr>
+                            <td align="right" class="bs" nowrap='nowrap'>Health centers (no) hospitals (DH/SDH):</td>
+                                          <td align="left" class="bs">
+                                            <input name='HEALTH_CENTERS_HOSPITALS_DHSDH' type='text' value="" size='6' maxlength='10'>              </td>           
+                                             </tr>
+                       
+                        </table>
+                        </td>
+						<td colspan='3' valign="top"><!-- Gov-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+							            <tr>
+							<td align="right" class="bs" nowrap='nowrap'>Other Government Building Affected:</td>
+							              <td align="left" class="bs">
+							                <input name='OTHER_GOVT_BUILDING_AFFECTED'   type='checkbox' value="1">               </td>           
+							                 </tr>
+							            <tr>
+							<td align="right" class="bs" nowrap='nowrap'>Other Government Building No:</td>
+							              <td align="left" class="bs">
+							                <input name='OTHER_GOVT_BUILDING_NO' type='text' value="" size='6' maxlength='10'>              </td>           
+							                 </tr>
+							            <tr>
+							<td align="right" class="bs" nowrap='nowrap'>Other Government Building partially:</td>
+							              <td align="left" class="bs">
+							                <input name='OTHER_GOVT_BUILDING_PARTIALLY' type='text' value="" size='6' maxlength='10'>              </td>          
+							                  </tr>
+							            <tr>
+							<td align="right" class="bs" nowrap='nowrap'>Other Government Building fully:</td>
+							              <td align="left" class="bs">
+							                <input name='OTHER_GOVT_BUILDING_FULLY' type='text' value="" size='6' maxlength='10'>              </td>           
+							                 </tr>
+                        
+                        </table>
+                        </td>
+						<td colspan='3' valign="top"><!-- Commercial-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+                        
+							            <tr>
+							<td align="right" class="bs" nowrap='nowrap'>Affected shops (no):</td>
+							              <td align="left" class="bs">
+							                <input name='SHOPS_COMMERCIAL' type='text' value="" size='6' maxlength='10'>              </td>            
+							                </tr>
+							            <tr>
+							<td align="right" class="bs" nowrap='nowrap'>Affected shops (no) partially:</td>
+							              <td align="left" class="bs">
+							                <input name='SHOPS_COMMERCIAL_PARTIALLY' type='text' value="" size='6' maxlength='10'>              </td>            
+							                </tr>
+							            <tr>
+							<td align="right" class="bs" nowrap='nowrap'>Affected shops (no) fully:</td>
+							              <td align="left" class="bs">
+							                <input name='SHOPS_COMMERCIAL_FULLY' type='text' value="" size='6' maxlength='10'>              </td>            
+							                </tr>
+							            <tr>
+							<td align="right" class="bs" nowrap='nowrap'>Other commercial affected buildings (no):</td>
+							              <td align="left" class="bs">
+							                <input name='SHOPS_OTHER_COMMERCIAL' type='text' value="" size='6' maxlength='10'>              </td>           
+							                 </tr>
+							            <tr>
+							<td align="right" class="bs" nowrap='nowrap'>Other commercial affected buildings (no) partially:</td>
+							              <td align="left" class="bs">
+							                <input name='SHOPS_OTHER_COMMERCIAL_PART' type='text' value="" size='6' maxlength='10'>              </td>           
+							                 </tr>
+							            <tr>
+							<td align="right" class="bs" nowrap='nowrap'>Other commercial affected buildings (no) fully:</td>
+							              <td align="left" class="bs">
+							                <input name='SHOPS_OTHER_COMMERCIAL_FULLY' type='text' value="" size='6' maxlength='10'>              </td>           
+							                 </tr>
+
+                        </table>
+                        </td>
+					  </tr>
+                      
+                      <tr>
+                      <td colspan="9"><hr /><br /></td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right" nowrap><strong>Other Utilities</strong></td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                        <td class="bs" align="right" nowrap>&nbsp;<strong>Epidemics</strong> </td>
+                        <td class="bs"></td>
+                        <td class="bs" align="left"></td>
+                      </tr>
+                      <tr>
+                      <td colspan="9"><hr /></td>
+                      </tr>
+                      <tr>
+						<td colspan='3' valign="top"><!-- utilities-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Land telephone disrupted (no. of days:</td>
+                                      <td align="left" class="bs">
+                                        <input name='OTHER_UT_LANDTEL_NDAYS' type='text' value="" size='15' maxlength='20'>              </td>           
+                                         </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Mobile telephos disrupted (no. of days):</td>
+                                      <td align="left" class="bs">
+                                        <input name='OTHER_UT_MOBTEL_NDAYS' type='text' value="" size='15' maxlength='20'>              </td>           
+                                         </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Villages disconnected to communication facility:</td>
+                                      <td align="left" class="bs">
+                                        <input name='OTHER_UT_VILLAGES_DISCONNECTED'  type='checkbox' value="1"> </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Villages disconnected to communication facility (no):</td>
+                                      <td align="left" class="bs">
+                                        <input name='OTHER_UT_VILLAGES_DISCON_NO' type='text' value="" size='6' maxlength='10'>              </td>           
+                                         </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Villages disconnected to communication facility (Days):</td>
+                                      <td align="left" class="bs">
+                                        <input name='OTHER_UT_VILLAGES_DISCON_NDAYS' type='text' value="" size='15' maxlength='20'>              </td>            
+                                        </tr>
+                      
+                        </table>
+                        </td>
+						<td colspan='3' valign="top"><!-- epidemics-->
+                        <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Number of persons affected - water borne:</td>
+                                      <td align="left" class="bs">
+                                        <input name='EPIDEMICS_N_PEOPLE_WATER_BORNE' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Number of persons affected - water borne (i) Cholera:</td>
+                                      <td align="left" class="bs">
+                                        <input name='EPIDEMICS_N_PEOPLE_CHOLERA' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>&nbsp;&nbsp;&nbsp;Number of persons affected - water borne (ii) Diarrhea:</td>
+                                      <td align="left" class="bs">
+                                        <input name='EPIDEMICS_N_PEOPLE_DIARRHEA' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Number of persons affected - water borne (iii) Others:</td>
+                                      <td align="left" class="bs">
+                                        <input name='EPIDEMICS_N_PEOPLE_WB_OTHERS' type='text' value="" size='6' maxlength='10'>              </td>           
+                                         </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Number of persons affected - vector borne:</td>
+                                      <td align="left" class="bs">
+                                        <input name='EPIDEMICS_N_PEOPLE_VECTOR_BORN' type='text' value="" size='6' maxlength='10'>              </td>           
+                                         </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Number of persons affected - vector borne (i) Malaria:</td>
+                                      <td align="left" class="bs">
+                                        <input name='EPIDEMICS_N_PEOPLE_VB_MALARIA' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Number of persons affected - vector borne (ii) Dengue:</td>
+                                      <td align="left" class="bs">
+                                        <input name='EPIDEMICS_N_PEOPLE_VB_DENGUE' type='text' value="" size='6' maxlength='10'>              </td>           
+                                         </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Number of persons affected - vector borne (iii)Plague:</td>
+                                      <td align="left" class="bs">
+                                        <input name='EPIDEMICS_N_PEOPLE_VB_PLAGUE' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Number of persons affected - vector borne (iv) Others:</td>
+                                      <td align="left" class="bs">
+                                        <input name='EPIDEMICS_N_PEOPLE_VB_OTHERS' type='text' value="" size='6' maxlength='10'>              </td>            
+                                        </tr>
+                                    <tr>
+                        <td align="right" class="bs" nowrap='nowrap'>Number of persons affected - Others:</td>
+                                      <td align="left" class="bs">
+                                        <input name='EPIDEMICS_N_AFFECTED_OTHERS' type='text' value="" size='6' maxlength='10'>              </td>           
+                                         </tr>
+                        
+                      
+                        </table>
+                        </td>
+					  </tr>
+                      
+                      
+
+                      <tr>
+                      <td colspan="9"><hr /><br /></td>
+                      </tr>
+                      <tr>
+                        <td colspan=9><span class="subtitle">Affected Sectors</span></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <!-- Sectors -->
+                  <td class="bs"><!-- vars with checks -->
+                    <table witdh=100% cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td class="bs" align="right"><INPUT  type="CHECKBOX" name="transporte" VALUE="-1" ></td>
+                        <td class="bs">Transportation&nbsp;</td>
+                        <td class="bs" align="right"><INPUT type="CHECKBOX" name="comunicaciones" VALUE="-1" ></td>
+                        <td class="bs">Communications&nbsp;</td>
+                        <td class="bs" align="right"><INPUT  type="CHECKBOX" name="socorro" VALUE="-1" ></td>
+                        <td class="bs">Relief&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right"><INPUT  type="CHECKBOX" name="agropecuario" VALUE="-1" ></td>
+                        <td class="bs">Agriculture&nbsp;</td>
+                        <td class="bs" align="right"><INPUT  type="CHECKBOX" name="acueducto" VALUE="-1" ></td>
+                        <td class="bs">Water supply&nbsp;&nbsp;</td>
+                        <td class="bs" align="right"><INPUT  type="CHECKBOX" name="alcantarillado" VALUE="-1" ></td>
+                        <td class="bs">Sewerage&nbsp;&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right"><INPUT  type="CHECKBOX" name="energia" VALUE="-1" ></td>
+                        <td class="bs">Power and Energy&nbsp;&nbsp;</td>
+                        <td class="bs" align="right"><INPUT  type="CHECKBOX" name="industrias" VALUE="-1" ></td>
+                        <td class="bs">Industries&nbsp;</td>
+                        <td class="bs" align="right"><INPUT  type="CHECKBOX" name="educacion" VALUE="-1" ></td>
+                        <td class="bs">Education&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td class="bs" align="right"><INPUT  type="CHECKBOX" name="hay_otros" VALUE="-1" ></td>
+                        <td class="bs">Other sectors&nbsp;&nbsp;</td>
+                        <td class="bs" align="right"></td>
+                        <td class="bs"></td>
+                        <td class="bs" align="right"><INPUT  type="CHECKBOX" name="salud" VALUE="-1" ></td>
+                        <td class="bs">Health sector</td>
+                      </tr>
+                    </table>
+                  </td>
+              </tr>
+              <tr>
+                 <td colspan="9" class='bs'><!-- with no checks -->
+                  <hr>
+                 <strong>ECONOMIC AND OTHER LOSSES</strong> 
+                 </td>
+              </tr>     
+              <tr>
+                 <td colspan="9"><!-- with no checks -->
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                  	    <td class="bs" nowrap>Other losses:   
+                        <INPUT type="TEXT" size="40" maxlength="60" name="otros" VALUE=""></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Losses $Local:</td>
+                        <td class="bs"><INPUT type="TEXT" size="11" maxlength="40" name="valorloc" VALUE=""></td>
+                        <td class="bs" align="right" nowrap>&nbsp;Losses $USD:</td>
+                        <td class="bs"><INPUT type="TEXT" size="11" maxlength="40" name="valorus" VALUE=""></td>
+                      </tr>
+                    </table>
+                  </td>
+              </tr>
+              <tr>
+                 <td colspan="9" class='bs'><!-- with no checks -->
+                  <hr>
+                 <strong>General Information</strong> 
+                 </td>
+              </tr>     
+              <tr>
+                 <td colspan="9"><!-- with no checks -->
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                        <td class="bs" align="right" nowrap>&nbsp;Magnitude:</td>
+                        <td class="bs" align="left"><INPUT type="TEXT" size="26" maxlength="22" name="magnitud2" VALUE=""></td>
+                        <td class="bs" nowrap> &nbsp;&nbsp; Latitude: <INPUT type="TEXT" size="10" name="latitude" id="latitude" VALUE=""></td>
+                        <td class="bs" nowrap> &nbsp;&nbsp; Longitude:<INPUT type="TEXT" size="10" name="longitude" id="longitude" VALUE=""></td>
+                      </tr>
+     				</table>
+                  </td>                   
+              </tr>       
+              <tr  id='basic_datacard2' >
+                <td class="bs" colspan='9'><!-- Comments lines in light blue  -->
+                  <strong>Comments</strong>:<br>
+                  <TEXTAREA rows="4" name="di_comments" cols="100"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" colspan='9'>
+                  <table border="0" cellpadding="0" cellspacing="0" width="40%">
+                    <tr>
+                      <td class="bs">By:
+                        <INPUT type="TEXT" size="13" maxlength="12" name="fechapor" VALUE=""></td>
+                      <td class="bs">Date:
+                        <INPUT type="TEXT" size="10" maxlength="10" name="fechafec" VALUE=""></td>
+                    </tr>
+                  </table>
+                  </td>
+              </tr>
+        </table>
+<br />		
+    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+          <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><span class="subtitle">Format II</span><br/>
+            <strong>Relief and Rehabilitation</strong>
+            </td>
+          </tr>
+          <tr>
+             <td colspan="3"><hr /></td>
+          </tr>
+          <tr class='bs'>
+              <td align="center"><strong>Item</strong></td>
+              <td><strong>&nbsp;Units</strong></td>
+              <td><strong>Amount Rs. Lakh</strong></td>
+          </tr>          
+          <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><strong>1. Gratuituous Relief</strong>
+            </td>
+          </tr>
+           <tr>
+              <td align="right" width='500' class='bs' nowrap>Ex-Gratia payment to the families of deceased persons:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='EX_GRATI_DECEASED_PERSONS_UNIT' type='text' value="" size='10' maxlength='10'>
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='EX_GRATIA__DECEASED_PERSONS_RS' type='text' value="" size='15' maxlength='20'>
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Ex-Gratia payment for loss of a limb or eyes:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='EX_GRATIA_PA_LIMB_OR_EYES_UNIT' type='text' value="" size='10' maxlength='10'> 
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='EX_GRATIA_PAYMEN_EYES_TOTAL_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Grievous injury requiring hospitalization:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='GRIEVOUS__HOSPITALIZATION_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='GRIEV_HOSPITALIZATION_TOTAL_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Clothing and utensils/househ...e to a natural calamity:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='CLOTHING_NATURAL_CALAMITY_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='CLOTHING_AND__CALAMITY_OTAL_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Gratuitous relief for famili...enance after a calamity:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='GRATUITOUS_RELIE_CALAMITY_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='GRATUITOUS_RELIE_A_CALAMITY_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+          <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><strong>2. Search and Rescue Operations</strong>
+            </td>
+          </tr>
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Cost of search and rescue me...d/likely to be affected:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='COST_OF_SEARC_BE_AFFECTED_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='COST_OF_SEAR_TO_BE_AFFECTED_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Hiring of boats for carrying...relief and saving lives:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='HIRING_OF_BO_SAVING_LIVES_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='HIRING_OF_BOAT_SAVING_LIVES_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+          <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><strong>3. Relief Measures</strong>
+            </td>
+          </tr>
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Provision of temporary accom...eltered in relief camps:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='PROVISION_OF_RELIEF_CAMPS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='PROVISION_OF_T_RELIEF_CAMPS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Air dropping essential supplies:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='AIR_DROPPING_SUPPLIES_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='AIR_DROPPING_SUPPLIES_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Provision of emergency suppl...l areas and urban areas:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='PROVISION_OF__URBAN_AREAS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='PROVISION_OF_EM_URBAN_AREAS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+          <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><strong>4. Clearance of affected areas</strong>
+            </td>
+          </tr>
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Clearance of debris in public areas:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='CLEARANCE_OF_PUBLIC_AREAS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='CLEARANCE_OF_D_PUBLIC_AREAS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Draining off flood water in affected areas:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='DRAINING_O_AFFECTED_AREAS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='DRAINING_OFF_AFFECTED_AREAS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Disposal of dead bodies/Carcases:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='DISPOSAL__BODIES_CARCASES_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='DISPOSAL_OF_BODIES_CARCASES_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+          <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><strong>5. Agriculture</strong>
+            <br />(i) Assistance to small and marginal farmers for:
+            <br />A   Assistance for land and Other loss 
+            </td>
+          </tr>
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Desilting of agricultural land:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='DESILTING_OF_LAND_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='DESILTING_OF_LAND_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Removal of debris on agricultural land inhilly areas:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='REMOVAL_OF__INHILLY_AREAS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='REMOVAL_OF_DE_INHILLY_AREAS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Desilting/Restoration/Repair of fish farms:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='DESILTING_RESTORATI_FARMS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='DESILTING_RESTOR_FISH_FARMS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Loss of substantial portion ...nge of course of rivers:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='LOSS_OF_SUBSTAN_OF_RIVERS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='LOSS_OF_SUBSTANTI_OF_RIVERS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+          <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><br />B   Agriculture input subsidy where crop loss was 50% and above
+            </td>
+          </tr>
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Input Subsidy for agricultur...annual plantation crops:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SU_PLANTATION_CROPS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SUBS_PLANTATION_CROPS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Input Subsidy for Perennial crops:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SUB_PERENNIAL_CROPS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SUBSI_PERENNIAL_CROPS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Input subsidy for Sericulture:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SUBSIDY_SERICULTURE_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SUBSIDY_SERICULTURE_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+          <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><br />(ii)   Input subsidy to farmers other than small & marginal farmers
+            </td>
+          </tr>
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Input subsidy (a) Rain fed areas:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SUBSIDY_A_FED_AREAS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SUBSIDY_A_FED_AREAS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Input subsidy (b) Areas under assured irrigation:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT__ASSURED_IRRIGATION_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SU_ASSURED_IRRIGATION_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+          <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><br /><strong>6   Animal Husbandry:</strong>
+            <br /> Assistance to small and marginal farmers/agricultural labourers
+            </td>
+          </tr>
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Replacement of draught anima...nimals used for haulage:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='REPLACEMENT_O_FOR_HAULAGE_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='REPLACEMENT_OF__FOR_HAULAGE_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Provision of fodder/feed con...ate in the cattle camps:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='PROVISION_OF_CATTLE_CAMPS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='PROVISION_OF_F_CATTLE_CAMPS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Water supply in cattle camps:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='WATER_SUPPLY_CATTLE_CAMPS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='WATER_SUPPLY_I_CATTLE_CAMPS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Additional cost of medicines...y related requirements):&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='ADDITIONAL_C_REQUIREMENTS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='ADDITIONAL_COS_REQUIREMENTS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Transport of fodder outside cattle camps:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='TRANSPORT_OF_CATTLE_CAMPS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='TRANSPORT_OF_F_CATTLE_CAMPS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+          <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><strong>7. FISHERY</strong>
+            <br />Assistance to Fishermen
+            </td>
+          </tr>
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Assistance to Fisherman For repair/replacement of Boat:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_TO_FIS_OF_BOAT_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_TO_FISHE_OF_BOAT_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Assistance to Fisherman For ...acement of Dugout-Canoe:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_T_DUGOUT_CANOE_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_TO__DUGOUT_CANOE_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Assistance to Fisherman For ...eplacement of Catamaran:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_T_OF_CATAMARAN_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_TO__OF_CATAMARAN_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Assistance to Fisherman For repair/replacement of Nets:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_TO_FIS_OF_NETS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_TO_FISHE_OF_NETS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Input subsidy for fish seed farm:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SUBSIDY_F_SEED_FARM_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='INPUT_SUBSIDY_FOR_SEED_FARM_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+         <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><br /><strong>8   HANDICRAFTS/HANDLOOM - ASISTANCE TO ARTISANS:</strong>
+            </td>
+          </tr>
+             
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Subsidy for repair/replaceme...amaged tools/equipments:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='SUBSIDY__TOOLS_EQUIPMENTS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='SUBSIDY_FO_TOOLS_EQUIPMENTS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Subsidy for loss of raw mate... process/finished goods:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='SUBSIDY_FO_FINISHED_GOODS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='SUBSIDY_FOR__FINISHED_GOODS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+         <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><br /><strong>9   HOUSING </strong>
+            <br />Assistance for repair/restoration of damaged houses
+            </td>
+          </tr>
+             
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Fully damaged/Destroyed:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTA_DAMAGED_DESTROYED_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANC_DAMAGED_DESTROYED_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>(i) pucca house:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_FO_PUCCA_HOUSE_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_FOR__PUCCA_HOUSE_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>(ii) Kutcha house:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_F_KUTCHA_HOUSE_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_FOR_KUTCHA_HOUSE_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Partially Damaged Houses:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_DAMAGED_HOUSES_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_F_DAMAGED_HOUSES_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Shed attached with house:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_FOR_WITH_HOUSE_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='ASSISTANCE_FOR_R_WITH_HOUSE_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><br /><strong>10.  Repair/restoration of immediate nature</strong> of the damaged infrastructure in eligible sectors :
+            </td>
+          </tr>
+             
+         
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Repair/restoration of Roads & Bridges:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTORATIO_BRIDGES_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTOR_ROADS_BRIDGES_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Repair/restoration of Drinking Water Supply Works:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTO_SUPPLY_WORKS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTORA_SUPPLY_WORKS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Repair/restoration of Irrigation:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTORA_IRRIGATION_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTORATI_IRRIGATION_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Repair/restoration cost of Power (electr. supply):&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTO_ELECT_SUPPLY_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTORA_ELECT_SUPPLY_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Repair/restoration of Schools:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTORATIO_SCHOOLS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTORATION_SCHOOLS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Repair/restoration of Primary Health Centres:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTORATIO_CENTRES_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTO_HEALTH_CENTRES_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Repair/restoration of Community assets owned by Panchayats:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTORA_PANCHAYATS_UNIT' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='REPAIR_RESTORATI_PANCHAYATS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+            <tr  >
+              <td align="left" width='500' nowrap><strong>11. Procurement of essential search, rescue and evacuation equipments</strong> RS:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='PROCUREMENT_ESSL_SEARCH_NO' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+              <td align="left">
+                &nbsp;
+                <input name='PROCU_EVACUATION_EQUIPMENTS_RS' type='text' value="" size='15' maxlength='20'>
+                
+              </td>
+            </tr>
+            
+            <tr>
+             <td colspan="3"><hr /><br /></td>
+          </tr>
+          <tr>
+            <td colspan=3><strong>Disaster Relief Overview</strong>
+            </td>
+          </tr>
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of Sub-Divisions and Blocks affected:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBER_OF__AND_BLOCKS_AFFECTED' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of people affected:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBER_OF_PEOPLE_AFFECTED' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of Relief Camps:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBER_OF_RELIEF_CAMPS' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of Persons in relief camps Male:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBER_OF_PE_RELIEF_CAMPS_MALE' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of Persons in relief camps Female:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBER_OF__RELIEF_CAMPS_FEMALE' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of Persons in relief camps Children:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBER_O_RELIEF_CAMPS_CHILDREN' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of cattle camps:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBER_OF_CATTLE_CAMPS' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of cattle in cattle camps:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBER_OF_CATT_IN_CATTLE_CAMPS' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of helicopters deployed for evacuation:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBER_DEPLOYED_FOR_EVACUATION' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of boats deployed:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBER_OF_BOATS_DEPLOYED' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            
+            <tr  >
+              <td align="right" width='500' class='bs' nowrap>Number of SAR teams/personnel deployed:&nbsp;</td>
+              <td align="left">
+                &nbsp;
+                <input name='NUMBE_TEAMS_PERSONNEL_DEPLOYED' type='text' value="" size='10' maxlength='10'>
+                
+              </td>
+            </tr>
+            </table>
+            

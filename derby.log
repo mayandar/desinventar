@@ -1,0 +1,26 @@
+----------------------------------------------------------------
+Fri Apr 05 15:58:20 EDT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0169-ef14-a27c-00000028b2c8 
+on database directory C:\data\desinventar\databases\derbyDB_g19 with class loader sun.misc.Launcher$AppClassLoader@fabe9 
+Loaded from file:/C:/osso/web/webapps/DesInventar/WEB-INF/lib/derby.jar
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_12-b04
+user.dir=C:\osso\web\webapps\DesInventar
+os.name=Windows Vista
+os.arch=x86
+os.version=6.2
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Fri Apr 05 15:58:49 EDT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance c791807d-0169-ef14-a27c-00000028b2c8 
+on database directory C:\databases\Colombia\derbyDB_co with class loader sun.misc.Launcher$AppClassLoader@fabe9 
+Loaded from file:/C:/osso/web/webapps/DesInventar/WEB-INF/lib/derby.jar
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_12-b04
+user.dir=C:\osso\web\webapps\DesInventar
+os.name=Windows Vista
+os.arch=x86
+os.version=6.2
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

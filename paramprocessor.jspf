@@ -1,0 +1,17 @@
+<%
+response.setContentType("text/html; charset=UTF-8");
+request.setCharacterEncoding("UTF-8"); 
+//  depending where it is comming from, loads different parameters...
+String strFromPage=countrybean.not_null(request.getParameter("frompage"));
+parser Parser=new parser();
+countrybean.processParams(request, Parser, con);
+if (request.getParameter("bookmark")!=null)
+	{
+	response.setHeader("Pragma", "no-cache");
+	response.setHeader("Cache-Control", "no-cache");
+	response.setDateHeader("Expires", 0);%>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="cache-control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="01-01-1999">
+<%	}
+%>

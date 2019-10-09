@@ -1,0 +1,286 @@
+<script language="javascript">
+<!-- 
+function addVar()
+{
+var nIns=0;
+var sOpt="";
+var sText="";
+with (document.desinventar)
+  {
+  for (nSel=0; nSel<availableVars.length; nSel++)
+   if (availableVars.options[nSel].selected)
+  	{
+	sOpt=availableVars.options[nSel].value;
+  	sText=availableVars.options[nSel].text;
+    nIns=variables.options.length;
+	variables.options[nIns]=new Option;
+	variables.options[nIns].value=sOpt;
+	variables.options[nIns].text=sText;
+	}
+  for (nSel=availableVars.length-1; nSel>=0; nSel--)
+   if (availableVars.options[nSel].selected)
+     availableVars.options[nSel]=null;
+	
+  } 
+enableFormula();
+}
+
+function delVar()
+{
+var nSel=0;
+var nIns=0;
+var sOpt="";
+var sText="";
+with (document.desinventar)
+  {
+  for (nSel=0; nSel<variables.length; nSel++)
+   if (variables.options[nSel].selected)
+  	{
+	sOpt=variables.options[nSel].value;
+  	sText=variables.options[nSel].text;
+    nIns=availableVars.options.length;
+	availableVars.options[nIns]=new Option;
+	availableVars.options[nIns].value=sOpt;
+	availableVars.options[nIns].text=sText;
+	availableVars.options[nIns].selected=true;
+	}
+  for (nSel=variables.length-1; nSel>=0;  nSel--)
+   if (variables.options[nSel].selected)
+    variables.options[nSel]=null;
+  } 
+enableFormula();
+}
+
+function  allSelected(nCols)
+{
+var tSel=0;
+with (document.desinventar)
+  {
+  for (nSel=0; nSel<variables.length; nSel++)
+    {
+	variables.options[nSel].selected=true;
+	tSel++;
+	}
+  }
+if (tSel>=nCols)
+  return true;
+else
+  {
+  alert ("<%=countrybean.getTranslation("MustSelect")%> "+nCols+" <%=countrybean.getTranslation("column")%>");
+  return false;
+  }        
+}
+
+function addThisOne(aVariable)
+{
+with (document.desinventar)
+  {
+  for (nSel=0; nSel<availableVars.length; nSel++)
+    if (aVariable==availableVars.options[nSel].value)
+		{
+		sOpt=availableVars.options[nSel].value;
+  		sText=availableVars.options[nSel].text;
+    	nIns=variables.options.length;
+		variables.options[nIns]=new Option;
+		variables.options[nIns].value=sOpt;
+		variables.options[nIns].text=sText;
+     	availableVars.options[nSel]=null;
+		}
+  }
+enableFormula();
+}
+
+function upVar()
+{
+with (document.desinventar)
+  {
+	nSel=variables.selectedIndex;
+	if (nSel>0)
+		{
+		sOpt=variables.options[nSel].value;
+  		sText=variables.options[nSel].text;
+		variables.options[nSel].value=variables.options[nSel-1].value;
+		variables.options[nSel].text=variables.options[nSel-1].text;
+		variables.options[nSel-1].value=sOpt;
+  		variables.options[nSel-1].text=sText;
+		variables.selectedIndex=nSel-1;
+		}
+	  }
+}
+
+function topVar()
+{
+with (document.desinventar)
+  {
+	nSel=variables.selectedIndex;
+	if (nSel>0)
+		{
+		sOpt=variables.options[nSel].value;
+  		sText=variables.options[nSel].text;
+		for ( ; nSel>0; nSel--)
+			{
+			variables.options[nSel].value=variables.options[nSel-1].value;
+			variables.options[nSel].text=variables.options[nSel-1].text;
+			}
+		variables.options[0].value=sOpt;
+  		variables.options[0].text=sText;
+		variables.selectedIndex=0;
+		}
+	  }
+}
+
+
+function downVar()
+{
+with (document.desinventar)
+  {
+	nSel=variables.selectedIndex;
+	if (nSel<variables.length-1)
+		{
+		sOpt=variables.options[nSel].value;
+  		sText=variables.options[nSel].text;
+		variables.options[nSel].value=variables.options[nSel+1].value;
+		variables.options[nSel].text=variables.options[nSel+1].text;
+		variables.options[nSel+1].value=sOpt;
+  		variables.options[nSel+1].text=sText;
+		variables.selectedIndex=nSel+1;
+		}
+	  }
+}
+
+function botVar()
+{
+with (document.desinventar)
+  {
+	nSel=variables.selectedIndex;
+	if (nSel<variables.length-1)
+		{
+		sOpt=variables.options[nSel].value;
+  		sText=variables.options[nSel].text;
+		for ( ; nSel<variables.length-1; nSel++)
+			{
+			variables.options[nSel].value=variables.options[nSel+1].value;
+			variables.options[nSel].text=variables.options[nSel+1].text;
+			}
+		nSel=variables.length-1;
+		variables.options[nSel].value=sOpt;
+  		variables.options[nSel].text=sText;
+		variables.selectedIndex=nSel;
+		}
+	  }
+}
+
+
+// 
+function enableFormula()
+{
+var nSel=0;
+var bFormula="hidden";
+with (document.desinventar)
+  {
+   for (nSel=0; nSel<variables.length; nSel++)
+    if (variables.options[nSel].value=="@formula@")
+	   bFormula="visible";
+     if (document.getElementById("formula_expert"))  // may be commented for IndisData
+	    document.getElementById("formula_expert").style.visibility=bFormula;
+  }
+}
+
+
+// -->	
+</script>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="3" align="center"><font class='subtitle'><%=countrybean.getTranslation("SelectColumns")%></FONT><br>
+</td></tr>
+<tr><td align="middle">
+  <table border=1 cellpadding="0" cellspacing="0"  class='IE_Table'>
+    <tr>
+      <td class="DI_TableHeader bs" align="center" colspan=3><font color="White"><%=countrybean.getTranslation("Available")%></font></td>
+    </tr>
+	<tr>
+		<td>
+		<select name="availableVars" multiple size=12 style="WIDTH: 320px;">
+		<% 
+		String sLangSuffix="";
+		if ("EN".equals(countrybean.getDataLanguage()))
+			sLangSuffix="_en";
+		if (countrybean.nAction==countrybean.GENERATOR) 
+		    {
+		%>  <%@ include file="/util/alphaVariables.jspf" %>
+		<%  } %>
+		<%@ include file="/util/numericVariables.jspf" %>
+		<%
+		if (countrybean.nAction==countrybean.GENERATOR) 
+			bNumericVariablesOnly=false;   // declared in numericVariables.jspf
+		%>
+		<%@ include file="/util/extendedVariables.jspf" %>
+		</select>
+	</td>
+  </tr>
+</table>  	
+</td>
+<td align="center"><br><input type="button" name="addvariable"  value="<%=countrybean.getTranslation("Add")%> >> " onClick="return addVar()">
+<br><input type="button" name="delvariable" value="<%=countrybean.getTranslation("Remove")%> <<" onClick="return delVar()">
+</td>
+<td>
+  <table border=1 cellpadding="0" cellspacing="0"  class='IE_Table'>
+    <tr>
+      <td class="DI_TableHeader bs" align="center" colspan=3><font color="White"><%=countrybean.getTranslation("Selected")%></font></td>
+    </tr>
+	<tr>
+		<td>
+		<select name="variables" multiple size=10 style="WIDTH: 320px;">
+		</select>
+    </tr>
+	<tr>
+		<td align="center">
+        <input type="button" name="upvariable"  value="<%=countrybean.getTranslation("upEvent")%>" onClick="return upVar()">
+        <input type="button" name="dnvariable"  value="<%=countrybean.getTranslation("downEvent")%>" onClick="return downVar()">
+        <input type="button" name="tpvariable"  value="<%=countrybean.getTranslation("topEvent")%>" onClick="return topVar()">
+        <input type="button" name="btvariable"  value="<%=countrybean.getTranslation("botEvent")%>" onClick="return botVar()">
+ 	</td>
+  </tr>
+</table>  	
+</td>
+</tr>
+<!--  Indisdata Security constraint START:  enable this comment to disallow SQL injection in the Expert -->
+<tr id="formula_expert" style="visibility:hidden">
+ <td colspan=4 align="center">
+  <table  cellspacing="0" cellpadding="0" border="0">
+    <tr>
+     <td class=bss><%=countrybean.getTranslation("Formula")%>&nbsp;&nbsp;</td>
+     <td><input type="text" class="bss" name="sDisabledExpertWhere" size="80" maxlength="255" disabled ondblclick="openExpert()" value="<%=Parser.translateExpertExpression(countrybean.sExpertVariable, Parser.hmVarTrans)%>"/>&nbsp;&nbsp;
+		 <input type="hidden" name="sExpertVariable" value="<%=Parser.translateExpertExpression(countrybean.sExpertVariable, Parser.hmVarTrans)%>"/>	 
+		<input class="bss" type='button' name='expertbutton' value='<%=countrybean.getTranslation("Expert")%>' onclick="openExpert()"/>
+     </td> 
+	</tr>
+   </table>
+ </td>
+</tr>
+<!--  Indisdata Security constraint END:  enable this comment to disallow SQL injection in the Expert -->
+<tr>
+<td colspan="3" align="center" >
+<font class='instruction'><%=countrybean.getTranslation("selectVariablesInstructions")%></font>
+</td>
+</tr>
+</table>
+
+<script language="JavaScript">
+<%
+if (countrybean.asVariables!=null)
+for (int j=0; j<countrybean.asVariables.length; j++)
+	{
+	if (countrybean.asVariables[j]!=null)
+       {
+	    if (countrybean.asVariables[j].indexOf("'")>0)
+			{%>addThisOne("<%=countrybean.asVariables[j]%>");
+			<%}
+			else
+			{%>addThisOne('<%=countrybean.asVariables[j]%>');
+	<% 		}
+		}
+	}
+%>
+</script>
+
+

@@ -1,0 +1,615 @@
+/* CSS Document */
+body, .body, .bodyclass{
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	color: #000000;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	padding: 0px;
+    font-size: 14px; 
+	font-style: normal; 
+	background-color: rgba(242, 242, 242, 1);
+	/*
+	background-color: #FFFFFF;
+	*/
+    }
+a{
+	color:#0097B7;
+	text-decoration:none;
+	border-style: none;
+}
+
+.headder{
+	padding:0;
+	margin:0;
+	width:1000px;
+	clear:both;
+/*	background-image: url(/DesInventar/images/bgBackground_02.gif);
+	background-repeat: repeat-y;
+	background-position: center;
+*/
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Regular'), 
+       local('Roboto-Regular'), 
+       url(https://themes.googleusercontent.com/static/fonts/roboto/v11/2UX7WLTfW3W8TclTUvlFyQ.woff) 
+       format('woff');
+}
+
+.mainheader_headder{
+	font-family: Roboto, 'Helvetica Medium', 'Helvetica';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 1);
+    text-align: left;
+	border-width: 0px;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 55px;
+
+/*
+     line-height: 10px;
+   position: absolute;
+	padding:0;
+	margin:0;
+	width:1000px;
+	clear:both;
+	*/
+}
+
+.mainnav{
+	/*border-bottom:#447fed solid 1px;*/
+	font-family: Roboto, 'Helvetica Medium', 'Helvetica';
+	margin-bottom:0px;
+	margin-left:0px;
+	margin-top:0px;
+	margin-right:0px;
+	padding:0;
+	font-size:11px;
+	color:#e6efff;
+	height:22px;
+	background-color:#0097B7;
+	/*width:1024px;*/
+	width:100%;
+	white-space:nowrap
+}
+
+.mainheader_mainnav{
+	background-color: #606060;
+    text-align: left;
+    line-height: 45px;
+	/* font-family: 'DINNextW01-Regular';*/
+	font-family: Roboto, 'Helvetica Medium', 'Helvetica';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 17px;
+    color: #666666;
+	border-width: 0px;
+    left: 0px;
+    width: 100%;
+    height: 104px;
+	border: 0px;
+	border-style: solid;
+	border-color: #ff7f50;
+/* 
+    top: 55px;
+    position: absolute;
+	margin-bottom:0px;
+	margin-left:0px;
+	margin-top:0px;
+	margin-right:0px;
+	padding:0;
+	font-size:11px;
+	color:#e6efff;
+	height:22px;
+	background-color:#0097B7;
+	width:1024px;
+	white-space:nowrap
+ */
+}
+
+.mainnav a{
+	color:#e6efff;
+	text-decoration:none;
+}
+
+.mainheader_mainnav a{
+	color:#ffffff;
+	text-decoration:none;
+	/*
+	color:#e6efff;
+	text-decoration:none;
+	*/
+}
+
+.mainnav a:hover{
+	color:#333333;
+	text-decoration:none;
+}
+
+.mainheader_mainnav a:hover{
+	color:#e26837;
+	text-decoration:none;
+	/*
+	color:#333333;
+	text-decoration:none;
+	*/
+}
+
+.mainnav ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+
+.mainheader_mainnav ul{
+	padding:0;
+	margin-left:50px;
+	list-style:none;
+	white-space:nowrap;
+	/*
+	margin:0 ;
+	list-style:none;
+	border-right:1px solid #00728A;
+	float:left;
+	white-space:nowrap;
+	*/
+}
+.mainheader_mainnav ul ul{
+	padding:0;
+	margin-left:220px;
+	list-style:none;
+	white-space:nowrap;
+	/*
+	margin:0 ;
+	list-style:none;
+	border-right:1px solid #00728A;
+	float:left;
+	white-space:nowrap;
+	*/
+}
+
+.mainnav li{
+	margin:0 ;
+	list-style:none;
+	border-right:1px solid #00728A;
+	float:left;
+	white-space:nowrap;
+}
+
+.mainheader_mainnav li{
+    position: relative;
+    top: 0px;
+	/*
+    width: 116px;
+	*/
+    word-wrap: break-word;
+    color: #ffffff;
+	display: inline-block;
+	float: left;
+    margin-left: 0px ;
+    margin-right: 0px ;
+margin-top: 5px;	
+border: 0px;
+border-style: solid;
+border-color: #ff7f50;
+}
+
+.mainnav li a{
+	padding:3px 13px;
+	display:block;
+}
+
+.mainheader_mainnav li a{
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1;
+    -webkit-font-feature-settings: "kern";	
+	font-kerning: normal;
+	text-transform: uppercase;
+	/*
+	padding:3px 13px;
+	display:block;
+	*/
+}
+
+.mainnav li a:Active {color:#000000; font-weight : normal; text-decoration: none}
+
+.mainheader_mainnav li a:Active {
+color:#e26837; 
+font-weight : normal; 
+text-decoration: none
+/* color:#000000; font-weight : normal; text-decoration: none */
+}
+
+.mainnav li.selected a{
+
+	background-color:#DDF9FF;
+	border:2px solid #1b4bac;
+	padding:5px 11px 5px 11px;
+}
+
+.mainheader_mainnav li.selected a{
+	color:#e26837;
+	background-color:#DDF9FF;
+	border:2px solid #1b4bac;
+	padding:5px 11px 5px 11px;
+	/*
+	background-color:#DDF9FF;
+	border:2px solid #1b4bac;
+	padding:5px 11px 5px 11px;
+	*/
+}
+
+.navbase{
+margin:0;
+width:100%; 
+font-family: Roboto, 'Helvetica Medium', 'Helvetica';
+}
+
+.mainheader_navbase{
+	width: 100%;
+	height: 104px; 
+	/*
+	margin-top: -17px;
+	margin:0;
+	width:100%; 
+
+	*/
+}
+
+#sendai_framework{
+margin-top: 25px;
+margin-left:5px;
+font-size:20px;
+font-weight:400;
+width: 170px; 
+height: 20px;
+font-family:Trebuchet MS;
+}
+
+#disaster_risk_reduction{
+margin-top: 0px;
+margin-left:5px;
+font-size:13px;
+font-weight:400;
+width: 170px; 
+height: 10px;
+font-family:Trebuchet MS;
+}
+
+.mainheader_navbase ul{
+	white-space:nowrap;
+}
+
+.mainheader_navbase ul ul{
+	width:100%;
+}
+
+.mainheader_headericons li:not(:first-child):before {
+    content: " | ";
+}
+
+.headderbase{
+	width:100%;
+	margin:0;
+/*	background-image: url(/DesInventar/images/part9.jpg);
+	background-repeat: no-repeat;
+	background-position: right top;
+*/
+}
+
+.mainheader_headderbase{
+	width:100%;
+	margin:0;
+    height: 55px;
+	/*
+	width:100%;
+	margin:0;
+	*/
+}
+
+.mainheader_square {
+    width:45px;
+    height:45px;
+}
+
+.mainheader_top_menu{
+	height: 40px;
+		margin-top: 10px;
+    display: table;
+    table-layout: fixed;
+
+		/*
+			margin-top: -55px;
+
+			*/
+}
+
+.mainheader_top_menu  li{
+	margin-top: 0px;
+display: table-cell;
+}
+
+.mainheader_top_menu2{
+	height: 40px;
+		margin-top: 10px;
+}
+
+.mainheader_top_menu2  li{
+	margin-top: 0px;
+}
+
+
+.wrapper{
+    margin-left: 260px;
+    width: 100%;
+	/*
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 305px;
+		padding:0;
+	margin:0;
+	list-style:none;
+	white-space:nowrap;
+
+	*/
+}
+
+.wrapper ul {
+    padding: 0;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-style: normal;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 18px;
+    width: 1180px;
+    height: 20px;
+	white-space:nowrap;
+	/*
+    margin-top: 5px;
+    margin-left: 305px;
+		padding:0;
+	margin:0;
+	list-style:none;
+	white-space:nowrap;
+
+	*/
+}
+
+.wrapper ul li {
+	display: inline-block;
+    color: #ffffff;
+	float: left;
+    word-wrap: break-word;
+    color: #ffffff;
+	display: inline-block;
+	float: left;
+    margin-left: 10px ;
+    margin-right: 0px ;
+margin-top:5px;	
+border: 0px;
+border-style: solid;
+border-color: #ff7f50;
+	/*
+	    position: relative;
+    top: 0px;
+    width: 116px;
+
+*/
+}
+
+.wrapper ul li img{
+margin-top:0px;	
+width: 28px;
+height: 28px;
+}
+
+#ribbon {
+/*
+    position: absolute;
+	*/
+    margin-top: 0;
+    margin-left: 205px;
+    padding: 0;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 13px;
+    display: block;
+    background: url("/DesInventar/images/ribbon.png");
+    width: 1180px;
+    height: 5px;
+	/*
+border: 1px;
+border-style: solid;
+border-color: #ff7f50;
+    color: #303030;
+	*/
+}
+
+.welcomeheadder{
+	margin:0;
+	height:29px;
+	background-color:#4c4c4c;
+	/*
+	background-color:#00728A;
+	*/
+	width:1000px;
+	color:#FFF;
+	font-size:11px;
+	margin-bottom:10px;
+}
+.welcome{
+	width:550px;
+	float:left;
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+}
+#searchform {
+width:400px;
+}
+.searcharea{
+	background:url(/DesInventar/images/Search_box.jpg) no-repeat 40px 5px;
+	width:auto;
+	float:right;
+	margin-right: 10px;
+}
+.searcharea span{
+	padding:9px 0 5px 0;
+	display:block;
+	float:left;
+}
+.welcome strong{
+	text-transform:uppercase;
+}
+.searchbox{
+	float:left;
+	border:0;
+	width:140px;
+	margin:6px 15px 0 10px;
+	padding:2px 0 0 0;
+	font-size:11px;
+}
+.searchbox form{
+	padding:0;
+	margin:0;
+}
+.searchbuttons{
+	padding:5px 0 0 0;
+	margin:0;
+	/*
+	margin:0px 15px 0 10px;
+	*/
+}
+
+
+<!-- Simulates IE table default borders in FireFox and Chrome -->
+.IE_Table 
+ {  
+   border-style:solid; border-width:1px; border-color: #D1D1D1; border-collapse:collapse;     
+ }
+
+.IE_Table_borders 
+ {  
+   border-style:solid; border-width:1px; border-color: #D1D1D1;     
+ }
+
+.IE_Table_borders td, .IE_Table_borders th
+{
+    border-style: solid;
+    border-color: #D1D1D1;
+	border-width: 1px 1px 0 0;
+	vertical-align:top;	
+}
+
+.DI_TableHeader
+	{
+	color:#FFFFFF;
+	background-color:#4c4c4c;
+	/*
+	color:#fffff;
+	background-color:#00728A;
+	*/
+	}
+	
+.newfont {  font-family: "Times New Roman", Courier; font-size: x-small; font-style: normal; font-weight: normal; font-variant: normal;}
+.bodylight { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; background-color: #FFFFFF;}
+/*
+.bodymedlight { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; background-color:#DDF9FF}
+.bodydarklight { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; background-color:#97EDFF}
+*/
+.bodymedlight { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; background-color:#D0D0D0}
+.bodydarklight { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; background-color:#909090}
+
+
+/* Backgrounds per approved status */
+.bodylight0 { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; background-color:#F2FCFF}
+.bodylight1 { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; background-color:#DDDDDD}
+.bodylight2 { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; background-color:#ffff9f}
+.bodylight3 { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; background-color:#fc8372}
+.bodylight4 { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; background-color:#79ff79}
+
+.title { font-family:Arial, Helvetica, sans-serif; font-size: 15px; font-style: normal; color: #000000;  font-weight: 600;}
+.subtitle { font-family:Arial, Helvetica, sans-serif; font-size: 13px; font-style: normal; color: #000000;  font-weight: 600;}
+.instruction { font-family:Arial, Helvetica, sans-serif; font-size: 9px; font-style: normal; color: #909090;}
+.regionlink { font-family:Arial, Helvetica, sans-serif; font-size: 14px; font-style: normal; color: #808080;}
+.headerBG {background-color: #C4DFDF;} 
+.causesBG {background-color: #FEDBB4;}
+.effectsBG {background-color: #E2DE8D;}
+.commentsBG {background-color: #8CC6C6;}
+
+.titleText { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: bold;}
+
+.oldheaderBG {background-color: #BCF9FC;} 
+.oldcausesBG {background-color: #FAB8B8;}
+.oldeffectsBG {background-color: #EFE856;}
+.oldcommentsBG {background-color: #269199;}
+
+.bs { font-family:Arial, Helvetica, Lucida, sans-serif; font-size: 12px; font-style: normal; vertical-align:text-top;}
+.boxheader { font-family:Arial, Helvetica, Lucida sans-serif; font-size: 10px; font-style: normal; font-weight: 400;color:#677fa4;}
+.bss { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal;vertical-align:text-top;}
+.body1 { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal;}
+.body2 { font-family:Arial, Helvetica, sans-serif; font-size: 15px; font-style: normal;}
+.body3 { font-family:Arial, Helvetica, sans-serif; font-size: 18px; font-style: normal;}
+.bodyb16{color:navy;font-family:Arial, Helvetica, sans-serif;	font-size: 16px;	font-style: normal;}
+.bodyr { color:#ff0000; font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal;}
+.warning { color: #ff0000; font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal;}
+.warningSmall { color: #ff0000; font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal;}
+.minifont {  font-family: Verdana, Courier, mono; font-size: 10px; font-style: normal; font-weight: normal; font-variant: normal}
+.linkText { font-family: Arial,  Verdana, sans-serif; font-size: 8pt; color:#6666CC; font-weight : normal; text-decoration: none}
+.linkText:Visited { font-family: Arial,  Verdana, sans-serif; font-size: 8pt; color:#6666CC; font-weight : normal; text-decoration: none}
+.linkText:Active { font-family: Arial,  Verdana, sans-serif; font-size: 8pt; color:#6666CC; font-weight : normal; text-decoration: none}
+.linkText:Hover { font-family: Arial,  Verdana, sans-serif; font-size: 8pt; color:#0000ff; font-weight : normal; text-decoration: none}
+.ltblue {  font-family: Arial,  Verdana, sans-serif; font-size: 10pt; color:#677fa4; font-weight : normal;}
+.ltbluesm {  font-family: Arial,  Verdana, sans-serif; font-size: 8pt; color:#677fa4; font-weight : normal;}
+.ltbluelg {  font-family: Arial,  Verdana, sans-serif; font-size: 11pt; color:#677fa4; font-weight : normal;}
+.bodyBackground {	font-family:Arial, Helvetica, sans-serif;	font-size: 10px;	font-style: normal;	background-color: #FFFFFF;}
+.pageBackground { font-family:Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal;background-color: #FFFFFF; margin-top:29px; }
+
+.greyText { font-family: Arial,  Verdana, sans-serif; font-size: 8pt; color:#606060; font-weight : normal; text-decoration: none}
+.greyText:Visited { font-family: Arial,  Verdana, sans-serif; font-size: 8pt; color:#606060; font-weight : normal; text-decoration: none}
+.greyText:Active { font-family: Arial,  Verdana, sans-serif; font-size: 8pt; color:#606060; font-weight : normal; text-decoration: none}
+.greyText:Hover { font-family: Arial,  Verdana, sans-serif; font-size: 8pt; color:#606060; font-weight : normal; text-decoration: none}
+
+.bluelinks { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#6666CC; font-weight : normal; text-decoration: none}
+.bluelinks:Visited { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#6666CC; font-weight : normal; text-decoration: none}
+.bluelinks:Active { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#6666CC; font-weight : normal; text-decoration: none}
+.bluelinks:Hover { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#224883; font-weight : normal; text-decoration: none}
+
+.blacklinks { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#000000; font-weight : bold; text-decoration: none}
+.blacklinks:Visited { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#000000; font-weight : bold; text-decoration: none}
+.blacklinks:Active { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#000000; font-weight : bold; text-decoration: none}
+.blacklinks:Hover { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#555555; font-weight : bold; text-decoration: none}
+
+
+.tabActiveBackground {	font-family:  Verdana, Arial, sans-serif;	font-size: 10pt;	font-style: normal;	background-color: #FFFFFF;}
+.tabInactiveBackground { font-family:  Verdana, Arial, sans-serif; font-size: 10pt; font-style: normal; background-color: #D0D0D0;}
+
+.whitetext { font-family: Verdana, Arial, sans-serif; color:#ffffff; font-weight : normal;}
+
+.whitelinks { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#ffffff; font-weight : normal; text-decoration: none}
+.whitelinks:Visited { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#ffffff; font-weight : normal; text-decoration: none}
+.whitelinks:Active { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#ffffff; font-weight : normal; text-decoration: none}
+.whitelinks:Hover { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color:#ffffff; font-weight : normal; text-decoration: underline}
+
+#topbox {width:auto; height:60px; }
+#topbox ul {list-style:none; width:980px; padding:0; }
+
+.topboxitems { 
+	font-family:  Helvetica, Arial, sans-serif;
+ 	font-style:normal;
+ 	font-size:12px;
+ 	font-weight:normal;
+ 	color:#a0a0a0;
+} 
+

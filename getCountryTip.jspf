@@ -1,0 +1,43 @@
+<script src="/DesInventar/xmlHttp.js"></script>
+<script language="JavaScript">
+
+function setTip(request)
+{
+var response=request.responseText;
+eval(response);
+var pos=response.indexOf("=");
+Tip(eval(response.substring(0,pos)));	
+}
+
+function verifyTip(countryTip, countryid)
+{
+
+if (countryTip=='Retrieving...')
+	{
+	url='/DesInventar/getTip.jsp?countrycode='+countryid;
+	sendHttpRequest('GET', url, setTip);
+	//Tip(countryTip);	
+	}
+else
+	{
+	Tip(countryTip);
+	}	
+
+}
+
+function reportError(request, url) 
+{
+	if (debug) {
+		if (request.status != 200) {
+			if (request.statusText) {
+				alert(request.statusText);
+			} else {
+				alert("HTTP Status: " + request.status+" URL="+url);
+			}
+		} else {
+			alert("Response Error - URL="+url);
+		}		
+	}
+}
+
+</script>

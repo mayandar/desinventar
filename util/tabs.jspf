@@ -1,0 +1,88 @@
+<% // kept for backwards compatibility
+String sTabActiveColor="#E7E6D1";
+String sTabInactiveColor="#a0a0a0"; //"#D8E6EF"; 
+String sTabHoverColor="#CCCB9D";
+String sTabTextActiveColor="blacklinks";
+String sTabTextInactiveColor="whitelinks";
+String sTabTextHoverColor="#000000";
+String sTabBorderColor=" bgcolor='#ffffff'";
+String sStyleTabBorderColor="background-color:'#ffffff';";
+// still used
+String sTabHeight="29";
+%>
+
+	<script language="JavaScript">
+	var sCurrentParameters="<%=countrybean.getBookmark(request)%>";	
+	function getBookmark()
+	{
+	var newURL=window.location;
+	newURL=newURL+"?";
+	var pos=newURL.indexOf("?");
+    newURL=newURL.substring(0,pos);
+	window.location=newURL+sCurrentParameters;
+	} 
+	</script>
+<!-- DYNAMIC TABS-->
+<!-- 
+<div id="di_tabs" class="mainnav" style="background-color:#00728A; height:<%=sTabHeight%>px;position:absolute;">
+ -->
+<div id="di_tabs" class="mainnav" style="background-color:#4c4c4c; height:<%=sTabHeight%>px;position:absolute;">
+ 
+  <div class="navbase">
+    <ul>
+
+<% 
+
+// String sLeftToRight="border-right:1px solid #005466;";
+String sLeftToRight="border-right:1px solid #000000;";
+if (countrybean.getLanguage().equals("AR")|| countrybean.getLanguage().equals("IR")) 
+   sLeftToRight+="float:right;";
+
+String sProtectedLinks="_ index.jsp,geographytab.jsp,eventab.jsp,causetab.jsp,extendedtab.jsp,querytab.jsp,resultstab.jsp,datacardtab.jsp,admintab.jsp,securitytab.jsp";
+   
+for (int jt=0; jt<sTabLinks.length; jt++)
+   if (sProtectedLinks.indexOf(sTabLinks[jt])>0)   		
+		sTabLinks[jt]="javascript:postTo('"+sTabLinks[jt]+"')";
+//		sTabLinks[jt]+="?usrtkn="+countrybean.userHash;
+		   	  
+   
+for (int jt=0; jt<sTabNames.length; jt++)
+	{
+	String sLinkClass="";
+	String sLiStyle=sLeftToRight;
+	if (jt==nTabActive)
+	   {
+	   sLinkClass="color:#000000; ";
+	   // sLiStyle+="background-color:#DDEFEC; border-bottom-color:#ffffff;";
+	   sLiStyle+="background-color:#808080; border-bottom-color:#ffffff;";
+	   }
+    
+ 	sLiStyle=" style='"+sLiStyle+" height:"+sTabHeight+"px'";
+
+    if (sTabIcons[jt].length()>0)
+	  {
+	  if (sLinkClass.length()>0)
+	      sLinkClass=" style='"+sLinkClass+"'";
+	  %><li<%=sLiStyle%>><a<%=sLinkClass%> href="<%=sTabLinks[jt]%>"><img style="position:relative; top:4px;" src="/DesInventar/images/<%=sTabIcons[jt]%>" border="0" alt="<%=sTabNames[jt]%>"/>&nbsp;&nbsp;<%=sTabNames[jt]%></a></li>
+    <%}
+	  else
+	  {
+      sLinkClass=" style='"+sLinkClass+" padding-top:8px;'";
+	  %><li<%=sLiStyle%>><a<%=sLinkClass%> href="<%=sTabLinks[jt]%>"><%=sTabNames[jt]%></a></li>
+    <%}
+    }
+sLeftToRight="float:right;margin-right:35px;";
+if (countrybean.getLanguage().equals("AR")|| countrybean.getLanguage().equals("IR")) 
+   sLeftToRight="float:left;margin-left:35px;";
+%>
+   </ul>
+  <form name='datalang' style="<%=sLeftToRight%>margin-bottom:0;margin-top:5px;">&nbsp;<input type="Checkbox" onclick="dataLanguage()" name='datalanguage' value="Y"<%=countrybean.strChecked("EN",countrybean.getDataLanguage())%>><%=countrybean.getTranslation("English Data")%>&nbsp;</form>
+  </div>
+</div>
+<% // adjusts the navbar for reaaally wide languages (Laos so far) 
+if (countrybean.getLanguage().equals("LA")) {%> 
+	<script language="javascript">
+	document.getElementById("di_tabs").style.width="1250px";
+	</script>
+<%}%>   
+ 

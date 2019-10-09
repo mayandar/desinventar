@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<!-- DesInventar tag library descriptor -->
+
+<taglib>
+<!-- after this the default space is "http://java.sun.com/j2ee/dtds/jsptaglibrary_1_2.dtd" -->
+<tlibversion>1.0</tlibversion>
+<jspversion>1.1</jspversion>
+<shortname>inventag</shortname>
+<info>
+A tag library from Core Servlets and JavaServer Pages,
+http://www.coreservlets.com/.
+</info>
+
+<!-- Generic table Select tag... -->
+<tag>
+<name>select</name>
+<tagclass>org.lared.desinventar.tag.select</tagclass>
+<info>Produces a selection list from ANY table</info>
+<attribute> <!-- database connection object (must be active) -->
+	<name>connection</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- Table to select from -->
+	<name>tablename</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- Field to be shown in select list -->
+	<name>fieldname</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- Field to be used for code values in select list -->
+	<name>codename</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- Field to be used as ordering criteria for values in select list -->
+	<name>ordername</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- pre-selected element (optional) -->
+	<name>selected</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- additional Where (optional) -->
+	<name>whereclause</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- language (optional, default=0) -->
+	<name>language</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- language (optional, default=0) -->
+	<name>languagefield</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+<!-- Ckeck image tag, one boolean parameter -->
+<tag>
+<name>check</name>
+<tagclass>org.lared.desinventar.tag.checkimg</tagclass>
+<info>Inserts a checkmark image if selected value is !=0</info>
+<attribute> <!-- database connection object (must be active) -->
+	<name>value</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+<!-- Ckeck image tag, one numeric and one boolean parameter -->
+<tag>
+<name>check2</name>
+<tagclass>org.lared.desinventar.tag.check2img</tagclass>
+<info>Inserts a  number or a checkmark image depending on number and if selected value is !=0</info>
+<attribute> <!-- database connection object (must be active) -->
+	<name>number</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- database connection object (must be active) -->
+	<name>value</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+<!-- Signature tag... -->
+<tag>
+<name>example</name>
+<tagclass>org.lared.desinventar.tag.inventag</tagclass>
+<info>Inserts one line of output with J.Serje signature</info>
+</tag>
+
+<!-- Country Select tag... -->
+<tag>
+<name>selectCountry</name>
+<tagclass>org.lared.desinventar.tag.selectCountry</tagclass>
+<info>Produces a selection list with countries</info>
+<attribute> <!-- database connection object (must be active) -->
+	<name>connection</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- pre-selected element (optional) -->
+	<name>selected</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+<!-- Access to authorized Country Select tag... -->
+<tag>
+<name>selectBase</name>
+<tagclass>org.lared.desinventar.tag.selectBase</tagclass>
+<info>Produces a selection list with countries for which the user is authorized</info>
+<attribute> <!-- database connection object (must be active) -->
+	<name>connection</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- user object (must exist??) -->
+	<name>user</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- pre-selected element (optional) -->
+	<name>selected</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+<!-- Event Select tag... -->
+<tag>
+<name>selectEvent</name>
+<tagclass>org.lared.desinventar.tag.selectEvent</tagclass>
+<info>Produces a selection list with events</info>
+<attribute> <!-- database connection object (must be active) -->
+	<name>connection</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- pre-selected element (optional) -->
+	<name>selected</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- Approved level (optional) -->
+	<name>approved</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- language element(optional) -->
+	<name>language</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+<!-- Cause Select tag... -->
+<tag>
+<name>selectCause</name>
+<tagclass>org.lared.desinventar.tag.selectCause</tagclass>
+<info>Produces a selection list with causes</info>
+<attribute> <!-- database connection object (must be active) -->
+	<name>connection</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- pre-selected element (optional) -->
+	<name>selected</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- language element (optional) -->
+	<name>language</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+
+<!-- Level 0 Select tag... -->
+<tag>
+<name>selectLevel0</name>
+<tagclass>org.lared.desinventar.tag.selectLevel0</tagclass>
+<info>Produces a selection list with level0 elements</info>
+<attribute> <!-- database connection object (must be active) -->
+	<name>connection</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- pre-selected element (optional) -->
+	<name>selected</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+<!-- Level 1 Select tag... -->
+<tag>
+<name>selectLevel1</name>
+<tagclass>org.lared.desinventar.tag.selectLevel1</tagclass>
+<info>Produces a selection list with level 1 elements</info>
+<attribute> <!-- database connection object (must be active) -->
+	<name>connection</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- Level0 parent (optional)-->
+	<name>level0Code</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- pre-selected element (optional) -->
+	<name>selected</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+<!-- Level 2 Select tag... -->
+<tag>
+<name>selectLevel2</name>
+<tagclass>org.lared.desinventar.tag.selectLevel2</tagclass>
+<info>Produces a selection list with level 2 elements</info>
+<attribute> <!-- database connection object (must be active) -->
+	<name>connection</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- Level1 parent NOTE:  MANDATORY !!!-->
+	<name>level1Code</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- pre-selected element (optional) -->
+	<name>selected</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+
+
+<!-- Level X Select tag... -->
+<tag>
+<name>selectLevelX</name>
+<tagclass>org.lared.desinventar.tag.selectLevelX</tagclass>
+<info>Produces a selection list with level X elements of a certain country</info>
+<attribute> <!-- MAIN database connection object (must be active) -->
+	<name>connection</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- username -->
+	<name>user</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- level to browse-->
+	<name>level</name>
+	<required>true</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+<attribute> <!-- show only selected items-->
+	<name>only_selected</name>
+	<required>false</required>
+	<rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+
+
+</taglib>

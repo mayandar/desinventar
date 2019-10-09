@@ -1,0 +1,57 @@
+<%
+response.setContentType("text/html; charset=UTF-8");
+request.setCharacterEncoding("UTF-8"); 
+// if this runs in an IFRAME under IE, this will allow cookies to stay...just magic!
+((HttpServletResponse)response).addHeader("P3P", "CP=\"CAO PSA OUR\"");
+((HttpServletResponse)response).addHeader("X-Frame-Options", "SAMEORIGIN");
+ // Declaration of specific Country Dabatase variables available to the page  
+// load language code (if available)
+if (request.getParameter("lang")!=null)
+	countrybean.setLanguage(request.getParameter("lang"));
+// load DATA language code (if available)
+if (request.getParameter("datalng")!=null)
+	countrybean.setDataLanguage(request.getParameter("datalng"));
+dbConnection dbCon=null; 
+Connection con=null; 
+boolean bConnectionOK=false; 
+// opens the database 
+dbCon=new dbConnection();
+bConnectionOK = dbCon.dbGetConnectionStatus();
+if (bConnectionOK)
+	{
+	con=dbCon.dbGetConnection();
+	boolean bContainsDesInventar=false;
+	ResultSet rs=null;
+	Statement st=null;
+    // Database exists, see if it is a DI main database. 
+	try
+		{
+		// test that country table exists!!!
+		st=con.createStatement();
+		rs=st.executeQuery("select scountryid from country where scountryid='@@'");
+		bContainsDesInventar=true;
+		}
+	catch (Exception eNotDI)
+		{
+		} 
+	finally
+		{
+		try {
+			rs.close();
+			st.close();
+			}
+		catch (Exception ecls)
+			{}	
+		}
+	 if (!bContainsDesInventar)
+	 	{
+		dbCon.close();
+		%><jsp:forward page="/util/defaultJDBCConnectionWizard.jsp"/><%
+		}	
+	}
+else
+	{
+	dbCon.close();	
+	%><jsp:forward page="/util/defaultConnectionWizard.jsp"/><%
+	}	
+%>
