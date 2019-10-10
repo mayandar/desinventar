@@ -65,7 +65,7 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 {
   if (request.getParameter("sub")==null)
   	{%>
-	<iframe width="100%" height="100%" id="contentFrame" src="adminManager.jsp?usrtkn=<%=countrybean.userHash%>"></iframe>
+	<iframe width="100%" height="100%" id="contentFrame" align="left" src="adminManager.jsp?usrtkn=<%=countrybean.userHash%>"></iframe>
   <%}
   else
     {

@@ -128,13 +128,13 @@ public class Sys
   // -------------------------------------------------------------------------------
 
   // prefix to all template files, dependent on the file system
-  public static String strFilePrefix = "c:/desinventar";
+  public static String strFilePrefix = "/desinventar";
   // drive prefix to all files, dependent on the file system
   public static String strAbsPrefix = "";
   // Absolute WEB APP DIRECTORY
-  public static String sDefaultDir = "c:/desinventar";
+  public static String sDefaultDir = "/desinventar";
   // Directory for mail daemon
-  public static String strMailDir = "c:/desinventar";
+  public static String strMailDir = "/desinventar";
 
   public static String sLastError = "";
 

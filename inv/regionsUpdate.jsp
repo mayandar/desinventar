@@ -195,7 +195,7 @@ function setDefault()
 
 function setUcan()
 {
-sDefaultAccessString=sDefaultString;
+sDefaultAccessString=sDefault64Ucan;
 asDrivers[1]="<%=EncodeUtil.jsEncode(Sys.sAccess64Driver)%>";
 asDrivers[4]=asDrivers[1];
 setODBC();

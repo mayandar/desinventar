@@ -11,26 +11,26 @@ copy webapps\DesInventar\*.pdf C:\osso\CD /y
 del ..\web-installer\Server\webapps\DesInventar\desinventar*.mdb 
 del ..\web-installer\setup*.exe 
 xcopy webapps\DesInventar\inv\*.* ..\web-installer\Server\webapps\DesInventar\inv /y /s
-copy webapps\DesInventar\util\*.* ..\web-installer\Server\webapps\DesInventar\util /y
+xcopy webapps\DesInventar\util\*.* ..\web-installer\Server\webapps\DesInventar\util /y /s
 xcopy webapps\DesInventar\html\*.* ..\web-installer\Server\webapps\DesInventar\html /y /S
 xcopy webapps\DesInventar\help\*.* ..\web-installer\Server\webapps\DesInventar\help /y /S
-copy webapps\DesInventar\images\*.* ..\web-installer\Server\webapps\DesInventar\images /y
-copy webapps\DesInventar\img\*.* ..\web-installer\Server\webapps\DesInventar\img /y
-copy webapps\DesInventar\wdds\*.* ..\web-installer\Server\webapps\DesInventar\wdds /y
-copy webapps\DesInventar\json\*.* ..\web-installer\Server\webapps\DesInventar\json /y
-copy webapps\DesInventar\download\index.jsp ..\web-installer\Server\webapps\DesInventar\download /y
-copy webapps\DesInventar\download\LICENSE.* ..\web-installer\Server\webapps\DesInventar\download /y
-copy webapps\DesInventar\tip_balloon\*.* ..\web-installer\Server\webapps\DesInventar\tip_balloon /y
+xcopy webapps\DesInventar\images\*.* ..\web-installer\Server\webapps\DesInventar\images /y /s
+xcopy webapps\DesInventar\img\*.* ..\web-installer\Server\webapps\DesInventar\img /y /s
+xcopy webapps\DesInventar\wdds\*.* ..\web-installer\Server\webapps\DesInventar\wdds /y /s
+xcopy webapps\DesInventar\json\*.* ..\web-installer\Server\webapps\DesInventar\json /y /s
+xcopy webapps\DesInventar\download\index.jsp ..\web-installer\Server\webapps\DesInventar\download /y /s
+xcopy webapps\DesInventar\download\LICENSE.* ..\web-installer\Server\webapps\DesInventar\download /y /s
+xcopy webapps\DesInventar\tip_balloon\*.* ..\web-installer\Server\webapps\DesInventar\tip_balloon /y
 xcopy webapps\DesInventar\scripts\*.* ..\web-installer\Server\webapps\DesInventar\scripts /s /y
 xcopy webapps\DesInventar\src\index.jsp ..\web-installer\Server\webapps\DesInventar\src  /s /y
 xcopy webapps\DesInventar\src\org\*.* ..\web-installer\Server\webapps\DesInventar\src\org  /s /y
 xcopy webapps\DesInventar\WEB-INF\classes\org\lared\*.* ..\web-installer\Server\webapps\DesInventar\WEB-INF\classes\org\lared  /s /y
-copy  webapps\DesInventar\WEB-INF\web.xml ..\web-installer\Server\webapps\DesInventar\WEB-INF\web.xml /y
+xcopy webapps\DesInventar\WEB-INF\web.xml ..\web-installer\Server\webapps\DesInventar\WEB-INF\web.xml /y /s
 xcopy webapps\DesInventar\WEB-INF\classes\com\*.* ..\web-installer\Server\webapps\DesInventar\WEB-INF\classes\com  /s /y
 
 REM copy webapps\DesInventar\WEB-INF\exe\*.* ..\web-installer\Server\webapps\DesInventar\WEB-INF\exe /y
 
-copy webapps\DesInventar\WEB-INF\lib\*.* ..\web-installer\Server\webapps\DesInventar\WEB-INF\lib /y
+xcopy webapps\DesInventar\WEB-INF\lib\*.* ..\web-installer\Server\webapps\DesInventar\WEB-INF\lib /y /s
 del ..\web-installer\Server\webapps\DesInventar\WEB-INF\lib\postgr*.jar
 del ..\web-installer\Server\webapps\DesInventar\WEB-INF\lib\ojdbc14.jar
 del ..\web-installer\Server\webapps\DesInventar\WEB-INF\lib\sqljdbc.jar
@@ -75,27 +75,24 @@ del ..\web-update\Server\webapps\DesInventar\*.doc
 del ..\web-update\Server\webapps\DesInventar\*.pdf 
 del ..\web-update\Server\webapps\DesInventar\*.ppt 
 del ..\web-update\Server\webapps\DesInventar\WEB-INF\lib\*.jar
-del ..\web-update\Server\webapps\DesInventar\WEB-INF\exe\*.exe 
-del ..\web-update\Server\webapps\DesInventar\WEB-INF\exe\*.oc?
-del ..\web-update\Server\webapps\DesInventar\WEB-INF\exe\*.dll 
+del ..\web-update\Server\webapps\DesInventar\WEB-INF\exe\*.* /Y
 del ..\web-update\setup*.exe 
 del ..\web-update\update*.exe 
 xcopy webapps\DesInventar\inv\*.* ..\web-update\Server\webapps\DesInventar\inv /y /s
-copy webapps\DesInventar\util\*.* ..\web-update\Server\webapps\DesInventar\util /y
+xcopy webapps\DesInventar\util\*.* ..\web-update\Server\webapps\DesInventar\util /y /s
 xcopy webapps\DesInventar\html\*.* ..\web-update\Server\webapps\DesInventar\html /y /S
-copy webapps\DesInventar\help\*.* ..\web-update\Server\webapps\DesInventar\help /y
-copy webapps\DesInventar\images\*.* ..\web-update\Server\webapps\DesInventar\images /y
-copy webapps\DesInventar\img\*.* ..\web-update\Server\webapps\DesInventar\img /y
-copy webapps\DesInventar\download\index.jsp ..\web-update\Server\webapps\DesInventar\download /y
-copy webapps\DesInventar\download\LICENSE.* ..\web-update\Server\webapps\DesInventar\download /y
-copy webapps\DesInventar\wdds\*.* ..\web-update\Server\webapps\DesInventar\wdds /y
-copy webapps\DesInventar\json\*.* ..\web-update\Server\webapps\DesInventar\json /y
-copy webapps\DesInventar\tip_balloon\*.* ..\web-update\Server\webapps\DesInventar\tip_balloon /y
+xcopy webapps\DesInventar\help\*.* ..\web-update\Server\webapps\DesInventar\help /y /s
+xcopy webapps\DesInventar\images\*.* ..\web-update\Server\webapps\DesInventar\images /y /s
+xcopy webapps\DesInventar\img\*.* ..\web-update\Server\webapps\DesInventar\img /y /s
+xcopy webapps\DesInventar\download\index.jsp ..\web-update\Server\webapps\DesInventar\download /y /s
+xcopy webapps\DesInventar\download\LICENSE.* ..\web-update\Server\webapps\DesInventar\download /y /s
+xcopy webapps\DesInventar\wdds\*.* ..\web-update\Server\webapps\DesInventar\wdds /y /s
+xcopy webapps\DesInventar\json\*.* ..\web-update\Server\webapps\DesInventar\json /y /s
 xcopy webapps\DesInventar\scripts\*.* ..\web-update\Server\webapps\DesInventar\scripts /s /y
 xcopy webapps\DesInventar\src\index.jsp ..\web-update\Server\webapps\DesInventar\src  /s /y
 xcopy webapps\DesInventar\src\org\*.* ..\web-update\Server\webapps\DesInventar\src\org  /s /y
 xcopy webapps\DesInventar\WEB-INF\classes\org\lared\*.* ..\web-update\Server\webapps\DesInventar\WEB-INF\classes\org\lared  /s /y
-copy  webapps\DesInventar\WEB-INF\web.xml ..\web-update\Server\webapps\DesInventar\WEB-INF\web.xml /y
+xcopy webapps\DesInventar\WEB-INF\web.xml ..\web-update\Server\webapps\DesInventar\WEB-INF\web.xml /y /s
 xcopy webapps\DesInventar\WEB-INF\classes\com\*.* ..\web-update\Server\webapps\DesInventar\WEB-INF\classes\com  /s /y
 
 REM copy webapps\DesInventar\WEB-INF\exe\*.* ..\web-update\Server\webapps\DesInventar\WEB-INF\exe /y
@@ -104,7 +101,6 @@ copy webapps\DesInventar\WEB-INF\lib\*.* ..\web-update\Server\webapps\DesInventa
 del ..\web-update\Server\webapps\DesInventar\WEB-INF\lib\postgr*.jar
 del ..\web-update\Server\webapps\DesInventar\WEB-INF\lib\ojdbc14.jar
 del ..\web-update\Server\webapps\DesInventar\WEB-INF\lib\sqljdbc.jar
-copy deploy.bat webapps\DesInventar\scripts
 
 xcopy webapps\ROOT\*.* ..\web-update\Server\webapps\ROOT  /s /y
 del ..\web-update\Server\webapps\ROOT\doc\*.doc
