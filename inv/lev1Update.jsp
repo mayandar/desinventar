@@ -17,7 +17,7 @@ if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 <title>DesInventar on-line - Create/Update <%=countrybean.asLevels[1]%></title>
 </head>
 
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%@ include file="/inv/checkUserIsLoggedIn.jsp" %>
 <%
 if (user.iusertype<20) 
