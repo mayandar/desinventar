@@ -22,7 +22,7 @@ if (countrybean.countrycode.length()==0)
 <title>DesInventar on-line : <%=countrybean.countryname%> <%=countrybean.getTranslation("Metadata National Language Manager")%> </title>
 </head>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 
 
 <%

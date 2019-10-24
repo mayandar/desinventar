@@ -16,7 +16,7 @@
 </head>
 <%@ include file="checkUserIsLoggedIn.jsp" %>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 
 <script language="javascript">
 <!-- 

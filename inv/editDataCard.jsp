@@ -34,7 +34,7 @@ if (request.getParameter("quit")!=null)
 </head>
 <body  marginheight="0" topmargin="0" leftmargin="0"  marginwidth="0" class='bodylight' dir="<%=countrybean.getTranslation("ltr")%>"> 
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%
 {
 int nTabActive=7; // 
@@ -66,7 +66,6 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 </table><br/>
 <form name="desinventar" method="post" action="editDataCard.jsp"> 
 <input type="hidden" name="usrtkn" id="usrtkn" value="<%=countrybean.userHash%>"> 
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
 <% // Java declarations
 ArrayList sqlparams=new ArrayList();
 PreparedStatement pstmt=null;
@@ -137,8 +136,12 @@ if (bConnectionOK)
         // rset will be scrollable, will not show changes made by others, and read only
 		try
 			{
-	    	pstmt=con.prepareStatement("select fichas.serial, fichas.clave "+countrybean.getWhereSql(countrybean.nApproved,sqlparams)+" order by "+countrybean.getSortbySql(),
+	    	pstmt=con.prepareStatement("select fichas.serial, fichas.clave "+countrybean.getWhereSql(countrybean.nApproved,sqlparams)
+																		    +user.sGetUserWhereSQL(countrybean.countrycode)
+																			+" order by "+countrybean.getSortbySql(),
 		                            ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+			//System.out.println("[DI9] dbg sql data entry: "+user.sGetUserWhereSQL(countrybean.countrycode));
 
 			for (int k=0; k<sqlparams.size(); k++)
 						pstmt.setString(k+1, (String)sqlparams.get(k));

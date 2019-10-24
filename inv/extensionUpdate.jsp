@@ -15,7 +15,7 @@
 if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 	 	{%><jsp:forward page="noaccess.jsp"/><%}		
 %>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%@ include file="/inv/checkUserIsLoggedIn.jsp" %>
 <%if (user.iusertype<20) 
  {%>

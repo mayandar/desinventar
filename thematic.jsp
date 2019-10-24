@@ -63,7 +63,7 @@ document.onmouseup=new Function("isdrag=false");
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
 <%@ include file="/util/opendatabase.jspf" %>
 <%@ include file="/paramprocessor.jspf" %>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/header",countrybean.getLanguage(),out);%>
 <%
 int nTabActive=7; // thematic

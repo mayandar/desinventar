@@ -50,7 +50,7 @@ if (countrybean.countrycode.length()==0)
 </head>
  
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%
 {
 int nTabActive=7; // 
@@ -111,7 +111,7 @@ else
 woExtension.dbType=dbType;
 woExtension.loadExtension(con,countrybean);
 %>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <FORM NAME="desinventar" action="addDataCard.jsp" method="post">
 <input type="hidden" name="usrtkn" id="usrtkn" value="<%=countrybean.userHash%>"> 
 
@@ -221,7 +221,7 @@ String sApprovedClass="bodylight"+woFicha.approved;
 								if (sWhere.length()>0)
 									sWhere+=")";
 								}							  
-							  sSql+=" order by lev1_name";
+							  sSql+=sWhere+" order by lev1_name";
 							  rset = stmt.executeQuery(sSql);
 							  while (rset.next())
 							  {

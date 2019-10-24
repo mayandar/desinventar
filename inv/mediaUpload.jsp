@@ -13,7 +13,7 @@
 <jsp:useBean id="woFicha" class="org.lared.desinventar.webobject.fichas" scope="session" />
 <jsp:useBean id="woExtension" class="org.lared.desinventar.webobject.extension" scope="session" />
 <jsp:useBean id="woMedia" class="org.lared.desinventar.webobject.MediaFile" scope="session" />
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%!
 String sBlankZero(int num)
 {

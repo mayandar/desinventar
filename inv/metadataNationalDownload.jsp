@@ -14,7 +14,7 @@
 <jsp:useBean id = "metadata" class="org.lared.desinventar.webobject.MetadataNational" scope="session" />
 <jsp:useBean id = "metadataNationalValue" class="org.lared.desinventar.webobject.MetadataNationalValues" scope="session" />
 <jsp:useBean id = "Dictionary" class="org.lared.desinventar.webobject.diccionario" scope="session" />
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%
 if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 	 	{%><jsp:forward page="noaccess.jsp"/><%}		
@@ -25,7 +25,7 @@ if (countrybean.countrycode.length()==0)
 </head>
 <%@ include file="/util/opendatabase.jspf" %>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%
 int nTabActive=9; // 
 String[] sTabNames={countrybean.getTranslation("Region"),countrybean.getTranslation("Geography"),countrybean.getTranslation("Events"),

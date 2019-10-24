@@ -12,7 +12,7 @@
 </head>
  <%@ include file="/util/opendatabase.jspf" %>
 <%@ include file="/paramprocessor.jspf" %>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/header",countrybean.getLanguage(),out);%>
 <%
 int nTabActive=3; // maps

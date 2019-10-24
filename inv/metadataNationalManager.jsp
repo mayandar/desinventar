@@ -16,7 +16,7 @@
 <jsp:useBean id = "metadata" class="org.lared.desinventar.webobject.MetadataNational" scope="session" />
 <jsp:useBean id = "metadataNationalValue" class="org.lared.desinventar.webobject.MetadataNationalValues" scope="session" />
 <jsp:useBean id = "metadataNationalLang" class="org.lared.desinventar.webobject.MetadataNationalLang" scope="session" />
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%
 if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 	 	{%><jsp:forward page="noaccess.jsp"/><%}		
@@ -26,7 +26,7 @@ if (countrybean.countrycode.length()==0)
 <title>DesInventar on-line : <%=countrybean.countryname%> <%=countrybean.getTranslation("Metadata National Manager")%> </title>
 </head>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 
 
 <%

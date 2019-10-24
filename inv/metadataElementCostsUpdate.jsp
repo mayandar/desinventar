@@ -13,7 +13,7 @@
 <jsp:useBean id = "metaElement" class="org.lared.desinventar.webobject.MetadataElement" scope="session" />
 <jsp:useBean id = "metadataElementCost" class="org.lared.desinventar.webobject.MetadataElementCosts" scope="session" />
 <jsp:useBean id="indicator" class="org.lared.desinventar.webobject.MetadataIndicator" scope="session" />
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%@ include file="/inv/checkUserIsLoggedIn.jsp" %>
 <%
 indicator.indicator_key=indicator.extendedParseInt(request.getParameter("indicator_key"));
@@ -25,7 +25,7 @@ if (countrybean.countrycode.length()==0)
 <title>DesInventar on-line : <%=countrybean.countryname%> <%=countrybean.getTranslation("Metadata Element Costs Manager")%> </title>
 </head>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 
 
 <%

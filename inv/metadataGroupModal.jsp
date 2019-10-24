@@ -17,7 +17,7 @@
  <jsp:forward page="noaccess.jsp"/>
 <%}%>
 <%@ include file="/util/opendatabase.jspf" %>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <link href="/DesInventar/html/desinventar.css" rel="stylesheet" type="text/css"/>
 
 <script type="text/javascript">
