@@ -15,7 +15,7 @@ public class economic_loss {
     {
 
         //NOTE: Fix the no Country metadata_element
-        System.out.println("Remove @@@ - sendai.item_abstract");
+        System.out.println("[DI9] Remove @@@ - sendai.item_abstract");
 
         //get list of custom fields
         ArrayList<Long> ids = getDictionaryIds(con);
@@ -68,7 +68,7 @@ public class economic_loss {
             }
         }
 
-        System.out.println("Finished processing losses");
+        System.out.println("[DI9] Finished processing losses");
     }
 
     public void calculate_temp_economic_loss(Connection con, String sCountryCodes) 
