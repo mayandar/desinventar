@@ -11,7 +11,7 @@
 <%@ page import="org.lared.desinventar.util.*" %> 
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
 <jsp:useBean id="user" class="org.lared.desinventar.webobject.xuser" scope="session" />
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%
 if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 	 	{%><jsp:forward page="noaccess.jsp"/><%}		

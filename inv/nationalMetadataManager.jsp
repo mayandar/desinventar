@@ -15,7 +15,7 @@
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
 <jsp:useBean id = "Event" class="org.lared.desinventar.webobject.eventos" scope="session" />
 <jsp:useBean id = "metadata" class="org.lared.desinventar.webobject.MetadataNational" scope="session" />
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%@ include file="/inv/checkUserIsLoggedIn.jsp" %>
 <%
 if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))

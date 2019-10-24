@@ -18,7 +18,7 @@ request.setCharacterEncoding("UTF-8");
 <title><%=countrybean.getTranslation("DesConsultar - Charts / Query Module")%></title>
 </head>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/header",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <% 
 // these should be done at region opening only
 if (request.getParameter("countrycode")!=null) 

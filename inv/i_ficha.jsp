@@ -90,8 +90,8 @@ function initialize()
 	map = new google.maps.Map(document.getElementById("map_canvas"),        myOptions);
 }
 
-// AUTO-REFRESH HOOK, EVERY MINUTE!!
-setInterval(function(){ autosave(clave); }, 60000);
+// AUTO-REFRESH HOOK, EVERY MINUTE!!   This is intended to allow changes by others to be shown here.
+ setInterval(function(){ autosave(clave); }, 60000);
 
 </script>
 

@@ -24,7 +24,7 @@ if (request.getParameter("datalng")!=null)
 <title>DesInventar on-line : <%=countrybean.countryname%> <%=countrybean.getTranslation("Administration")%> </title>
 </head>
  <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <!-- DI TOP OPEN -->
 <script language="javascript">
 <!-- 

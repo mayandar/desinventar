@@ -15,10 +15,10 @@
  <jsp:forward page="noaccess.jsp"/>
 <%}%>
 <%@ include file="/util/opendatabase.jspf" %>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <link href="/DesInventar/html/desinventar.css" rel="stylesheet" type="text/css"/>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%
 int nTabActive=9; // 
 String[] sTabNames={countrybean.getTranslation("Region"),countrybean.getTranslation("Geography"),countrybean.getTranslation("Events"),

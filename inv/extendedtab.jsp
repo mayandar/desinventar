@@ -22,7 +22,7 @@ if (countrybean.countrycode.length()==0)
 </head>
 <link href="/DesInventar/html/desinventar.css" rel="stylesheet" type="text/css"/>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 
 
 <%

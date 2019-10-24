@@ -11,7 +11,7 @@
 <%@ page import = "java.sql.*" %>
 <jsp:useBean id = "user" class="org.lared.desinventar.webobject.xuser" scope="session" />
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%@ include file="/inv/checkUserIsLoggedIn.jsp" %>
 <link href="/DesInventar/html/desinventar.css" rel="stylesheet" type="text/css"/>
 <body  marginheight="0" topmargin="0" leftmargin="0"  marginwidth="0" class='bodylight' dir="<%=countrybean.getTranslation("ltr")%>"> 

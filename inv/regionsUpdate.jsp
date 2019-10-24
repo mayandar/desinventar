@@ -29,7 +29,7 @@ if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 <link href="/DesInventar/html/desinventar.css" rel="stylesheet" type="text/css"/>
 <body  marginheight="0" topmargin="0" leftmargin="0"  marginwidth="0" class='bodylight' dir="<%=countrybean.getTranslation("ltr")%>"> 
  
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%@ include file="/util/opendefaultdatabase.jspf" %>
 <%=Region.lastError%>
 

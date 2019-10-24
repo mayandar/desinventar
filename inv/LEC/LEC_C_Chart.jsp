@@ -13,7 +13,7 @@
     <jsp:useBean id = "woFicha" class="org.lared.desinventar.webobject.fichas" scope="session" />
     <jsp:useBean id = "woExtension" class="org.lared.desinventar.webobject.extension" scope="session" />
 
-    <%@ taglib uri="/inventag.tld" prefix="inv" %>
+    <%@ taglib uri="../inventag.tld" prefix="inv" %>
     <%@ include file="/inv/checkUserIsLoggedIn.jsp" %>
     
     <%if (user.iusertype<20) 

@@ -13,7 +13,7 @@
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
 <jsp:useBean id = "Level0" class="org.lared.desinventar.webobject.lev0" scope="session" />
 <jsp:useBean id = "Level1" class="org.lared.desinventar.webobject.lev1" scope="session" />
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%@ include file="/inv/checkUserIsLoggedIn.jsp" %>
 <%
 if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))

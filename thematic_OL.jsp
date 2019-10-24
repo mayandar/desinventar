@@ -12,7 +12,7 @@
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
 <%@ include file="/util/opendatabase.jspf" %>
 <%@ include file="/paramprocessor.jspf" %>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <title>DesConsultar on-line Thematic Map</title>
 <link rel="stylesheet" href="OL_style.css" type="text/css" />
 <%! 

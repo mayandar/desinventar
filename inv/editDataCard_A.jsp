@@ -34,7 +34,7 @@ if (request.getParameter("quit")!=null)
 </head>
 <body  marginheight="0" topmargin="0" leftmargin="0"  marginwidth="0" class='bodylight' dir="<%=countrybean.getTranslation("ltr")%>"> 
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%
 {
 int nTabActive=7; // 
@@ -66,7 +66,7 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 </table><br/>
 <form name="desinventar" method="post" action="editDataCard.jsp"> 
 <input type="hidden" name="usrtkn" id="usrtkn" value="<%=countrybean.userHash%>"> 
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <% // Java declarations
 ArrayList sqlparams=new ArrayList();
 PreparedStatement pstmt=null;

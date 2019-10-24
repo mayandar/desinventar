@@ -11,7 +11,7 @@
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
 <jsp:useBean id="user" class="org.lared.desinventar.webobject.xuser" scope="session" />
 <jsp:useBean id="woExtension" class="org.lared.desinventar.webobject.extension" scope="session" />
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%
 if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 	 	{%><jsp:forward page="noaccess.jsp"/><%}		
@@ -19,7 +19,7 @@ if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 if (countrybean.countrycode.length()==0)
 	{%><jsp:forward page="/inv/index.jsp"/><%}%>
 <%@ include file="/inv/checkUserIsLoggedIn.jsp" %>
- <title>DesInventar on-line : <%=countrybean.countryname%> <%=countrybean.getTranslation("EditData")%> </title>
+ <title>DesInventar on-line : <%=countrybean.countryname%> <%=countrybean.getTranslation("EditData")%> Hi Sec</title>
 <%!
 String outSortHeader(String sVariable, String sTitle)
 {
@@ -272,12 +272,20 @@ try
 		%>
         <tr class="bodylight<%=approved%>">
 		<td>
-		<a href= 'modifydatacard.jsp?clave=<%=sClave%>&serial=<%=sSerial%>&nStart=<%=nStart%>&start=<%=nStart+nHits%>&usrtkn=<%=countrybean.userHash%>''>
-			<img src="/DesInventar/images/edit_row.gif" alt="Edit datacard" border=0></a>
-		</td>
+		<%
+		if (user.bHasAccess(countrybean.countrycode,0,woFicha.level0) && (woFicha.level1.length()==0 || user.bHasAccess(countrybean.countrycode,1,woFicha.level1)))
+		{%>
+            <a href= 'modifydatacard.jsp?clave=<%=sClave%>&serial=<%=sSerial%>&nStart=<%=nStart%>&start=<%=nStart+nHits%>&usrtkn=<%=countrybean.userHash%>''>
+                <img src="/DesInventar/images/edit_row.gif" alt="Edit datacard" border=0></a>
+            </td>
+            <td>
+            <a href= 'deletedatacard.jsp?clave=<%=sClave%>&serial=<%=sSerial%>&nStart=<%=nStart%>&usrtkn=<%=countrybean.userHash%>'>
+                <img src="/DesInventar/images/delete_row.gif" alt="Delete datacard" border=0></a>
+		<%}
+        else
+        {%>X</td>
 		<td>
-		<a href= 'deletedatacard.jsp?clave=<%=sClave%>&serial=<%=sSerial%>&nStart=<%=nStart%>&usrtkn=<%=countrybean.userHash%>'>
-			<img src="/DesInventar/images/delete_row.gif" alt="Delete datacard" border=0></a>
+        <%}%>
 		</td>
 		<td  nowrap><%=htmlServer.htmlEncode(sSerial)%>		</td>
 		<td  nowrap><%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(woHazard.nombre,woHazard.nombre_en))%></td>

@@ -23,7 +23,7 @@ if (countrybean.countrycode.length()==0)
 %>
 <%@ include file="checkUserIsLoggedIn.jsp" %>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 
 <script language="javascript">
 <!-- 
@@ -82,7 +82,7 @@ String[] sTabLinks={"index.jsp","javascript:gotoPage('geographytab.jsp')","javas
 <table width="1024" border="1"  id="contentFrame"  class="pageBackground" rules="none" height="500">
 <tr><td align="left" valign="top">
 <!-- Content goes after this comment -->
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%// opens the country database %>
 <%@ include file="checkUserIsLoggedIn.jsp" %>
 <%if (user.iusertype<1) 

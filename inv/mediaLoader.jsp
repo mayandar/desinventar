@@ -10,7 +10,7 @@
 <%@ page import="org.lared.desinventar.webobject.*" %>
 <%@ page import="org.lared.desinventar.util.*" %>
 <%@ page import="org.lared.desinventar.system.Sys" %>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%!
 String sBlankZero(int num)
 {

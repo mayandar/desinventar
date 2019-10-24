@@ -23,11 +23,11 @@ import org.lared.desinventar.webobject.*;
 
 public class xuser extends users
 {
-  public ArrayList<String> hCountries=new ArrayList<String>();
-  public ArrayList<String>[] aLevel0=new ArrayList[3];
-
   public int nFailedCount=0;
   public int nMaxLevel=3;   
+  public ArrayList<String> hCountries=new ArrayList<String>();
+  public ArrayList<String>[] aLevel0=new ArrayList[nMaxLevel];
+
 
   
 
@@ -38,6 +38,55 @@ public class xuser extends users
   return bAccess;
   }
   
+
+  public boolean bHasAccess(String sCountryCode, int level, String sSubAreaCode)
+  {
+  boolean bAccess=false;
+  // checks the country, just in case
+  bAccess=hCountries.contains(sCountryCode) || (iusertype==99);
+  if (bAccess && level<nMaxLevel && level>=0)
+  {
+	  bAccess=aLevel0[level].contains(sCountryCode+":"+sSubAreaCode) || (iusertype==99);
+  }
+  return bAccess;
+  }
+
+
+  public String sGetUserWhereSQL(String sCountryCode)
+  {
+  String sWhere="";
+  // checks the country, just in case
+  if (iusertype<30)
+  {
+	    // restrict on all levels of permissions
+	    for (int j=0; j<nMaxLevel; j++)
+	  	  {
+		  String sAnd="'";
+	    	boolean bHasPermissionsInThisCountry=false;
+			for (int k=0; k<aLevel0[j].size(); k++)
+				if (aLevel0[j].get(k).startsWith(sCountryCode))
+						bHasPermissionsInThisCountry=true;
+				
+	    	if (bHasPermissionsInThisCountry)
+	    		  {
+	    			sWhere+=" and (level"+j+" in (";
+	    			for (int k=0; k<aLevel0[j].size(); k++)
+	    			  {
+	    			  String sPerm=aLevel0[j].get(k);
+	    		      if (sPerm.startsWith(sCountryCode))
+	    		    		  {
+	    		    	  		String sSubAreaCode=sPerm.substring(sPerm.indexOf(':')+1);
+	    		    	  		sWhere+=sAnd+sSubAreaCode;
+	    		    	  		sAnd="','";
+	    		    		  }
+	    			  }
+	    			sWhere+="'))";
+	    		  }
+	  	  }  
+  }
+  return sWhere;
+  }
+
 
   public void setCountries(Connection con)
   {

@@ -83,7 +83,7 @@ if (bConnectionOK)
 	}
 int nClave=woFicha.clave;
 %>
-<%@ taglib uri="/inventag.tld" prefix="inv" %>
+<%@ taglib uri="inventag.tld" prefix="inv" %>
 <%
 {
 int nTabActive=6; // 
@@ -142,9 +142,10 @@ if (bConnectionOK)
 	   	{
 		try
 			{
-	    	pstmt=con.prepareStatement("select fichas.serial, fichas.clave "+countrybean.getWhereSql(countrybean.nApproved,sqlparams)+" order by "+countrybean.getSortbySql(),
+	    	pstmt=con.prepareStatement("select fichas.serial, fichas.clave "+countrybean.getWhereSql(countrybean.nApproved,sqlparams)
+																		    +user.sGetUserWhereSQL(countrybean.countrycode)
+																			+" order by "+countrybean.getSortbySql(),
 		                            ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-
 			for (int k=0; k<sqlparams.size(); k++)
 						pstmt.setString(k+1, (String)sqlparams.get(k));
 			rset=pstmt.executeQuery();
