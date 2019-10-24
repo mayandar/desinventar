@@ -19,7 +19,9 @@ switch (retCode)
    {
 	case 1: // connected.. normal login. Let the user in, NO COUNTRY!!
 			countrybean.countrycode="";
-			%><jsp:forward page="index.jsp" /><%
+			response.sendRedirect(request.getContextPath() + "/inv/index.jsp");
+			%>
+            <!--jsp:forward page="index.jsp" /--><%
 			break;
 	case 2: // access denied
 	        int nFailures=user.nFailedCount++;

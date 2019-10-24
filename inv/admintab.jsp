@@ -65,7 +65,7 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 {
   if (request.getParameter("sub")==null)
   	{%>
-	<iframe width="100%" height="100%" id="contentFrame" align="left" src="adminManager.jsp?usrtkn=<%=countrybean.userHash%>"></iframe>
+	<iframe width="100%" height="1000" id="contentFrame" align="left" src="adminManager.jsp?usrtkn=<%=countrybean.userHash%>"></iframe>
   <%}
   else
     {
@@ -81,15 +81,15 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 				}
 	nextPage+=sParSep+"usrtkn="+countrybean.userHash;			
 	%>	
-	<iframe width="100%" height="100%" id="contentFrame" src="<%=nextPage%>"></iframe>
+	<iframe width="100%" height="1000" id="contentFrame" src="<%=nextPage%>"></iframe>
   <%}
 }  
 else
 {%>
-<iframe width="100%" height="100%" id="contentFrame" src="noaccess.jsp?inframe=yes"></iframe>
+<iframe width="100%" height="1000" id="contentFrame" src="noaccess.jsp?inframe=yes"></iframe>
 <%}%>
 <!-- Content goes before this comment -->
-<!--script src="/DesInventar/inv/resize.js"></script-->
+<script src="/DesInventar/inv/resize.js"></script>
 </body>
 </html>
 

@@ -11,8 +11,7 @@ var sizey=500;
 		 sizex = innerWidth;
 		 sizey = innerHeight-100;
 	}
-sizey-=80;
-//if (sizey<500)
-//	sizey=500;
+if (sizey<500)
+	sizey=500;
 document.getElementById("contentFrame").height=sizey;
 //document.getElementById("contentFrame").width=1000;  //sizex;
