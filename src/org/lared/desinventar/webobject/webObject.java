@@ -18,6 +18,7 @@ import org.lared.desinventar.util.DbPostgres;
 import org.lared.desinventar.util.DbSqlServer;
 import org.lared.desinventar.util.DbDerby;
 import org.lared.desinventar.util.DbSQLite;
+import org.lared.desinventar.util.EncodeUtil;
 import org.lared.desinventar.util.dbutils;
 import org.lared.desinventar.util.htmlServer;
 
@@ -548,13 +549,23 @@ public static String formatDouble(double val)
   }
 
 //--------------------------------------------------------------------------------
-// generic routine avoid null strings...
+//generic routine avoid null strings...
 //--------------------------------------------------------------------------------
-  public static String not_null(String strParameter)
-  {
-    return (strParameter == null)?"":strParameter;
-  }
+ public static String not_null(String strParameter)
+ {
+   return (strParameter == null)?"":strParameter;
+ }
 
+ 
+//--------------------------------------------------------------------------------
+//generic routine avoid null strings and to also encode HTML entities if present...
+//--------------------------------------------------------------------------------
+public static String not_null_safe(String strParameter)
+{
+  return (strParameter == null)?"":EncodeUtil.htmlEncode(strParameter);
+}
+
+ 
 /**
  * Truncates a string so that it will not exceed max length
 */

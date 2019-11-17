@@ -332,7 +332,9 @@ public class DICountry extends webObject  implements Serializable
   
    public void setLanguage(String sLang)
    {
-       sLanguage=sLang;
+       if (sLang.length()>2)
+    	   sLang=sLang.substring(0,2);
+       sLanguage=sLang;       
        // TODO:  build own UI for this
        //sDataLanguage=sLang;
        try
@@ -1338,15 +1340,15 @@ public class DICountry extends webObject  implements Serializable
  
     if (req.getParameter("stat0") != null)
     {
-      asStatLevels[0] = req.getParameter("stat0");
+      asStatLevels[0] = not_null_safe(req.getParameter("stat0"));
       nStatLevels = 1;
       if (req.getParameter("stat1") != null)
       {
-        asStatLevels[1] = req.getParameter("stat1");
+        asStatLevels[1] = not_null_safe(req.getParameter("stat1"));
         nStatLevels = 2;
         if (req.getParameter("stat2") != null)
         {
-          asStatLevels[2] = req.getParameter("stat2");
+          asStatLevels[2] = not_null_safe(req.getParameter("stat2"));
           nStatLevels = 3;
         }
       }
@@ -1475,10 +1477,13 @@ public class DICountry extends webObject  implements Serializable
   {
 	    String [] asArray = null;
 	    if (req.getParameterValues(sName) != null)
-	      asArray = req.getParameterValues(sName);
+	    	asArray = req.getParameterValues(sName);
 	    else
 	    	if (req.getParameter("_"+sName) != null)
 	    		      asArray = parseList(req.getParameter("_"+sName));
+	    // html encode all parameters
+	    for (int j=0; j<asArray.length; j++)
+    		asArray[j]=not_null_safe(asArray[j]);
 	    return asArray;
 	  
   }
@@ -1528,7 +1533,7 @@ public class DICountry extends webObject  implements Serializable
 
     
     nMaxhits=Math.max(10,extendedParseInt(req.getParameter("maxhits")));
-    sKeyWord=not_null(req.getParameter("sKeyWord"));
+    sKeyWord=not_null_safe(req.getParameter("sKeyWord"));
     fromyear = extendedParseInt(req.getParameter("fromyear"));
     frommonth = extendedParseInt(req.getParameter("frommonth"));
     fromday = extendedParseInt(req.getParameter("fromday"));
@@ -1544,7 +1549,7 @@ public class DICountry extends webObject  implements Serializable
     evacuated=strToBool(req.getParameter("evacuados"));
     affected=strToBool(req.getParameter("afectados"));
     relocated=strToBool(req.getParameter("reubicados"));
-    sGlide = webObject.not_null (req.getParameter("glide"));
+    sGlide = webObject.not_null_safe(req.getParameter("glide"));
     roads=strToBool(req.getParameter("roads"));
     hectares=strToBool(req.getParameter("hectares"));
     livestock=strToBool(req.getParameter("livestock"));
@@ -1562,10 +1567,10 @@ public class DICountry extends webObject  implements Serializable
     relief=strToBool(req.getParameter("relief"));
     other=strToBool(req.getParameter("other"));
     //sExpertWhere=not_null(req.getParameter("sExpertWhere"));
-    logic = not_null(req.getParameter("logic"));
+    logic = not_null_safe(req.getParameter("logic"));
     if (logic.length()==0)
       logic="OR";
-    sortby = not_null(req.getParameter("sortby"));
+    sortby = not_null_safe(req.getParameter("sortby"));
     if (sortby.length()==0)
       sortby="0";
     nApproved=extendedParseInt(req.getParameter("nApproved"));
@@ -1590,8 +1595,8 @@ public class DICountry extends webObject  implements Serializable
 	     for (int j=0; j<9; j++)
 	       {
 	         asMapRanges[j] = extendedParseDouble(request.getParameter("range_"+j));
-	         asMapColors[j] = not_null(request.getParameter("color_"+j));
-	         asMapLegends[j] =not_null(request.getParameter("legend_"+j));;
+	         asMapColors[j] = not_null_safe(request.getParameter("color_"+j));
+	         asMapLegends[j] =not_null_safe(request.getParameter("legend_"+j));;
 	       }
      else
      {
@@ -1606,15 +1611,15 @@ public class DICountry extends webObject  implements Serializable
      nShowAllIdsType=extendedParseInt(request.getParameter("idType"));  // 0=ALL, 1=only with values, 2=only selected
      nShowValueType=extendedParseInt(request.getParameter("showValues"));   // 0=don't show value, 1->show it, 2...?
      nMapType=extendedParseInt(request.getParameter("legendType"));    // 0=polyfill, 1=discs, 2=bars?
-     bColorBW= not_null(request.getParameter("chartColor")).equals("1");
-     sTitle=not_null(request.getParameter("chartTitle"));
-     sSubTitle=not_null(request.getParameter("chartSubTitle"));
+     bColorBW= not_null_safe(request.getParameter("chartColor")).equals("1");
+     sTitle=not_null_safe(request.getParameter("chartTitle"));
+     sSubTitle=not_null_safe(request.getParameter("chartSubTitle"));
      level_rep=extendedParseInt(request.getParameter("level_rep"));
      level_map=extendedParseInt(request.getParameter("level_map")); 
 	 dissagregate_map=extendedParseInt(request.getParameter("dissagregate_map")); 
      xresolution=Math.min(3000,Math.max(80,htmlServer.extendedParseInt(request.getParameter("chartX"))));
 	 yresolution=Math.min(3000,Math.max(80,htmlServer.extendedParseInt(request.getParameter("chartY"))));
-	 String sTransparencyFactor=request.getParameter("transparencyf");
+	 String sTransparencyFactor=not_null_safe(request.getParameter("transparencyf"));
 	 float dTransp=(float)extendedParseDouble(sTransparencyFactor);
 	    if (dTransp>0.05f)
 	    	dTransparencyFactor=dTransp;
@@ -2094,7 +2099,7 @@ public class DICountry extends webObject  implements Serializable
   public void processParams(HttpServletRequest request,  parser Parser, Connection con)
 	  {
 	  // depending where it is comming from, loads different parameters...
-	  String strFromPage=not_null(request.getParameter("frompage"));
+	  String strFromPage=not_null_safe(request.getParameter("frompage"));
 	  boolean bBookmark=(request.getParameter("bookmark")!=null);
 	  int level_act=0;
 	  //	   load the translations needed for the query parser BEFORE changing the language...
@@ -2106,9 +2111,10 @@ public class DICountry extends webObject  implements Serializable
 	  	}
 	  //	   load language code (if available)
 	  if (request.getParameter("lang")!=null)
-	  	{
-	  	this.setLanguage(request.getParameter("lang"));
-	  	}
+		{
+			String sLang=not_null_safe(request.getParameter("lang"));
+			setLanguage(sLang);
+		}
 	  if (bBookmark || strFromPage.equals("/main.jsp"))
 	    {
 	  	this.loadVectors(request);
@@ -2124,14 +2130,14 @@ public class DICountry extends webObject  implements Serializable
 	  if (strFromPage.equals("/profiletab.jsp"))
 	      {
 		    asEventos=null;
-		    String sEv=not_null(request.getParameter("eventos"));
+		    String sEv=not_null_safe(request.getParameter("eventos"));
 		    if (sEv.length()>0)
 		    	{
 		    	asEventos = new String[1];
 		    	asEventos[0]=sEv;
 		    	}
 		    bHayEventos = (asEventos!=null);
-		    sEv=not_null(request.getParameter("level0"));
+		    sEv=not_null_safe(request.getParameter("level0"));
 		    asNivel0 = null;
 		    asNivel1 = null;
 		    asNivel2 = null;
@@ -2151,7 +2157,7 @@ public class DICountry extends webObject  implements Serializable
 			  bViewStandard=request.getParameter("viewStandard")!=null;
 			  bViewExtended=request.getParameter("viewExtended")!=null;
 	    	}
-		  String sLocalSort=not_null(request.getParameter("localsort"));
+		  String sLocalSort=not_null_safe(request.getParameter("localsort"));
 		  if (sLocalSort.length()>0)
 		   {
 			  hOrderBy.put("8",sLocalSort);
@@ -2193,16 +2199,16 @@ public class DICountry extends webObject  implements Serializable
 	      this.nPeriodType = this.extendedParseInt(request.getParameter("periodType"));
 	      this.nSeasonType = this.extendedParseInt(request.getParameter("seasonType"));
 	      this.nChartSubmode =this.extendedParseInt(request.getParameter("chartSubMode"));
-	      this.sTitle =this.not_null(request.getParameter("chartTitle"));
-	  	  this.sSubTitle =this.not_null(request.getParameter("chartSubTitle"));
+	      this.sTitle =not_null_safe(request.getParameter("chartTitle"));
+	  	  this.sSubTitle =not_null_safe(request.getParameter("chartSubTitle"));
 	      this.b3D= "1".equals(request.getParameter("chart3D"));
 	      this.bColorBW= "1".equals(request.getParameter("chartColor"));
 	      this.xresolution=Math.min(3000,Math.max(80,this.extendedParseInt(request.getParameter("chartX"))));
 	  	  this.yresolution=Math.min(3000,Math.max(80,this.extendedParseInt(request.getParameter("chartY"))));
 	  	  this.dChartMaxX=Math.max(0,this.extendedParseDouble(request.getParameter("chartMaxX")));
 	      this.dChartMaxY=Math.max(0,this.extendedParseDouble(request.getParameter("chartMaxY")));
-	      this.bLogarithmicX= this.not_null(request.getParameter("logarithmicX")).equals("Y");
-	      this.bLogarithmicY= this.not_null(request.getParameter("logarithmicY")).equals("Y");
+	      this.bLogarithmicX= not_null(request.getParameter("logarithmicX")).equals("Y");
+	      this.bLogarithmicY= not_null(request.getParameter("logarithmicY")).equals("Y");
 	      this.bRegression= this.not_null(request.getParameter("bRegression")).equals("Y");
 	      this.loadVariables(request);
 	  	  if (this.asVariables==null)
@@ -2217,7 +2223,7 @@ public class DICountry extends webObject  implements Serializable
  	         this.asChartColors = loadArrayParameter((HttpServletRequest)request,"color");
 	  	else	
 	  	    for (int j=0; j<8; j++)
-	  	         this.asChartColors[j] = this.not_null(request.getParameter("color_"+j));
+	  	         this.asChartColors[j] = this.not_null_safe(request.getParameter("color_"+j));
 	  	if (request.getParameter("sExpertVariable")==null)
 	  	    this.sExpertVariable=""; 
 	     	}
@@ -2339,7 +2345,7 @@ String sForPage=request.getServletPath();
 
 if ("/ajax_paramprocessor.jsp".equals(sForPage))
 	{
-	sForPage=request.getParameter("frompage");	
+	sForPage=not_null_safe(request.getParameter("frompage"));	
 	}
 
 sBookMark+="&maxhits="+nMaxhits;
@@ -2435,10 +2441,10 @@ if (sExpertVariable.length()>0)
 
 if ("/maps.jsp".equals(sForPage))
 {
-	sBookMark+="&level_act="+not_null(request.getParameter("level_act"));
-	sBookMark+="&new_level="+not_null(request.getParameter("new_level"));
-	sBookMark+="&level0_code="+not_null(request.getParameter("level0_code"));
-	sBookMark+="&level1_code="+not_null(request.getParameter("level1_code"));
+	sBookMark+="&level_act="+not_null_safe(request.getParameter("level_act"));
+	sBookMark+="&new_level="+not_null_safe(request.getParameter("new_level"));
+	sBookMark+="&level0_code="+not_null_safe(request.getParameter("level0_code"));
+	sBookMark+="&level1_code="+not_null_safe(request.getParameter("level1_code"));
 
 }
 if ("/results.jsp".equals(sForPage))

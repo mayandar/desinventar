@@ -1,10 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
+<%@ page import="org.lared.desinventar.util.*" %>
 <%	
-String strTitle = request.getParameter("title");
-String sColorSelection= request.getParameter("color");
+String strTitle =  countrybean.not_null_safe(request.getParameter("title"));
+String sColorSelection= countrybean.not_null_safe(request.getParameter("color"));
 String sReturnAction= request.getParameter("gradient")!=null?"gradient":"";
-String sCallback= request.getParameter("callback");
+String sCallback= countrybean.not_null_safe(request.getParameter("callback"));
 if (sColorSelection==null)
  sColorSelection="#000000";
 else
@@ -27,7 +28,7 @@ function doDiagOK()
 	window.close();
 <% if (!bIEBrowser) { %>
 		    if (sShowDialogReturn=="gradient")
-				window.opener.<%=sCallback%>(colorSelection);
+				window.opener.<%=EncodeUtil.jsEncode(sCallback)%>(colorSelection);
 			else	
 				opener.colorDone(colorSelection);
 	<%}%>	

@@ -25,14 +25,14 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
 				"javascript:routeTo('graphics.jsp')","javascript:routeTo('definestats.jsp')","javascript:routeTo('generator.jsp')",
 				"javascript:routeTo('thematic_def.jsp')","javascript:routeTo('definextab.jsp')"};
 
-String sShowCodes=countrybean.not_null(request.getParameter("showcodes"));
+String sShowCodes=countrybean.not_null_safe(request.getParameter("showcodes"));
 // level of the displayed map
 int new_level=countrybean.extendedParseInt(request.getParameter("new_level"));
 int level_act=new_level; //countrybean.extendedParseInt(request.getParameter("level_act"));
 // if displaying level 1 or 2, what codes is being displayed
-String level0_code=countrybean.not_null(request.getParameter("level0_code"));
+String level0_code=countrybean.not_null_safe(request.getParameter("level0_code"));
 // if displaying level 2, what level1 is being displayed
-String level1_code=countrybean.not_null(request.getParameter("level1_code"));
+String level1_code=countrybean.not_null_safe(request.getParameter("level1_code"));
 %>
 <%@ include file="/util/tabs.jspf" %>
 
@@ -80,7 +80,8 @@ int xOffset=280;
 int yOffset=260;
 try // this may fail, regiones may not exist in the database...
 	{
-	 stmt = con.createStatement ();
+	 PreparedStatement pstmt=null;
+
      String sSql = " from regiones r,";
 	 String sNameSql="nombre";
 	 switch (level_act)
@@ -99,12 +100,18 @@ try // this may fail, regiones may not exist in the database...
 				break;				
 		}
 	 sSql+=" and nivel=" + level_act;
+     if ((level_act==1 && level0_code.length() > 0) ||     (level_act==2 && level1_code.length() > 0))
+			sSql += " and r.lev0_cod=?";
+	 String sFullSql="select max("+countrybean.sqlXmax()+") as x_max, max(ymax) as y_max, min("+countrybean.sqlXmin()+") as x_min, min(ymin) as y_min  " + sSql;
+	 //out.println("<!-- [1] "+sFullSql+" -->");
+     pstmt=con.prepareStatement(sFullSql);
      if (level_act==1 && level0_code.length() > 0)
-        sSql += " and r.lev0_cod='" + level0_code + "'";
-     if (level_act==2 && level1_code.length() > 0)
-        sSql += " and r.lev0_cod='" + level1_code + "'";	
-	 rset = stmt.executeQuery("select max("+countrybean.sqlXmax()+") as x_max, max(ymax) as y_max, 	min("+countrybean.sqlXmin()+") as x_min, min(ymin) as y_min  " + sSql);
-     if (rset.next())
+        	pstmt.setString(1,level0_code);
+     else if (level_act==2 && level1_code.length() > 0)
+        	pstmt.setString(1,level1_code);
+	 rset=pstmt.executeQuery();
+	 
+	 if (rset.next())
       {
         xminif = rset.getDouble("x_min");
         yminif = rset.getDouble("y_min");
@@ -126,11 +133,16 @@ try // this may fail, regiones may not exist in the database...
      MapServer ms = new MapServer();
 	 ms.mt.setView(countrybean.xresolution, countrybean.yresolution);
 	 ms.mt.setTransformation(xminif,yminif,xmaxif,ymaxif);
- 
-	 rset = stmt.executeQuery("select "+sNameSql+", r.*, (select count(*) from regiones rchild where nivel=" 
-	 						+ (level_act+1)+ " and rchild.lev0_cod=r.codregion) as nchild "   +sSql);
-	 out.println("<!-- "+"select "+sNameSql+", r.*, (select count(*) from regiones rchild where nivel=" 
-	 						+ (level_act+1)+ " and rchild.lev0_cod=r.codregion) as nchild "   +sSql+" -->");
+ 	 
+	 sFullSql="select "+sNameSql+", r.*, (select count(*) from regiones rchild where nivel=" 
+	 						+ (level_act+1)+ " and rchild.lev0_cod=r.codregion) as nchild "   +sSql;
+	 //out.println("<!-- [2]  "+sFullSql+" -->");
+     pstmt=con.prepareStatement(sFullSql);
+     if (level_act==1 && level0_code.length() > 0)
+        	pstmt.setString(1,level0_code);
+     else if (level_act==2 && level1_code.length() > 0)
+        	pstmt.setString(1,level1_code);
+	 rset=pstmt.executeQuery();
 	 while (rset.next())
 	  	{
 		nPolygons++;

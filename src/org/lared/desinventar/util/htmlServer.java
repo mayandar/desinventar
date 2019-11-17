@@ -612,44 +612,7 @@ public class htmlServer
 
 	public static String	htmlEncode (String inputString)
 	{
-		if (inputString == null) return "";  // to avoid calling not_null(
-		int	len = inputString.length();
-		int curPos = 0;
-		int entity = -1;
-		int i;
-
-		// flush chars until we see one that requires encoding
-		for	(i = 0; i < len && entity < 0; i++) {
-			entity = entityIndex(inputString.charAt(i));
-		}
-
-		// If we flushed them all, then we're done
-		if	(	i == len
-				&&	entity == -1
-		) {
-			return inputString;
-		}
-
-		// Write into a StringBuffer that we fill with the first part of the string
-		StringBuffer	buffer = new StringBuffer(inputString.substring(0, i-1));
-
-		// append the first entity string
-		buffer.append	(entities_[entity]);
-		curPos = i;
-
-		// flush the rest of the string into the StringBuffer, substituting when necessary
-		for	(; i < len; i++) {
-			entity = entityIndex(inputString.charAt(i));
-			if	(entity >=0) {
-				buffer.append	(inputString.substring(curPos, i));
-				buffer.append	(entities_[entity]);
-				curPos = i+1;
-			}
-		}
-
-		// append what's after the last char needing encoding
-		buffer.append	(inputString.substring(curPos));
-		return buffer.toString();
+		return EncodeUtil.htmlEncode(inputString);
 	}
 
 	public static final int htmlEncode(int value)
@@ -696,63 +659,9 @@ public class htmlServer
 	 * @return The translated string.
 	 */
 
-	public static final String jsEncode(String value) {
-		if (value == null) return null;
-
-		// roughly estimate the size...
-		// assuming half of the characters need to be encoded.
-		int rsize = value.length() * 2;
-		StringBuffer sbuf = new StringBuffer(rsize);
-
-		for (int i = 0; i < value.length(); i++) {
-			char x = value.charAt(i);
-			switch (x) {
-			case 0x0008 : // backspace
-				sbuf.append("\\b");
-				break;
-			case 0x0009 : // horizontal tab
-				sbuf.append("\\t");
-				break;
-			case 0x000a : // newline
-				sbuf.append("\\n");
-				break;
-			case 0x000b : // vertical tab
-				sbuf.append("\\v");
-				break;
-			case 0x000c : // form feed
-				sbuf.append("\\f");
-				break;
-			case 0x000d : // carriage return
-				sbuf.append("\\r");
-				break;
-			case 0x0022 : // double quote
-				sbuf.append("\\\"");
-				break;
-			case 0x0027 : // single quote
-				sbuf.append("\\\'");
-				break;
-			case 0x005c : // backslash
-				sbuf.append("\\\\");
-				break;
-			case 0x003c : // left angle bracket
-				sbuf.append("\\<");
-				break;
-			case 0x003e : // right angle bracket
-				sbuf.append("\\>");
-				break;
-			default :
-				sbuf.append(x);
-				break;
-			}
-		}
-
-		value= sbuf.toString();
-		int pos=0;
-		if (value.length()>20)
-			if ((pos = value.indexOf("String.fromCharCode"))>0) 
-				value = value.substring(0,pos);
-
-		return value;	
+	public static final String jsEncode(String value) 
+	{
+			return EncodeUtil.jsEncode(value);	
 	}
 
 	public static final int jsEncode(int value) {

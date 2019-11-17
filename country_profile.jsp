@@ -10,6 +10,7 @@
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
 <%@ taglib uri="inventag.tld" prefix="inv" %>
 <%@ include file="/util/opendatabase.jspf" %>
+
 <%
 // these should be done at region opening only
 if (request.getParameter("countrycode")!=null) 

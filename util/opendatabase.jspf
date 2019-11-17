@@ -5,10 +5,20 @@ request.setCharacterEncoding("UTF-8");
 ((HttpServletResponse)response).addHeader("X-Frame-Options", "SAMEORIGIN");
 // load language code (if available)
 if (request.getParameter("lang")!=null)
-	countrybean.setLanguage(request.getParameter("lang"));
+	{
+		String sLang=countrybean.not_null_safe(request.getParameter("lang"));
+		if (sLang.length()>2) 
+		 	sLang=sLang.substring(0,2);
+		countrybean.setLanguage(sLang);
+	}
 // load DATA language code (if available)
 if (request.getParameter("datalng")!=null)
-	countrybean.setDataLanguage(request.getParameter("datalng"));
+	{
+		String sLang=countrybean.not_null_safe(request.getParameter("datalng"));
+		if (sLang.length()>2) 
+		 	sLang=sLang.substring(0,2);
+		countrybean.setDataLanguage(sLang);
+	}
 // load country code (if available)
 if (request.getParameter("countrycode")!=null)
 	{
@@ -16,7 +26,7 @@ if (request.getParameter("countrycode")!=null)
 	//System.out.println("country code:"+request.getParameter("countrycode"));
 	
 	countrybean.init();
-	countrybean.countrycode=request.getParameter("countrycode");
+	countrybean.countrycode=countrybean.not_null_safe(request.getParameter("countrycode"));
 	if (countrybean.countrycode.length()>6)
 		countrybean.countrycode=countrybean.countrycode.substring(0,6);
 	// Load the country object from the DesInventar (default) database

@@ -49,10 +49,10 @@ String pname="";
 String[] pval;
 /// variables for future enhancements:	
 double xm=-180,ym=-90,xx=180,yy=90;
-String code=htmlServer.not_null(request.getParameter("code"));
-String code0=htmlServer.not_null(request.getParameter("level0_code"));
-String code1=htmlServer.not_null(request.getParameter("level1_code"));
-String showcodes=htmlServer.not_null(request.getParameter("showcodes"));
+String code=htmlServer.not_null_safe(request.getParameter("code"));
+String code0=htmlServer.not_null_safe(request.getParameter("level0_code"));
+String code1=htmlServer.not_null_safe(request.getParameter("level1_code"));
+String showcodes=htmlServer.not_null_safe(request.getParameter("showcodes"));
 int level_act=countrybean.extendedParseInt(request.getParameter("level_act"));
 
 
