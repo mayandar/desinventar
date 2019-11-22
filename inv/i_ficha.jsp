@@ -1,3 +1,5 @@
+<%@ page import="java.util.*"%>
+<%@page import="java.net.*" %>
 <%!
 String sBlankZero(int num)
 {
@@ -72,7 +74,8 @@ String sApprovedClass="bodylight"+woFicha.approved;
                 width: 512px;
             }
         </style>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByVWfVCeED7LjjNRgxgTluLPGSenzMgAw&sensor=false"></script>
+<%@ include file="/googlekeys.jspf" %>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%=sGoogleKey%>&sensor=false"></script>
 <script type="text/javascript">
 // best to declare your map variable outside of the function so that you can access it from other functions
 var map;
@@ -302,7 +305,7 @@ if (countrybean.getDataLanguage().equals("EN"))
 String sHtmlFolder=getServletConfig().getServletContext().getRealPath("html")+"/";
 String[] sTemplate={"datacard_","datacard_","datacard_UN","datacard_UN"};   // tries in order: datacard_ccc_ll, datacard_ccc, datacard_def_ll, datacard_def    
 ArrayList alProcessedFields=null;
-Dictionary dct = new Dictionary();
+org.lared.desinventar.webobject.Dictionary dct = new org.lared.desinventar.webobject.Dictionary();
 dct.nombre_campo="LIVING_DMGD_DWELLINGS"; // very unlikely defined outside sendai
 dct.dbType=countrybean.dbType;
 int nSendai=dct.getWebObject(con);
@@ -500,12 +503,12 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
         <div id="tab_<%=ktab%>" style="display:none;">
           <table cellpadding="1" cellspacing="0" border="0" rules="none" width="100%" class="<%=sTabActiveColor%>">
             <%  // allocates a dictionary object to read each record
-  dct = new Dictionary();
+  dct = new org.lared.desinventar.webobject.Dictionary();
   for (int k = 0; k < woExtension.vFields.size(); k++)
      {
 	 boolean bFound=false;
 	 boolean bSelected=false;
-	 dct = (Dictionary) woExtension.vFields.get(k);
+	 dct = (org.lared.desinventar.webobject.Dictionary) woExtension.vFields.get(k);
 	 if (!alProcessedFields.contains(dct.nombre_campo))
 	   if ((dct.tabnumber==ktab+1) || (dct.tabnumber==0 && ktab==woExtension.vTabs.size()-1))   
 	    {%>
