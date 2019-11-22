@@ -111,7 +111,7 @@ public class words extends webObject
 
 		// GET_FORM()
 		wordid = extendedParseInt(req.getParameter(assignName("wordid")));
-		word = not_null(req.getParameter(assignName("word")));
+		word = not_null_safe(req.getParameter(assignName("word")));
 		occurrences = extendedParseInt(req.getParameter(assignName("occurrences")));
 
 		updateHashTable();

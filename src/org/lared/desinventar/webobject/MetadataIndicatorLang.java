@@ -122,9 +122,10 @@ public class MetadataIndicatorLang extends webObject
 
 		// GET_FORM()
 		setIndicator_key(req.getParameter(assignName("indicator_key")));
-		setMetadata_lang(not_null(req.getParameter(assignName("metadata_lang"))));
-		setIndicator_description(not_null(req.getParameter(assignName("indicator_description"))));
+		setMetadata_lang(not_null_safe(req.getParameter(assignName("metadata_lang"))));
+		setIndicator_description(not_null_safe(req.getParameter(assignName("indicator_description"))));
 
+		this.checkLengths();
 		updateHashTable();
 		return 0;
 	}
@@ -137,8 +138,8 @@ public class MetadataIndicatorLang extends webObject
 
 		// GET_FORM()
 		setIndicator_key(req.getParameter(assignName("indicator_key")));
-		setMetadata_lang(not_null(req.getParameter(assignName("metadata_lang"))));
-		setIndicator_description(not_null(req.getParameter(assignName("indicator_description"))));
+		setMetadata_lang(not_null_safe(req.getParameter(assignName("metadata_lang"))));
+		setIndicator_description(not_null_safe(req.getParameter(assignName("indicator_description"))));
 
 		updateHashTable();
 		return 0;

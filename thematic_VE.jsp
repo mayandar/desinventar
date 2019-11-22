@@ -358,7 +358,7 @@ String imgparams="?mappingfunction="+countrybean.DoTHEMATIC+"&transparencyf="+co
 %>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" id="map_canvasTable">
 <tr><td align="center" colspan="2">
-<span class="title"><%=htmlServer.htmlEncode(countrybean.sTitle)%></span>
+<span class="title"><%=countrybean.sTitle%></span>
 </td></tr>
  <tr>
 	<td id="map_cell" align="left"   bgcolor="#ffffff" width="90%">
@@ -372,7 +372,7 @@ String imgparams="?mappingfunction="+countrybean.DoTHEMATIC+"&transparencyf="+co
  <tr>
 	<td colspan="2" class='bss'><%=countrybean.getTranslation("dyn_explanation")%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=countrybean.getTranslation("paste_explanation")%></td>
  </tr>
-<tr><td colspan="2"class="bss"><%=htmlServer.htmlEncode(countrybean.sSubTitle)%></td></tr>
+<tr><td colspan="2"class="bss"><%=countrybean.sSubTitle%></td></tr>
 <form name="desinventar" method='post' action="thematic_OL.jsp">
 <INPUT type='hidden'  name="actiontab" id="actiontab">
 <INPUT type='hidden'  name="frompage" value="<%=request.getServletPath()%>">

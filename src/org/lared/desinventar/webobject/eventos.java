@@ -139,10 +139,11 @@ public class eventos extends webObject
 
 		// GET_FORM()
 		serial = extendedParseInt(req.getParameter(assignName("serial")));
-		nombre = not_null(req.getParameter(assignName("nombre")));
-		nombre_en = not_null(req.getParameter(assignName("nombre_en")));
-		descripcion = not_null(req.getParameter(assignName("descripcion")));
-
+		nombre = not_null_safe(req.getParameter(assignName("nombre")));
+		nombre_en = not_null_safe(req.getParameter(assignName("nombre_en")));
+		descripcion = not_null_safe(req.getParameter(assignName("descripcion")));
+		checkLengths();
+		
 		updateHashTable();
 		return 0;
 	}

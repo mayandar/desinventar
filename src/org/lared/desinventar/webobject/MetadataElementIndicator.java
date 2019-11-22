@@ -126,7 +126,7 @@ public class MetadataElementIndicator extends webObject
 
 		// GET_FORM()
 		setMetadata_element_key(req.getParameter(assignName("metadata_element_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
 		setIndicator_key(req.getParameter(assignName("indicator_key")));
 
 		updateHashTable();
@@ -141,9 +141,11 @@ public class MetadataElementIndicator extends webObject
 
 		// GET_FORM()
 		setMetadata_element_key(req.getParameter(assignName("metadata_element_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
 		setIndicator_key(req.getParameter(assignName("indicator_key")));
-
+		
+		this.checkLengths();
+		
 		updateHashTable();
 		return 0;
 	}

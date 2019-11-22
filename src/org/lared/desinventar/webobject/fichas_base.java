@@ -1111,15 +1111,15 @@ public class fichas_base extends webObject
 	public int getForm(HttpServletRequest req, HttpServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		serial = not_null(req.getParameter(assignName("serial")));
-		level0 = not_null(req.getParameter(assignName("level0")));
-		level1 = not_null(req.getParameter(assignName("level1")));
-		level2 = not_null(req.getParameter(assignName("level2")));
-		name0 = not_null(req.getParameter(assignName("name0")));
-		name1 = not_null(req.getParameter(assignName("name1")));
-		name2 = not_null(req.getParameter(assignName("name2")));
-		evento = not_null(req.getParameter(assignName("evento")));
-		lugar = not_null(req.getParameter(assignName("lugar")));
+		serial = not_null_safe(req.getParameter(assignName("serial")));
+		level0 = not_null_safe(req.getParameter(assignName("level0")));
+		level1 = not_null_safe(req.getParameter(assignName("level1")));
+		level2 = not_null_safe(req.getParameter(assignName("level2")));
+		name0 = not_null_safe(req.getParameter(assignName("name0")));
+		name1 = not_null_safe(req.getParameter(assignName("name1")));
+		name2 = not_null_safe(req.getParameter(assignName("name2")));
+		evento = not_null_safe(req.getParameter(assignName("evento")));
+		lugar = not_null_safe(req.getParameter(assignName("lugar")));
 		fechano = extendedParseInt(req.getParameter(assignName("fechano")));
 		fechames = extendedParseInt(req.getParameter(assignName("fechames")));
 		fechadia = extendedParseInt(req.getParameter(assignName("fechadia")));
@@ -1129,12 +1129,12 @@ public class fichas_base extends webObject
 		afectados = extendedParseInt(req.getParameter(assignName("afectados")));
 		vivdest = extendedParseInt(req.getParameter(assignName("vivdest")));
 		vivafec = extendedParseInt(req.getParameter(assignName("vivafec")));
-		otros = not_null(req.getParameter(assignName("otros")));
-		fuentes = not_null(req.getParameter(assignName("fuentes")));
+		otros = not_null_safe(req.getParameter(assignName("otros")));
+		fuentes = not_null_safe(req.getParameter(assignName("fuentes")));
 		valorloc = extendedParseDouble(req.getParameter(assignName("valorloc")));
 		valorus = extendedParseDouble(req.getParameter(assignName("valorus")));
-		fechapor = not_null(req.getParameter(assignName("fechapor")));
-		fechafec = not_null(req.getParameter(assignName("fechafec")));
+		fechapor = not_null_safe(req.getParameter(assignName("fechapor")));
+		fechafec = not_null_safe(req.getParameter(assignName("fechafec")));
 		hay_muertos = extendedParseInt(req.getParameter(assignName("hay_muertos")));
 		hay_heridos = extendedParseInt(req.getParameter(assignName("hay_heridos")));
 		hay_deasparece = extendedParseInt(req.getParameter(assignName("hay_deasparece")));
@@ -1151,10 +1151,10 @@ public class fichas_base extends webObject
 		alcantarillado = extendedParseInt(req.getParameter(assignName("alcantarillado")));
 		energia = extendedParseInt(req.getParameter(assignName("energia")));
 		comunicaciones = extendedParseInt(req.getParameter(assignName("comunicaciones")));
-		causa = not_null(req.getParameter(assignName("causa")));
-		descausa = not_null(req.getParameter(assignName("descausa")));
+		causa = not_null_safe(req.getParameter(assignName("causa")));
+		descausa = not_null_safe(req.getParameter(assignName("descausa")));
 		transporte = extendedParseInt(req.getParameter(assignName("transporte")));
-		magnitud2 = not_null(req.getParameter(assignName("magnitud2")));
+		magnitud2 = not_null_safe(req.getParameter(assignName("magnitud2")));
 		nhospitales = extendedParseInt(req.getParameter(assignName("nhospitales")));
 		nescuelas = extendedParseInt(req.getParameter(assignName("nescuelas")));
 		nhectareas = extendedParseDouble(req.getParameter(assignName("nhectareas")));
@@ -1168,14 +1168,16 @@ public class fichas_base extends webObject
 		hay_reubicados = extendedParseInt(req.getParameter(assignName("hay_reubicados")));
 		reubicados = extendedParseInt(req.getParameter(assignName("reubicados")));
 		clave = extendedParseInt(req.getParameter(assignName("clave")));
-		glide = not_null(req.getParameter(assignName("glide")));
+		glide = not_null_safe(req.getParameter(assignName("glide")));
 		defaultab=extendedParseInt(req.getParameter(assignName("defaultab")));
 		approved=extendedParseInt(req.getParameter(assignName("approved")));
 		latitude=extendedParseDouble(req.getParameter(assignName("latitude")));
 		longitude=extendedParseDouble(req.getParameter(assignName("longitude")));
-		setUu_id(not_null(req.getParameter(assignName("uu_id"))));
-		setDi_comments(not_null(req.getParameter(assignName("di_comments"))));
+		setUu_id(not_null_safe(req.getParameter(assignName("uu_id"))));
+		setDi_comments(not_null_safe(req.getParameter(assignName("di_comments"))));
 
+		checkLengths();
+		
 		updateHashTable();
 		return 0;
 	}

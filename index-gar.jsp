@@ -14,12 +14,6 @@
 </head>
 <%
 org.lared.desinventar.system.Sys.getProperties();
-// load language code (if available)
-if (request.getParameter("lang")!=null)
-	countrybean.setLanguage(request.getParameter("lang"));
-// load DATA language code (if available)
-if (request.getParameter("datalng")!=null)
-	countrybean.setDataLanguage(request.getParameter("datalng"));
 String sSetDescriptors="";
 String sDescription="";
 country cCountry=new country();

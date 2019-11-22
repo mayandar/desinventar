@@ -173,12 +173,13 @@ public class dtproperties extends webObject
 		// GET_FORM()
 		id = extendedParseInt(req.getParameter(assignName("id")));
 		objectid = extendedParseInt(req.getParameter(assignName("objectid")));
-		property = not_null(req.getParameter(assignName("property")));
-		value = not_null(req.getParameter(assignName("value")));
-		uvalue = not_null(req.getParameter(assignName("uvalue")));
-		lvalue = not_null(req.getParameter(assignName("lvalue")));
+		property = not_null_safe(req.getParameter(assignName("property")));
+		value = not_null_safe(req.getParameter(assignName("value")));
+		uvalue = not_null_safe(req.getParameter(assignName("uvalue")));
+		lvalue = not_null_safe(req.getParameter(assignName("lvalue")));
 		version = extendedParseInt(req.getParameter(assignName("version")));
 
+		
 		updateHashTable();
 		return 0;
 	}

@@ -70,7 +70,7 @@ else if (request.getParameter("delLevel1")!=null)
 		if (Level1.getReferenceCount("lev2_lev1", Level1.lev1_cod, "lev2", con)==0)
 			Level1.deleteWebObject(con);
 		else
-			sErrorMessage=countrybean.getTranslation("RecordcannotbeDeleted.Referencedby")+" "+htmlServer.htmlEncode(countrybean.asLevels[2])+" "+countrybean.getTranslation("records_that_must_be_deleted");
+			sErrorMessage=countrybean.getTranslation("RecordcannotbeDeleted.Referencedby")+" "+countrybean.asLevels[2]+" "+countrybean.getTranslation("records_that_must_be_deleted");
 		}
 	else
 		sErrorMessage=countrybean.getTranslation("RecordcannotbeDeleted.Referencedby")+" "+countrybean.getTranslation("DataCards")+" "+countrybean.getTranslation("records_that_must_be_deleted");
@@ -83,7 +83,7 @@ function bSomethingSelected()
 {
 if (document.desinventar.lev1_cod.selectedIndex==-1)
 	{
-	alert ("<%=countrybean.getTranslation("Pleaseselecta")%> <%=htmlServer.htmlEncode(countrybean.asLevels[1])%> <%=countrybean.getTranslation("fromthelist")%>...");
+	alert ("<%=countrybean.getTranslation("Pleaseselecta")%> <%=countrybean.asLevels[1]%> <%=countrybean.getTranslation("fromthelist")%>...");
 	return false;
 	} 
 return true;
@@ -110,7 +110,7 @@ else
   <td>
 	<table cellspacing="0" cellpadding="5" border="0" width="650" rules="none">
 	<tr>
-	    <td height="25" td colspan="2" class='bgDark' align="center"><span class="title"><%=countrybean.getTranslation("ManagementOf")%> <%=htmlServer.htmlEncode(countrybean.asLevels[1])%> (<%=htmlServer.htmlEncode(Level0.lev0_name)%>)</span></td>
+	    <td height="25" td colspan="2" class='bgDark' align="center"><span class="title"><%=countrybean.getTranslation("ManagementOf")%> <%=countrybean.asLevels[1]%> (<%=Level0.lev0_name%>)</span></td>
 		</td>
 	</tr>
 	<tr><td colspan="2" height="5"></td></tr>
@@ -133,10 +133,10 @@ else
 	</td></tr>
 	<tr><td colspan="2" height="25"></td></tr>
 	<tr><td colspan="2" align="center">
-	<input type="submit" name="addLevel1" value="<%=countrybean.getTranslation("Add")%> <%=htmlServer.htmlEncode(countrybean.asLevels[1])%>">
-	<input type="submit" name="editLevel1" value="<%=countrybean.getTranslation("Edit")%> <%=htmlServer.htmlEncode(countrybean.asLevels[1])%>" onClick="return bSomethingSelected()">
-	<input type="submit" name="delLevel1" value="<%=countrybean.getTranslation("Delete")%> <%=htmlServer.htmlEncode(countrybean.asLevels[1])%>" onClick="return confirmDelete()">	<br><br>
-	<input type="submit" name="editChildren1" value="<%=countrybean.getTranslation("Manage")%> <%=htmlServer.htmlEncode(countrybean.asLevels[2])%> <%=countrybean.getTranslation("ofThis")%>  <%=htmlServer.htmlEncode(countrybean.asLevels[1])%>" onClick="return bSomethingSelected()">
+	<input type="submit" name="addLevel1" value="<%=countrybean.getTranslation("Add")%> <%=countrybean.asLevels[1]%>">
+	<input type="submit" name="editLevel1" value="<%=countrybean.getTranslation("Edit")%> <%=countrybean.asLevels[1]%>" onClick="return bSomethingSelected()">
+	<input type="submit" name="delLevel1" value="<%=countrybean.getTranslation("Delete")%> <%=countrybean.asLevels[1]%>" onClick="return confirmDelete()">	<br><br>
+	<input type="submit" name="editChildren1" value="<%=countrybean.getTranslation("Manage")%> <%=countrybean.asLevels[2]%> <%=countrybean.getTranslation("ofThis")%>  <%=countrybean.asLevels[1]%>" onClick="return bSomethingSelected()">
     <br><br>
 	<input name="doneLevel1" type=submit value='<%=countrybean.getTranslation("Done")%>'>
 	</td></tr>

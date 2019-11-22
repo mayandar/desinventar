@@ -228,11 +228,11 @@ return ok;
 <TD colspan=2 align="center"><span class="warning"><%=sErrorMessage%></span></TD>
 </TR>
 <input type="hidden" name="action" value="<%=action %>">
-<input type="hidden" name="nombre" maxlength="30" size="30" value="<%=htmlServer.htmlEncode(Event.nombre) %>">
+<input type="hidden" name="nombre" maxlength="30" size="30" value="<%=Event.nombre %>">
 <INPUT type='hidden' size='15' maxlength='21' name='serial' VALUE="<%=Event.serial%>">
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Name")%>:</td><td>  <INPUT type='TEXT' size='31' maxlength='30' name='newname' VALUE="<%=htmlServer.htmlEncode(sEventid)%>"></td></tr>
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Name")%>(English):</td><td>  <INPUT type='TEXT' size='31' maxlength='30' name='nombre_en' VALUE="<%=htmlServer.htmlEncode(Event.nombre_en)%>"></td></tr>
-<tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Description")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='200' name='descripcion' VALUE="<%=htmlServer.htmlEncode(Event.descripcion)%>"></td></tr>
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Name")%>:</td><td>  <INPUT type='TEXT' size='31' maxlength='30' name='newname' VALUE="<%=sEventid%>"></td></tr>
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Name")%>(English):</td><td>  <INPUT type='TEXT' size='31' maxlength='30' name='nombre_en' VALUE="<%=Event.nombre_en%>"></td></tr>
+<tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Description")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='200' name='descripcion' VALUE="<%=Event.descripcion%>"></td></tr>
 
 	<TR>
 	<TD colspan=3 height="20"></TD>

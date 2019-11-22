@@ -249,10 +249,10 @@ public class diccionario extends webObject
 
 		// GET_FORM()
 		orden = extendedParseInt(req.getParameter(assignName("orden")));
-		nombre_campo = not_null(req.getParameter(assignName("nombre_campo")));
-		descripcion_campo = not_null(req.getParameter(assignName("descripcion_campo")));
-		label_campo = not_null(req.getParameter(assignName("label_campo")));
-		label_campo_en = not_null(req.getParameter(assignName("label_campo_en")));
+		nombre_campo = not_null_safe(req.getParameter(assignName("nombre_campo")));
+		descripcion_campo = not_null_safe(req.getParameter(assignName("descripcion_campo")));
+		label_campo = not_null_safe(req.getParameter(assignName("label_campo")));
+		label_campo_en = not_null_safe(req.getParameter(assignName("label_campo_en")));
 		pos_x = extendedParseInt(req.getParameter(assignName("pos_x")));
 		pos_y = extendedParseInt(req.getParameter(assignName("pos_y")));
 		lon_x = extendedParseInt(req.getParameter(assignName("lon_x")));
@@ -261,6 +261,8 @@ public class diccionario extends webObject
 		tabnumber = extendedParseInt(req.getParameter(assignName("tabnumber")));
 		fieldtype = extendedParseInt(req.getParameter(assignName("fieldtype")));
 
+		checkLengths();
+		
 		updateHashTable();
 		return 0;
 	}

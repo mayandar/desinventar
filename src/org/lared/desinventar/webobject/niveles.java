@@ -139,10 +139,11 @@ public class niveles extends webObject
 
 		// GET_FORM()
 		nivel = extendedParseInt(req.getParameter(assignName("nivel")));
-		descripcion = not_null(req.getParameter(assignName("descripcion")));
-		descripcion_en = not_null(req.getParameter(assignName("descripcion_en")));
+		descripcion = not_null_safe(req.getParameter(assignName("descripcion")));
+		descripcion_en = not_null_safe(req.getParameter(assignName("descripcion_en")));
 		longitud = extendedParseInt(req.getParameter(assignName("longitud")));
 
+		this.checkLengths();
 		updateHashTable();
 		return 0;
 	}

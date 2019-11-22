@@ -34,7 +34,7 @@ boolean bConnectionOK = dbCon.dbGetConnectionStatus();
 <tr><td align="left">
 <strong>You have the Following options:</strong><br>
 <br>
-<br><br>a) You want to <a href="/DesInventar/inv/admintab.jsp?sub=regionManager.jsp&scountryid=<%=htmlServer.htmlEncode(countrybean.countrycode)%>&editRegion=yes">provide/correct Database required parameters. You must later retry the Connection</a>
+<br><br>a) You want to <a href="/DesInventar/inv/admintab.jsp?sub=regionManager.jsp&scountryid=<%=countrybean.countrycode>&editRegion=yes">provide/correct Database required parameters. You must later retry the Connection</a>
 <br><br>b) You have fixed the problems with your Database (created an ODBC datasource?) and just want to <a href="/DesInventar/index.jsp">retry the Connection</a>
 <br><br><br><br><br></td></tr>
 </table>

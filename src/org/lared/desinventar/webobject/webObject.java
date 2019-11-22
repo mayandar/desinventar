@@ -1189,11 +1189,11 @@ public ArrayList extractFieldsFromTemplate(String filename)
               	//	fieldValue="";
                   pos = htmlULine.indexOf("VALUE");
                   if (pos > 0)
-                    htmlLine = htmlLine.substring(0, pos + 7) + htmlServer.htmlEncode(fieldValue) + htmlLine.substring(pos + 7);
+                    htmlLine = htmlLine.substring(0, pos + 7) + fieldValue + htmlLine.substring(pos + 7);
                   else
                   { // if there is no Value attribute...
                     pos = htmlULine.indexOf("NAME");
-                    htmlLine = htmlLine.substring(0, pos) + " VALUE=\"" + htmlServer.htmlEncode(fieldValue) + "\" " + htmlLine.substring(pos);
+                    htmlLine = htmlLine.substring(0, pos) + " VALUE=\"" + fieldValue + "\" " + htmlLine.substring(pos);
                   }
                   break;
                 case 1: // CHECKBOXES
@@ -1208,7 +1208,7 @@ public ArrayList extractFieldsFromTemplate(String filename)
                 case 2: // TEXTAREAS
                   // isolates the end > of the tag
                   pos = htmlULine.indexOf("</TEXTAREA");
-                  htmlLine = htmlLine.substring(0, pos) + htmlServer.htmlEncode(fieldValue) + htmlLine.substring(pos);
+                  htmlLine = htmlLine.substring(0, pos) + fieldValue + htmlLine.substring(pos);
                   break;
                 case 3: // RADIO
                   pos = htmlULine.indexOf("VALUE");

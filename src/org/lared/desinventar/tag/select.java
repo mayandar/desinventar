@@ -128,7 +128,7 @@ public class select extends TagSupport
 			{
 				// fields are referenced positionally to allow expressions!!
 				sCode=rset.getString(2);
-				out.print("<option value=\""+htmlServer.htmlEncode(sCode)+"\"");
+				out.print("<option value=\""+sCode+"\"");
 				if (sCode.equals(sSelectedCode))
 					out.print(" selected");
 				else
@@ -144,7 +144,8 @@ public class select extends TagSupport
 							}
 						}
 					}
-				out.println(">"+ htmlServer.htmlEncode(rset.getString(1)));
+				// out.println(">"+ EncodeUtil.htmlDecode(htmlServer.not_null(rset.getString(1))));
+				out.println(">"+ htmlServer.not_null(rset.getString(1)));
 			}
 			rset.close();
 			stmt.close();

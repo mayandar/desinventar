@@ -219,7 +219,7 @@ else
 }
 %>
 	 </td>
-     <td><%=countrybean.getTranslation("Code_Field")%> <INPUT type='TEXT' size='30' maxlength='30' name='code_<%=nLevel%>' VALUE="<%=htmlServer.htmlEncode(sCode[nLevel])%>"></td>
+     <td><%=countrybean.getTranslation("Code_Field")%> <INPUT type='TEXT' size='30' maxlength='30' name='code_<%=nLevel%>' VALUE="<%=sCode[nLevel]%>"></td>
 	 <td><input type='button' name='buttCodeField' onclick="setField('code_<%=nLevel%>',<%=nLevel%>);" value="..."></td>
  </tr>
 <%

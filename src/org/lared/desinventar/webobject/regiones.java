@@ -318,9 +318,9 @@ public class regiones extends webObject
 	public int getForm(HttpServletRequest req, HttpServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		codregion = not_null(req.getParameter(assignName("codregion")));
-		nombre = not_null(req.getParameter(assignName("nombre")));
-		nombre_en = not_null(req.getParameter(assignName("nombre_en")));
+		codregion = not_null_safe(req.getParameter(assignName("codregion")));
+		nombre = not_null_safe(req.getParameter(assignName("nombre")));
+		nombre_en = not_null_safe(req.getParameter(assignName("nombre_en")));
 		x = extendedParseDouble(req.getParameter(assignName("x")));
 		y = extendedParseDouble(req.getParameter(assignName("y")));
 		angulo = extendedParseDouble(req.getParameter(assignName("angulo")));
@@ -332,7 +332,7 @@ public class regiones extends webObject
 		ytext = extendedParseDouble(req.getParameter(assignName("ytext")));
 		nivel = extendedParseInt(req.getParameter(assignName("nivel")));
 		ap_lista = extendedParseInt(req.getParameter(assignName("ap_lista")));
-		lev0_cod = not_null(req.getParameter(assignName("lev0_cod")));
+		lev0_cod = not_null_safe(req.getParameter(assignName("lev0_cod")));
 
 		updateHashTable();
 		return 0;

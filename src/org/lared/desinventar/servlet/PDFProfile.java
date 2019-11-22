@@ -159,12 +159,6 @@ if (nPort!=80)
 String  sSql="";
 String sRealPath=getServletConfig().getServletContext().getRealPath("/");
 request.setCharacterEncoding("UTF-8"); 
-// load language code (if available)
-if (request.getParameter("lang")!=null)
-	countrybean.setLanguage(request.getParameter("lang"));
-// load DATA language code (if available)
-if (request.getParameter("datalng")!=null)
-	countrybean.setDataLanguage(request.getParameter("datalng"));
 // load country code (if available)
 if (request.getParameter("countrycode")!=null)
 	{

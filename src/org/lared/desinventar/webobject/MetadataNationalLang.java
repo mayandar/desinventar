@@ -137,10 +137,11 @@ public class MetadataNationalLang extends webObject
 
 		// GET_FORM()
 		setMetadata_key(req.getParameter(assignName("metadata_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
-		setMetadata_lang(not_null(req.getParameter(assignName("metadata_lang"))));
-		setMetadata_description(not_null(req.getParameter(assignName("metadata_description"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
+		setMetadata_lang(not_null_safe(req.getParameter(assignName("metadata_lang"))));
+		setMetadata_description(not_null_safe(req.getParameter(assignName("metadata_description"))));
 
+		this.checkLengths();
 		updateHashTable();
 		return 0;
 	}
@@ -153,9 +154,9 @@ public class MetadataNationalLang extends webObject
 
 		// GET_FORM()
 		setMetadata_key(req.getParameter(assignName("metadata_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
-		setMetadata_lang(not_null(req.getParameter(assignName("metadata_lang"))));
-		setMetadata_description(not_null(req.getParameter(assignName("metadata_description"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
+		setMetadata_lang(not_null_safe(req.getParameter(assignName("metadata_lang"))));
+		setMetadata_description(not_null_safe(req.getParameter(assignName("metadata_description"))));
 
 		updateHashTable();
 		return 0;

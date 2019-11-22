@@ -48,8 +48,13 @@ if (request.getParameter("saveLevel")!=null)
 		pstmt.executeUpdate();
 		for (int nLevel=0; nLevel<3; nLevel++)
 			{
-			sLevelid=htmlServer.not_null(request.getParameter("descripcion_"+nLevel)).trim();
-			sLevelid_en=htmlServer.not_null(request.getParameter("descripcion_en_"+nLevel)).trim();
+			sLevelid=countrybean.not_null_safe(request.getParameter("descripcion_"+nLevel));
+			sLevelid_en=countrybean.not_null_safe(request.getParameter("descripcion_en_"+nLevel));
+			if (sLevelid.length()>25)
+				sLevelid=sLevelid.substring(0,25);
+			if (sLevelid_en.length()>25)
+				sLevelid_en=sLevelid_en.substring(0,25);
+				
 			nCodeLen=htmlServer.extendedParseInt(request.getParameter("longitud_"+nLevel));
 			pstmt=con.prepareStatement("insert into niveles (descripcion, descripcion_en, longitud, nivel) values (?,?,?,?)");
 			pstmt.setString(1,sLevelid);
@@ -129,8 +134,8 @@ while (nLevel < 3)
  <INPUT type='hidden' size='15' maxlength='21' name='nivel_<%=nLevel%>' VALUE="<%=nLevel%>">
  
  <TR><td class=bgLight align='right' nowrap><%=countrybean.getTranslation("Level")%> <%=nLevel%>.&nbsp;&nbsp;&nbsp;  <%=countrybean.getTranslation("Name")%>:</td>
-     <td><INPUT type='TEXT' size='30' maxlength='25' name='descripcion_<%=nLevel%>' VALUE="<%=htmlServer.htmlEncode(sDesc)%>"></td>
-     <td>English:<INPUT type='TEXT' size='30' maxlength='25' name='descripcion_en_<%=nLevel%>' VALUE="<%=htmlServer.htmlEncode(sDesc_en)%>"></td>
+     <td><INPUT type='TEXT' size='30' maxlength='25' name='descripcion_<%=nLevel%>' VALUE="<%=sDesc%>"></td>
+     <td>English:<INPUT type='TEXT' size='30' maxlength='25' name='descripcion_en_<%=nLevel%>' VALUE="<%=sDesc_en%>"></td>
     <td align='left' nowrap><%=countrybean.getTranslation("Codelength")%>:<INPUT type='TEXT' size='5' maxlength='5' name='longitud_<%=nLevel%>' VALUE="<%=nLong%>"></td>
  </tr>
 <%nLevel++;

@@ -153,10 +153,10 @@ public class extensioncodes extends webObject
 
 		// GET_FORM()
 		setNsort(req.getParameter(assignName("nsort")));
-		setSvalue(not_null(req.getParameter(assignName("svalue"))));
-		setSvalue_en(not_null(req.getParameter(assignName("svalue_en"))));
-		setField_name(not_null(req.getParameter(assignName("field_name"))));
-		setCode_value(not_null(req.getParameter(assignName("code_value"))));
+		setSvalue(not_null_safe(req.getParameter(assignName("svalue"))));
+		setSvalue_en(not_null_safe(req.getParameter(assignName("svalue_en"))));
+		setField_name(not_null_safe(req.getParameter(assignName("field_name"))));
+		setCode_value(not_null_safe(req.getParameter(assignName("code_value"))));
 
 		updateHashTable();
 		return 0;

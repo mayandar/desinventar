@@ -44,6 +44,8 @@ int action=Level0.extendedParseInt(request.getParameter("action"));
 String sLevel0id=request.getParameter("newCode");
 if (sLevel0id==null)
    sLevel0id=Level0.lev0_cod;
+sLevel0id=Level0.not_null_safe(sLevel0id);
+
 if (request.getParameter("saveLevel0")!=null)
  if (request.getParameter("lev0_cod").equals(Level0.lev0_cod))  // session has not expired..
   { 
@@ -248,10 +250,10 @@ return ok;
 <TD colspan=2 align="center"><span class="warning"><%=sErrorMessage%></span></TD>
 </TR>
 <input type="hidden" name="action" value="<%=action %>">
-<input type="hidden" name="lev0_cod" maxlength="10" size="10" value="<%=htmlServer.htmlEncode(Level0.lev0_cod) %>">
-<TR><td width=180 class=bgLight align='right'><%=countrybean.asLevels[0]%> <%=countrybean.getTranslation("Code")%>:</td><td>  <INPUT type='TEXT' size='16' maxlength='15' name='newCode' VALUE="<%=htmlServer.htmlEncode(sLevel0id)%>"></td></tr>
-<tr><td width=180 class=bgLight align='right'><%=countrybean.asLevels[0]%> <%=countrybean.getTranslation("Name")%>:</td><td>  <INPUT type='TEXT' size='30' maxlength='30' name='lev0_name' VALUE="<%=htmlServer.htmlEncode(Level0.lev0_name)%>"></td></tr>
-<tr><td width=180 class=bgLight align='right'><%=countrybean.asLevels[0]%> <%=countrybean.getTranslation("Name")%>(English):</td><td>  <INPUT type='TEXT' size='30' maxlength='30' name='lev0_name_en' VALUE="<%=htmlServer.htmlEncode(Level0.lev0_name_en)%>"></td></tr>
+<input type="hidden" name="lev0_cod" maxlength="10" size="10" value="<%=Level0.lev0_cod %>">
+<TR><td width=180 class=bgLight align='right'><%=countrybean.asLevels[0]%> <%=countrybean.getTranslation("Code")%>:</td><td>  <INPUT type='TEXT' size='16' maxlength='15' name='newCode' VALUE="<%=sLevel0id%>"></td></tr>
+<tr><td width=180 class=bgLight align='right'><%=countrybean.asLevels[0]%> <%=countrybean.getTranslation("Name")%>:</td><td>  <INPUT type='TEXT' size='30' maxlength='30' name='lev0_name' VALUE="<%=Level0.lev0_name%>"></td></tr>
+<tr><td width=180 class=bgLight align='right'><%=countrybean.asLevels[0]%> <%=countrybean.getTranslation("Name")%>(English):</td><td>  <INPUT type='TEXT' size='30' maxlength='30' name='lev0_name_en' VALUE="<%=Level0.lev0_name_en%>"></td></tr>
 
 	<TR>
 	<TD colspan=3 height="20"></TD>

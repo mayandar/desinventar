@@ -99,7 +99,7 @@ return true;
 		 dct.fieldtype==extension.FLOATINGPOINT  ||
 		 dct.fieldtype==extension.CURRENCY)		 
 			{%>
-             <option value="<%=dct.nombre_campo%>"<%=dct.strSelected(dct.nombre_campo,sTargetVariable)%>><%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en))%></option>
+             <option value="<%=dct.nombre_campo%>"<%=dct.strSelected(dct.nombre_campo,sTargetVariable)%>><%=countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en)%></option>
 			<%}
      }%>
              </select>

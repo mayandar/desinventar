@@ -425,30 +425,30 @@ public class users extends webObject
 	public int getForm(HttpServletRequest req, HttpServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		suserid = not_null(req.getParameter(assignName("suserid")));
-		spassword = not_null(req.getParameter(assignName("spassword")));
+		suserid = not_null_safe(req.getParameter(assignName("suserid")));
+		spassword = not_null_safe(req.getParameter(assignName("spassword")));
 		iusertype = extendedParseInt(req.getParameter(assignName("iusertype")));
-		sfirstname = not_null(req.getParameter(assignName("sfirstname")));
-		slastname = not_null(req.getParameter(assignName("slastname")));
-		sorganization = not_null(req.getParameter(assignName("sorganization")));
-		saddress1 = not_null(req.getParameter(assignName("saddress1")));
-		saddress2 = not_null(req.getParameter(assignName("saddress2")));
-		scity = not_null(req.getParameter(assignName("scity")));
-		sstateprovince = not_null(req.getParameter(assignName("sstateprovince")));
-		scountry = not_null(req.getParameter(assignName("scountry")));
-		spostalcode = not_null(req.getParameter(assignName("spostalcode")));
-		semailaddress = not_null(req.getParameter(assignName("semailaddress")));
-		sphonenumber = not_null(req.getParameter(assignName("sphonenumber")));
-		salternatephonenumber = not_null(req.getParameter(assignName("salternatephonenumber")));
-		sfaxnumber = not_null(req.getParameter(assignName("sfaxnumber")));
+		sfirstname = not_null_safe(req.getParameter(assignName("sfirstname")));
+		slastname = not_null_safe(req.getParameter(assignName("slastname")));
+		sorganization = not_null_safe(req.getParameter(assignName("sorganization")));
+		saddress1 = not_null_safe(req.getParameter(assignName("saddress1")));
+		saddress2 = not_null_safe(req.getParameter(assignName("saddress2")));
+		scity = not_null_safe(req.getParameter(assignName("scity")));
+		sstateprovince = not_null_safe(req.getParameter(assignName("sstateprovince")));
+		scountry = not_null_safe(req.getParameter(assignName("scountry")));
+		spostalcode = not_null_safe(req.getParameter(assignName("spostalcode")));
+		semailaddress = not_null_safe(req.getParameter(assignName("semailaddress")));
+		sphonenumber = not_null_safe(req.getParameter(assignName("sphonenumber")));
+		salternatephonenumber = not_null_safe(req.getParameter(assignName("salternatephonenumber")));
+		sfaxnumber = not_null_safe(req.getParameter(assignName("sfaxnumber")));
 		bnewuser = extendedParseInt(req.getParameter(assignName("bnewuser")));
 		brecordstatus = extendedParseInt(req.getParameter(assignName("brecordstatus")));
 		bactive = extendedParseInt(req.getParameter(assignName("bactive")));
-		dlastlogindate = strDate(not_null(req.getParameter(assignName("dlastlogindate"))));
-		dusersince = strDate(not_null(req.getParameter(assignName("dusersince"))));
+		dlastlogindate = strDate(not_null_safe(req.getParameter(assignName("dlastlogindate"))));
+		dusersince = strDate(not_null_safe(req.getParameter(assignName("dusersince"))));
 		ifrequency = extendedParseInt(req.getParameter(assignName("ifrequency")));
 		breceiveinstant = extendedParseInt(req.getParameter(assignName("breceiveinstant")));
-		smemberorganizationid = not_null(req.getParameter(assignName("smemberorganizationid")));
+		smemberorganizationid = not_null_safe(req.getParameter(assignName("smemberorganizationid")));
 
 		updateHashTable();
 		return 0;

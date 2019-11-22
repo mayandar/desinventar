@@ -34,7 +34,7 @@ public class xuser extends users
   public boolean bHasAccess(String sCountryCode)
   {
   boolean bAccess=false;
-  bAccess=hCountries.contains(sCountryCode) || (iusertype==99);
+  bAccess= (iusertype==99) || hCountries.contains(sCountryCode) ;
   return bAccess;
   }
   
@@ -43,10 +43,11 @@ public class xuser extends users
   {
   boolean bAccess=false;
   // checks the country, just in case
-  bAccess=hCountries.contains(sCountryCode) || (iusertype==99);
-  if (bAccess && level<nMaxLevel && level>=0)
+  bAccess=(iusertype==99) || hCountries.contains(sCountryCode);
+  if (iusertype!=99 && bAccess && level<nMaxLevel && level>=0)
   {
-	  bAccess=aLevel0[level].contains(sCountryCode+":"+sSubAreaCode) || (iusertype==99);
+	  if (aLevel0[level]!=null)
+		  bAccess=aLevel0[level].contains(sCountryCode+":"+sSubAreaCode) || (iusertype==99);
   }
   return bAccess;
   }

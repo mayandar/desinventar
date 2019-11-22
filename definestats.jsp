@@ -117,11 +117,11 @@ for (level=0; level<3; level++)
 		<td>
 		<select name="stat<%=level%>" size=5 style="WIDTH: 100%;">
 		<option value="eventos.nombre<%=sLangSuffix%>"<%=countrybean.strSelected("eventos.nombre"+sLangSuffix,countrybean.asStatLevels[level])%>><%=countrybean.getTranslation("Event")%></option>
-		<option value="lev0_name<%=sLangSuffix%>,level0"<%=countrybean.strSelected("lev0_name"+sLangSuffix+",level0",countrybean.asStatLevels[level])%>><%=htmlServer.htmlEncode(countrybean.asLevels[0])%></option>
+		<option value="lev0_name<%=sLangSuffix%>,level0"<%=countrybean.strSelected("lev0_name"+sLangSuffix+",level0",countrybean.asStatLevels[level])%>><%=countrybean.asLevels[0]%></option>
 		<% if (countrybean.asLevels[1].length()>0){%>
-		<option value="lev1_name<%=sLangSuffix%>,level1"<%=countrybean.strSelected("lev1_name"+sLangSuffix+",level1",countrybean.asStatLevels[level])%>><%=htmlServer.htmlEncode(countrybean.asLevels[1])%></option>
+		<option value="lev1_name<%=sLangSuffix%>,level1"<%=countrybean.strSelected("lev1_name"+sLangSuffix+",level1",countrybean.asStatLevels[level])%>><%=countrybean.asLevels[1]%></option>
 		<%} if (countrybean.asLevels[2].length()>0){%>
-		<option value="lev2_name<%=sLangSuffix%>,level2"<%=countrybean.strSelected("lev2_name"+sLangSuffix+",level2",countrybean.asStatLevels[level])%>><%=htmlServer.htmlEncode(countrybean.asLevels[2])%></option>
+		<option value="lev2_name<%=sLangSuffix%>,level2"<%=countrybean.strSelected("lev2_name"+sLangSuffix+",level2",countrybean.asStatLevels[level])%>><%=countrybean.asLevels[2]%></option>
 		<%}%>
 		<option value="<%=sFecha%>"<%=countrybean.strSelected(sFecha,countrybean.asStatLevels[level])%>><%=countrybean.getTranslation("Date")%></option>
 		<option value="fichas.fechano"<%=countrybean.strSelected("fichas.fechano",countrybean.asStatLevels[level])%>><%=countrybean.getTranslation("Year")%></option>
@@ -158,7 +158,7 @@ for (level=0; level<3; level++)
 			sDescription=sField;
 	   if (sField!=null)
 			{  // TODO:  the following should 
-		  %><option value='extension.<%=sField.toLowerCase()%>'<%=countrybean.strSelected("extension."+sField.toLowerCase(),countrybean.asStatLevels[level])%>><%=EncodeUtil.htmlEncode(sDescription)%></option>
+		  %><option value='extension.<%=sField.toLowerCase()%>'<%=countrybean.strSelected("extension."+sField.toLowerCase(),countrybean.asStatLevels[level])%>><%=sDescription%></option>
 		  <%}      
 	}
 

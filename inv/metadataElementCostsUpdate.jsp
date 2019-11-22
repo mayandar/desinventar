@@ -293,11 +293,11 @@ return ok;
 </tr>
 <tr>
 	<td width='220' class='bgLight' align='right'><%=countrybean.getTranslation("Metadata Element Unit Cost")%>:</td>
-	<td>  <INPUT type='TEXT' size='31' maxlength='200' name='new_cost' VALUE="<%=htmlServer.htmlEncode(metadataElementCost.metadata_element_unit_cost)%>"></td>
+	<td>  <INPUT type='TEXT' size='31' maxlength='200' name='new_cost' VALUE="<%=metadataElementCost.metadata_element_unit_cost%>"></td>
 </tr>
 <tr>
 	<td width='220' class='bgLight' align='right'><%=countrybean.getTranslation("Metadata Element Unit Cost US")%>:</td>
-	<td>  <INPUT type='TEXT' size='31' maxlength='200' name='new_cost_us' VALUE="<%=htmlServer.htmlEncode(metadataElementCost.metadata_element_unit_cost_us)%>"></td>
+	<td>  <INPUT type='TEXT' size='31' maxlength='200' name='new_cost_us' VALUE="<%=metadataElementCost.metadata_element_unit_cost_us%>"></td>
 </tr>
 
 	<TR>

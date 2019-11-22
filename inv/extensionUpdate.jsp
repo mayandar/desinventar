@@ -371,22 +371,22 @@ return ok;
 <TD colspan=2 align="center"><span class="warning"><%=sErrorMessage%></span></TD>
 </TR>
 <input type="hidden" name="action" value="<%=action %>">
-<input type="hidden" name="nombre_campo" maxlength="10" size="10" value="<%=htmlServer.htmlEncode(Dictionary.nombre_campo) %>">
+<input type="hidden" name="nombre_campo" maxlength="10" size="10" value="<%=Dictionary.nombre_campo %>">
 <INPUT type='hidden' name='orden' VALUE="<%=Dictionary.orden%>">
 <tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("FieldNameforDB")%>:</td><td>  
 <% if (action==0)
    {%>
-<INPUT type='TEXT' size='31' maxlength='30' name='newname' VALUE="<%=htmlServer.htmlEncode(Dictionary.nombre_campo)%>">
+<INPUT type='TEXT' size='31' maxlength='30' name='newname' VALUE="<%=Dictionary.nombre_campo%>">
 <% }
    else
    {%>
-<%=htmlServer.htmlEncode(Dictionary.nombre_campo)%>
-<INPUT type='hidden' name='newname' VALUE="<%=htmlServer.htmlEncode(Dictionary.nombre_campo)%>">
+<%=Dictionary.nombre_campo%>
+<INPUT type='hidden' name='newname' VALUE="<%=Dictionary.nombre_campo%>">
 <% }%>
 </td></tr>
-<tr><td width=180 class='bgLight' align='right'><%=countrybean.getTranslation("Labelforfield")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='60' name='label_campo' VALUE="<%=htmlServer.htmlEncode(Dictionary.label_campo)%>"></td></tr>
-<tr><td width=180 class='bgLight' align='right'><%=countrybean.getTranslation("Labelforfield")%>(English):</td><td>  <INPUT type='TEXT' size='50' maxlength='60' name='label_campo_en' VALUE="<%=htmlServer.htmlEncode(Dictionary.label_campo_en)%>"></td></tr>
-<tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("FieldDescription")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='180' name='descripcion_campo' VALUE="<%=htmlServer.htmlEncode(Dictionary.descripcion_campo)%>"></td></tr>
+<tr><td width=180 class='bgLight' align='right'><%=countrybean.getTranslation("Labelforfield")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='60' name='label_campo' VALUE="<%=Dictionary.label_campo%>"></td></tr>
+<tr><td width=180 class='bgLight' align='right'><%=countrybean.getTranslation("Labelforfield")%>(English):</td><td>  <INPUT type='TEXT' size='50' maxlength='60' name='label_campo_en' VALUE="<%=Dictionary.label_campo_en%>"></td></tr>
+<tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("FieldDescription")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='180' name='descripcion_campo' VALUE="<%=Dictionary.descripcion_campo%>"></td></tr>
 <% if (action>0)
    {%>
 <tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("FieldType")%>:</td><td> 

@@ -1,9 +1,13 @@
 <%@ page import="java.io.*" %><%@ page import="java.sql.*" %><%@ page import="java.util.*" %><%@ page import="java.net.*" %><%@ page import="java.text.*" %><%@ page import="org.lared.desinventar.system.Sys" %><%@ page import="org.lared.desinventar.util.*" %><%@ page import="org.lared.desinventar.webobject.*" %>
 <% DICountry countrybean=new DICountry();%><%
 response.setHeader("Content-Type", "text/xml; charset=utf-8");
-String sWDDSLanguage=htmlServer.not_null(request.getParameter("LANGUAGE"));
+String sWDDSLanguage=countrybean.not_null_safe(request.getParameter("LANGUAGE"));
+if(sWDDSLanguage.length()>2)
+	sWDDSLanguage=sWDDSLanguage.substring(0,2);
 // future:  produce other formats...
-String sWDDSFormatRequest=htmlServer.not_null(request.getParameter("FORMAT"));
+String sWDDSFormatRequest=countrybean.not_null_safe(request.getParameter("FORMAT"));
+if(sWDDSFormatRequest.length()>2)
+	sWDDSFormatRequest=sWDDSFormatRequest.substring(0,2);
 
 %><%@ include file="/util/opendefaultdatabase.jspf" %>
 {

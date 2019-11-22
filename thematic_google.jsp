@@ -50,6 +50,7 @@ function selectmouse(e)
 
 document.onmousedown=selectmouse;
 document.onmouseup=new Function("isdrag=false");
+
 </script>
 <%@ page info="DesConsultar simple results page" session="true" %>
 <%@ page import="java.io.*"%>
@@ -187,7 +188,9 @@ if (nTransf==0)
 	width: 512px;
 }
 </style>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByVWfVCeED7LjjNRgxgTluLPGSenzMgAw&sensor=false"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%=sGoogleKey%>&sensor=false"></script>
+
 <script type="text/javascript">
 // best to declare your map variable outside of the function so that you can access it from other functions
 var map;
@@ -287,7 +290,7 @@ String imgparams="?mappingfunction="+countrybean.DoTHEMATIC+"&transparencyf="+co
 %>
   <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" id="map_canvasTable">
     <tr>
-      <td align="center" colspan="2"><span class="title"><%=htmlServer.htmlEncode(countrybean.sTitle)%></span> </td>
+      <td align="center" colspan="2"><span class="title"><%=countrybean.sTitle%></span> </td>
     </tr>
     <tr>
       <td id="map_cell" align="left" bgcolor="#ffffff" width="100%" height="100%" ><div id="map_canvas" style="width: 100%; height: 100%"></div></td>
@@ -301,7 +304,7 @@ String imgparams="?mappingfunction="+countrybean.DoTHEMATIC+"&transparencyf="+co
       <td colspan="2" class='bss'><%=countrybean.getTranslation("google_explanation")%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=countrybean.getTranslation("paste_explanation")%></td>
     </tr>
     <tr>
-      <td colspan="2"><span class="bss"><%=htmlServer.htmlEncode(countrybean.sSubTitle)%></span> </td>
+      <td colspan="2"><span class="bss"><%=countrybean.sSubTitle%></span> </td>
     </tr>
     <form name="desinventar" method='post' action="thematic_OL.jsp">
       <input type='hidden' name='nStart' value=''>

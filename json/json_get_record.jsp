@@ -13,13 +13,13 @@ response.setDateHeader("Expires", 0);%>
 <META HTTP-EQUIV="Expires" CONTENT="01-01-1999">
 <%// Get all JSON parameters
 */
-String sJSONLanguage=htmlServer.not_null(request.getParameter("LANGUAGE"));
-String sJSONInternalID=htmlServer.not_null(request.getParameter("INTERNAL"));
-String sJSONGlide=htmlServer.not_null(request.getParameter("GLIDE"));
-String sJSONEvent=htmlServer.not_null(request.getParameter("EVENT"));
-String sJSONGeocode=htmlServer.not_null(request.getParameter("GEOCODE"));
-String sJSONLevel=htmlServer.not_null(request.getParameter("LEVEL"));
-String sJSONDate=htmlServer.not_null(request.getParameter("DATE"));
+String sJSONLanguage=countrybean.not_null_safe(request.getParameter("LANGUAGE"));
+String sJSONInternalID=countrybean.not_null_safe(request.getParameter("INTERNAL"));
+String sJSONGlide=countrybean.not_null_safe(request.getParameter("GLIDE"));
+String sJSONEvent=countrybean.not_null_safe(request.getParameter("EVENT"));
+String sJSONGeocode=countrybean.not_null_safe(request.getParameter("GEOCODE"));
+String sJSONLevel=countrybean.not_null_safe(request.getParameter("LEVEL"));
+String sJSONDate=countrybean.not_null_safe(request.getParameter("DATE"));
 
 initWebDisasterDataService();
 

@@ -164,11 +164,13 @@ public class MetadataElementCosts extends webObject
 
 		// GET_FORM()
 		setMetadata_element_key(req.getParameter(assignName("metadata_element_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
 		setMetadata_element_year(req.getParameter(assignName("metadata_element_year")));
 		setMetadata_element_unit_cost(req.getParameter(assignName("metadata_element_unit_cost")));
 		setMetadata_element_unit_cost_us(req.getParameter(assignName("metadata_element_unit_cost_us")));
 
+		this.checkLengths();
+		
 		updateHashTable();
 		return 0;
 	}
@@ -181,7 +183,7 @@ public class MetadataElementCosts extends webObject
 
 		// GET_FORM()
 		setMetadata_element_key(req.getParameter(assignName("metadata_element_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
 		setMetadata_element_year(req.getParameter(assignName("metadata_element_year")));
 		setMetadata_element_unit_cost(req.getParameter(assignName("metadata_element_unit_cost")));
 		setMetadata_element_unit_cost_us(req.getParameter(assignName("metadata_element_unit_cost_us")));

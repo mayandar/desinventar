@@ -360,23 +360,25 @@ public class MetadataElement extends webObject
 
 		// GET_FORM()
 		setMetadata_element_key(req.getParameter(assignName("metadata_element_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
-		setMetadata_element_code(not_null(req.getParameter(assignName("metadata_element_code"))));
-		setMetadata_element_fao(not_null(req.getParameter(assignName("metadata_element_fao"))));
-		setMetadata_element_sector(not_null(req.getParameter(assignName("metadata_element_sector"))));
-		setMetadata_element_source(not_null(req.getParameter(assignName("metadata_element_source"))));
-		setMetadata_element_description(not_null(req.getParameter(assignName("metadata_element_description"))));
-		setMetadata_element_unit(not_null(req.getParameter(assignName("metadata_element_unit"))));
-		setMetadata_element_measurement(not_null(req.getParameter(assignName("metadata_element_measurement"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
+		setMetadata_element_code(not_null_safe(req.getParameter(assignName("metadata_element_code"))));
+		setMetadata_element_fao(not_null_safe(req.getParameter(assignName("metadata_element_fao"))));
+		setMetadata_element_sector(not_null_safe(req.getParameter(assignName("metadata_element_sector"))));
+		setMetadata_element_source(not_null_safe(req.getParameter(assignName("metadata_element_source"))));
+		setMetadata_element_description(not_null_safe(req.getParameter(assignName("metadata_element_description"))));
+		setMetadata_element_unit(not_null_safe(req.getParameter(assignName("metadata_element_unit"))));
+		setMetadata_element_measurement(not_null_safe(req.getParameter(assignName("metadata_element_measurement"))));
 		setMetadata_element_average_size(req.getParameter(assignName("metadata_element_average_size")));
 		setMetadata_element_equipment(req.getParameter(assignName("metadata_element_equipment")));
 		setMetadata_element_infrastr(req.getParameter(assignName("metadata_element_infrastr")));
 		setMetadata_element_damage_r(req.getParameter(assignName("metadata_element_damage_r")));
-		setMetadata_element_formula(not_null(req.getParameter(assignName("metadata_element_formula"))));
+		setMetadata_element_formula(not_null_safe(req.getParameter(assignName("metadata_element_formula"))));
 		setMetadata_element_workers(req.getParameter(assignName("metadata_element_workers")));
 		setMetadata_element_price(req.getParameter(assignName("metadata_element_price")));
 		setMetadata_element_price_us(req.getParameter(assignName("metadata_element_price_us")));
 
+		this.checkLengths();
+		
 		updateHashTable();
 		return 0;
 	}
@@ -389,19 +391,19 @@ public class MetadataElement extends webObject
 
 		// GET_FORM()
 		setMetadata_element_key(req.getParameter(assignName("metadata_element_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
-		setMetadata_element_code(not_null(req.getParameter(assignName("metadata_element_code"))));
-		setMetadata_element_fao(not_null(req.getParameter(assignName("metadata_element_fao"))));
-		setMetadata_element_sector(not_null(req.getParameter(assignName("metadata_element_sector"))));
-		setMetadata_element_source(not_null(req.getParameter(assignName("metadata_element_source"))));
-		setMetadata_element_description(not_null(req.getParameter(assignName("metadata_element_description"))));
-		setMetadata_element_unit(not_null(req.getParameter(assignName("metadata_element_unit"))));
-		setMetadata_element_measurement(not_null(req.getParameter(assignName("metadata_element_measurement"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
+		setMetadata_element_code(not_null_safe(req.getParameter(assignName("metadata_element_code"))));
+		setMetadata_element_fao(not_null_safe(req.getParameter(assignName("metadata_element_fao"))));
+		setMetadata_element_sector(not_null_safe(req.getParameter(assignName("metadata_element_sector"))));
+		setMetadata_element_source(not_null_safe(req.getParameter(assignName("metadata_element_source"))));
+		setMetadata_element_description(not_null_safe(req.getParameter(assignName("metadata_element_description"))));
+		setMetadata_element_unit(not_null_safe(req.getParameter(assignName("metadata_element_unit"))));
+		setMetadata_element_measurement(not_null_safe(req.getParameter(assignName("metadata_element_measurement"))));
 		setMetadata_element_average_size(req.getParameter(assignName("metadata_element_average_size")));
 		setMetadata_element_equipment(req.getParameter(assignName("metadata_element_equipment")));
 		setMetadata_element_infrastr(req.getParameter(assignName("metadata_element_infrastr")));
 		setMetadata_element_damage_r(req.getParameter(assignName("metadata_element_damage_r")));
-		setMetadata_element_formula(not_null(req.getParameter(assignName("metadata_element_formula"))));
+		setMetadata_element_formula(not_null_safe(req.getParameter(assignName("metadata_element_formula"))));
 		setMetadata_element_workers(req.getParameter(assignName("metadata_element_workers")));
 		setMetadata_element_price(req.getParameter(assignName("metadata_element_price")));
 		setMetadata_element_price_us(req.getParameter(assignName("metadata_element_price_us")));
@@ -630,8 +632,8 @@ public class MetadataElement extends webObject
 			metadata_element_unit=metadata_element_unit.substring(0,30);
 		if (metadata_element_measurement.length()>10)
 			metadata_element_measurement=metadata_element_measurement.substring(0,10);
-		if (metadata_element_formula.length()>1073741823)
-			metadata_element_formula=metadata_element_formula.substring(0,1073741823);
+		if (metadata_element_formula.length()>1000)
+			metadata_element_formula=metadata_element_formula.substring(0,1000);
     }
 
 	/**

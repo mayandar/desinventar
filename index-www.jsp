@@ -7,6 +7,7 @@
 <%@ page import="org.lared.desinventar.webobject.*" %> 
 <%@ page import="org.lared.desinventar.system.Sys" %>
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
+<%@ include file="/util/opendefaultdatabase.jspf" %>
 <html>
 <head>
 <title>DesInventar Open Source Official Site - V.9.14 - Main Menu</title>
@@ -14,12 +15,6 @@
 </head>
 <%
 org.lared.desinventar.system.Sys.getProperties();
-// load language code (if available)
-if (request.getParameter("lang")!=null)
-	countrybean.setLanguage(request.getParameter("lang"));
-// load DATA language code (if available)
-if (request.getParameter("datalng")!=null)
-	countrybean.setDataLanguage(request.getParameter("datalng"));
 String sSetDescriptors="";
 String sDescription="";
 country cCountry=new country();
@@ -27,7 +22,6 @@ String sRealPath=getServletConfig().getServletContext().getRealPath("/");
 htmlServer.outputLanguageHtml(sRealPath+"html","/header",countrybean.getLanguage(),out);
 countrybean.init();
 %>
-<%@ include file="/util/opendefaultdatabase.jspf" %>
 <div class="welcomeheadder">
   <div class="navbase">
           <h4 style="margin-bottom:0; padding-top:5px;">&nbsp;Welcome to DesInventar Open Source Initiative site</h4>

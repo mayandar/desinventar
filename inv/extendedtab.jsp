@@ -41,7 +41,7 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 <FORM NAME="desinventar" method="post">
 <input type="hidden" name="usrtkn" id="usrtkn" value="<%=countrybean.userHash%>"> 
 </FORM>
-<table width="1024" border="1" class="pageBackground" rules="none" height="520">
+<table width="1200" border="1" class="pageBackground" rules="none" height="520">
 <tr><td align="center" valign="top">
 <!-- Content goes after this comment -->
 <table width="90%" border="0">

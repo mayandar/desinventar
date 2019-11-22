@@ -1482,8 +1482,10 @@ public class DICountry extends webObject  implements Serializable
 	    	if (req.getParameter("_"+sName) != null)
 	    		      asArray = parseList(req.getParameter("_"+sName));
 	    // html encode all parameters
-	    for (int j=0; j<asArray.length; j++)
-    		asArray[j]=not_null_safe(asArray[j]);
+	    if (asArray!=null)
+	    	for (int j=0; j<asArray.length; j++)
+	    		if (asArray[j].indexOf(") as DateYMD")<0)     // this variable cannot be htmlEncoded. 
+	    			asArray[j]=not_null_safe(asArray[j]);
 	    return asArray;
 	  
   }
@@ -1566,18 +1568,23 @@ public class DICountry extends webObject  implements Serializable
     communications=strToBool(req.getParameter("communications"));
     relief=strToBool(req.getParameter("relief"));
     other=strToBool(req.getParameter("other"));
-    //sExpertWhere=not_null(req.getParameter("sExpertWhere"));
-    logic = not_null_safe(req.getParameter("logic"));
-    if (logic.length()==0)
+    //sExpertWhere=not_null_safe(req.getParameter("sExpertWhere"));
+    logic = not_null(req.getParameter("logic")).toUpperCase()+" ";   
+    if (logic.charAt(0)=='O')
       logic="OR";
+    else
+      logic="AND";	
     sortby = not_null_safe(req.getParameter("sortby"));
     if (sortby.length()==0)
-      sortby="0";
+        sortby="0";
+    if (sortby.length()>32)  // it must be a hacker..
+        sortby="0";
+
     nApproved=extendedParseInt(req.getParameter("nApproved"));
 
 
     /* FUTURE, When keywords/full text search are enabled
-    sFtoption=webObject.not_null(req.getParameter("ftoption"));
+    sFtoption=webObject.not_null_safe(req.getParameter("ftoption"));
     if (sFtoption.length()==0)
       sFtoption="&";
    */
@@ -2098,8 +2105,7 @@ public class DICountry extends webObject  implements Serializable
 
   public void processParams(HttpServletRequest request,  parser Parser, Connection con)
 	  {
-	  // depending where it is comming from, loads different parameters...
-	  String strFromPage=not_null_safe(request.getParameter("frompage"));
+	  
 	  boolean bBookmark=(request.getParameter("bookmark")!=null);
 	  int level_act=0;
 	  //	   load the translations needed for the query parser BEFORE changing the language...
@@ -2113,9 +2119,33 @@ public class DICountry extends webObject  implements Serializable
 	  if (request.getParameter("lang")!=null)
 		{
 			String sLang=not_null_safe(request.getParameter("lang"));
+			if (sLang.length()>2)
+				sLang=sLang.substring(0,2);
 			setLanguage(sLang);
 		}
-	  if (bBookmark || strFromPage.equals("/main.jsp"))
+	  // depending where it is comming from, loads different parameters...
+	  String strFromPage=not_null_safe(request.getParameter("frompage"));
+	  boolean bValid=
+			  		   strFromPage.equals("/profiletab.jsp") 
+			  		|| strFromPage.equals("/main.jsp") 
+			  		|| strFromPage.equals("/maps.jsp")
+			  		|| strFromPage.equals("/results.jsp")  
+			  		|| strFromPage.equals("/report.jsp") 			  		
+			  		|| strFromPage.equals("/inv/querytab.jsp")
+			  		|| strFromPage.equals("/inv/resultstab.jsp")
+			  		|| strFromPage.equals("/graphics.jsp")
+			  	    || strFromPage.equals("/definestats.jsp") 
+			  	    || strFromPage.equals("/definextab.jsp")
+			  	    || strFromPage.equals("/generator.jsp")
+			  	    || strFromPage.equals("/thematic_def.jsp");
+	  if (!bValid && strFromPage.length()>0)
+		  {
+		  System.out.println("[DI9] Invalid fromPage parameter: "+strFromPage);
+		  // strFromPage="/main.jsp"; 
+		  }
+	  
+	  // EXPLORE THIS: strFromPage= request.getRequestURL();		  
+	  if (bBookmark || strFromPage.equals("/main.jsp") || strFromPage.equals("/inv/querytab.jsp"))
 	    {
 	  	this.loadVectors(request);
 	  	// the expert:
@@ -2158,6 +2188,8 @@ public class DICountry extends webObject  implements Serializable
 			  bViewExtended=request.getParameter("viewExtended")!=null;
 	    	}
 		  String sLocalSort=not_null_safe(request.getParameter("localsort"));
+		  // TODO: validate if is a real variable. Use FICHAS and EXTENSION objects to ensure they are valid
+		  // 
 		  if (sLocalSort.length()>0)
 		   {
 			  hOrderBy.put("8",sLocalSort);
@@ -2178,7 +2210,6 @@ public class DICountry extends webObject  implements Serializable
 	  		  bHayNivel0 = true;
 			  asNivel1 = loadArrayParameter(request, "codes");
 			  bHayNivel1 = (asNivel1!=null);
-
 	  		  }
 	  		else if (level_act==2)
 	  		  {
@@ -2286,11 +2317,6 @@ public class DICountry extends webObject  implements Serializable
 	  checkParameterArray(asMapColors,10);
 	  checkParameterArray(asMapLegends,50);
 		  
-	if (con!=null)			  
-	  {
-		
-		  
-	  }
   }
 
   public static void checkParameterArray(String[] sArray, int maxlength)
@@ -2767,7 +2793,7 @@ return EncodeUtil.jsEncode(sBookMark);
   nChartRanges=50;    // initial default
   
   bViewStandard=true;
-  bViewExtended=true;
+  bViewExtended=false;
   bViewRawData=false;
 
   nShowIdType=0;      // 0=don't show id, 1=show names, 2=show codes

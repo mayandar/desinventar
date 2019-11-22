@@ -16,7 +16,7 @@
 		 dct.fieldtype==extension.FLOATINGPOINT  ||
 		 dct.fieldtype==extension.CURRENCY)		 
 			{%>
-             <option value="<%=dct.nombre_campo%>"<%=dct.strSelected(dct.nombre_campo,sTargetVariable)%>><%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en))%></option>
+             <option value="<%=dct.nombre_campo%>"<%=dct.strSelected(dct.nombre_campo,sTargetVariable)%>><%=countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en)%></option>
 			<%}
      }%>
              </select>
@@ -166,7 +166,7 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 	   if ((dct.tabnumber==ktab+1) || (dct.tabnumber==0 && ktab==woExtension.vTabs.size()-1))   
 	    {%>
             <tr>
-              <td align="right" class=bgLight width='300'><%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en))%>:&nbsp;</td>
+              <td align="right" class=bgLight width='300'><%=countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en)%>:&nbsp;</td>
               <td align="left" class=bgLightLight><%switch (dct.fieldtype)
 				  	{
 					case extension.YESNO:
@@ -189,7 +189,7 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 								bFound=true;
 								bSelected=true;
 								}
-							out.print("<option value='"+ecList.code_value+"'"+dct.strSelected(bSelected)+">"+htmlServer.htmlEncode(countrybean.getLocalOrEnglish(ecList.svalue,ecList.svalue_en))+"</option>");
+							out.print("<option value='"+ecList.code_value+"'"+dct.strSelected(bSelected)+">"+countrybean.getLocalOrEnglish(ecList.svalue,ecList.svalue_en)+"</option>");
 						}
 						if (!bFound && dct.sValue.length()>0 && !dct.sValue.equals("0")) // safeguard for extraneous values existing prior to codes
 						   out.print("<option value='"+dct.sValue+"' selected>"+dct.sValue+"</option>");						
@@ -210,7 +210,7 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 						%>
                 &nbsp;
                 <input name='<%=dct.nombre_campo%>' type='radio' value="<%=ecList.code_value%>"<%=dct.strChecked(bSelected)%>>
-                <%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(ecList.svalue,ecList.svalue_en))%>
+                <%=countrybean.getLocalOrEnglish(ecList.svalue,ecList.svalue_en)%>
                 <%
 						}
 						if (!bFound && dct.sValue.length()>0 && !dct.sValue.equals("0")){
@@ -248,13 +248,13 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 					case extension.MEMO:
 						%>
                 &nbsp;
-                <textarea name='<%=dct.nombre_campo%>' cols=60 rows=3><%=htmlServer.htmlEncode(dct.sValue)%></textarea>
+                <textarea name='<%=dct.nombre_campo%>' cols=60 rows=3><%=dct.sValue%></textarea>
                 <%
 						break;
 				    default:  
 				       	%>
                 &nbsp;
-                <input name='<%=dct.nombre_campo%>' type='text' value="<%=htmlServer.htmlEncode(dct.sValue)%>" size='<%=Math.min(dct.lon_x + 1, 50)%>' maxlength='<%=dct.lon_x%>'>
+                <input name='<%=dct.nombre_campo%>' type='text' value="<%=dct.sValue%>" size='<%=Math.min(dct.lon_x + 1, 50)%>' maxlength='<%=dct.lon_x%>'>
                 <%
 		            }%>
               </td>

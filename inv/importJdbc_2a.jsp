@@ -122,7 +122,7 @@ try{
 						     break;
 					    }
 
-%><tr><td><%=sCellContent%><input type='hidden' name='namecol<%=j%>' value='<%=EncodeUtil.htmlEncode(sCellContent)%>'></td> 
+%><tr><td><%=sCellContent%><input type='hidden' name='namecol<%=j%>' value='<%=sCellContent%>'></td> 
 											<td>
 											 <input type='checkbox' name='chkcol<%=j%>' value="Y"></td><td>									     
 											 <select name='field_type<%=j%>'>

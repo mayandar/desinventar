@@ -379,12 +379,12 @@ cancelling=true;
 <%  }
   else
     {%>
-	<strong><%=htmlServer.htmlEncode(Region.scountryid)%></strong>
-	<INPUT type='hidden' size='5' maxlength='5' name='scountryid' VALUE="<%=htmlServer.htmlEncode(Region.scountryid)%>">
+	<strong><%=Region.scountryid%></strong>
+	<INPUT type='hidden' size='5' maxlength='5' name='scountryid' VALUE="<%=Region.scountryid%>">
 <%  }%>
 	</td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("RegionName")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='50' name='scountryname' VALUE="<%=htmlServer.htmlEncode(Region.scountryname)%>"></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("DirectoryWithMapfiles")%>:</td><td>  <INPUT type='TEXT' size='100' maxlength='250' name='sjetfilename' onChange="setODBC()" VALUE="<%=htmlServer.htmlEncode(Region.sjetfilename)%>"> 
+	<tr><td class=bgLight><%=countrybean.getTranslation("RegionName")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='50' name='scountryname' VALUE="<%=Region.scountryname%>"></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("DirectoryWithMapfiles")%>:</td><td>  <INPUT type='TEXT' size='100' maxlength='250' name='sjetfilename' onChange="setODBC()" VALUE="<%=Region.sjetfilename%>"> 
 						<INPUT type='button' name='browsebtn'  VALUE="<%=countrybean.getTranslation("Browse")%>" onClick="browse()"><span class="warning"><strong>****</strong></span></td></tr>
 	<tr><td class=bgLight><%=countrybean.getTranslation("AVAILABLEtoPUBLIC")%>?:</td><td>  
 		<select name='bpublic'>
@@ -415,18 +415,18 @@ cancelling=true;
 	
     </td></tr>
 	
-	<tr><td class=bgLight><%=countrybean.getTranslation("sDbDriverName")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='100' name='sdriver' VALUE="<%=htmlServer.htmlEncode(Region.sdriver)%>"></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("sDataBaseName")%>:</td><td>  <INPUT type='TEXT' size='120' maxlength='250' name='sdatabasename' VALUE="<%=htmlServer.htmlEncode(Region.sdatabasename)%>"></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("sDbUserName")%>:</td><td>  <INPUT type='TEXT' size='30' maxlength='30' name='susername' VALUE="<%=htmlServer.htmlEncode(Region.susername)%>"></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("sDbPassword")%>:</td><td>  <INPUT type='password' size='30' maxlength='30' name='spassword' VALUE="<%=htmlServer.htmlEncode(Region.spassword)%>"></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("sDbDriverName")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='100' name='sdriver' VALUE="<%=Region.sdriver%>"></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("sDataBaseName")%>:</td><td>  <INPUT type='TEXT' size='120' maxlength='250' name='sdatabasename' VALUE="<%=Region.sdatabasename%>"></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("sDbUserName")%>:</td><td>  <INPUT type='TEXT' size='30' maxlength='30' name='susername' VALUE="<%=Region.susername%>"></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("sDbPassword")%>:</td><td>  <INPUT type='password' size='30' maxlength='30' name='spassword' VALUE="<%=Region.spassword%>"></td></tr>
 	<tr><td height="4"></td><td height="4"></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("Institution")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='50' name='sinstitution' VALUE="<%=htmlServer.htmlEncode(Region.sinstitution)%>"></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("Periodcovered")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='50' name='speriod' VALUE="<%=htmlServer.htmlEncode(Region.speriod)%>"></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("LastUpdatedYYYY-MM-DD")%>:</td><td>  <INPUT type='TEXT' size='20' maxlength='20' name='slastupdated' VALUE="<%=htmlServer.htmlEncode(Region.slastupdated)%>"></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("Description")%> (<%=countrybean.getTranslation("English")%>):</td><td><textarea cols='80' rows="4" maxlength='2000' name='sdescriptionen'><%=htmlServer.htmlEncode(Region.sdescriptionen)%></textarea></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("Description")%> (<%=countrybean.getTranslation("Spanish")%>):</td><td><textarea cols='80' rows="4" maxlength='2000' name='sdescriptiones'><%=htmlServer.htmlEncode(Region.sdescriptiones)%></textarea></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("Webpage")%>  (<%=countrybean.getTranslation("English")%>):</td><td>  <INPUT type='TEXT' size='80' maxlength='250' name='spageen' VALUE="<%=htmlServer.htmlEncode(Region.spageen)%>"></td></tr>
-	<tr><td class=bgLight><%=countrybean.getTranslation("Webpage")%> (<%=countrybean.getTranslation("Spanish")%>):</td><td>  <INPUT type='TEXT' size='80' maxlength='250' name='spagees' VALUE="<%=htmlServer.htmlEncode(Region.spagees)%>"></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("Institution")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='50' name='sinstitution' VALUE="<%=Region.sinstitution%>"></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("Periodcovered")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='50' name='speriod' VALUE="<%=Region.speriod%>"></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("LastUpdatedYYYY-MM-DD")%>:</td><td>  <INPUT type='TEXT' size='20' maxlength='20' name='slastupdated' VALUE="<%=Region.slastupdated%>"></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("Description")%> (<%=countrybean.getTranslation("English")%>):</td><td><textarea cols='80' rows="4" maxlength='2000' name='sdescriptionen'><%=Region.sdescriptionen%></textarea></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("Description")%> (<%=countrybean.getTranslation("Spanish")%>):</td><td><textarea cols='80' rows="4" maxlength='2000' name='sdescriptiones'><%=Region.sdescriptiones%></textarea></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("Webpage")%>  (<%=countrybean.getTranslation("English")%>):</td><td>  <INPUT type='TEXT' size='80' maxlength='250' name='spageen' VALUE="<%=Region.spageen%>"></td></tr>
+	<tr><td class=bgLight><%=countrybean.getTranslation("Webpage")%> (<%=countrybean.getTranslation("Spanish")%>):</td><td>  <INPUT type='TEXT' size='80' maxlength='250' name='spagees' VALUE="<%=Region.spagees%>"></td></tr>
 	<tr><td class=bgLight>&nbsp;</td><td></td></tr>
 	<TR>
 	<TD></TD>

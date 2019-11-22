@@ -190,7 +190,7 @@ return ok;
   <td> <%=countrybean.getTranslation("Value")%></td>
   <td> <%=countrybean.getTranslation("English")%></td>
 </tr>
-<input type="hidden" name="field_name" maxlength="10" size="10" value="<%=htmlServer.htmlEncode(Dictionary.nombre_campo) %>">
+<input type="hidden" name="field_name" maxlength="10" size="10" value="<%=Dictionary.nombre_campo%>">
 <% // 20 is an arbitrary number, for now 
 String sValue="";
 String sValue_en="";
@@ -207,9 +207,9 @@ sCode="";
 }
 %>
 <tr>
-  <td> <INPUT type='TEXT' size='5' maxlength='5' name='code_value' VALUE="<%=htmlServer.htmlEncode(sCode)%>"></td>
-  <td> <INPUT type='TEXT' size='40' maxlength='40' name='svalue' VALUE="<%=htmlServer.htmlEncode(sValue)%>"></td>
-  <td> <INPUT type='TEXT' size='40' maxlength='40' name='svalue_en' VALUE="<%=htmlServer.htmlEncode(sValue_en)%>"></td>
+  <td> <INPUT type='TEXT' size='5' maxlength='5' name='code_value' VALUE="<%=sCode%>"></td>
+  <td> <INPUT type='TEXT' size='40' maxlength='40' name='svalue' VALUE="<%=sValue%>"></td>
+  <td> <INPUT type='TEXT' size='40' maxlength='40' name='svalue_en' VALUE="<%=sValue_en%>"></td>
 </tr>
 <%}%>
 	<TR>

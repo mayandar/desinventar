@@ -61,7 +61,7 @@ public class selectCountry
       while (rset.next())
       {
         sCode = rset.getString("scountryid");
-        out.print("<option value=" + htmlServer.htmlEncode(sCode));
+        out.print("<option value=" + sCode);
         if (sCode.equalsIgnoreCase(sSelectedCode))
           out.print(" selected");
         else
@@ -77,7 +77,7 @@ public class selectCountry
             }
           }
         }
-        out.println(">" + htmlServer.htmlEncode(rset.getString("scountryname")));
+        out.println(">" + rset.getString("scountryname"));
       }
       rset.close();
       stmt.close();

@@ -1,45 +1,40 @@
 package org.lared.desinventar.util;
 
 import java.util.HashMap;
+import org.apache.commons.text.StringEscapeUtils;
 
 public class EncodeUtil {
 
 	/**
-	 * Which ascii characters may be sent in HTML without escaping
+	 * Encode ascii characters may not be sent in HTML without escaping
 	 */
-	public static String htmlEncode_simple(String src) {
+	public static String htmlEncode(String src) {
 		StringBuffer result = new StringBuffer();
 
 		int length = (src == null) ? 0 : src.length();
-		for (int i = 0; i < length; i++) {
+		for (int i = 0; i < length; i++) 
+		{
 			int ch = src.charAt(i);
 
-			// '"' is dec 34. '&' is dec 38. '<' os dec 60. '>' is dec 62.
-			//if ((ch == 34) || (ch == 38) || (ch == 60) || (ch == 62)) {
-			//    result.append("&#" + ch + ";");
 			if (ch == '\'')
-				result.append("&#" + ch + ";");
-
-			//if (ch == '&') {
-			//   result.append("&amp");
-			/*} else*/
-
-			if (ch == '<') {
+				result.append("&#39;");
+			else if (ch == '&') 
+			   result.append("&amp;");
+			else 	if (ch == '<')
 				result.append("&lt;");
-			} else if (ch == '>') {
+			else if (ch == '>') 
 				result.append("&gt;");
-			} else if (ch == '"') {
+			else if (ch == '"') 
 				result.append("&quot;");
-				//} else if (ch == ' ') {
-				//  result.append("&nbsp;");
-			} else {
+			else 
 				result.append((char) ch);
-			}
+			
 		}
 		return result.toString();
 	}
 
-	public static String  htmlDecode(String src)    {
+	public static String  htmlDecode_(String src)    
+	{
 		StringBuffer result = new StringBuffer();
 		int length = 0;
 		if (src != null) {
@@ -54,11 +49,13 @@ public class EncodeUtil {
 			} else if (i < length-1) {
 				i++;
 				ch = src.charAt(i);
-				if ((ch == '#') && (i < length-1)) {
+				if ((ch == '#') && (i < length-1)) 
+				{
 					i++;
 					ch = src.charAt(i);
 					StringBuffer encodedChar = new StringBuffer();
-					while ((i<length-1) && (ch != ';')) {
+					while ((i<length-1) && (ch != ';')) 
+					{
 						encodedChar.append((char) ch);
 						i++;
 						ch = src.charAt(i);
@@ -66,9 +63,11 @@ public class EncodeUtil {
 					try {
 						int cInt = Integer.valueOf(encodedChar.toString()).intValue();
 						//same as encode
-						if ((cInt == 34) || (cInt == 38) || (cInt == 60) || (cInt == 62)) {
+						if ((cInt == 34) || (cInt == 38) || (cInt == 60) || (cInt == 62)) 
+						{
 							result.append((char) cInt);
-						} else {
+						} else 
+						{
 							result.append('&');
 							result.append(encodedChar.toString());
 						}
@@ -84,6 +83,12 @@ public class EncodeUtil {
 		}
 		return result.toString();
 	}
+	
+	
+	public static String  htmlDecode(String src)    
+	{
+	return  StringEscapeUtils.unescapeHtml4(src);
+	}    
 
 	/**
 	 * remove quotes for a very light HTML encoding
@@ -412,6 +417,9 @@ public class EncodeUtil {
 		htmlEncodeChars.put('\u003C', "&lt;");
 		htmlEncodeChars.put('\u003E', "&gt;");
 		htmlEncodeChars.put('\u0022', "&quot;");
+		htmlEncodeChars.put('\'', "&#39;");
+		
+		
 
 		htmlEncodeChars.put('\u0152', "&OElig;");
 		htmlEncodeChars.put('\u0153', "&oelig;");
@@ -682,7 +690,7 @@ public class EncodeUtil {
 		return value;
 	}
 
-	public static String htmlEncode(String source)
+	public static String htmlEncode_complex(String source)
 	{
 		return encode(source, htmlEncodeChars);
 	}

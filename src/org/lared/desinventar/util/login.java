@@ -261,7 +261,7 @@ public class login
           {
             // FORGOT user/name and PASSWORD:
             // a) checks if there is a user with that user name
-            String email = htmlServer.not_null(req.getParameter("email")).trim();
+            String email = htmlServer.not_null_safe(req.getParameter("email")).trim();
             sSql = "select * from users where semailaddress=?";
             stmt = m_connection.prepareStatement (sSql);
             stmt.setString(1, email);

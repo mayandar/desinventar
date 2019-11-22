@@ -189,7 +189,7 @@ if (request.getParameter("save_EXCH_INFL")!=null ||
 		 dct.fieldtype==extension.FLOATINGPOINT  ||
 		 dct.fieldtype==extension.CURRENCY)		 
 			{%>
-             <option value="<%=dct.nombre_campo%>"<%=dct.strSelected(dct.nombre_campo,sInflationTargetVariable)%>><%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en))%></option>
+             <option value="<%=dct.nombre_campo%>"<%=dct.strSelected(dct.nombre_campo,sInflationTargetVariable)%>><%=countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en)%></option>
 			<%}
      }%>
              </select>

@@ -122,9 +122,10 @@ public class LevelAttributes extends webObject
 
 		// GET_FORM()
 		setTable_level(req.getParameter(assignName("table_level")));
-		setTable_name(not_null(req.getParameter(assignName("table_name"))));
-		setTable_code(not_null(req.getParameter(assignName("table_code"))));
+		setTable_name(not_null_safe(req.getParameter(assignName("table_name"))));
+		setTable_code(not_null_safe(req.getParameter(assignName("table_code"))));
 
+		
 		updateHashTable();
 		return 0;
 	}

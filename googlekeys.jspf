@@ -8,17 +8,7 @@ HashMap  hGoogleKeys=new HashMap();
 
 hGoogleKeys.put("localhost", 				"ABQIAAAAhd44-6kCwRi5MmbzS9iplRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTAgprKkxYALJMxLqtTkIj7RlOcPg");
 hGoogleKeys.put("desinventar", 				"ABQIAAAAhd44-6kCwRi5MmbzS9iplRTS6jzxg57uaPPzAtHhggi9bVK_axQNa0Kaa38RFPpbwlUeX1EXzKZLPQ");
-hGoogleKeys.put("www.desinventar.net", 		"ABQIAAAAhd44-6kCwRi5MmbzS9iplRSrn-KtM_IX8cZWqa1Z3yaaaCwAlhQVwRTZ8QlQJO7yN87WJ3tIyCpGvQ");
-hGoogleKeys.put("undp.desinventar.net", 		"ABQIAAAAhd44-6kCwRi5MmbzS9iplRQdQk_7cEOxxVjJhqn_v63jV1gf-xT-tPNYePqJLWRCXlUKML9I29EFJw");
-hGoogleKeys.put("gar-isdr.desinventar.net", "ABQIAAAAhd44-6kCwRi5MmbzS9iplRSG7eSSqty5cerjt_inlYQb0-9YWBS2Q-xyQwtm3kB3H5wZT7Fn88Whmg");
-hGoogleKeys.put("www.gripweb.org", 			"ABQIAAAAhd44-6kCwRi5MmbzS9iplRRYRpEcIErehx7qxUYBuU9oDmC2uBRYFT9zJHhWFBRHya3HR3lV2rQH_A");
-hGoogleKeys.put("moz.gripweb.org", 			"ABQIAAAAhd44-6kCwRi5MmbzS9iplRS0tuJMY191T8Z7RHtK9TA4nAAvtxT9PePRraWoC7cS3fnd2xnZSx6R6Q");
-hGoogleKeys.put("www.desinventar.lk", 		"ABQIAAAAhd44-6kCwRi5MmbzS9iplRQHattnIS4Ev7F3UBTx2GRv0azCgBRKc7olLBXphsfD6QEmy5yvkpP-ww");
 
-// this are for typical classroom settings...
-hGoogleKeys.put("192.168.0.100", 		"ABQIAAAAhd44-6kCwRi5MmbzS9iplRT3THHYGTp8rSQcCnwaJJWB1HsE_hT4YgToxhhBJ5PGd43npyHj7JqchQ");
-hGoogleKeys.put("192.168.1.100", 		"ABQIAAAAhd44-6kCwRi5MmbzS9iplRTNbbnogSBxh_Nk7_EXsE7U28rZzhT3_xRFp0mCqiudTRbnOxyAwFJewQ");
-hGoogleKeys.put("192.168.2.100", 		"ABQIAAAAhd44-6kCwRi5MmbzS9iplRS0P3hUjboboDbbrJE9YQhevsx2kRQHplo8VvgGSqJJ0QKqdvRm9tHUzg");
 // this is for your own Intranet PC name...
 hGoogleKeys.put("yourpcname", 		"ABQIAAAAhd44-6kCwRi5MmbzS9iplRRsAPv8ldT9uLLbAp8Gu4t41HhhpRQmFZvQB5unaamSXNYXx6VQNNlmmw");
 

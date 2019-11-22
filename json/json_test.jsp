@@ -15,9 +15,6 @@
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
 <%
 String sLang="EN";
-if (request.getParameter("lang")!=null)
-	sLang=request.getParameter("lang");
-
 htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/header",sLang,out);%>
  
 <table cellpadding="2" cellspacing="2" width="800">

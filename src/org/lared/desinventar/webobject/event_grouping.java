@@ -121,10 +121,12 @@ public class event_grouping extends webObject
 	public int getForm(HttpServletRequest req, HttpServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		setNombre(not_null(req.getParameter(assignName("nombre"))));
+		setNombre(not_null_safe(req.getParameter(assignName("nombre"))));
 		setLec_grouping_days(req.getParameter(assignName("lec_grouping_days")));
-		setCategory(not_null(req.getParameter(assignName("category"))));
+		setCategory(not_null_safe(req.getParameter(assignName("category"))));
 
+		checkLengths();
+		
 		updateHashTable();
 		return 0;
 	}
@@ -136,9 +138,9 @@ public class event_grouping extends webObject
 	public int getForm(ServletRequest req, ServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		setNombre(not_null(req.getParameter(assignName("nombre"))));
+		setNombre(not_null_safe(req.getParameter(assignName("nombre"))));
 		setLec_grouping_days(req.getParameter(assignName("lec_grouping_days")));
-		setCategory(not_null(req.getParameter(assignName("category"))));
+		setCategory(not_null_safe(req.getParameter(assignName("category"))));
 
 		updateHashTable();
 		return 0;

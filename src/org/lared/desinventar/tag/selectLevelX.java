@@ -142,8 +142,8 @@ public class selectLevelX    extends TagSupport
 		      while (rs.next())
 		      {
 		        sCode = rs.getString("lev"+nLevel+"_cod");
-		        out.print("<option value='" +co.scountryid+"@"+ htmlServer.htmlEncode(sCode) + "'>");		         
-		        out.println(htmlServer.htmlEncode(co.scountryname+" : "+(nLevel==1?(rs.getString("lev1_lev0")+" - "):"")+countrybean.getLocalOrEnglish(rs,"lev"+nLevel+"_name","lev"+nLevel+"_name_en")));
+		        out.print("<option value='" +co.scountryid+"@"+ sCode + "'>");		         
+		        out.println((co.scountryname+" : "+(nLevel==1?(rs.getString("lev1_lev0")+" - "):"")+countrybean.getLocalOrEnglish(rs,"lev"+nLevel+"_name","lev"+nLevel+"_name_en")));
 		      }
 		      rs.close();
 		      st.close();

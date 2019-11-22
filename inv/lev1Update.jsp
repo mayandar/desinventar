@@ -236,25 +236,25 @@ return ok;
 <input type="hidden" name="usrtkn" id="usrtkn" value="<%=countrybean.userHash%>"> 
 <table cellspacing="0" cellpadding="2" border="0" width="750">
 <tr>
-    <td class='bgDark' height="25" td colspan="2"><span class="titleText"><%=countrybean.getTranslation("Definitionof")%> <%=htmlServer.htmlEncode(countrybean.asLevels[1])%></span></td>
+    <td class='bgDark' height="25" td colspan="2"><span class="titleText"><%=countrybean.getTranslation("Definitionof")%> <%=countrybean.asLevels[1]%></span></td>
 	</td>
 </tr>
 <tr><td colspan="2" height="5"></td></tr>
 <TR>
-<TD colspan=2 align="center"><span class="warning"><%=htmlServer.htmlEncode(sErrorMessage)%></span></TD>
+<TD colspan=2 align="center"><span class="warning"><%=sErrorMessage%></span></TD>
 </TR>
 <input type="hidden" name="action" value="<%=action %>">
-<input type="hidden" name="lev1_cod" maxlength="10" size="10" value="<%=htmlServer.htmlEncode(Level1.lev1_cod) %>">
-<TR><td width=180 class=bgLight align='right'><%=htmlServer.htmlEncode(countrybean.asLevels[1])%> <%=countrybean.getTranslation("Code")%>:</td><td>  <INPUT type='TEXT' size='16' maxlength='15' name='newCode' VALUE="<%=htmlServer.htmlEncode(sLevel1id)%>"></td></tr>
-<tr><td width=180 class=bgLight align='right'><%=htmlServer.htmlEncode(countrybean.asLevels[1])%> <%=countrybean.getTranslation("Name")%>:</td><td>  <INPUT type='TEXT' size='30' maxlength='30' name='lev1_name' VALUE="<%=htmlServer.htmlEncode(Level1.lev1_name)%>"></td></tr>
-<tr><td width=180 class=bgLight align='right'><%=htmlServer.htmlEncode(countrybean.asLevels[1])%> <%=countrybean.getTranslation("Name")%>(English):</td><td>  <INPUT type='TEXT' size='30' maxlength='30' name='lev1_name_en' VALUE="<%=htmlServer.htmlEncode(Level1.lev1_name_en)%>"></td></tr>
+<input type="hidden" name="lev1_cod" maxlength="10" size="10" value="<%=Level1.lev1_cod%>">
+<TR><td width=180 class=bgLight align='right'><%=countrybean.asLevels[1]%> <%=countrybean.getTranslation("Code")%>:</td><td>  <INPUT type='TEXT' size='16' maxlength='15' name='newCode' VALUE="<%=sLevel1id%>"></td></tr>
+<tr><td width=180 class=bgLight align='right'><%=countrybean.asLevels[1]%> <%=countrybean.getTranslation("Name")%>:</td><td>  <INPUT type='TEXT' size='30' maxlength='30' name='lev1_name' VALUE="<%=Level1.lev1_name%>"></td></tr>
+<tr><td width=180 class=bgLight align='right'><%=countrybean.asLevels[1]%> <%=countrybean.getTranslation("Name")%>(English):</td><td>  <INPUT type='TEXT' size='30' maxlength='30' name='lev1_name_en' VALUE="<%=Level1.lev1_name_en%>"></td></tr>
 <tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Belongsto")%>:</td><td>  
 <SELECT name="lev1_lev0">
 	<% 
 	String sWhere="";
 	String sField=countrybean.sqlConcat(countrybean.sqlConcat("lev0_cod ", "' - '")," lev0_name ");
 	%>
-	<inv:select tablename='lev0' selected="<%=htmlServer.htmlEncode(Level1.lev1_lev0)%>" connection='<%= con %>'
+	<inv:select tablename='lev0' selected="<%=Level1.lev1_lev0%>" connection='<%= con %>'
     fieldname="<%=sField%>" codename='lev0_cod' ordername='lev0_name'/>
     </SELECT>
 </td></tr>
@@ -267,7 +267,7 @@ return ok;
 	<TD  valign="bottom"  align=right>
 	</TD>
 	<TD valign="bottom">
-	<input name="saveLevel1" type=submit value='<%=countrybean.getTranslation("Save")%> <%=htmlServer.htmlEncode(countrybean.asLevels[1])%> Info'> &nbsp; &nbsp; &nbsp; &nbsp;
+	<input name="saveLevel1" type=submit value='<%=countrybean.getTranslation("Save")%> <%=countrybean.asLevels[1]%> Info'> &nbsp; &nbsp; &nbsp; &nbsp;
 	<input name="cancelLevel" type='button' value='<%=countrybean.getTranslation("Cancel")%>' onClick="postTo('lev1Manager.jsp')">
 	</TD>
 	</Tr>

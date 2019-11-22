@@ -7,25 +7,19 @@
 <%@ page import="org.lared.desinventar.webobject.*" %> 
 <%@ page import="org.lared.desinventar.system.*" %>
 <jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
+<%@ include file="/util/opendefaultdatabase.jspf" %>
 <html>
 <head>
 <title>DesConsultar on-line Main Menu</title>
 </head>
 <%
 org.lared.desinventar.system.Sys.getProperties();
-// load language code (if available)
-if (request.getParameter("lang")!=null)
-	countrybean.setLanguage(request.getParameter("lang"));
-// load DATA language code (if available)
-if (request.getParameter("datalng")!=null)
-	countrybean.setDataLanguage(request.getParameter("datalng"));
 String sRealPath=getServletConfig().getServletContext().getRealPath("/");
 htmlServer.outputLanguageHtml(sRealPath+"html","/header",countrybean.getLanguage(),out);
 countrybean.init();
 //  when shipping to LA: countrybean.setLanguage("ES");
 //countrybean.reloadBundles();
 %>
-<%@ include file="/util/opendefaultdatabase.jspf" %>
 <div class="welcomeheadder">
   <div class="navbase">
     <div class="welcome"><strong>Welcome</strong> to DesInventar, a free, open source Disaster Information Management System</div>

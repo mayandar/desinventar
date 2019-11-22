@@ -197,14 +197,16 @@ public class MetadataElementLang extends webObject
 
 		// GET_FORM()
 		setMetadata_element_key(req.getParameter(assignName("metadata_element_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
-		setMetadata_lang(not_null(req.getParameter(assignName("metadata_lang"))));
-		setMetadata_element_sector(not_null(req.getParameter(assignName("metadata_element_sector"))));
-		setMetadata_element_source(not_null(req.getParameter(assignName("metadata_element_source"))));
-		setMetadata_element_description(not_null(req.getParameter(assignName("metadata_element_description"))));
-		setMetadata_element_unit(not_null(req.getParameter(assignName("metadata_element_unit"))));
-		setMetadata_element_measurement(not_null(req.getParameter(assignName("metadata_element_measurement"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
+		setMetadata_lang(not_null_safe(req.getParameter(assignName("metadata_lang"))));
+		setMetadata_element_sector(not_null_safe(req.getParameter(assignName("metadata_element_sector"))));
+		setMetadata_element_source(not_null_safe(req.getParameter(assignName("metadata_element_source"))));
+		setMetadata_element_description(not_null_safe(req.getParameter(assignName("metadata_element_description"))));
+		setMetadata_element_unit(not_null_safe(req.getParameter(assignName("metadata_element_unit"))));
+		setMetadata_element_measurement(not_null_safe(req.getParameter(assignName("metadata_element_measurement"))));
 
+		this.checkLengths();
+		
 		updateHashTable();
 		return 0;
 	}
@@ -217,13 +219,13 @@ public class MetadataElementLang extends webObject
 
 		// GET_FORM()
 		setMetadata_element_key(req.getParameter(assignName("metadata_element_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
-		setMetadata_lang(not_null(req.getParameter(assignName("metadata_lang"))));
-		setMetadata_element_sector(not_null(req.getParameter(assignName("metadata_element_sector"))));
-		setMetadata_element_source(not_null(req.getParameter(assignName("metadata_element_source"))));
-		setMetadata_element_description(not_null(req.getParameter(assignName("metadata_element_description"))));
-		setMetadata_element_unit(not_null(req.getParameter(assignName("metadata_element_unit"))));
-		setMetadata_element_measurement(not_null(req.getParameter(assignName("metadata_element_measurement"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
+		setMetadata_lang(not_null_safe(req.getParameter(assignName("metadata_lang"))));
+		setMetadata_element_sector(not_null_safe(req.getParameter(assignName("metadata_element_sector"))));
+		setMetadata_element_source(not_null_safe(req.getParameter(assignName("metadata_element_source"))));
+		setMetadata_element_description(not_null_safe(req.getParameter(assignName("metadata_element_description"))));
+		setMetadata_element_unit(not_null_safe(req.getParameter(assignName("metadata_element_unit"))));
+		setMetadata_element_measurement(not_null_safe(req.getParameter(assignName("metadata_element_measurement"))));
 
 		updateHashTable();
 		return 0;

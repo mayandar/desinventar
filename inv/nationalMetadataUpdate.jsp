@@ -278,19 +278,19 @@ return ok;
 </TR>
 <TR>
 	<td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Variable")%>:</td>
-	<td>  <INPUT type='TEXT' size='31' maxlength='30' name='new_variable' VALUE="<%=htmlServer.htmlEncode(metadata.metadata_variable)%>"></td>
+	<td>  <INPUT type='TEXT' size='31' maxlength='30' name='new_variable' VALUE="<%=metadata.metadata_variable%>"></td>
 </tr>
 <tr>
 	<td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Description")%>:</td>
-	<td>  <INPUT type='TEXT' size='50' maxlength='200' name='new_description' VALUE="<%=htmlServer.htmlEncode(metadata.metadata_description)%>"></td>
+	<td>  <INPUT type='TEXT' size='50' maxlength='200' name='new_description' VALUE="<%=metadata.metadata_description%>"></td>
 </tr>
 <tr>
 	<td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Source")%>:</td>
-	<td>  <INPUT type='TEXT' size='50' maxlength='200' name='new_source' VALUE="<%=htmlServer.htmlEncode(metadata.metadata_source)%>"></td>
+	<td>  <INPUT type='TEXT' size='50' maxlength='200' name='new_source' VALUE="<%=metadata.metadata_source%>"></td>
 </tr>
 <tr>
 	<td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Default Value")%>:</td>
-	<td>  <INPUT type='TEXT' size='50' maxlength='200' name='new_default_value' VALUE="<%=htmlServer.htmlEncode(metadata.metadata_default_value)%>"></td>
+	<td>  <INPUT type='TEXT' size='50' maxlength='200' name='new_default_value' VALUE="<%=metadata.metadata_default_value%>"></td>
 </tr>
 
 	<TR>

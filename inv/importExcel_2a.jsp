@@ -119,7 +119,7 @@ try{
 			    	String sCellContent="column_"+kCol;
 					if (cell!=null)
 			    		sCellContent=cell.getStringCellValue();
-%>	<tr><td><%=sCellContent%><input type='hidden' name='namecol<%=kCol%>' value='<%=EncodeUtil.htmlEncode(sCellContent)%>'></td> 
+%>	<tr><td><%=sCellContent%><input type='hidden' name='namecol<%=kCol%>' value='<%=sCellContent%>'></td> 
 											<td><input type='checkbox' name='chkcol<%=kCol%>' value="Y"></td>
 											<td>									     
 											  <select name='field_type<%=kCol%>'>

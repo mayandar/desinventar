@@ -290,7 +290,7 @@ else
 						// gets the metadata of the resultset
 						meta = rset.getMetaData();
 						out.println("<h3>"+sQueryTitle+"</H3><BR><TABLE border='1' >");
-						out.println("<tr><TD>"+htmlServer.htmlEncode(sSql)+"<br></TD></TR></TABLE><TABLE border='1' class='bss IE_Table'>");
+						out.println("<tr><TD>"+sSql+"<br></TD></TR></TABLE><TABLE border='1' class='bss IE_Table'>");
 						out.println("<TR>");
 						for (j=iFirst; j<=meta.getColumnCount(); j++)
 							{
@@ -314,7 +314,7 @@ else
 										{
 										case Types.CLOB:
 										case 1111:
-										out.print(htmlServer.htmlEncode(get_ClobString(rset.getClob(j))));
+										out.print(get_ClobString(rset.getClob(j)));
 										// out.println("<td>"+rset.getClob(j).getSubString(1,(int) rset.getClob(j).length())+"</td>");
 										//out.println("<td>"+rset.getClob(j).getSubString(1,45)+"</td>");
 										//out.println("<td>"+ rset.getClob(j).length()+"</td>");
@@ -338,7 +338,7 @@ else
 												out.print(sInt);
 											break;
 										default:
-											out.print(htmlServer.htmlEncode(not_null(rset.getString(j))));
+											out.print(not_null(rset.getString(j)));
 											break;
 										}
 									}

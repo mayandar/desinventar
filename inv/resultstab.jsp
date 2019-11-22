@@ -136,7 +136,7 @@ out.print("<a href='javascript:sortby(\"eventos.nombre"+sLangSuffix+" desc\")' c
 %></th>
 <% for (int j=0; j<3; j++){%>
 <th nowrap rowspan=2><%
-out.print("<a href='javascript:sortby(\"lev"+j+"_name"+sLangSuffix+"\")' class='blacklinks'>"+htmlServer.htmlEncode(countrybean.asLevels[j]) +"</a>&nbsp;");
+out.print("<a href='javascript:sortby(\"lev"+j+"_name"+sLangSuffix+"\")' class='blacklinks'>"+countrybean.asLevels[j] +"</a>&nbsp;");
 out.print("<a href='javascript:sortby(\"lev"+j+"_name"+sLangSuffix+" desc\")' class='blacklinks'><img src='/DesInventar/images/arr_down.gif' border=0></a>");
 %></th>
 <%}%>
@@ -184,7 +184,7 @@ if (countrybean.bViewExtended)
 		     nFields++;
 		  }
 	if (nFields>0)
-	   out.print("<th colspan="+nFields+">"+htmlServer.htmlEncode(sTabName)+"</th>");
+	   out.print("<th colspan="+nFields+">"+sTabName+"</th>");
     }
   out.print("</tr><tr>");
    for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
@@ -193,7 +193,7 @@ if (countrybean.bViewExtended)
 	     {
 		 dct = (Dictionary) woExtension.vFields.get(k);
 	     if ((dct.tabnumber==ktab+1) || (dct.tabnumber==0 && ktab==woExtension.vTabs.size()-1))
-			out.print("<th nowrap>"+outSortHeader(htmlServer.htmlEncode(dct.nombre_campo),htmlServer.htmlEncode(countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en)))+"</th>");
+			out.print("<th nowrap>"+outSortHeader(dct.nombre_campo,countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en))+"</th>");
 		 }
 	}
 }
@@ -287,15 +287,15 @@ try
 		<td>
         <%}%>
 		</td>
-		<td  nowrap><%=htmlServer.htmlEncode(sSerial)%>		</td>
-		<td  nowrap><%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(woHazard.nombre,woHazard.nombre_en))%></td>
-		<td  nowrap>&nbsp;<%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(woLev0.lev0_name,woLev0.lev0_name_en))%></td>
-		<td  nowrap>&nbsp;<%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(woLev1.lev1_name,woLev1.lev1_name_en))%></td>
-		<td  nowrap>&nbsp;<%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(woLev2.lev2_name,woLev2.lev2_name_en))%></td>
-		<td><%=htmlServer.htmlEncode(countrybean.sFormatDate(Integer.toString(woFicha.fechano),Integer.toString(woFicha.fechames),Integer.toString(woFicha.fechadia)))%></td>
+		<td  nowrap><%=sSerial%>		</td>
+		<td  nowrap><%=countrybean.getLocalOrEnglish(woHazard.nombre,woHazard.nombre_en)%></td>
+		<td  nowrap>&nbsp;<%=countrybean.getLocalOrEnglish(woLev0.lev0_name,woLev0.lev0_name_en)%></td>
+		<td  nowrap>&nbsp;<%=countrybean.getLocalOrEnglish(woLev1.lev1_name,woLev1.lev1_name_en)%></td>
+		<td  nowrap>&nbsp;<%=countrybean.getLocalOrEnglish(woLev2.lev2_name,woLev2.lev2_name_en)%></td>
+		<td><%=countrybean.sFormatDate(Integer.toString(woFicha.fechano),Integer.toString(woFicha.fechames),Integer.toString(woFicha.fechadia))%></td>
 <% if (countrybean.bViewStandard)
 {%>
-		<td  nowrap>&nbsp;<%=htmlServer.htmlEncode(htmlServer.not_null(woFicha.lugar))%>&nbsp;</td>
+		<td  nowrap>&nbsp;<%=htmlServer.not_null(woFicha.lugar)%>&nbsp;</td>
 		<td><inv:check2 number='<%=woFicha.muertos%>'  value='<%=woFicha.hay_muertos%>'/></td>
 		<td><inv:check2 number='<%=woFicha.heridos%>'  value='<%=woFicha.hay_heridos%>'/></td>
 		<td><inv:check2 number='<%=woFicha.desaparece%>'  value='<%=woFicha.hay_deasparece%>'/></td>
@@ -312,19 +312,17 @@ try
 		<td><inv:check2 number='<%=woFicha.nhectareas%>'  value='<%=woFicha.agropecuario%>'/></td>
 		<td><%=woFicha.cabezas%> </td>
 		<td><inv:check2 number='<%=woFicha.kmvias%>'  value='<%=woFicha.transporte%>'/></td>
-		<td><%=htmlServer.htmlEncode(htmlServer.not_null(woFicha.glide))%>&nbsp;</td>
+		<td><%=htmlServer.not_null(woFicha.glide)%>&nbsp;</td>
 <%
 String sComments=woFicha.di_comments;
 
-sAllComments+="sTip"+sClave+"='"+EncodeUtil.jsEncode("<table><tr><td>"+htmlServer.htmlEncode(sComments)+"</td></tr></table>")+"';\n";
+sAllComments+="sTip"+sClave+"='"+EncodeUtil.jsEncode("<table><tr><td>"+sComments+"</td></tr></table>")+"';\n";
 if (sComments.length()>70)
    {
    int pos=65;
    while (pos>50 && sComments.charAt(pos)!=' ') pos--;
-   sComments=htmlServer.htmlEncode(sComments.substring(0,pos))+"<a  onmouseover='Tip(sTip"+sClave+")' onmouseout='UnTip()' href='modifydatacard.jsp?clave="+sClave+"&serial="+sSerial+"&nStart="+nStart+"'>[...]</a>";
+   sComments=sComments.substring(0,pos)+"<a  onmouseover='Tip(sTip"+sClave+")' onmouseout='UnTip()' href='modifydatacard.jsp?clave="+sClave+"&serial="+sSerial+"&nStart="+nStart+"'>[...]</a>";
    }
- else
-   sComments=htmlServer.htmlEncode(sComments);
    
 %>
 		<td  nowrap><%=sComments%>&nbsp;</td>

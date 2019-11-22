@@ -420,10 +420,13 @@ public class ChartServer implements chartConstants
 			case BARTYPE:
 				DefaultCategoryDataset line_bar_dataset = new DefaultCategoryDataset();
 				int j = 0;
+				Color cNo=new Color(0,0,0,0); 
 				for (i=0; i<nSets; i++)
 					for (j = 0; j < nPoints; j++)
 						if(this.sSetLabels[i] != null && this.sLabels[j] != null )
+						{
 						line_bar_dataset.addValue(y[i][j], this.sSetLabels[i], this.sLabels[j]);
+						}
 				
 				// add regression lines...
 				/*  */
@@ -432,13 +435,12 @@ public class ChartServer implements chartConstants
 					for (i=0; i<nSets; i++)
 					{
 						for (j = 0; j < nPoints; j++)
-							if(this.sSetLabels[i] != null && this.sLabels[j] != null ){
+							if(this.sSetLabels[i] != null && this.sLabels[j] != null )
+							{
 								line_bar_dataset.addValue(y[i+nSets][j], this.sSetLabels[i]+"-REGR", this.sLabels[j]);
 							}
-					}
-					//nSets += i;
+					}				
 				}
-				/*  */
 								
 				if (nChartType==LINETYPE)
 					jChartObject = createLineChart(line_bar_dataset, dicountrybean);
@@ -460,7 +462,6 @@ public class ChartServer implements chartConstants
 
 			jChartObject.setBackgroundPaint( Color.white ); 
 			bi=jChartObject.createBufferedImage(dxMax,dyMax);
-
 
 
 			//  For JAVA2D, a PNG encoder:
@@ -566,6 +567,7 @@ public class ChartServer implements chartConstants
 			NumberAxis axis =(NumberAxis) plot.getDomainAxis();
 			axis.setTickLabelsVisible(true);
 			axis.setVerticalTickLabels(true);			
+
 		}
 
 		
@@ -757,6 +759,8 @@ public class ChartServer implements chartConstants
 		axis.setTickLabelsVisible(true);
 		axis.setCategoryLabelPositions(CategoryLabelPositions.DOWN_90);
 
+		setTickNiceVisibility(axis);
+
 		if(dicountrybean.bLogarithmicY){
 			LogAxis rangeAxis = new LogAxis("");
 			rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
@@ -822,6 +826,7 @@ public class ChartServer implements chartConstants
 
 		axis.setTickLabelsVisible(true);
 		axis.setCategoryLabelPositions(CategoryLabelPositions.DOWN_90);
+		setTickNiceVisibility(axis);
 
 		if(dicountrybean.bLogarithmicY){
 			LogAxis rangeAxis = new LogAxis("");
@@ -866,7 +871,8 @@ public class ChartServer implements chartConstants
 			CategoryAxis axis = plot.getDomainAxis();		
 			Font font = new Font("year",Font.PLAIN, AXIS_FONT_SIZE); //10); //25); //15);
 			axis.setTickLabelFont(font);
-	
+			
+			setTickNiceVisibility(axis);
 			axis.setTickLabelsVisible(true);
 			axis.setCategoryLabelPositions(CategoryLabelPositions.DOWN_90);
 			if(dicountrybean.bLogarithmicY){
@@ -878,6 +884,41 @@ public class ChartServer implements chartConstants
 			}
 			
 		return jChartObject;
+	}
+
+	private void setTickNiceVisibility(CategoryAxis axis) {
+		int nMaxClicks=this.dxMax/20;
+		int nClicks=nPoints;
+		double dSpace=1.0f;
+		double dCurrent=0;
+		int dLast=-1;
+		
+		if (nClicks>nMaxClicks)
+		{
+			nClicks=nMaxClicks;
+			dSpace=nClicks/(double)nPoints;
+		}
+
+		Color cNo= new Color(255,255,255,0);
+		Color cYes=Color.black;
+		//for (int i=0; i<nSets; i++)
+		int i=0;
+		for (int j = 0; j < nPoints; j++)
+			{
+				if(this.sSetLabels[i] != null && this.sLabels[j] != null )
+				{
+					dCurrent=j*dSpace;
+					if (((int)Math.rint(dCurrent))>dLast)
+						{
+						axis.setTickLabelPaint(this.sLabels[j], cYes);
+						dLast=(int)Math.rint(dCurrent);
+						}
+					else
+						axis.setTickLabelPaint(this.sLabels[j], cNo);
+					
+				}
+				
+			}
 	}
 
 

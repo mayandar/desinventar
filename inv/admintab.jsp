@@ -10,14 +10,6 @@ if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 	 	{%><jsp:forward page="noaccess.jsp"/><%}		
 %>
 <%@ include file="checkUserIsLoggedIn.jsp" %>
-<%
-// load language code (if available)
-if (request.getParameter("lang")!=null)
-	countrybean.setLanguage(request.getParameter("lang"));
-// load DATA language code (if available)
-if (request.getParameter("datalng")!=null)
-	countrybean.setDataLanguage(request.getParameter("datalng"));
-%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>

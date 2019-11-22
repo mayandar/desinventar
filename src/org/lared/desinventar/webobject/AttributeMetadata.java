@@ -187,15 +187,15 @@ public class AttributeMetadata extends webObject
 	public int getForm(HttpServletRequest req, HttpServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		setField_table(not_null(req.getParameter(assignName("field_table"))));
-		setField_name(not_null(req.getParameter(assignName("field_name"))));
-		setField_label(not_null(req.getParameter(assignName("field_label"))));
-		setField_label_en(not_null(req.getParameter(assignName("field_label_en"))));
-		setField_description(not_null(req.getParameter(assignName("field_description"))));
-		setField_description_en(not_null(req.getParameter(assignName("field_description_en"))));
-		setField_date(not_null(req.getParameter(assignName("field_date"))));
-		setField_source(not_null(req.getParameter(assignName("field_source"))));
-
+		setField_table(not_null_safe(req.getParameter(assignName("field_table"))));
+		setField_name(not_null_safe(req.getParameter(assignName("field_name"))));
+		setField_label(not_null_safe(req.getParameter(assignName("field_label"))));
+		setField_label_en(not_null_safe(req.getParameter(assignName("field_label_en"))));
+		setField_description(not_null_safe(req.getParameter(assignName("field_description"))));
+		setField_description_en(not_null_safe(req.getParameter(assignName("field_description_en"))));
+		setField_date(not_null_safe(req.getParameter(assignName("field_date"))));
+		setField_source(not_null_safe(req.getParameter(assignName("field_source"))));
+		
 		updateHashTable();
 		return 0;
 	}

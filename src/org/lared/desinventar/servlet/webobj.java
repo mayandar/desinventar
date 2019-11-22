@@ -361,7 +361,7 @@ public class webobj extends HttpServlet
             {
               case Types.DATE:
               case Types_Oracle_Date:
-                javaLine += "strDate(not_null(req.getParameter(assignName(\"" + meta.getColumnName(j).toLowerCase() + "\"))));";
+                javaLine += "strDate(not_null_safe(req.getParameter(assignName(\"" + meta.getColumnName(j).toLowerCase() + "\"))));";
                 break;
               case Types.DECIMAL:
               case Types.DOUBLE:
@@ -375,7 +375,7 @@ public class webobj extends HttpServlet
                 javaLine += "extendedParseInt(req.getParameter(assignName(\"" + meta.getColumnName(j).toLowerCase() + "\")));";
                 break;
               default:
-                javaLine += "not_null(req.getParameter(assignName(\"" + meta.getColumnName(j).toLowerCase() + "\")));";
+                javaLine += "not_null_safe(req.getParameter(assignName(\"" + meta.getColumnName(j).toLowerCase() + "\")));";
                 break;
             }
             out_file.println(javaLine);

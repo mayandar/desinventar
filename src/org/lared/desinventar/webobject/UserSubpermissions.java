@@ -136,10 +136,12 @@ public class UserSubpermissions extends webObject
 	public int getForm(HttpServletRequest req, HttpServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		setUserid(not_null(req.getParameter(assignName("userid"))));
-		setCountry(not_null(req.getParameter(assignName("country"))));
+		setUserid(not_null_safe(req.getParameter(assignName("userid"))));
+		setCountry(not_null_safe(req.getParameter(assignName("country"))));
 		setRegion_level(req.getParameter(assignName("region_level")));
-		setRegion_code(not_null(req.getParameter(assignName("region_code"))));
+		setRegion_code(not_null_safe(req.getParameter(assignName("region_code"))));
+
+		this.checkLengths();
 
 		updateHashTable();
 		return 0;
@@ -152,10 +154,10 @@ public class UserSubpermissions extends webObject
 	public int getForm(ServletRequest req, ServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		setUserid(not_null(req.getParameter(assignName("userid"))));
-		setCountry(not_null(req.getParameter(assignName("country"))));
+		setUserid(not_null_safe(req.getParameter(assignName("userid"))));
+		setCountry(not_null_safe(req.getParameter(assignName("country"))));
 		setRegion_level(req.getParameter(assignName("region_level")));
-		setRegion_code(not_null(req.getParameter(assignName("region_code"))));
+		setRegion_code(not_null_safe(req.getParameter(assignName("region_code"))));
 
 		updateHashTable();
 		return 0;

@@ -52,7 +52,7 @@ if (sExpertTranslation!=null)
 		<script language="JavaScript">
 		parent.document.desinventar.valid.value=false;
 		alert("ERROR: <%=err.toString()%> ");
-		alert("formula: <%=request.getParameter("formula")%> ");
+		alert("formula: <%=<%=countrybean.not_null_safe(request.getParameter("formula"))%> ");
 		alert("<%=sSql%>");
 		</script>
 	<%	}
@@ -62,7 +62,7 @@ dbCon.close();
 %>
 <form name="desinventar" action="expert_validate.jsp" method="post">
 <input type="text" name="sExpertWhere" size="60" value=""/>	 
-<input type="text" name="formula" size="60" value="<%=request.getParameter("formula")%>"/>	 
+<input type="text" name="formula" size="60" value="<%=countrybean.not_null_safe(request.getParameter("formula"))%>"/>	 
 <input type="submit" name="submitter" value="submit"/>	 
 <input type="button" name="tst" value="submit test" onClick="main_submit()"/>	 
 </form>

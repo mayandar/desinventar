@@ -130,11 +130,13 @@ public class lev2 extends webObject
 	public int getForm(HttpServletRequest req, HttpServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		lev2_cod = not_null(req.getParameter(assignName("lev2_cod")));
-		lev2_name = not_null(req.getParameter(assignName("lev2_name")));
-		lev2_name_en = not_null(req.getParameter(assignName("lev2_name_en")));
-		lev2_lev1 = not_null(req.getParameter(assignName("lev2_lev1")));
+		lev2_cod = not_null_safe(req.getParameter(assignName("lev2_cod")));
+		lev2_name = not_null_safe(req.getParameter(assignName("lev2_name")));
+		lev2_name_en = not_null_safe(req.getParameter(assignName("lev2_name_en")));
+		lev2_lev1 = not_null_safe(req.getParameter(assignName("lev2_lev1")));
 
+		this.checkLengths();
+		
 		updateHashTable();
 		return 0;
 	}

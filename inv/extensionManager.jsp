@@ -200,7 +200,7 @@ document.desinventar.delExtension.click();
 		out.println("<tr class='bs'>");
 		out.println("<td><a href= 'javascript:editField("+j+")'><img src='/DesInventar/images/edit_row.gif' alt='Edit field' border=0></a></td>");
 		out.println("<td><a href= 'javascript:deleteField("+j+")'><img src='/DesInventar/images/delete_row.gif' alt='Delete field' border=0></a></td>");
-		out.println("<td><strong>"+htmlServer.htmlEncode(dct.nombre_campo)+"</strong></td><td>"+htmlServer.htmlEncode(countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en))+"</td><td>"+extension.UserTypeNames[dct.fieldtype]+"</td></tr>");
+		out.println("<td><strong>"+dct.nombre_campo+"</strong></td><td>"+countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en)+"</td><td>"+extension.UserTypeNames[dct.fieldtype]+"</td></tr>");
 		j++;
 		}
 	rset.close();	

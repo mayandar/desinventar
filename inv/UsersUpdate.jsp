@@ -187,10 +187,11 @@ return ok;
 <TR>
 <TD colspan=2 align="center"><span class="warning"><%=sErrorMessage%></span></TD>
 </TR>
-<input type="hidden" name="suserid" maxlength="10" size="10" value="<%=htmlServer.htmlEncode(User.suserid) %>">
+<input type="hidden" name="suserid" maxlength="10" size="10" value="<%=User.suserid %>">
 <TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Username")%>: </td><TD><%=User.suserid %></td></tr>                
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Password")%>: </td><TD><input  type="Password" name="spassword" maxlength="20" size="13" value="<%=htmlServer.htmlEncode(User.spassword) %>"><span class="warning">*</span></td></tr>                
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("retypePassword")%>: </td><TD><input  type="Password" name="spassword2" maxlength="20" size="12" value="<%=htmlServer.htmlEncode(User.spassword) %>"><span class="warning">*</span></td></tr>                
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Password")%>: </td><TD><input  type="Password" name="spassword" maxlength="20" size="13" value="<%=User.spassword %>">
+      <span class="warning">*</span><font  class="bss">&nbsp;&nbsp;&nbsp;<%=countrybean.getTranslation("Must have CAP/low letters and numbers.  DO NOT USE: &lt;, &gt;, \", ', \\")%></font> </td></tr>                
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("retypePassword")%>: </td><TD><input  type="Password" name="spassword2" maxlength="20" size="12" value="<%=User.spassword %>"><span class="warning">*</span></td></tr>                
 <%if (user.iusertype>=40)  // only owner/superuser can assign privilege!!!
  {%>
  <TR><TD class=bgLight align='right'><%=countrybean.getTranslation("UserType")%>: </td><TD>
@@ -207,24 +208,24 @@ return ok;
  </td></tr>                
 <%}%>
 
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("FirstName")%>: </td><TD><input type="text" name="sfirstname" maxlength="50" size="50" value="<%=htmlServer.htmlEncode(User.getSfirstname()) %>"><span class="warning">*</span></td></tr>                
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("LastName")%>: </td><TD><input type="text" name="slastname" maxlength="50" size="50" value="<%=htmlServer.htmlEncode(User.getSlastname()) %>"><span class="warning">*</span></td></tr>                
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Address")%>: </td><TD><input type="text" name="saddress1" maxlength="50" size="50" value="<%=htmlServer.htmlEncode(User.getSaddress1()) %>"></td></tr>                
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Address")%> (<%=countrybean.getTranslation("cont")%>.): </td><TD><input type="text" name="saddress2" maxlength="50" size="50" value="<%=htmlServer.htmlEncode(User.getSaddress2()) %>"></td></tr>                
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("City")%>: </td><TD><input type="text" name="scity" value="<%=htmlServer.htmlEncode(User.getScity()) %>"></td></tr>                
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("FirstName")%>: </td><TD><input type="text" name="sfirstname" maxlength="50" size="50" value="<%=User.getSfirstname() %>"><span class="warning">*</span></td></tr>                
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("LastName")%>: </td><TD><input type="text" name="slastname" maxlength="50" size="50" value="<%=User.getSlastname() %>"><span class="warning">*</span></td></tr>                
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Address")%>: </td><TD><input type="text" name="saddress1" maxlength="50" size="50" value="<%=User.getSaddress1() %>"></td></tr>                
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Address")%> (<%=countrybean.getTranslation("cont")%>.): </td><TD><input type="text" name="saddress2" maxlength="50" size="50" value="<%=User.getSaddress2() %>"></td></tr>                
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("City")%>: </td><TD><input type="text" name="scity" value="<%=User.getScity() %>"></td></tr>                
 <TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("StateProvince")%>: </td><TD>
 <input type="text" name="sstateprovince" maxlength="50" size="50" value="<%=User.getSstateprovince() %>">
 </td></tr>                
- <TR><TD class=bgLight align='right'><%=countrybean.getTranslation("Country")%>: </td><TD><input type="Text" maxlength="30" size="30" NAME="scountry" value="<%= htmlServer.htmlEncode(User.getScountry()) %>">
+ <TR><TD class=bgLight align='right'><%=countrybean.getTranslation("Country")%>: </td><TD><input type="Text" maxlength="30" size="30" NAME="scountry" value="<%= User.getScountry() %>">
  </td></tr>                
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Postal Code")%>: </td><TD><input type="text" name="spostalcode" maxlength="10" size="10"  value="<%=htmlServer.htmlEncode(User.getSpostalcode()) %>"></td></tr>                
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("eMail")%>: </td><TD><input type="text" name="semailaddress" maxlength="150" size="50" value="<%=htmlServer.htmlEncode(User.getSemailaddress()) %>"><span class="warning">*</span></td></tr>                
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Phone")%>: </td><TD><input type="text" name="sphonenumber" maxlength="14" size="14"  value="<%=htmlServer.htmlEncode(User.getSphonenumber()) %>"></td></tr>                
-<tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Alternatephone")%>:</td><td>  <INPUT type='TEXT' size='14' maxlength='14' name='salternatephonenumber' VALUE="<%=htmlServer.htmlEncode(User.salternatephonenumber)%>"></td></tr>
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Fax")%>: </td><TD><input type="text" name="sfaxnumber" maxlength="14" size="14" value="<%=htmlServer.htmlEncode(User.getSfaxnumber()) %>">
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Postal Code")%>: </td><TD><input type="text" name="spostalcode" maxlength="10" size="10"  value="<%=User.getSpostalcode() %>"></td></tr>                
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("eMail")%>: </td><TD><input type="text" name="semailaddress" maxlength="150" size="50" value="<%=User.getSemailaddress() %>"><span class="warning">*</span></td></tr>                
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Phone")%>: </td><TD><input type="text" name="sphonenumber" maxlength="14" size="14"  value="<%=User.getSphonenumber() %>"></td></tr>                
+<tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Alternatephone")%>:</td><td>  <INPUT type='TEXT' size='14' maxlength='14' name='salternatephonenumber' VALUE="<%=User.salternatephonenumber%>"></td></tr>
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Fax")%>: </td><TD><input type="text" name="sfaxnumber" maxlength="14" size="14" value="<%=User.getSfaxnumber() %>">
 <input type="hidden" name="bactive"  maxlength="2" size="2" value="<%=User.getBactive() %>">
 </td></tr>                
-<tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Organization")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='50' name='sorganization' VALUE="<%=htmlServer.htmlEncode(User.sorganization)%>"><span class="warning">*</span></td></tr>
+<tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Organization")%>:</td><td>  <INPUT type='TEXT' size='50' maxlength='50' name='sorganization' VALUE="<%=User.sorganization%>"><span class="warning">*</span></td></tr>
 	<TR>
 	<TD colspan=3 height="20"></TD>
 	</TR>

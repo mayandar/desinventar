@@ -122,8 +122,8 @@ public class MetadataIndicator extends webObject
 
 		// GET_FORM()
 		setIndicator_key(req.getParameter(assignName("indicator_key")));
-		setIndicator_code(not_null(req.getParameter(assignName("indicator_code"))));
-		setIndicator_description(not_null(req.getParameter(assignName("indicator_description"))));
+		setIndicator_code(not_null_safe(req.getParameter(assignName("indicator_code"))));
+		setIndicator_description(not_null_safe(req.getParameter(assignName("indicator_description"))));
 
 		updateHashTable();
 		return 0;
@@ -137,9 +137,11 @@ public class MetadataIndicator extends webObject
 
 		// GET_FORM()
 		setIndicator_key(req.getParameter(assignName("indicator_key")));
-		setIndicator_code(not_null(req.getParameter(assignName("indicator_code"))));
-		setIndicator_description(not_null(req.getParameter(assignName("indicator_description"))));
+		setIndicator_code(not_null_safe(req.getParameter(assignName("indicator_code"))));
+		setIndicator_description(not_null_safe(req.getParameter(assignName("indicator_description"))));
 
+		this.checkLengths();
+		
 		updateHashTable();
 		return 0;
 	}

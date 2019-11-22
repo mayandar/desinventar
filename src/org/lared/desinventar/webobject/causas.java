@@ -106,9 +106,10 @@ public class causas extends webObject
 	public int getForm(HttpServletRequest req, HttpServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		causa = not_null(req.getParameter(assignName("causa")));
-		causa_en = not_null(req.getParameter(assignName("causa_en")));
+		causa = not_null_safe(req.getParameter(assignName("causa")));
+		causa_en = not_null_safe(req.getParameter(assignName("causa_en")));
 
+		checkLengths();
 		updateHashTable();
 		return 0;
 	}

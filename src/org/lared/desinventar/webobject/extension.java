@@ -335,14 +335,14 @@ public class extension
   {
 
     // GET_FORM()
-    clave_ext = extendedParseInt(not_null(req.getParameter(assignName("clave_ext"))));
+    clave_ext = extendedParseInt(not_null_safe(req.getParameter(assignName("clave_ext"))));
     // gets fields to the ArrayList
     // allocates a dictionary object to read each record
     Dictionary dct = new Dictionary();
     for (int j = 0; j < vFields.size(); j++)
     {
       dct = (Dictionary) vFields.get(j);
-      dct.sValue=not_null(req.getParameter(dct.nombre_campo));
+      dct.sValue=not_null_safe(req.getParameter(dct.nombre_campo));
       switch (dct.nDataType)
       {
         case Types.DATE:
@@ -364,6 +364,8 @@ public class extension
           break;
       }
     }
+    checkLengths();
+	
     updateHashTable();
     return 0;
   }

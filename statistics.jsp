@@ -102,7 +102,7 @@ document.desinventar.submit();
 		    ||(countrybean.asStatLevels[j].startsWith("lev1_name"))
 		    ||(countrybean.asStatLevels[j].startsWith("lev2_name")) )
 		   		{
-				out.print("<th nowrap><a href='javascript:sortby(\""+htmlServer.htmlEncode(countrybean.asStatLevels[j])+" desc\")' class='blacklinks'>"+htmlServer.htmlEncode(countrybean.asLevels[Integer.parseInt(countrybean.asStatLevels[j].substring(3,4))])+"</a>&nbsp;");
+				out.print("<th nowrap><a href='javascript:sortby(\""+countrybean.asStatLevels[j]+" desc\")' class='blacklinks'>"+countrybean.asLevels[Integer.parseInt(countrybean.asStatLevels[j].substring(3,4))]+"</a>&nbsp;");
 				out.print("<a href='javascript:sortby(\""+countrybean.asStatLevels[j]+"\")' class='blacklinks'><img src='/DesInventar/images/arr_up.gif' border=0></a></th>");
 				out.print("<th>"+countrybean.getTranslation("Code")+"</th>");
 				col++;
@@ -122,7 +122,7 @@ document.desinventar.submit();
 				String sSortVar=countrybean.asStatLevels[j];
 				if (sSortVar.indexOf(".")>0)
 				  sSortVar=sSortVar.substring(sSortVar.indexOf(".")+1);
-				out.print("<th nowrap><a href='javascript:sortby(\""+sSortVar+" desc\")' class='blacklinks'>"+htmlServer.htmlEncode(countrybean.getColumnTitle(countrybean.asStatLevels[j]))+"</a>&nbsp;");
+				out.print("<th nowrap><a href='javascript:sortby(\""+sSortVar+" desc\")' class='blacklinks'>"+countrybean.getColumnTitle(countrybean.asStatLevels[j])+"</a>&nbsp;");
 				out.print("<a href='javascript:sortby(\""+sSortVar+"\")' class='blacklinks'><img src='/DesInventar/images/arr_up.gif' border=0></a></th>");
 				}
 		}
@@ -155,7 +155,7 @@ document.desinventar.submit();
 	for (j=col+1; j<=nCols; j++)
   		{
 		sSql=meta.getColumnName(j);
-		out.print("<th nowrap><a href='javascript:sortby(\""+sSql+" desc\")' class='blacklinks'>"+htmlServer.htmlEncode(countrybean.getColumnTitle(sSql))+"</a>&nbsp;");
+		out.print("<th nowrap><a href='javascript:sortby(\""+sSql+" desc\")' class='blacklinks'>"+countrybean.getColumnTitle(sSql)+"</a>&nbsp;");
 		out.print("<a href='javascript:sortby(\""+sSql+"\")' class='blacklinks'><img src='/DesInventar/images/arr_up.gif' border=0></a></th>");
 		}
     %></tr><%
@@ -183,7 +183,7 @@ document.desinventar.submit();
 		col=1;
 		for (j=0; j<countrybean.nStatLevels; j++)
   			{
-			String sCell=htmlServer.htmlEncode(rset.getString(col));
+			String sCell=htmlServer.not_null(rset.getString(col));
 			sSql=countrybean.sExtractVariable(countrybean.asStatLevels[j]);
 			if (countrybean.asStatLevels[j].equals(sFechanoFechames))
 		           {

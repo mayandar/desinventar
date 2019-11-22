@@ -41,7 +41,7 @@ with (document.desinventar)
 parser Parser=new parser();
 String sExpertTranslation="";
 Parser.buildTranslations(countrybean, true);
-if (request.getParameter("frompage")!=null && request.getParameter("frompage").equals(request.getServletPath()))
+if (request.getParameter("frompage")!=null && request.getParameter("frompage").equals("/inv/querytab.jsp"))
 	{
 	countrybean.loadVectors(request);
 	// the expert:
@@ -52,9 +52,13 @@ if (request.getParameter("frompage")!=null && request.getParameter("frompage").e
 	   }
 	else
 	    countrybean.sExpertWhere=""; 
+	
     if (countrybean.not_null(request.getParameter("actiontab")).length()>0)
 	    {
-     	%>window.location='<%=request.getParameter("actiontab")%>';<%
+		//	response.sendRedirect(request.getContextPath() + "/inv/"+ request.getParameter("actiontab"));
+     	%>
+		<jsp:forward page='<%=request.getParameter("actiontab")%>'/>
+		<%
 		}
      }
 %>

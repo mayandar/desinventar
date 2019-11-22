@@ -102,12 +102,12 @@ else
   <td>
 	<table cellspacing="0" cellpadding="5" border="0" width="800" rules="none">
 	<tr>
-	    <td height="25" td colspan="2" class='bgDark' align="center"><span class="title"><%=countrybean.getTranslation("ManagementOf")%>: <%=htmlServer.htmlEncode(countrybean.asLevels[0])%></span></td>
+	    <td height="25" td colspan="2" class='bgDark' align="center"><span class="title"><%=countrybean.getTranslation("ManagementOf")%>: <%=countrybean.asLevels[0]%></span></td>
 		</td>
 	</tr>
 	<tr><td colspan="2" height="5"></td></tr>
 	<TR>
-	<TD colspan=2 align="center"><span class="warning"><%=htmlServer.htmlEncode(sErrorMessage)%></span></TD>
+	<TD colspan=2 align="center"><span class="warning"><%=sErrorMessage%></span></TD>
 	</TR>
 	<tr><td colspan="2" height="5"></td></tr>
 	<tr><td colspan="2" align="center">
@@ -125,11 +125,11 @@ else
 	</td></tr>
 	<tr><td colspan="2" height="25"></td></tr>
 	<tr><td colspan="2" align="center">
-	<input type="submit" name="addLevel0" value="<%=countrybean.getTranslation("Add")%> <%=htmlServer.htmlEncode(countrybean.asLevels[0])%>">&nbsp;&nbsp;&nbsp;
-	<input type="submit" name="editLevel0" value="<%=countrybean.getTranslation("Edit")%> <%=htmlServer.htmlEncode(countrybean.asLevels[0])%>" onClick="return bSomethingSelected()">&nbsp;&nbsp;&nbsp;
-	<input type="submit" name="delLevel0" value="<%=countrybean.getTranslation("Delete")%> <%=htmlServer.htmlEncode(countrybean.asLevels[0])%>" onClick="return confirmDelete()">
+	<input type="submit" name="addLevel0" value="<%=countrybean.getTranslation("Add")%> <%=countrybean.asLevels[0]%>">&nbsp;&nbsp;&nbsp;
+	<input type="submit" name="editLevel0" value="<%=countrybean.getTranslation("Edit")%> <%=countrybean.asLevels[0]%>" onClick="return bSomethingSelected()">&nbsp;&nbsp;&nbsp;
+	<input type="submit" name="delLevel0" value="<%=countrybean.getTranslation("Delete")%> <%=countrybean.asLevels[0]%>" onClick="return confirmDelete()">
 	<br><br>
-	<input type="submit" name="editChildren0" value="<%=countrybean.getTranslation("Manage")%> <%=htmlServer.htmlEncode(countrybean.asLevels[1])%> <%=countrybean.getTranslation("ofThis")%>  <%=htmlServer.htmlEncode(countrybean.asLevels[0])%>" onClick="return bSomethingSelected()">
+	<input type="submit" name="editChildren0" value="<%=countrybean.getTranslation("Manage")%> <%=countrybean.asLevels[1]%> <%=countrybean.getTranslation("ofThis")%>  <%=countrybean.asLevels[0]%>" onClick="return bSomethingSelected()">
     <br><br>
 	<input type="button" name="tolevels" value="<%=countrybean.getTranslation("ManageLevels")%>" onClick="postTo('levelManager.jsp')">
 	<input type="button" name="toAtrlevels" value="<%=countrybean.getTranslation("ManageAttributes")%>" onClick="postTo('levelAttributeManager.jsp')">

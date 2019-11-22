@@ -26,13 +26,20 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
 				"javascript:routeTo('thematic_def.jsp')","javascript:routeTo('definextab.jsp')"};
 
 String sShowCodes=countrybean.not_null_safe(request.getParameter("showcodes"));
+if (sShowCodes.length()>1)
+	sShowCodes=sShowCodes.substring(0,1);
+	
 // level of the displayed map
 int new_level=countrybean.extendedParseInt(request.getParameter("new_level"));
 int level_act=new_level; //countrybean.extendedParseInt(request.getParameter("level_act"));
 // if displaying level 1 or 2, what codes is being displayed
 String level0_code=countrybean.not_null_safe(request.getParameter("level0_code"));
+if (level0_code.length()>15)
+	level0_code=level0_code.substring(0,15);
 // if displaying level 2, what level1 is being displayed
 String level1_code=countrybean.not_null_safe(request.getParameter("level1_code"));
+if (level1_code.length()>15)
+	level1_code=level1_code.substring(0,15);
 %>
 <%@ include file="/util/tabs.jspf" %>
 
@@ -362,21 +369,21 @@ document.desinventar.submit();
 	<td valign="top" align="right" width="150"><br><!-- Tools & buttons -->
 <%	
 if (level_act==0){%>
-	 <%=htmlServer.htmlEncode(countrybean.asLevels[0]) %><br>
+	 <%=countrybean.asLevels[0] %><br>
 	 <SELECT name="codes" style="WIDTH: 150px; HEIGHT: 160px" size=10 multiple  class=bs onChange="doCheckList()">
        <inv:selectLevel0 connection="<%= con %>"  selected="<%=countrybean.asNivel0%>"/>
 	 </SELECT><br>
 <%}
 else  
 if (level_act==1){%>
-	 <%=htmlServer.htmlEncode(countrybean.asLevels[1]) %><br>
+	 <%=countrybean.asLevels[1] %><br>
 	 <SELECT name="codes" style="WIDTH: 150px; HEIGHT: 160px" size=10 multiple  class=bs onChange="doCheckList()">
        <inv:selectLevel1 connection="<%= con %>" level0Code="<%=countrybean.asNivel0%>" selected="<%=countrybean.asNivel1%>"/>
 	 </SELECT><br>
 <%}
 else  
 if (level_act==2){%>
-	 <%=htmlServer.htmlEncode(countrybean.asLevels[2]) %><br>
+	 <%=countrybean.asLevels[2] %><br>
 	 <SELECT name="codes" style="WIDTH: 150px; HEIGHT: 160px" size=10 multiple  class=bs onChange="doCheckList()">
        <inv:selectLevel2 connection="<%= con %>" level1Code="<%=countrybean.asNivel1%>" selected="<%=countrybean.asNivel2%>"/>
 	 </SELECT><br>
@@ -408,7 +415,6 @@ if (level_act==2){%>
 	</td>
  </tr>
 </table>
-<!-- <%=request.getParameter("xminif")%> -->
  <input name="xminif" id="xminif" type='hidden'>
  <input name="yminif" id="yminif" type='hidden'>
  <input name="xmaxif" id="xmaxif" type='hidden'>

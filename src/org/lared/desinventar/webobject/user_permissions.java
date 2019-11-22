@@ -95,8 +95,8 @@ public class user_permissions extends webObject
 	public int getForm(HttpServletRequest req, HttpServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		userid = not_null(req.getParameter(assignName("userid")));
-		country = not_null(req.getParameter(assignName("country")));
+		userid = not_null_safe(req.getParameter(assignName("userid")));
+		country = not_null_safe(req.getParameter(assignName("country")));
 
 		updateHashTable();
 		return 0;

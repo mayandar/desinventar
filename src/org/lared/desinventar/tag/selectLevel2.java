@@ -90,7 +90,7 @@ public class selectLevel2
       while (rset.next())
       {
         sCode = rset.getString("lev2_cod");
-        out.print("<option value='" + htmlServer.htmlEncode(sCode) + "'");
+        out.print("<option value='" + sCode + "'");
         if (sSelectedCode.equalsIgnoreCase(sCode))
           out.print(" selected");
         else
@@ -106,7 +106,7 @@ public class selectLevel2
             }
           }
         }
-        out.println(">" + htmlServer.htmlEncode(countrybean.getLocalOrEnglish(rset,"lev2_name","lev2_name_en")));
+        out.println(">" + countrybean.getLocalOrEnglish(rset,"lev2_name","lev2_name_en"));
       }
       rset.close();
       stmt.close();

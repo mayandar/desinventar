@@ -44,6 +44,10 @@ try	{
 			}
 		if (sValue.length()>0)
 		  sValue=URLDecoder.decode(sValue, "UTF-8");
+		
+		// HTML encodes both strings							
+		sName=woFicha.not_null_safe(sName);
+		sValue=woFicha.not_null_safe(sValue);
 									
 		// tries putting the pair in  both fichas and extension - as we don't know where it belongs to...
 		if (woFicha.asFieldNames.get(sName)!=null)

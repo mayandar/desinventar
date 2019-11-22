@@ -28,6 +28,7 @@ String sReportString(double nVal)
 	return sNumber;
 }
 %>
+
 <%	
 ArrayList sqlparams=new ArrayList();
 PreparedStatement pstmt=null;
@@ -159,7 +160,7 @@ out.print("<a href='javascript:sortby(\"fichas.serial desc\")' class='blacklinks
 		String sVar=countrybean.sExtractVariable(countrybean.asVariables[j]);
 		if (countrybean.getTranslation("DateYMD").equals(countrybean.getVartitle(countrybean.asVariables[j])))
 		 	sVar="fechano,fechames,fechadia";
-		out.print("<th nowrap "+(sVar.startsWith("di_comments")?"width='300'":"")+"><a href='javascript:sortby(\""+sVar+"\")' class='blacklinks'>"+htmlServer.htmlEncode(countrybean.getVartitle(countrybean.asVariables[j]))+"</a>&nbsp;");
+		out.print("<th nowrap "+(sVar.startsWith("di_comments")?"width='300'":"")+"><a href='javascript:sortby(\""+sVar+"\")' class='blacklinks'>"+countrybean.getVartitle(countrybean.asVariables[j])+"</a>&nbsp;");
 		if (countrybean.getTranslation("DateYMD").equals(countrybean.getVartitle(countrybean.asVariables[j])))
 		 	sVar="fechano desc,fechames desc,fechadia";
 		out.print("<a href='javascript:sortby(\""+sVar+" desc\")' class='blacklinks'><img src='/DesInventar/images/arr_down.gif' border=0></a></th>");
@@ -183,11 +184,11 @@ try
 			  sBgClass=" class='bodylight'";
 		    bLight=!bLight;
 		out.print("<tr"+sBgClass+">");
-		try{sSql=htmlServer.htmlEncode(rset.getString("fichas.serial"));}
+		try{sSql=rset.getString("fichas.serial");}
 		catch (Exception nser)
 		  {
 			try{
-				sSql=htmlServer.htmlEncode(rset.getString("serial"));
+				sSql=rset.getString("serial");
 			   }
 			catch (Exception nser2){} 
 		  } 
@@ -204,7 +205,7 @@ try
 				    switch (nDataType[j])
 				      {
 				        case Types.DATE:
-				   				  out.println("<td nowrap>"+htmlServer.htmlEncode(woExtension.strDate(rset.getString(sRealVar)))+"&nbsp;</td>");
+				   				  out.println("<td nowrap>"+woExtension.strDate(rset.getString(sRealVar))+"&nbsp;</td>");
 						          break;
 				        case Types.DECIMAL:
 				        case Types.DOUBLE:
@@ -226,18 +227,18 @@ try
 				   				  		out.println("<td align=\"right\" nowrap>"+sCell+"&nbsp;</td>");
 								  break;
 						default:
-				   				  out.println("<td>"+htmlServer.htmlEncode(rset.getString(sRealVar))+"&nbsp;</td>");
+				   				  out.println("<td>"+woExtension.not_null(rset.getString(sRealVar))+"&nbsp;</td>");
 				      }
 				}
 			  else
 			    if (sSql.startsWith("di_comments")) 
-			     	out.println("<td width='300'>"+htmlServer.htmlEncode(woExtension.getClob(rset,sRealVar))+"&nbsp;</td>");
+			     	out.println("<td width='300'>"+woExtension.not_null(woExtension.getClob(rset,sRealVar))+"&nbsp;</td>");
 			    else
 					{
 				    switch (nDataType[j])
 				      {
 				        case Types.DATE:
-				   				  out.println("<td nowrap>"+htmlServer.htmlEncode(woExtension.strDate(rset.getString(sRealVar)))+"&nbsp;</td>");
+				   				  out.println("<td nowrap>"+woExtension.strDate(rset.getString(sRealVar))+"&nbsp;</td>");
 						          break;
 				        case Types.DECIMAL:
 				        case Types.DOUBLE:
@@ -252,7 +253,7 @@ try
 						            out.println("<td align=\"right\" nowrap>"+(dV!=0.0?sReportString(rset.getDouble(sRealVar)):"")+"&nbsp;</td>");
 								  break;
 						default:
-				   				  out.println("<td>"+htmlServer.htmlEncode(rset.getString(sRealVar))+"&nbsp;</td>");
+				   				  out.println("<td>"+woExtension.not_null(rset.getString(sRealVar))+"&nbsp;</td>");
 				      }
 					}
 			}

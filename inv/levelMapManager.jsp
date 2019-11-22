@@ -306,13 +306,13 @@ for (int k=0; k<MAXCODES; k++)
 			  <div id="cell_<%=k%>"></div>
 			  <input type=hidden name="colors<%=k%>" id="color_<%=k%>" value="<%=sColor%>">
 			  </td>
-<td><INPUT type='TEXT' size='50' maxlength='255' name='filename<%=k%>' id='filename<%=k%>' VALUE="<%=htmlServer.htmlEncode(imlayer.filename)%>"></span>
+<td><INPUT type='TEXT' size='50' maxlength='255' name='filename<%=k%>' id='filename<%=k%>' VALUE="<%=imlayer.filename%>"></span>
 </td>
 <td> <INPUT type='button' name='browsebtn<%=k%>'  VALUE="..." onClick="browse(<%=k%>)">
 </td>
-<td><INPUT type='TEXT' size='15' maxlength='15' name='lev_code<%=k%>' id='lev_code<%=k%>' VALUE="<%=htmlServer.htmlEncode(imlayer.lev_code)%>"></td>
+<td><INPUT type='TEXT' size='15' maxlength='15' name='lev_code<%=k%>' id='lev_code<%=k%>' VALUE="<%=imlayer.lev_code%>"></td>
 <td><input type='button' name='buttCodeField' onClick="setField('lev_code<%=k%>',<%=k%>);" value="..."></td>
-<td><INPUT type='TEXT' size='15' maxlength='15' name='lev_name<%=k%>' id='lev_name<%=k%>' VALUE="<%=htmlServer.htmlEncode(imlayer.lev_name)%>"></td>
+<td><INPUT type='TEXT' size='15' maxlength='15' name='lev_name<%=k%>' id='lev_name<%=k%>' VALUE="<%=imlayer.lev_name%>"></td>
 <td><input type='button' name='buttCodeField' onClick="setField('lev_name<%=k%>',<%=k%>);" value="...">
 </td>
 </tr>

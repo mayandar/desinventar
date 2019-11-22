@@ -157,6 +157,14 @@ public class htmlServer
 		return strParameter == null?"":strParameter;
 	}
 
+	//--------------------------------------------------------------------------------
+	//generic routine avoid null strings and to also encode HTML entities if present...
+	//--------------------------------------------------------------------------------
+	public static String not_null_safe(String strParameter)
+	{
+	  return (strParameter == null)?"":EncodeUtil.htmlEncode(strParameter);
+	}
+
 
 	//--------------------------------------------------------------------------------
 	//generic routines to do a client side COALESCE of two columns of a resultset...

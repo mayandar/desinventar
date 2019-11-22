@@ -65,7 +65,7 @@ public class selectEvent
       {
         sCode = rset.getString("nombre").trim();
         String sEnglish=rset.getString("nombre_en");
-        out.print("<option value='" + htmlServer.htmlEncode(sCode) + "'");
+        out.print("<option value='" + sCode + "'");
         if (sCode.equalsIgnoreCase(sSelectedCode))
           out.print(" selected");
         else
@@ -81,7 +81,7 @@ public class selectEvent
             }
           }
         }
-       out.print(">" + htmlServer.htmlEncode(DICountry.getLocalOrEnglish(sCode, sEnglish, sLanguage)));
+       out.print(">" + DICountry.getLocalOrEnglish(sCode, sEnglish, sLanguage));
       }
       rset.close();
       stmt.close();

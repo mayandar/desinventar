@@ -1,12 +1,21 @@
 <%@ page import="org.lared.desinventar.system.Sys" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
-// load language code (if available)
 if (request.getParameter("lang")!=null)
-	countrybean.setLanguage(request.getParameter("lang"));
+	{
+		String sLang=countrybean.not_null_safe(request.getParameter("lang"));
+		if (sLang.length()>2) 
+		 	sLang=sLang.substring(0,2);
+		countrybean.setLanguage(sLang);
+	}
 // load DATA language code (if available)
 if (request.getParameter("datalng")!=null)
-	countrybean.setDataLanguage(request.getParameter("datalng"));
+	{
+		String sLang=countrybean.not_null_safe(request.getParameter("datalng"));
+		if (sLang.length()>2) 
+		 	sLang=sLang.substring(0,2);
+		countrybean.setDataLanguage(sLang);
+	}
 if (!Sys.bRequireLogin)
 	{
 	if (user.suserid.length()==0)

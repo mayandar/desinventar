@@ -129,8 +129,8 @@ return ok;
   <td> <%=countrybean.getTranslation("English")%></td>
 </tr>
 <tr>
-  <td> <TEXTAREA name='questions' cols="60" rows="27"><%=htmlServer.htmlEncode(sQuestions)%></TEXTAREA></td>
-  <td> <TEXTAREA name='questions_en' cols="60" rows="27"><%=htmlServer.htmlEncode(sQuestions_en)%></TEXTAREA></td>
+  <td> <TEXTAREA name='questions' cols="60" rows="27"><%=sQuestions%></TEXTAREA></td>
+  <td> <TEXTAREA name='questions_en' cols="60" rows="27"><%=sQuestions_en%></TEXTAREA></td>
 </tr>
 <TR>
     <td colspan=3 align="center">

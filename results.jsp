@@ -84,7 +84,6 @@ String sAllComments="";
 ArrayList sqlparams=new ArrayList();
 PreparedStatement pstmt=null;
 String sSql="select count(*) as nhits "+countrybean.getWhereSql(sqlparams);
-out.println("<!-- "+sSql+ " [dbtype="+countrybean.dbType+","+countrybean.country.ndbtype+"; k="+countrybean.sqlStringConstant()+"] -->");
 try
 	{
 	pstmt=con.prepareStatement(sSql);
@@ -124,7 +123,7 @@ out.print("<a href='javascript:sortby(\"eventos.nombre"+sLangSuffix+" desc\")' c
 %></th>
 <% for (int j=0; j<3; j++){%>
 <th nowrap rowspan=2><%
-out.print("<a href='javascript:sortby(\"lev"+j+"_name"+sLangSuffix+"\")' class='blacklinks'>"+htmlServer.htmlEncode(countrybean.asLevels[j]) +"</a>&nbsp;");
+out.print("<a href='javascript:sortby(\"lev"+j+"_name"+sLangSuffix+"\")' class='blacklinks'>"+countrybean.asLevels[j] +"</a>&nbsp;");
 out.print("<a href='javascript:sortby(\"lev"+j+"_name"+sLangSuffix+" desc\")' class='blacklinks'><img src='/DesInventar/images/arr_down.gif' border=0></a>");
 %></th>
 <%}%>
@@ -184,7 +183,7 @@ if (countrybean.bViewExtended)
 	     {
 		 dct = (Dictionary) woExtension.vFields.get(k);
 	     if ((dct.tabnumber==ktab+1) || (dct.tabnumber==0 && ktab==woExtension.vTabs.size()-1))
-			out.print("<th nowrap>"+outSortHeader(htmlServer.htmlEncode(dct.nombre_campo),htmlServer.htmlEncode(countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en)))+"</th>");
+			out.print("<th nowrap>"+outSortHeader(dct.nombre_campo,countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en))+"</th>");
 		 }
 	}
 }
@@ -198,7 +197,7 @@ String sSerial;
 sSql="select fichas.clave " +
      countrybean.getWhereSql(countrybean.nApproved,sqlparams)+" order by " +countrybean.getSortbySql();
 	 
-out.println("<!--  "+sSql+" -->"); 
+out.println("<!--  "+countrybean.not_null_safe(sSql)+" -->"); 
 try
 	{
 	pstmt=con.prepareStatement(sSql,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -275,18 +274,18 @@ try
 		%>
         <tr class=<%=sBgClass%> align="right"> 
 		<td nowrap  align="left"><a class=linkText href='showdatacard.jsp?clave=<%=nClave%>&nStart=<%=nStart%><%=sCountryCodeParameter%>'>
-			<%=htmlServer.htmlEncode(sSerial)%></a>
+			<%=sSerial%></a>
 			<%=nRecordExt==0?"<div class='warning'><strong>*</strong></div>":""%>
 		</td>
-		<td  nowrap><%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(woHazard.nombre,woHazard.nombre_en))%></td>
-		<td  nowrap>&nbsp;<%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(woLev0.lev0_name,woLev0.lev0_name_en))%></td>
-		<td  nowrap>&nbsp;<%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(woLev1.lev1_name,woLev1.lev1_name_en))%></td>
-		<td  nowrap>&nbsp;<%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(woLev2.lev2_name,woLev2.lev2_name_en))%></td>
-		<td><%=htmlServer.htmlEncode(countrybean.sFormatDate(Integer.toString(woFicha.fechano),Integer.toString(woFicha.fechames),Integer.toString(woFicha.fechadia)))%></td>
+		<td  nowrap><%=countrybean.getLocalOrEnglish(woHazard.nombre,woHazard.nombre_en)%></td>
+		<td  nowrap>&nbsp;<%=countrybean.getLocalOrEnglish(woLev0.lev0_name,woLev0.lev0_name_en)%></td>
+		<td  nowrap>&nbsp;<%=countrybean.getLocalOrEnglish(woLev1.lev1_name,woLev1.lev1_name_en)%></td>
+		<td  nowrap>&nbsp;<%=countrybean.getLocalOrEnglish(woLev2.lev2_name,woLev2.lev2_name_en)%></td>
+		<td><%=countrybean.sFormatDate(Integer.toString(woFicha.fechano),Integer.toString(woFicha.fechames),Integer.toString(woFicha.fechadia))%></td>
 
 <% if (countrybean.bViewStandard)
 {%>
-		<td  nowrap align="left">&nbsp;<%=htmlServer.htmlEncode(htmlServer.not_null(woFicha.lugar))%>&nbsp;</td>
+		<td  nowrap align="left">&nbsp;<%=htmlServer.not_null(woFicha.lugar)%>&nbsp;</td>
 		<td><inv:check2 number='<%=woFicha.muertos%>'  value='<%=woFicha.hay_muertos%>'/></td>
 		<td><inv:check2 number='<%=woFicha.heridos%>'  value='<%=woFicha.hay_heridos%>'/></td>
 		<td><inv:check2 number='<%=woFicha.desaparece%>'  value='<%=woFicha.hay_deasparece%>'/></td>
@@ -303,20 +302,18 @@ try
 		<td><inv:check2 number='<%=woFicha.nhectareas%>'  value='<%=woFicha.agropecuario%>'/></td>
 		<td><%=woFicha.cabezas%> </td>
 		<td><inv:check2 number='<%=woFicha.kmvias%>'  value='<%=woFicha.transporte%>'/></td>
-     	<td><%=htmlServer.htmlEncode(htmlServer.not_null(woFicha.glide))%>&nbsp;</td>
+     	<td><%=htmlServer.not_null(woFicha.glide)%>&nbsp;</td>
 
 <%
-String sComments=htmlServer.not_null(woFicha.di_comments);
+String sComments=woFicha.di_comments;
 
 if (sComments.length()>150)
    {
 	sAllComments+="sTip"+nClave+"='"+EncodeUtil.jsEncode("<table><tr><td>"+sComments+"</td></tr></table>")+"';\n";
    int pos=149;
    while (pos>140 && sComments.charAt(pos)!=' ') pos--;
-   sComments=htmlServer.htmlEncode(sComments.substring(0,pos))+"<a  onmouseover='Tip(sTip"+nClave+")' onmouseout='UnTip()' href='showdatacard.jsp?clave="+nClave+"&nStart="+nStart+"'>&nbsp;[...]</a>";
+   sComments=sComments.substring(0,pos)+"<a  onmouseover='Tip(sTip"+nClave+")' onmouseout='UnTip()' href='showdatacard.jsp?clave="+nClave+"&nStart="+nStart+"'>&nbsp;[...]</a>";
    }
- else 
- 	sComments=htmlServer.htmlEncode(sComments);  
 %>
 		<td  align="left" width=350><%=sComments%>&nbsp;</td>
 <%}

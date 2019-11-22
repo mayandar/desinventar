@@ -14,16 +14,10 @@
 <%@ include file="/getCountryTip.jspf" %>
 <%
 org.lared.desinventar.system.Sys.getProperties();
-// load language code (if available)
-if (request.getParameter("lang")!=null)
-	countrybean.setLanguage(request.getParameter("lang"));
-// load DATA language code (if available)
-if (request.getParameter("datalng")!=null)
-	countrybean.setDataLanguage(request.getParameter("datalng"));
 %>
+<%@ include file="/util/opendefaultdatabase.jspf" %>
 <link href="/DesInventar/html/desinventar.css" rel="stylesheet" type="text/css"/> 
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/header",countrybean.getLanguage(),out);%>
-<%@ include file="/util/opendefaultdatabase.jspf" %>
 &nbsp;&nbsp;<table width="700" cellspacing="2" cellpadding="2" border="1"  bordercolor="white" class="pageBackground" rules="none">
 <tr>
 <td colspan=4 class="title">Automated description generator

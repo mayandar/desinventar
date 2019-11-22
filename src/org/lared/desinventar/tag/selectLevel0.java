@@ -56,7 +56,7 @@ public class selectLevel0    extends TagSupport
       while (rset.next())
       {
         sCode = rset.getString("lev0_cod");
-        out.print("<option value='" + htmlServer.htmlEncode(sCode) + "'");
+        out.print("<option value='" + sCode + "'");
         if (sSelectedCode.equalsIgnoreCase(sCode))
           out.print(" selected");
         else
@@ -72,7 +72,7 @@ public class selectLevel0    extends TagSupport
            }
          }
        }
-       out.println(">" +htmlServer.htmlEncode(countrybean.getLocalOrEnglish(rset,"lev0_name","lev0_name_en")));
+       out.println(">" +countrybean.getLocalOrEnglish(rset,"lev0_name","lev0_name_en"));
       }
       rset.close();
       stmt.close();

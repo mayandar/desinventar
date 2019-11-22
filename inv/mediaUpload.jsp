@@ -146,24 +146,24 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 <table class='bs' cellpadding="0" cellspacing="0" width="850">
 <tr class='bodymedlight'><td class="bs"><!-- Header lines in light blue  -->
  <table class='bs' cellpadding="0" cellspacing="0" width="100%"><tr>
-  <td class="bs"><%=countrybean.getTranslation("Serial")%>: <INPUT name="serial" value="<%=htmlServer.htmlEncode(woFicha.serial)%>" size="6" maxlength="6"></td>
+  <td class="bs"><%=countrybean.getTranslation("Serial")%>: <INPUT name="serial" value="<%=woFicha.serial%>" size="6" maxlength="6"></td>
   <td class="bs"><%=countrybean.getTranslation("DateYMD")%>: <INPUT NAME="fechano"  style="WIDTH: 45px;" value="<%=sBlankZero(woFicha.fechano)%>" size="4" maxlength="4"><INPUT NAME="fechames" value="<%=sBlankZero(woFicha.fechames)%>" size="2" style="WIDTH: 22px;" maxlength="3"><INPUT NAME="fechadia" value="<%=sBlankZero(woFicha.fechadia)%>" size="2" style="WIDTH: 22px;" maxlength="3"></td>
   <td class="bs"><%=countrybean.getTranslation("Duration")%>: <INPUT NAME="duracion"  style="WIDTH: 40px;" value="<%=sBlankZero(woFicha.duracion)%>" size="4" maxlength="4"></td>
-  <td class="bs"><%=countrybean.getTranslation("Source")%>: <INPUT type='TEXT' size='40' maxlength='250'name='fuentes' VALUE="<%=htmlServer.htmlEncode(woFicha.fuentes)%>"></td>
+  <td class="bs"><%=countrybean.getTranslation("Source")%>: <INPUT type='TEXT' size='40' maxlength='250'name='fuentes' VALUE="<%=woFicha.fuentes%>"></td>
  </tr></table>
 </td></tr>
 <tr class='bodymedlight'><td class="bs">
  <table class='bs' cellpadding="0" cellspacing="0" width="100%"><tr>
-  <td class="bs"><%=countrybean.asLevels[0]%>: <input name="name0" size=20 value="<%=htmlServer.htmlEncode(woFicha.name0)%>"></td>
-  <td class="bs"><%=countrybean.asLevels[1]%>: <input type='text' name='name1' size=20 value="<%=htmlServer.htmlEncode(woFicha.name1)%>"></td>
-  <td class="bs"><%=countrybean.asLevels[2]%>: <input type='text' name='name2' size=20 value="<%=htmlServer.htmlEncode(woFicha.name2)%>"></td>
+  <td class="bs"><%=countrybean.asLevels[0]%>: <input name="name0" size=20 value="<%=woFicha.name0%>"></td>
+  <td class="bs"><%=countrybean.asLevels[1]%>: <input type='text' name='name1' size=20 value="<%=woFicha.name1%>"></td>
+  <td class="bs"><%=countrybean.asLevels[2]%>: <input type='text' name='name2' size=20 value="<%=woFicha.name2%>"></td>
  </tr></table>
 </td></tr>
 <tr class='bodymedlight'><td class="bs">
  <table class='bs' cellpadding="0" cellspacing="0" width="100%"><tr>
-  <td class="bs"><%=countrybean.getTranslation("Event")%>: <input name="Event" size=20 value="<%=htmlServer.htmlEncode(woFicha.evento)%>"></td>
-  <td class="bs"><%=countrybean.getTranslation("Place")%>: <INPUT type="TEXT" size="45" maxlength="60"name="lugar" VALUE="<%=htmlServer.htmlEncode(woFicha.lugar)%>"></td>
-  <td class="bs"><%=countrybean.getTranslation("GLIDEnumber")%>: <INPUT type="TEXT" size="15" maxlength="30"name="lugar" VALUE="<%=htmlServer.htmlEncode(woFicha.glide)%>"></td>
+  <td class="bs"><%=countrybean.getTranslation("Event")%>: <input name="Event" size=20 value="<%=woFicha.evento%>"></td>
+  <td class="bs"><%=countrybean.getTranslation("Place")%>: <INPUT type="TEXT" size="45" maxlength="60"name="lugar" VALUE="<%=woFicha.lugar%>"></td>
+  <td class="bs"><%=countrybean.getTranslation("GLIDEnumber")%>: <INPUT type="TEXT" size="15" maxlength="30"name="lugar" VALUE="<%=woFicha.glide%>"></td>
  </tr></table>
 </td></tr>
 </table>

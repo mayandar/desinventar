@@ -130,9 +130,10 @@ public class extensiontabs extends webObject
 		// GET_FORM()
 		ntab = extendedParseInt(req.getParameter(assignName("ntab")));
 		nsort = extendedParseInt(req.getParameter(assignName("nsort")));
-		svalue = not_null(req.getParameter(assignName("svalue")));
-		svalue_en = not_null(req.getParameter(assignName("svalue_en")));
+		svalue = not_null_safe(req.getParameter(assignName("svalue")));
+		svalue_en = not_null_safe(req.getParameter(assignName("svalue_en")));
 
+		
 		updateHashTable();
 		return 0;
 	}

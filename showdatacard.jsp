@@ -37,10 +37,10 @@ int current=0;
 String toSearch=""; 
 current=0;
 // get serial number from parameters
-nClave=htmlServer.extendedParseInt(request.getParameter("clave"));
+nClave=countrybean.extendedParseInt(request.getParameter("clave"));
 // this parameter>0 means is valid
-start=htmlServer.extendedParseInt(request.getParameter("start"));
-toSearch=htmlServer.not_null(request.getParameter("tosearch"));	
+start=countrybean.extendedParseInt(request.getParameter("start"));
+toSearch=countrybean.not_null_safe(request.getParameter("tosearch"));	
 
 // loads the datacard extension
 fichas woFicha=new fichas();
@@ -318,31 +318,31 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
 <table class='bs' cellpadding="0" cellspacing="0" width="850">
 <tr class='bodymedlight'><td class="bs"><!-- Header lines in light blue  -->
  <table class='bs' cellpadding="0" cellspacing="0" width="100%"><tr>
-  <td class="bs"><%=countrybean.getTranslation("Serial")%>: <INPUT name="serial" value="<%=htmlServer.htmlEncode(woFicha.serial)%>" size="6" maxlength="6"></td>
+  <td class="bs"><%=countrybean.getTranslation("Serial")%>: <INPUT name="serial" value="<%=woFicha.serial%>" size="6" maxlength="6"></td>
   <td class="bs"><%=countrybean.getTranslation("DateYMD")%>: <INPUT NAME="fechano"  style="WIDTH: 45px;" value="<%=sBlankZero(woFicha.fechano)%>" size="4" maxlength="4"><INPUT NAME="fechames" value="<%=sBlankZero(woFicha.fechames)%>" size="2" style="WIDTH: 22px;" maxlength="3"><INPUT NAME="fechadia" value="<%=sBlankZero(woFicha.fechadia)%>" size="2" style="WIDTH: 22px;" maxlength="3"></td>
   <td class="bs"><%=countrybean.getTranslation("Duration")%>: <INPUT NAME="duracion"  style="WIDTH: 40px;" value="<%=sBlankZero(woFicha.duracion)%>" size="4" maxlength="4"></td>
-  <td class="bs"><%=countrybean.getTranslation("Source")%>: <INPUT type='TEXT' size='40' maxlength='250'name='fuentes' VALUE="<%=htmlServer.htmlEncode(woFicha.fuentes)%>"></td>
+  <td class="bs"><%=countrybean.getTranslation("Source")%>: <INPUT type='TEXT' size='40' maxlength='250'name='fuentes' VALUE="<%=woFicha.fuentes%>"></td>
  </tr></table>
 </td></tr>
 <tr class='bodymedlight'><td class="bs">
  <table class='bs' cellpadding="0" cellspacing="0" width="100%"><tr>
-  <td class="bs"><%=countrybean.asLevels[0]%>: <input name="name0" size=20 value="<%=htmlServer.htmlEncode(woFicha.name0)%>"></td>
-  <td class="bs"><%=countrybean.asLevels[1]%>: <input type='text' name='name1' size=20 value="<%=htmlServer.htmlEncode(woFicha.name1)%>"></td>
-  <td class="bs"><%=countrybean.asLevels[2]%>: <input type='text' name='name2' size=20 value="<%=htmlServer.htmlEncode(woFicha.name2)%>"></td>
+  <td class="bs"><%=countrybean.asLevels[0]%>: <input name="name0" size=20 value="<%=woFicha.name0%>"></td>
+  <td class="bs"><%=countrybean.asLevels[1]%>: <input type='text' name='name1' size=20 value="<%=woFicha.name1%>"></td>
+  <td class="bs"><%=countrybean.asLevels[2]%>: <input type='text' name='name2' size=20 value="<%=woFicha.name2%>"></td>
  </tr></table>
 </td></tr>
 <tr class='bodymedlight'><td class="bs">
  <table class='bs' cellpadding="0" cellspacing="0" width="100%"><tr>
-  <td class="bs"><%=countrybean.getTranslation("Event")%>: <input name="Event" size=20 value="<%=htmlServer.htmlEncode(woFicha.evento)%>"></td>
-  <td class="bs"><%=countrybean.getTranslation("Place")%>: <INPUT type="TEXT" size="45" maxlength="60"name="lugar" VALUE="<%=htmlServer.htmlEncode(woFicha.lugar)%>"></td>
-  <td class="bs"><%=countrybean.getTranslation("GLIDEnumber")%>: <INPUT type="TEXT" size="15" maxlength="30"name="lugar" VALUE="<%=htmlServer.htmlEncode(woFicha.glide)%>"></td>
+  <td class="bs"><%=countrybean.getTranslation("Event")%>: <input name="Event" size=20 value="<%=woFicha.evento%>"></td>
+  <td class="bs"><%=countrybean.getTranslation("Place")%>: <INPUT type="TEXT" size="45" maxlength="60"name="lugar" VALUE="<%=woFicha.lugar%>"></td>
+  <td class="bs"><%=countrybean.getTranslation("GLIDEnumber")%>: <INPUT type="TEXT" size="15" maxlength="30"name="lugar" VALUE="<%=woFicha.glide%>"></td>
  </tr></table>
 </td></tr>
 
 <tr class='bodymedlight'><td class="bs" height='28'><!-- causes lines in light red  -->
  <table class='bs' cellpadding="0" cellspacing="0" width="100%"><tr>
-	<td class="bs"><%=countrybean.getTranslation("Cause")%>: <input name="Cause" size=20 value="<%=htmlServer.htmlEncode(woFicha.causa)%>"></td>
-	<td class="bs"><%=countrybean.getTranslation("DescriptionCause")%>: <INPUT type="TEXT" size="65" maxlength="60"name="descausa" VALUE="<%=htmlServer.htmlEncode(woFicha.descausa)%>"></td>
+	<td class="bs"><%=countrybean.getTranslation("Cause")%>: <input name="Cause" size=20 value="<%=woFicha.causa%>"></td>
+	<td class="bs"><%=countrybean.getTranslation("DescriptionCause")%>: <INPUT type="TEXT" size="65" maxlength="60"name="descausa" VALUE="<%=woFicha.descausa%>"></td>
  </tr></table>
 </td></tr>
 
@@ -428,7 +428,7 @@ alProcessedFields=new ArrayList();
 	<table cellspacing="0" cellpadding="0" border="0" width="100%">
 	<tr>
 		<td class="bs" align="right" nowrap>&nbsp;<%=countrybean.getTranslation("Magnitude")%>:</td>
-		<td class="bs"><INPUT type="TEXT" size="26" maxlength="22" name="magnitud2" VALUE="<%=htmlServer.htmlEncode(woFicha.magnitud2)%>"></td>
+		<td class="bs"><INPUT type="TEXT" size="26" maxlength="22" name="magnitud2" VALUE="<%=woFicha.magnitud2%>"></td>
 	</tr>
 	<tr>
 		<td class="bs" align="right" nowrap>&nbsp;<%=countrybean.getTranslation("LossesLocal")%>:</td>
@@ -503,7 +503,7 @@ alProcessedFields=new ArrayList();
 </td></tr>
 
 <tr class='bodymedlight'><td class="bs">
-<%=countrybean.getTranslation("OtherLosses")%>: <INPUT type="TEXT" size="60" maxlength="60" name="otros" VALUE="<%=htmlServer.htmlEncode(woFicha.otros)%>">
+<%=countrybean.getTranslation("OtherLosses")%>: <INPUT type="TEXT" size="60" maxlength="60" name="otros" VALUE="<%=woFicha.otros%>">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <%=countrybean.getTranslation("Latitude")%>: <INPUT type="TEXT" size="10" maxlength="14" name="otros" VALUE="<%=woFicha.latitude==0.0?"":woFicha.formatDouble(woFicha.latitude,-8)%>">
 <%=countrybean.getTranslation("Longitude")%>: <INPUT type="TEXT" size="10" maxlength="14" name="otros" VALUE="<%=woFicha.longitude==0.0?"":woFicha.formatDouble(woFicha.longitude,-8)%>">
@@ -514,12 +514,12 @@ alProcessedFields=new ArrayList();
 
 <tr class='bodymedlight'><td class="bs"><!-- Comments lines in light blue  -->
 <strong><%=countrybean.getTranslation("Comments").toUpperCase()%></strong>:<br>
-<TEXTAREA rows="4" name="di_comments" cols="100"><%=htmlServer.htmlEncode(woFicha.di_comments)%></textarea> 
+<TEXTAREA rows="4" name="di_comments" cols="100"><%=woFicha.di_comments%></textarea> 
 </td></tr>
 <tr class='bodymedlight'><td class="bs" align="center">
  <table class='bs' cellpadding="0" cellspacing="0" width="40%"><tr>
-  <td class="bs"><%=countrybean.getTranslation("By")%>: <INPUT type="TEXT" size="13" maxlength="12" name="fechapor" VALUE="<%=htmlServer.htmlEncode(woFicha.fechapor)%>"></td>
-  <td class="bs"><%=countrybean.getTranslation("Date")%>: <INPUT type="TEXT" size="10" maxlength="10" name="fechafec" VALUE="<%=htmlServer.htmlEncode(woFicha.fechafec)%>"></td>
+  <td class="bs"><%=countrybean.getTranslation("By")%>: <INPUT type="TEXT" size="13" maxlength="12" name="fechapor" VALUE="<%=woFicha.fechapor%>"></td>
+  <td class="bs"><%=countrybean.getTranslation("Date")%>: <INPUT type="TEXT" size="10" maxlength="10" name="fechafec" VALUE="<%=woFicha.fechafec%>"></td>
  </tr></table>
 </td></tr>
 </table>
@@ -585,7 +585,7 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 	  if ((dct.tabnumber==ktab+1) || (dct.tabnumber==0 && ktab==woExtension.vTabs.size()-1))   
 	    {%>
 		  <tr>
-		   <td class="bs" align="right"  class=bgLight width='300'><%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en))%>:&nbsp;</td>
+		   <td class="bs" align="right"  class=bgLight width='300'><%=countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en)%>:&nbsp;</td>
 		   <td class="bs" align="left" class=bgLightLight>
 		<%switch (dct.fieldtype)
 				  	{
@@ -593,7 +593,7 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 						%>&nbsp;<input name='<%=dct.nombre_campo%>' type='checkbox' value="1" <%=dct.strChecked(dct.sValue)%> size='4' maxlength='5'><%
 						break;
 					case extension.LIST:
-						%>&nbsp;<input name='<%=dct.nombre_campo%>' type='text' value="<%=htmlServer.htmlEncode(dct.getCodeValue(dct.sValue,countrybean))%>" size='25'><%
+						%>&nbsp;<input name='<%=dct.nombre_campo%>' type='text' value="<%=dct.getCodeValue(dct.sValue,countrybean)%>" size='25'><%
 						break;
 					case extension.CHOICE:
 						for (int ilist=0; ilist<dct.codes.size(); ilist++)
@@ -605,7 +605,7 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 								bFound=true;
 								bSelected=true;
 								}
-						%>&nbsp;<input name='<%=dct.nombre_campo%>' type='radio' value="<%=ecList.code_value%>"<%=dct.strChecked(bSelected)%>><%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(ecList.svalue,ecList.svalue_en))%><%
+						%>&nbsp;<input name='<%=dct.nombre_campo%>' type='radio' value="<%=ecList.code_value%>"<%=dct.strChecked(bSelected)%>><%=countrybean.getLocalOrEnglish(ecList.svalue,ecList.svalue_en)%><%
 						}
 						if (!bFound && dct.sValue.length()>0 && !dct.sValue.equals("0")){
 						%>&nbsp;<input name='<%=dct.nombre_campo%>' type='radio' value="<%=dct.sValue%>" checked><%=dct.sValue%><%
@@ -624,10 +624,10 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 				       %>&nbsp;<input name='<%=dct.nombre_campo%>' type='text' value="<%=woExtension.strDate(dct.sValue)%>" size='12' maxlength='12'><%
 					   break;
 					case extension.MEMO:
-			           %>&nbsp;<textarea name='<%=dct.nombre_campo%>' cols=60 rows=3><%=htmlServer.htmlEncode(dct.sValue)%></textarea><%
+			           %>&nbsp;<textarea name='<%=dct.nombre_campo%>' cols=60 rows=3><%=dct.sValue%></textarea><%
 					   break;
 				    default:  
-				        %>&nbsp;<input name='<%=dct.nombre_campo%>' type='text' value="<%=htmlServer.htmlEncode(dct.sValue)%>" size='<%=Math.min(dct.lon_x + 1, 50)%>' maxlength='<%=dct.lon_x%>'><%
+				        %>&nbsp;<input name='<%=dct.nombre_campo%>' type='text' value="<%=dct.sValue%>" size='<%=Math.min(dct.lon_x + 1, 50)%>' maxlength='<%=dct.lon_x%>'><%
 		            }%>
 		   </td>
 		  </tr>   	

@@ -137,10 +137,10 @@ public void setScountry(String sParameter)
 
 
     // GET_FORM()
-     dhitdate=strDate(not_null(req.getParameter("dhitdate")));
-     sipaddress=not_null(req.getParameter(assignName("sipaddress")));
-     spagename=not_null(req.getParameter(assignName("spagename")));
-     scountry=not_null(req.getParameter(assignName("scountry")));
+     dhitdate=strDate(not_null_safe(req.getParameter("dhitdate")));
+     sipaddress=not_null_safe(req.getParameter(assignName("sipaddress")));
+     spagename=not_null_safe(req.getParameter(assignName("spagename")));
+     scountry=not_null_safe(req.getParameter(assignName("scountry")));
 
 
     updateHashTable();

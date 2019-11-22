@@ -165,10 +165,10 @@ return ok;
 <input type="hidden" name="ntab" maxlength="10" size="10" value="<%=Group.ntab%>">
 <INPUT type='hidden' name='nsort' VALUE="<%=Group.nsort%>">
 <tr><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("TabName")%></td><td>  
-<INPUT type='TEXT' size='41' maxlength='40' name='svalue' VALUE="<%=htmlServer.htmlEncode(Group.svalue)%>"> <span class="warning">*</span>
+<INPUT type='TEXT' size='41' maxlength='40' name='svalue' VALUE="<%=Group.svalue%>"> <span class="warning">*</span>
 </td></tr>
 <tr><td width=180 class='bgLight' align='right'><%=countrybean.getTranslation("TabNameInEnglish")%></td><td>  
-<INPUT type='TEXT' size='41' maxlength='40' name='svalue_en' VALUE="<%=htmlServer.htmlEncode(Group.svalue_en)%>">
+<INPUT type='TEXT' size='41' maxlength='40' name='svalue_en' VALUE="<%=Group.svalue_en%>">
 </td></tr>
 	<TR>
 	<TD colspan=3 height="20"></TD>

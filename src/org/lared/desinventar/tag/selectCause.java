@@ -57,7 +57,7 @@ public class selectCause
       {
         sCode = rset.getString("causa");
         sCode_en = rset.getString("causa_en");
-        out.print("<option value='" + htmlServer.htmlEncode(sCode) + "'");
+        out.print("<option value='" + sCode + "'");
         if (sSelectedCode.equalsIgnoreCase(sCode))
           out.print(" selected");
         else
@@ -73,7 +73,7 @@ public class selectCause
            }
          }
        }
-       out.print(">" + htmlServer.htmlEncode(DICountry.getLocalOrEnglish(sCode, sCode_en,sLanguage)));
+       out.print(">" + DICountry.getLocalOrEnglish(sCode, sCode_en,sLanguage));
       }
       rset.close();
       stmt.close();

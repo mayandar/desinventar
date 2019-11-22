@@ -462,10 +462,10 @@ String imgparams="?rnd="+Math.round(Math.random()*9999);
           </tr>
           <tr>
             <td colspan=3 class=bs><%=countrybean.getTranslation("Title")%>:<br>
-              <input name="chartTitle" size="50" maxlength="80" value='<%=htmlServer.htmlEncode(countrybean.sTitle)%>' onChange="regenerate();">
+              <input name="chartTitle" size="50" maxlength="80" value='<%=countrybean.sTitle%>' onChange="regenerate();">
               <br>
               <%=countrybean.getTranslation("Subtitle")%>:<br>
-              <input name="chartSubTitle" size="50" maxlength="80" value='<%=htmlServer.htmlEncode(countrybean.sSubTitle)%>' onChange="regenerate();">
+              <input name="chartSubTitle" size="50" maxlength="80" value='<%=countrybean.sSubTitle%>' onChange="regenerate();">
               <br>
               <br>
             </td>
@@ -477,10 +477,10 @@ String imgparams="?rnd="+Math.round(Math.random()*9999);
               <input name="chartY" value="<%=countrybean.yresolution%>" size="5" maxlength="4" onChange="regenerate();">
             </td>
 <!--
-            <td colspan="3" class=bs align="right"><%=countrybean.getTranslation("Formula")%>&nbsp;&nbsp;<input type="text" class="bss" name="sDisabledExpertWhere" size="75" maxlength="255"  disabled onDblClick="openExpert()" value="<%=htmlServer.htmlEncode(Parser.translateExpertExpression(countrybean.sExpertVariable, Parser.hmVarTrans))%>"/>
+            <td colspan="3" class=bs align="right"><%=countrybean.getTranslation("Formula")%>&nbsp;&nbsp;<input type="text" class="bss" name="sDisabledExpertWhere" size="75" maxlength="255"  disabled onDblClick="openExpert()" value="<%=(Parser.translateExpertExpression(countrybean.sExpertVariable, Parser.hmVarTrans))%>"/>
               &nbsp;&nbsp;<input class="bss" type='button' name='expertbutton' value='<%=countrybean.getTranslation("Expert")%>' onClick="openExpert()"/>
               
-              <input type="hidden" name="sExpertVariable" value="<%=htmlServer.htmlEncode(Parser.translateExpertExpression(countrybean.sExpertVariable, Parser.hmVarTrans))%>"/>
+              <input type="hidden" name="sExpertVariable" value="<%=(Parser.translateExpertExpression(countrybean.sExpertVariable, Parser.hmVarTrans))%>"/>
 -->
 
            </td>

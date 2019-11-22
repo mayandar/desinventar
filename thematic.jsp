@@ -146,7 +146,7 @@ sImageMap+="</map>";
 <%@ include file="/layerControl.jspf" %> 
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td align="center" colspan="2" >
-<span class="title"><%=htmlServer.htmlEncode(countrybean.sTitle)%></span>
+<span class="title"><%=countrybean.sTitle%></span>
 </td></tr>
  <tr>
 	<td align="left" bgcolor="#ffffff"><!-- MAP --><img src='/DesInventar/MapServer<%=imgparams %>&LAYERS=effects<%=sLevelLayers%>' border=0><%=sImageMap%></td>
@@ -157,7 +157,7 @@ sImageMap+="</map>";
 	</td>
  </tr>
 <tr><td colspan="2">
-<span class="subtitle"><%=htmlServer.htmlEncode(countrybean.sSubTitle)%></span>
+<span class="subtitle"><%=countrybean.sSubTitle%></span>
 </td></tr>
 <form name="desinventar" method='post' action="thematic.jsp">
 <input type='hidden' name='nStart' value=''>

@@ -274,12 +274,12 @@ sColorScript+="cellColor("+k+",'"+sColor+"');\n";
 %>
 <tr>
 
-<td>  <INPUT type='TEXT' size='50' maxlength='255' name='filename<%=k%>' id='filename<%=k%>' VALUE="<%=htmlServer.htmlEncode(imlayer.filename)%>">
+<td>  <INPUT type='TEXT' size='50' maxlength='255' name='filename<%=k%>' id='filename<%=k%>' VALUE="<%=imlayer.filename%>">
 </td>
 <td>      <INPUT type='button' name='browsebtn<%=k%>'  VALUE="<%=countrybean.getTranslation("Browse")%>" onClick="browse(<%=k%>)">
 </td>
-<td>  <INPUT type='TEXT' size='20' maxlength='50' name='layer_name<%=k%>' id='layer_name<%=k%>' VALUE="<%=htmlServer.htmlEncode(imlayer.layer_name)%>"></td>
-<td>  <INPUT type='TEXT' size='20' maxlength='50' name='layer_name_en<%=k%>' id='layer_name_en<%=k%>' VALUE="<%=htmlServer.htmlEncode(imlayer.layer_name_en)%>"></td>
+<td>  <INPUT type='TEXT' size='20' maxlength='50' name='layer_name<%=k%>' id='layer_name<%=k%>' VALUE="<%=imlayer.layer_name%>"></td>
+<td>  <INPUT type='TEXT' size='20' maxlength='50' name='layer_name_en<%=k%>' id='layer_name_en<%=k%>' VALUE="<%=imlayer.layer_name_en%>"></td>
 <INPUT type='hidden' size='5' maxlength='22' name='layer<%=k%>' VALUE="<%=k%>">
 <td>  <INPUT type='checkbox' name='visible<%=k%>' VALUE="1" <%=imlayer.strChecked(imlayer.visible)%>></td>
  <INPUT type='hidden' name='filetype<%=k%>'  id='filetype<%=k%>' VALUE="<%=imlayer.filetype%>"></td>

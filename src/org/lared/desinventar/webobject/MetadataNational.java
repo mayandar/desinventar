@@ -190,13 +190,14 @@ public class MetadataNational extends webObject
 
 		// GET_FORM()
 		setMetadata_key(req.getParameter(assignName("metadata_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
-		setMetadata_variable(not_null(req.getParameter(assignName("metadata_variable"))));
-		setMetadata_description(not_null(req.getParameter(assignName("metadata_description"))));
-		setMetadata_source(not_null(req.getParameter(assignName("metadata_source"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
+		setMetadata_variable(not_null_safe(req.getParameter(assignName("metadata_variable"))));
+		setMetadata_description(not_null_safe(req.getParameter(assignName("metadata_description"))));
+		setMetadata_source(not_null_safe(req.getParameter(assignName("metadata_source"))));
 		setMetadata_default_value(req.getParameter(assignName("metadata_default_value")));
 		setMetadata_default_value_us(req.getParameter(assignName("metadata_default_value_us")));
 
+		this.checkLengths();
 		updateHashTable();
 		return 0;
 	}
@@ -209,10 +210,10 @@ public class MetadataNational extends webObject
 
 		// GET_FORM()
 		setMetadata_key(req.getParameter(assignName("metadata_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
-		setMetadata_variable(not_null(req.getParameter(assignName("metadata_variable"))));
-		setMetadata_description(not_null(req.getParameter(assignName("metadata_description"))));
-		setMetadata_source(not_null(req.getParameter(assignName("metadata_source"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
+		setMetadata_variable(not_null_safe(req.getParameter(assignName("metadata_variable"))));
+		setMetadata_description(not_null_safe(req.getParameter(assignName("metadata_description"))));
+		setMetadata_source(not_null_safe(req.getParameter(assignName("metadata_source"))));
 		setMetadata_default_value(req.getParameter(assignName("metadata_default_value")));
 		setMetadata_default_value_us(req.getParameter(assignName("metadata_default_value_us")));
 

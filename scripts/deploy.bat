@@ -20,8 +20,7 @@ xcopy webapps\DesInventar\wdds\*.* ..\web-installer\Server\webapps\DesInventar\w
 xcopy webapps\DesInventar\json\*.* ..\web-installer\Server\webapps\DesInventar\json /y /s
 xcopy webapps\DesInventar\download\index.jsp ..\web-installer\Server\webapps\DesInventar\download /y /s
 xcopy webapps\DesInventar\download\LICENSE.* ..\web-installer\Server\webapps\DesInventar\download /y /s
-xcopy webapps\DesInventar\tip_balloon\*.* ..\web-installer\Server\webapps\DesInventar\tip_balloon /y
-xcopy webapps\DesInventar\scripts\*.* ..\web-installer\Server\webapps\DesInventar\scripts /s /y
+dxcopy webapps\DesInventar\scripts\*.* ..\web-installer\Server\webapps\DesInventar\scripts /s /y
 xcopy webapps\DesInventar\src\index.jsp ..\web-installer\Server\webapps\DesInventar\src  /s /y
 xcopy webapps\DesInventar\src\org\*.* ..\web-installer\Server\webapps\DesInventar\src\org  /s /y
 xcopy webapps\DesInventar\WEB-INF\classes\org\lared\*.* ..\web-installer\Server\webapps\DesInventar\WEB-INF\classes\org\lared  /s /y

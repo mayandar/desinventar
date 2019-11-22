@@ -15,12 +15,6 @@ countrybean.init();
 <%@ include file="/util/opendatabase.jspf" %>
 <%@ include file="/paramprocessor.jspf" %>
 <%
-// load language code (if available)
-if (request.getParameter("lang")!=null)
-	countrybean.setLanguage(request.getParameter("lang"));
-// load DATA language code (if available)
-if (request.getParameter("datalng")!=null)
-	countrybean.setDataLanguage(request.getParameter("datalng"));
 String sSuffix=countrybean.getLocalOrEnglish("","_en");
 String sDetails="";
 String sSqlDetails="";

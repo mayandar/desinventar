@@ -224,12 +224,14 @@ public class MediaFile extends webObject
 		setImedia(req.getParameter(assignName("imedia")));
 		setIclave(req.getParameter(assignName("iclave")));
 		setMedia_type(req.getParameter(assignName("media_type")));
-		setMedia_title(not_null(req.getParameter(assignName("media_title"))));
-		setMedia_title_en(not_null(req.getParameter(assignName("media_title_en"))));
-		setMedia_file(not_null(req.getParameter(assignName("media_file"))));
-		setMedia_description(not_null(req.getParameter(assignName("media_description"))));
-		setMedia_description_en(not_null(req.getParameter(assignName("media_description_en"))));
-		setMedia_link(not_null(req.getParameter(assignName("media_link"))));
+		setMedia_title(not_null_safe(req.getParameter(assignName("media_title"))));
+		setMedia_title_en(not_null_safe(req.getParameter(assignName("media_title_en"))));
+		setMedia_file(not_null_safe(req.getParameter(assignName("media_file"))));
+		setMedia_description(not_null_safe(req.getParameter(assignName("media_description"))));
+		setMedia_description_en(not_null_safe(req.getParameter(assignName("media_description_en"))));
+		setMedia_link(not_null_safe(req.getParameter(assignName("media_link"))));
+		
+		this.checkLengths();
 		updateHashTable();
 		return 0;
 	}
@@ -244,12 +246,12 @@ public class MediaFile extends webObject
 		setImedia(req.getParameter(assignName("imedia")));
 		setIclave(req.getParameter(assignName("iclave")));
 		setMedia_type(req.getParameter(assignName("media_type")));
-		setMedia_title(not_null(req.getParameter(assignName("media_title"))));
-		setMedia_title_en(not_null(req.getParameter(assignName("media_title_en"))));
-		setMedia_file(not_null(req.getParameter(assignName("media_file"))));
-		setMedia_description(not_null(req.getParameter(assignName("media_description"))));
-		setMedia_description_en(not_null(req.getParameter(assignName("media_description_en"))));
-		setMedia_link(not_null(req.getParameter(assignName("media_link"))));
+		setMedia_title(not_null_safe(req.getParameter(assignName("media_title"))));
+		setMedia_title_en(not_null_safe(req.getParameter(assignName("media_title_en"))));
+		setMedia_file(not_null_safe(req.getParameter(assignName("media_file"))));
+		setMedia_description(not_null_safe(req.getParameter(assignName("media_description"))));
+		setMedia_description_en(not_null_safe(req.getParameter(assignName("media_description_en"))));
+		setMedia_link(not_null_safe(req.getParameter(assignName("media_link"))));
 
 		updateHashTable();
 		return 0;

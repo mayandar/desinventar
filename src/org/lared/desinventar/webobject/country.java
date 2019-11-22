@@ -335,25 +335,26 @@ public class country extends webObject
 	public int getForm(HttpServletRequest req, HttpServletResponse resp, Connection con) {
 
 		// GET_FORM()
-		scountryid = not_null(req.getParameter(assignName("scountryid")));
-		scountryname = not_null(req.getParameter(assignName("scountryname")));
-		speriod = not_null(req.getParameter(assignName("speriod")));
-		slastupdated = not_null(req.getParameter(assignName("slastupdated")));
-		sdescriptiones = not_null(req.getParameter(assignName("sdescriptiones")));
-		sdescriptionen = not_null(req.getParameter(assignName("sdescriptionen")));
-		spagees = not_null(req.getParameter(assignName("spagees")));
-		spageen = not_null(req.getParameter(assignName("spageen")));
+		scountryid = not_null_safe(req.getParameter(assignName("scountryid")));
+		scountryname = not_null_safe(req.getParameter(assignName("scountryname")));
+		speriod = not_null_safe(req.getParameter(assignName("speriod")));
+		slastupdated = not_null_safe(req.getParameter(assignName("slastupdated")));
+		sdescriptiones = not_null_safe(req.getParameter(assignName("sdescriptiones")));
+		sdescriptionen = not_null_safe(req.getParameter(assignName("sdescriptionen")));
+		spagees = not_null_safe(req.getParameter(assignName("spagees")));
+		spageen = not_null_safe(req.getParameter(assignName("spageen")));
 		bpublic = extendedParseInt(req.getParameter(assignName("bpublic")));
-		sinstitution = not_null(req.getParameter(assignName("sinstitution")));
-		sdriver = not_null(req.getParameter(assignName("sdriver")));
-		sdatabasename = not_null(req.getParameter(assignName("sdatabasename")));
-		sodbcdriver = not_null(req.getParameter(assignName("sodbcdriver")));
-		sodbcdatabaseconnect = not_null(req.getParameter(assignName("sodbcdatabaseconnect")));
-		sjetfilename = not_null(req.getParameter(assignName("sjetfilename")));
-		susername = not_null(req.getParameter(assignName("susername")));
-		spassword = not_null(req.getParameter(assignName("spassword")));
+		sinstitution = not_null_safe(req.getParameter(assignName("sinstitution")));
+		sdriver = not_null_safe(req.getParameter(assignName("sdriver")));
+		sdatabasename = not_null_safe(req.getParameter(assignName("sdatabasename")));
+		sodbcdriver = not_null_safe(req.getParameter(assignName("sodbcdriver")));
+		sodbcdatabaseconnect = not_null_safe(req.getParameter(assignName("sodbcdatabaseconnect")));
+		sjetfilename = not_null_safe(req.getParameter(assignName("sjetfilename")));
+		susername = not_null_safe(req.getParameter(assignName("susername")));
+		spassword = not_null_safe(req.getParameter(assignName("spassword")));
 		ndbtype = extendedParseInt(req.getParameter(assignName("ndbtype")));
 
+		
 		updateHashTable();
 		return 0;
 	}

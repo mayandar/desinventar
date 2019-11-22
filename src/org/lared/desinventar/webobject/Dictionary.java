@@ -103,7 +103,7 @@ public class Dictionary extends diccionario
   
   /**
    *  gets a value suitable for showing it in HTML pages; 
-   *  note it truncates memos to 500 chars, and formats y/n as checkboxes
+   *  note it truncates memos to 1000 chars, and formats y/n as checkboxes
    */
   public String getFieldValue()  
     {
@@ -112,9 +112,9 @@ public class Dictionary extends diccionario
                         sCode="&nbsp;<input name='"+nombre_campo+"' type='checkbox' value=\"Y\" "+strChecked(sValue)+">";
    		    else
    		    	if (this.fieldtype==extension.MEMO)
-   		    		sCode=EncodeUtil.htmlEncode(sValue.length()>500?sValue.substring(0,500):sValue);
+   		    		sCode=sValue.length()>1000?sValue.substring(0,1000):sValue;
    		    	else
-   		    		sCode=EncodeUtil.htmlEncode(getValue());
+   		    		sCode=getValue();
 	        return sCode; 
       }
 

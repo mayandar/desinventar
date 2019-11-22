@@ -239,8 +239,8 @@ implements chartConstants
 		// http://desinventar/DesInventar/jsmapserv?MAP=ID2&LAYERS=level0&TRANSPARENT=true&FORMAT=gif&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=&SRS=EPSG%3A4326&BBOX=115.05965%2C-10.997407%2C161.0071875%2C5.906884&WIDTH=256&HEIGHT=256 
 
 
-		String sWMSrequest=htmlServer.not_null(request.getParameter("REQUEST"));
-		String sWMSservice=htmlServer.not_null(request.getParameter("SERVICE"));
+		String sWMSrequest=htmlServer.not_null_safe(request.getParameter("REQUEST"));
+		String sWMSservice=htmlServer.not_null_safe(request.getParameter("SERVICE"));
 
 		if (sWMSservice.equalsIgnoreCase("wms"))
 		{
@@ -269,11 +269,11 @@ implements chartConstants
 
 	private void serveCapabilities(ServletRequest request, ServletResponse response, DICountry countrybean)
 	{
-		String sWMSMapRequest=htmlServer.not_null(request.getParameter("MAP"));
-		String sWMSVersionRequest=htmlServer.not_null(request.getParameter("VERSION"));
-		String sWMSFormatRequest=htmlServer.not_null(request.getParameter("FORMAT"));
-		String sWMSExceptionsRequest=htmlServer.not_null(request.getParameter("EXCEPTIONS"));
-		String sWMSSequenceRequest=htmlServer.not_null(request.getParameter("UPDATESEQUENCE"));	    
+		String sWMSMapRequest=htmlServer.not_null_safe(request.getParameter("MAP"));
+		String sWMSVersionRequest=htmlServer.not_null_safe(request.getParameter("VERSION"));
+		String sWMSFormatRequest=htmlServer.not_null_safe(request.getParameter("FORMAT"));
+		String sWMSExceptionsRequest=htmlServer.not_null_safe(request.getParameter("EXCEPTIONS"));
+		String sWMSSequenceRequest=htmlServer.not_null_safe(request.getParameter("UPDATESEQUENCE"));	    
 
 	}
 	private void serveMap(ServletRequest request, ServletResponse response, DICountry countrybean) throws IOException 
@@ -284,20 +284,20 @@ implements chartConstants
 		// &STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG%3A4326
 		// &BBOX=-77.345093%2C7.032715%2C-75.938843%2C8.438965&WIDTH=256&HEIGHT=256
 
-		String sWMSMapRequest=htmlServer.not_null(request.getParameter("MAP"));
-		String sWMSVersionRequest=htmlServer.not_null(request.getParameter("VERSION"));
-		String sWMSFormatRequest=htmlServer.not_null(request.getParameter("FORMAT"));
-		String sWMSExceptionsRequest=htmlServer.not_null(request.getParameter("EXCEPTIONS"));
-		String sWMSSequenceRequest=htmlServer.not_null(request.getParameter("UPDATESEQUENCE"));	    
-		String sWMSLayersRequest=htmlServer.not_null(request.getParameter("LAYERS"));
-		String sWMSTransparentRequest=htmlServer.not_null(request.getParameter("TRANSPARENT"));
-		String sWMSStylesRequest=htmlServer.not_null(request.getParameter("STYLES"));
-		String sWMSSRSRequest=htmlServer.not_null(request.getParameter("SRS"));
-		String sWMSWidthRequest=htmlServer.not_null(request.getParameter("WIDTH"));
-		String sWMSHeightRequest=htmlServer.not_null(request.getParameter("HEIGHT"));
-		String sWMSBBoxRequest=htmlServer.not_null(request.getParameter("BBOX"));
+		String sWMSMapRequest=htmlServer.not_null_safe(request.getParameter("MAP"));
+		String sWMSVersionRequest=htmlServer.not_null_safe(request.getParameter("VERSION"));
+		String sWMSFormatRequest=htmlServer.not_null_safe(request.getParameter("FORMAT"));
+		String sWMSExceptionsRequest=htmlServer.not_null_safe(request.getParameter("EXCEPTIONS"));
+		String sWMSSequenceRequest=htmlServer.not_null_safe(request.getParameter("UPDATESEQUENCE"));	    
+		String sWMSLayersRequest=htmlServer.not_null_safe(request.getParameter("LAYERS"));
+		String sWMSTransparentRequest=htmlServer.not_null_safe(request.getParameter("TRANSPARENT"));
+		String sWMSStylesRequest=htmlServer.not_null_safe(request.getParameter("STYLES"));
+		String sWMSSRSRequest=htmlServer.not_null_safe(request.getParameter("SRS"));
+		String sWMSWidthRequest=htmlServer.not_null_safe(request.getParameter("WIDTH"));
+		String sWMSHeightRequest=htmlServer.not_null_safe(request.getParameter("HEIGHT"));
+		String sWMSBBoxRequest=htmlServer.not_null_safe(request.getParameter("BBOX"));
 
-		String sWMSservice=htmlServer.not_null(request.getParameter("SERVICE"));
+		String sWMSservice=htmlServer.not_null_safe(request.getParameter("SERVICE"));
 
 		// Wrapper to WMS from Virtual Earth.  Service is disguised as WMS but bounding box and image size come
 		// as Quad id and different parameter names.
@@ -431,8 +431,8 @@ implements chartConstants
 
 						int level_act=htmlServer.extendedParseInt(request.getParameter("level"));
 
-						String code=htmlServer.not_null(request.getParameter("code"));
-						String showcodes=htmlServer.not_null(request.getParameter("showcodes"));
+						String code=htmlServer.not_null_safe(request.getParameter("code"));
+						String showcodes=htmlServer.not_null_safe(request.getParameter("showcodes"));
 
 						if (showcodes.length()>0)
 							ms.bShowNames=false;

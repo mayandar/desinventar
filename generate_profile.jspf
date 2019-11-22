@@ -367,7 +367,7 @@ if (!bHazard)
 		for (int j=2; j<19; j++)
 			{
 				double dNum=rset.getDouble(j);
-				out.print("<td align='right'>"+(dNum==0.0?"":webObject.formatDouble(rset.getDouble(j),0))+"</td>");	
+				out.print("<td align='right'>"+(dNum==0.0?"":webObject.formatDouble(dNum,0))+"</td>");	
 			}
 		out.println("</tr>");
 		}
@@ -437,7 +437,7 @@ else
 		for (int j=3; j<20; j++)
 			{
 				double dNum=rset.getDouble(j);
-				out.print("<td align='right'>"+(dNum==0.0?"":webObject.formatDouble(rset.getDouble(j),0))+"</td>");	
+				out.print("<td align='right'>"+(dNum==0.0?"":webObject.formatDouble(dNum,0))+"</td>");	
 			}
 		out.println("</tr>");
 		}
@@ -494,7 +494,7 @@ catch (Exception eSql)
 		for (int j=2; j<19; j++)
 			{
 				double dNum=rset.getDouble(j);
-				out.print("<td align='right'>"+(dNum==0.0?"":webObject.formatDouble(rset.getDouble(j),0))+"</td>");	
+				out.print("<td align='right'>"+(dNum==0.0?"":webObject.formatDouble(dNum,0))+"</td>");	
 			}
 		out.println("</tr>");
 		}

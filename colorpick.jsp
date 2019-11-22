@@ -6,13 +6,16 @@ String strTitle =  countrybean.not_null_safe(request.getParameter("title"));
 String sColorSelection= countrybean.not_null_safe(request.getParameter("color"));
 String sReturnAction= request.getParameter("gradient")!=null?"gradient":"";
 String sCallback= countrybean.not_null_safe(request.getParameter("callback"));
+if (sCallback.length()==0)
+	sCallback="colorDone";
+	
 if (sColorSelection==null)
  sColorSelection="#000000";
 else
  sColorSelection="#"+sColorSelection;
 
-boolean bIEBrowser = (request.getHeader("User-Agent").indexOf("MSIE")>0);
 boolean bIEdge = (request.getHeader("User-Agent").indexOf("Edge")>0);
+boolean bIEBrowser = (request.getHeader("User-Agent").indexOf("MSIE")>0) || bIEdge;
 %>
 <html>
 <head>
@@ -26,12 +29,10 @@ function doDiagOK()
 	{
 	window.returnValue = colorSelection;
 	window.close();
-<% if (!bIEBrowser) { %>
-		    if (sShowDialogReturn=="gradient")
+    if (sShowDialogReturn=="gradient")
 				window.opener.<%=EncodeUtil.jsEncode(sCallback)%>(colorSelection);
 			else	
 				opener.colorDone(colorSelection);
-	<%}%>	
 	}
 
 	

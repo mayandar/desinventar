@@ -455,7 +455,7 @@ return ok;
 </tr>
 <tr>
 	<td width='220' class='bgLight' align='right'><%=countrybean.getTranslation("National language description")%>:</td>
-	<td>  <INPUT type='TEXT' size='31' maxlength='200' name='new_description' VALUE="<%=htmlServer.htmlEncode(metadataNationalLang.metadata_description)%>"></td>
+	<td>  <INPUT type='TEXT' size='31' maxlength='200' name='new_description' VALUE="<%=metadataNationalLang.metadata_description%>"></td>
 </tr>
 
 	<TR>

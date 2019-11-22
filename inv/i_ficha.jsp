@@ -96,7 +96,7 @@ function initialize()
 </script>
 
 
-<input type='hidden' name='uu_id' id='uu_id' value='<%=htmlServer.htmlEncode(woFicha.uu_id)%>'>
+<input type='hidden' name='uu_id' id='uu_id' value='<%=woFicha.uu_id%>'>
 <div class="bs">
   <table border="1" rules="cols" cellpadding="0" cellspacing="0" bordercolor="black" class="bs" width="1000">
        <tr class='<%=sApprovedClass%> bs'>
@@ -104,7 +104,7 @@ function initialize()
               <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                   <td class="bs" nowrap><%=countrybean.getTranslation("Serial")%>:
-                    <INPUT name="serial" id="serial" onchange='autosave(serial)' value="<%=htmlServer.htmlEncode(woFicha.serial)%>" size="15" maxlength="15"></td>
+                    <INPUT name="serial" id="serial" onchange='autosave(serial)' value="<%=woFicha.serial%>" size="15" maxlength="15"></td>
                   <td class="bs" nowrap><%=countrybean.getTranslation("DateYMD")%>:
                     <INPUT NAME="fechano" id="fechano" onchange='autosave(fechano)'  style="WIDTH: 45px;" value="<%=sBlankZero(woFicha.fechano)%>" size="4" maxlength="4">
                     <INPUT NAME="fechames" id="fechames" onchange='autosave(fechames)' value="<%=sBlankZero(woFicha.fechames)%>" size="2" style="WIDTH: 22px;" maxlength="3">
@@ -112,7 +112,7 @@ function initialize()
                   <td class="bs" nowrap><%=countrybean.getTranslation("Duration")%>:
                     <INPUT NAME="duracion" id="duracion" onchange='autosave(duracion)'  style="WIDTH: 40px;" value="<%=sBlankZero(woFicha.duracion)%>" size="4" maxlength="4"></td>
                   <td class="bs" nowrap><%=countrybean.getTranslation("Source")%>:
-                    <INPUT type='TEXT' size='40' maxlength='250' name='fuentes' id="fuentes" onchange='autosave(fuentes)' VALUE="<%=htmlServer.htmlEncode(woFicha.fuentes)%>"></td>
+                    <INPUT type='TEXT' size='40' maxlength='250' name='fuentes' id="fuentes" onchange='autosave(fuentes)' VALUE="<%=woFicha.fuentes%>"></td>
                   <td class="bs" nowrap><%=countrybean.getTranslation("Status")%>:
                     <select name='approved' id="approved" onchange='autosave(approved)'>
 <% if (user.iusertype>=20) 
@@ -153,7 +153,7 @@ function initialize()
             <td class="bs">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                  <td width="30%" class="bs"><%=htmlServer.htmlEncode(countrybean.asLevels[0])%>:
+                  <td width="30%" class="bs"><%=countrybean.asLevels[0]%>:
                     <SELECT name="level0"  id="level0" onchange="checkLevel0()">
                       <option value=""></option>
                       <%
@@ -180,16 +180,16 @@ function initialize()
 						  while (rset.next())
 						  {
 							String sCode = rset.getString("lev0_cod");
-							out.print("\t<option value=\"" + htmlServer.htmlEncode(sCode) + "\"");
+							out.print("\t<option value=\"" + sCode + "\"");
 							if (woFicha.level0.equalsIgnoreCase(sCode))
 							  out.print(" selected");
-						   out.println(">" + htmlServer.htmlEncode(countrybean.getLocalOrEnglish(rset,"lev0_name","lev0_name_en")));
+						   out.println(">" + countrybean.getLocalOrEnglish(rset,"lev0_name","lev0_name_en"));
 						  }
 					%>
                     </select>
                   </td>
-                  <td width="30%" class="bs"><%=htmlServer.htmlEncode(countrybean.asLevels[1])%>:
-                    <input type='hidden' name='name0' id="name0" onchange='autosave(name0)' value="<%=htmlServer.htmlEncode(woFicha.name0)%>"/>
+                  <td width="30%" class="bs"><%=countrybean.asLevels[1]%>:
+                    <input type='hidden' name='name0' id="name0" onchange='autosave(name0)' value="<%=woFicha.name0%>"/>
                     <SELECT name="level1" id="level1"  onchange="checkLevel1()">
                       <option value=''></option>
                       <% if (woFicha.level0.length()>0)
@@ -216,26 +216,26 @@ function initialize()
 							  while (rset.next())
 							  {
 								String sCode = rset.getString("lev1_cod");
-								out.print("<option value='" + htmlServer.htmlEncode(sCode) + "'");
+								out.print("<option value='" + sCode + "'");
 								if (woFicha.level1.equalsIgnoreCase(sCode))
 								  out.print(" selected");
-							   out.println(">" + htmlServer.htmlEncode(countrybean.getLocalOrEnglish(rset,"lev1_name","lev1_name_en")));
+							   out.println(">" + countrybean.getLocalOrEnglish(rset,"lev1_name","lev1_name_en"));
 							  }
 						 }%>
                     </select>
                   </td>
-                  <td width="30%" class="bs"><%=htmlServer.htmlEncode(countrybean.asLevels[2])%> :
-                    <input type='hidden' name='name1' id="name1" onchange='autosave(name1)' value="<%=htmlServer.htmlEncode(woFicha.name1)%>">
+                  <td width="30%" class="bs"><%=countrybean.asLevels[2]%> :
+                    <input type='hidden' name='name1' id="name1" onchange='autosave(name1)' value="<%=woFicha.name1%>">
                     <SELECT name="level2" id="level2" onchange="jsGetLevel3()">
                       <option value=''></option>
 					  <% if (woFicha.level1.length()>0)
-                      {%><inv:selectLevel2 connection="<%= con %>" level1Code="<%=htmlServer.htmlEncode(woFicha.level1)%>"  selected="<%=htmlServer.htmlEncode(woFicha.level2)%>"/>
+                      {%><inv:selectLevel2 connection="<%= con %>" level1Code="<%=woFicha.level1%>"  selected="<%=woFicha.level2%>"/>
                       <%}
                     	rset.close();
                     	stmt.close();
                     	%>
                     </select>
-                    <input type='hidden' name='name2' id="name2" onchange='autosave(name2)' value="<%=htmlServer.htmlEncode(woFicha.name2)%>"/>
+                    <input type='hidden' name='name2' id="name2" onchange='autosave(name2)' value="<%=woFicha.name2%>"/>
                 </td>
                 </tr>
               </table> 
@@ -252,14 +252,14 @@ function initialize()
 						sDisplayField="nombre_en";
 					 %>
                     <SELECT name="evento" id="evento" onchange='autosave(evento)'>
-                    <inv:select tablename='eventos' selected='<%=htmlServer.htmlEncode(woFicha.evento)%>' connection='<%= con %>' fieldname="<%=sDisplayField%>" codename='nombre' ordername='serial'/>
+                    <inv:select tablename='eventos' selected='<%=woFicha.evento%>' connection='<%= con %>' fieldname="<%=sDisplayField%>" codename='nombre' ordername='serial'/>
                     </select>
                   </td>
                  <td class="bs"><%=countrybean.getTranslation("Place")%>:
-                    <INPUT type="TEXT" size="45" maxlength="60" name="lugar" id="lugar" onchange='autosave(lugar)' VALUE="<%=htmlServer.htmlEncode(woFicha.lugar)%>"/>
+                    <INPUT type="TEXT" size="45" maxlength="60" name="lugar" id="lugar" onchange='autosave(lugar)' VALUE="<%=woFicha.lugar%>"/>
                   </td>
                   <td class="bs"><%=countrybean.getTranslation("GLIDEnumber")%>:
-                    <INPUT type="TEXT" size="17" maxlength="30" name="glide" id="glide" onchange='autosave(glide)' VALUE="<%=htmlServer.htmlEncode(woFicha.glide)%>"/>
+                    <INPUT type="TEXT" size="17" maxlength="30" name="glide" id="glide" onchange='autosave(glide)' VALUE="<%=woFicha.glide%>"/>
                   </td>
                 </tr>
               </table>
@@ -281,7 +281,7 @@ if (countrybean.getDataLanguage().equals("EN"))
                     </select>
                   </td>
                   <td class="bs"><%=countrybean.getTranslation("DescriptionCause")%>:
-                    <INPUT type="TEXT" size="65" maxlength="60" name="descausa" id="descausa" onchange='autosave(descausa)' VALUE="<%=htmlServer.htmlEncode(woFicha.descausa)%>">
+                    <INPUT type="TEXT" size="65" maxlength="60" name="descausa" id="descausa" onchange='autosave(descausa)' VALUE="<%=woFicha.descausa%>">
                   </td>
                 </tr>
               </table>
@@ -376,7 +376,7 @@ alProcessedFields=new ArrayList();
                     <table cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
                         <td class="bs" align="right" nowrap>&nbsp;<%=countrybean.getTranslation("Magnitude")%>:</td>
-                        <td class="bs"><INPUT type="TEXT" size="26" maxlength="22" name="magnitud2" id="magnitud2" onchange='autosave(magnitud2)' VALUE="<%=htmlServer.htmlEncode(woFicha.magnitud2)%>"></td>
+                        <td class="bs"><INPUT type="TEXT" size="26" maxlength="22" name="magnitud2" id="magnitud2" onchange='autosave(magnitud2)' VALUE="<%=woFicha.magnitud2%>"></td>
                       </tr>
                       <tr>
                         <td class="bs" align="right" nowrap>&nbsp;<%=countrybean.getTranslation("LossesLocal")%>:</td>
@@ -450,7 +450,7 @@ alProcessedFields=new ArrayList();
              </tr>
              <tr class='<%=sApprovedClass%> bs' id='basic_datacard1'>
                 <td class="bs" colspan='2'><%=countrybean.getTranslation("OtherLosses")%>:
-                  <INPUT type="TEXT" size="60" maxlength="60" name="otros" id="otros" onchange='autosave(otros)' VALUE="<%=htmlServer.htmlEncode(woFicha.otros)%>">
+                  <INPUT type="TEXT" size="60" maxlength="60" name="otros" id="otros" onchange='autosave(otros)' VALUE="<%=woFicha.otros%>">
                   <br>
                   <hr/>
                 </td>
@@ -458,16 +458,16 @@ alProcessedFields=new ArrayList();
               <tr class='<%=sApprovedClass%>' id='basic_datacard2'>
                 <td class="bs" colspan='2'><!-- Comments lines in light blue  -->
                   <strong><%=countrybean.getTranslation("Comments")%></strong>:<br>
-                  <TEXTAREA rows="4" name="di_comments" id="di_comments" onchange='autosave(di_comments)' cols="100"><%=htmlServer.htmlEncode(woFicha.di_comments)%></textarea>
+                  <TEXTAREA rows="4" name="di_comments" id="di_comments" onchange='autosave(di_comments)' cols="100"><%=woFicha.di_comments%></textarea>
                 </td>
               </tr>
               <tr class='<%=sApprovedClass%>'>
                 <td align="center"><table border="0" cellpadding="0" cellspacing="0" width="40%">
                     <tr>
                       <td class="bs"><%=countrybean.getTranslation("By")%>:
-                        <INPUT type="TEXT" size="13" maxlength="12" name="fechapor" id="fechapor" onchange='autosave(fechapor)' VALUE="<%=htmlServer.htmlEncode(woFicha.fechapor.length()>0?woFicha.fechapor:user.suserid)%>"></td>
+                        <INPUT type="TEXT" size="13" maxlength="12" name="fechapor" id="fechapor" onchange='autosave(fechapor)' VALUE="<%=woFicha.fechapor.length()>0?woFicha.fechapor:user.suserid%>"></td>
                       <td class="bs"><%=countrybean.getTranslation("Date")%>:
-                        <INPUT type="TEXT" size="10" maxlength="10" name="fechafec" id="fechafec" onchange='autosave(fechafec)' VALUE="<%=htmlServer.htmlEncode(woFicha.fechafec)%>"></td>
+                        <INPUT type="TEXT" size="10" maxlength="10" name="fechafec" id="fechafec" onchange='autosave(fechafec)' VALUE="<%=woFicha.fechafec%>"></td>
                     </tr>
                   </table>
                  </td>
@@ -510,7 +510,7 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 	   if ((dct.tabnumber==ktab+1) || (dct.tabnumber==0 && ktab==woExtension.vTabs.size()-1))   
 	    {%>
             <tr  class='<%=sApprovedClass%>'>
-              <td align="right" class=bgLight width='300'><%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en))%>:&nbsp;</td>
+              <td align="right" class=bgLight width='300'><%=countrybean.getLocalOrEnglish(dct.label_campo,dct.label_campo_en)%>:&nbsp;</td>
               <td align="left" class=bgLightLight><%switch (dct.fieldtype)
 				  	{
 					case extension.YESNO:
@@ -534,7 +534,7 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 								bFound=true;
 								bSelected=true;
 								}
-							out.print("<option value='"+ecList.code_value+"'"+dct.strSelected(bSelected)+">"+htmlServer.htmlEncode(countrybean.getLocalOrEnglish(ecList.svalue,ecList.svalue_en))+"</option>");
+							out.print("<option value='"+ecList.code_value+"'"+dct.strSelected(bSelected)+">"+countrybean.getLocalOrEnglish(ecList.svalue,ecList.svalue_en)+"</option>");
 						}
 						if (!bFound && dct.sValue.length()>0 && !dct.sValue.equals("0")) // safeguard for extraneous values existing prior to codes
 						   out.print("<option value='"+dct.sValue+"' selected>"+dct.sValue+"</option>");						
@@ -555,7 +555,7 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 						%>
                 &nbsp;
                 <input name='<%=dct.nombre_campo%>' type='radio' value="<%=ecList.code_value%>" id='<%=dct.nombre_campo%>' onchange="autosave(<%=dct.nombre_campo%>)"<%=dct.strChecked(bSelected)%>>
-                <%=htmlServer.htmlEncode(countrybean.getLocalOrEnglish(ecList.svalue,ecList.svalue_en))%>
+                <%=countrybean.getLocalOrEnglish(ecList.svalue,ecList.svalue_en)%>
                 <%
 						}
 						if (!bFound && dct.sValue.length()>0 && !dct.sValue.equals("0")){
@@ -593,13 +593,13 @@ for (int ktab = 0; ktab < woExtension.vTabs.size(); ktab++)
 					case extension.MEMO:
 						%>
                 &nbsp;
-                <textarea name='<%=dct.nombre_campo%>' id='<%=dct.nombre_campo%>' onchange="autosave(<%=dct.nombre_campo%>)" cols=60 rows=3><%=htmlServer.htmlEncode(dct.sValue)%></textarea>
+                <textarea name='<%=dct.nombre_campo%>' id='<%=dct.nombre_campo%>' onchange="autosave(<%=dct.nombre_campo%>)" cols=60 rows=3><%=dct.sValue%></textarea>
                 <%
 						break;
 				    default:  
 				       	%>
                 &nbsp;
-                <input name='<%=dct.nombre_campo%>' id='<%=dct.nombre_campo%>' onchange="autosave(<%=dct.nombre_campo%>)" type='text' value="<%=htmlServer.htmlEncode(dct.sValue)%>" size='<%=Math.min(dct.lon_x + 1, 50)%>' maxlength='<%=dct.lon_x%>'>
+                <input name='<%=dct.nombre_campo%>' id='<%=dct.nombre_campo%>' onchange="autosave(<%=dct.nombre_campo%>)" type='text' value="<%=dct.sValue%>" size='<%=Math.min(dct.lon_x + 1, 50)%>' maxlength='<%=dct.lon_x%>'>
                 <%
 		            }%>
               </td>

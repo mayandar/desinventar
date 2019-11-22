@@ -62,9 +62,9 @@ if (request.getParameter("continue")!=null)
 <td colspan=5  valign="top" nowrap><div class="subtitle"><%=countrybean.getTranslation("Extension Wizard")%></div></td>
 </tr>
 <tr>
-    <td height="20" <%=countrybean.getTranslation("Question")%></td>
-	<td height="20" <%=countrybean.getTranslation("English")%></td>
-	<td height="20" <%=countrybean.getTranslation("Variable")%></td>
+    <td width="20%"> <%=countrybean.getTranslation("Question")%></td>
+	<td width="20%"> <%=countrybean.getTranslation("English")%></td>
+	<td width="20%"> <%=countrybean.getTranslation("Variable")%></td>
 	<td width='10%'><%=countrybean.getTranslation("FieldType")%></td>
 	<td width='10%'><%=countrybean.getTranslation("Length")%></td>
 </tr>	
@@ -96,11 +96,11 @@ try{
 		{		
 %>	   <tr>
             <td>
-            <input type='text' size='60' maxlength='60' name='namecol<%=kCol%>' value='<%=EncodeUtil.htmlEncode(sQuestion)%>'>
+            <input type='text' size='60' maxlength='60' name='namecol<%=kCol%>' value='<%=sQuestion%>'>
 		    <input type='hidden' name='chkcol<%=kCol%>' value="Y">
 			</td> 
             <td>
-			<input type='text' size='60' maxlength='60' name='namecol_en<%=kCol%>' value='<%=EncodeUtil.htmlEncode(sQuestion_en)%>'>
+			<input type='text' size='60' maxlength='60' name='namecol_en<%=kCol%>' value='<%=sQuestion_en%>'>
 			</td> 
             <td>
 <%

@@ -124,7 +124,7 @@ public class datamodel extends webObject
 		// GET_FORM()
 		revision = extendedParseInt(req.getParameter(assignName("revision")));
 		build = extendedParseInt(req.getParameter(assignName("build")));
-		slanguage = not_null(req.getParameter(assignName("slanguage")));
+		slanguage = not_null_safe(req.getParameter(assignName("slanguage")));
 
 		updateHashTable();
 		return 0;

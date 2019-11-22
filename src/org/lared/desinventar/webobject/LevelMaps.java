@@ -574,10 +574,10 @@ public class LevelMaps extends webObject
 
 		// GET_FORM()
 		setMap_level(req.getParameter(assignName("map_level")));
-		setFilename(not_null(req.getParameter(assignName("filename"))));
-		setLev_code(not_null(req.getParameter(assignName("lev_code"))));
-		setLev_name(not_null(req.getParameter(assignName("lev_name"))));
-		setFiletype(not_null(req.getParameter(assignName("filetype"))));
+		setFilename(not_null_safe(req.getParameter(assignName("filename"))));
+		setLev_code(not_null_safe(req.getParameter(assignName("lev_code"))));
+		setLev_name(not_null_safe(req.getParameter(assignName("lev_name"))));
+		setFiletype(not_null_safe(req.getParameter(assignName("filetype"))));
 		setColor_red(req.getParameter(assignName("color_red")));
 		setColor_green(req.getParameter(assignName("color_green")));
 		setColor_blue(req.getParameter(assignName("color_blue")));
@@ -585,7 +585,7 @@ public class LevelMaps extends webObject
 		setLine_type(req.getParameter(assignName("line_type")));
 		setProjection_system(req.getParameter(assignName("projection_system")));
 		setProjection_type(req.getParameter(assignName("projection_type")));
-		setProjection_driver(not_null(req.getParameter(assignName("projection_driver"))));
+		setProjection_driver(not_null_safe(req.getParameter(assignName("projection_driver"))));
 		setProjection_par0(req.getParameter(assignName("projection_par0")));
 		setProjection_par1(req.getParameter(assignName("projection_par1")));
 		setProjection_par2(req.getParameter(assignName("projection_par2")));

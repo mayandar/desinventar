@@ -164,10 +164,12 @@ public class MetadataNationalValues extends webObject
 
 		// GET_FORM()
 		setMetadata_key(req.getParameter(assignName("metadata_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
 		setMetadata_year(req.getParameter(assignName("metadata_year")));
 		setMetadata_value(req.getParameter(assignName("metadata_value")));
 		setMetadata_value_us(req.getParameter(assignName("metadata_value_us")));
+
+		this.checkLengths();
 
 		updateHashTable();
 		return 0;
@@ -181,7 +183,7 @@ public class MetadataNationalValues extends webObject
 
 		// GET_FORM()
 		setMetadata_key(req.getParameter(assignName("metadata_key")));
-		setMetadata_country(not_null(req.getParameter(assignName("metadata_country"))));
+		setMetadata_country(not_null_safe(req.getParameter(assignName("metadata_country"))));
 		setMetadata_year(req.getParameter(assignName("metadata_year")));
 		setMetadata_value(req.getParameter(assignName("metadata_value")));
 		setMetadata_value_us(req.getParameter(assignName("metadata_value_us")));

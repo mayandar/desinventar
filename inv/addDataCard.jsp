@@ -125,7 +125,7 @@ String sApprovedClass="bodylight"+woFicha.approved;
 // show datacard template
 %>
 <%@ include file="validation.jsp" %>
-<input type='hidden' name='uu_id' value='<%=htmlServer.htmlEncode(woFicha.uu_id)%>'>
+<input type='hidden' name='uu_id' value='<%=woFicha.uu_id%>'>
 <div class="bs">
 <h2><%=countrybean.getTranslation("New")%> <%=countrybean.getTranslation("DataCard")%></h2>
   <table border="1" rules="cols" cellpadding="0" cellspacing="0" bordercolor="black" class="bs" width="1000">
@@ -135,7 +135,7 @@ String sApprovedClass="bodylight"+woFicha.approved;
               <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                   <td class="bs" nowrap><%=countrybean.getTranslation("Serial")%>:
-                    <INPUT name="serial" value="<%=htmlServer.htmlEncode(woFicha.serial)%>" size="15" maxlength="15"></td>
+                    <INPUT name="serial" value="<%=woFicha.serial%>" size="15" maxlength="15"></td>
                   <td class="bs" nowrap><%=countrybean.getTranslation("DateYMD")%>:
                     <INPUT NAME="fechano"  style="WIDTH: 45px;" value="<%=sBlankZero(woFicha.fechano)%>" size="4" maxlength="4">
                     <INPUT NAME="fechames" value="<%=sBlankZero(woFicha.fechames)%>" size="2" style="WIDTH: 22px;" maxlength="3">
@@ -143,7 +143,7 @@ String sApprovedClass="bodylight"+woFicha.approved;
                   <td class="bs" nowrap><%=countrybean.getTranslation("Duration")%>:
                     <INPUT NAME="duracion"  style="WIDTH: 40px;" value="<%=sBlankZero(woFicha.duracion)%>" size="4" maxlength="4"></td>
                   <td class="bs" nowrap><%=countrybean.getTranslation("Source")%>:
-                    <INPUT type='TEXT' size='40' maxlength='250' name='fuentes' VALUE="<%=htmlServer.htmlEncode(woFicha.fuentes)%>"></td>
+                    <INPUT type='TEXT' size='40' maxlength='250' name='fuentes' VALUE="<%=woFicha.fuentes%>"></td>
                   <td class="bs" nowrap><%=countrybean.getTranslation("Status")%>:
                     <select name='approved'>
 <% if (user.iusertype>=20) 
@@ -163,7 +163,7 @@ String sApprovedClass="bodylight"+woFicha.approved;
             <td class="bs">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                  <td width="30%" class="bs"><%=htmlServer.htmlEncode(countrybean.asLevels[0])%>:
+                  <td width="30%" class="bs"><%=countrybean.asLevels[0]%>:
                     <SELECT name="level0"  id="level0" onchange="checkLevel0();build_locations();">
                       <option value=""></option>
                       <%
@@ -190,16 +190,16 @@ String sApprovedClass="bodylight"+woFicha.approved;
 						  while (rset.next())
 						  {
 							String sCode = rset.getString("lev0_cod");
-							out.print("\t<option value=\"" + htmlServer.htmlEncode(sCode) + "\"");
+							out.print("\t<option value=\"" + sCode + "\"");
 							if (woFicha.level0.equalsIgnoreCase(sCode))
 							  out.print(" selected");
-						   out.println(">" + htmlServer.htmlEncode(countrybean.getLocalOrEnglish(rset,"lev0_name","lev0_name_en")));
+						   out.println(">" + countrybean.getLocalOrEnglish(rset,"lev0_name","lev0_name_en"));
 						  }
 					%>
                     </select>
                   </td>
-                  <td width="30%" class="bs"><%=htmlServer.htmlEncode(countrybean.asLevels[1])%>:
-                    <input type='hidden' name='name0' id='name0' value="<%=htmlServer.htmlEncode(woFicha.name0)%>"/>
+                  <td width="30%" class="bs"><%=countrybean.asLevels[1]%>:
+                    <input type='hidden' name='name0' id='name0' value="<%=woFicha.name0%>"/>
                     <SELECT name="level1" id="level1"  onchange=" checkLevel1();build_locations();">
                       <option value=''></option>
                       <% if (woFicha.level0.length()>0)
@@ -226,26 +226,26 @@ String sApprovedClass="bodylight"+woFicha.approved;
 							  while (rset.next())
 							  {
 								String sCode = rset.getString("lev1_cod");
-								out.print("<option value='" + htmlServer.htmlEncode(sCode) + "'");
+								out.print("<option value='" + htmlServer.not_null(sCode) + "'");
 								if (woFicha.level1.equalsIgnoreCase(sCode))
 								  out.print(" selected");
-							   out.println(">" + htmlServer.htmlEncode(countrybean.getLocalOrEnglish(rset,"lev1_name","lev1_name_en")));
+							   out.println(">" + htmlServer.not_null(countrybean.getLocalOrEnglish(rset,"lev1_name","lev1_name_en")));
 							  }
 						 }%>
                     </select>
                   </td>
-                  <td width="30%" class="bs"><%=htmlServer.htmlEncode(countrybean.asLevels[2])%> :
-                    <input type='hidden' name='name1' id='name1' value="<%=htmlServer.htmlEncode(woFicha.name1)%>">
+                  <td width="30%" class="bs"><%=htmlServer.not_null(countrybean.asLevels[2])%> :
+                    <input type='hidden' name='name1' id='name1' value="<%=woFicha.name1%>">
                     <SELECT name="level2" id="level2" onchange=" jsGetLevel3();build_locations();">
                       <option value=''></option>
 					  <% if (woFicha.level1.length()>0)
-                      {%><inv:selectLevel2 connection="<%= con %>" level1Code="<%=htmlServer.htmlEncode(woFicha.level1)%>"  selected="<%=htmlServer.htmlEncode(woFicha.level2)%>"/>
+                      {%><inv:selectLevel2 connection="<%= con %>" level1Code="<%=woFicha.level1%>"  selected="<%=woFicha.level2%>"/>
                       <%}
                     	rset.close();
                     	stmt.close();
                     	%>
                     </select>
-                    <input type='hidden' name='name2' value="<%=htmlServer.htmlEncode(woFicha.name2)%>"/>
+                    <input type='hidden' name='name2' value="<%=woFicha.name2%>"/>
                 </td>
                 </tr>
               </table> 
@@ -262,14 +262,14 @@ String sApprovedClass="bodylight"+woFicha.approved;
 						sDisplayField="nombre_en";
 					 %>
                     <SELECT name="evento">
-                    <inv:select tablename='eventos' selected='<%=htmlServer.htmlEncode(woFicha.evento)%>' connection='<%= con %>' fieldname="<%=sDisplayField%>" codename='nombre' ordername='serial'/>
+                    <inv:select tablename='eventos' selected='<%=woFicha.evento%>' connection='<%= con %>' fieldname="<%=sDisplayField%>" codename='nombre' ordername='serial'/>
                     </select>
                   </td>
                  <td class="bs"><%=countrybean.getTranslation("Place")%>:
-                    <INPUT type="TEXT" size="45" maxlength="60" name="lugar" VALUE="<%=htmlServer.htmlEncode(woFicha.lugar)%>"/>
+                    <INPUT type="TEXT" size="45" maxlength="60" name="lugar" VALUE="<%=woFicha.lugar%>"/>
                   </td>
                   <td class="bs"><%=countrybean.getTranslation("GLIDEnumber")%>:
-                    <INPUT type="TEXT" size="17" maxlength="30" name="glide" VALUE="<%=htmlServer.htmlEncode(woFicha.glide)%>"/>
+                    <INPUT type="TEXT" size="17" maxlength="30" name="glide" VALUE="<%=woFicha.glide%>"/>
                   </td>
                 </tr>
               </table>
@@ -291,7 +291,7 @@ if (countrybean.getDataLanguage().equals("EN"))
                     </select>
                   </td>
                   <td class="bs"><%=countrybean.getTranslation("DescriptionCause")%>:
-                    <INPUT type="TEXT" size="65" maxlength="60" name="descausa" VALUE="<%=htmlServer.htmlEncode(woFicha.descausa)%>">
+                    <INPUT type="TEXT" size="65" maxlength="60" name="descausa" VALUE="<%=woFicha.descausa%>">
                   </td>
                 </tr>
               </table>

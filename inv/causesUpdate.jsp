@@ -216,9 +216,9 @@ return ok;
 <TD colspan=2 align="center"><span class="warning"><%=sErrorMessage%></span></TD>
 </TR>
 <input type="hidden" name="action" value="<%=action %>">
-<input type="hidden" name="causa" maxlength="25" size="15" value="<%=htmlServer.htmlEncode(Cause.causa)%>">
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Name")%>:</td><td>  <INPUT type='TEXT' size='16' maxlength='25' name='newname' VALUE="<%=htmlServer.htmlEncode(sCauseid)%>"></td></tr>
-<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Name")%>(English):</td><td>  <INPUT type='TEXT' size='16' maxlength='25' name='causa_en' VALUE="<%=htmlServer.htmlEncode(Cause.causa_en)%>"></td></tr>
+<input type="hidden" name="causa" maxlength="25" size="15" value="<%=Cause.causa%>">
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Name")%>:</td><td>  <INPUT type='TEXT' size='26' maxlength='25' name='newname' VALUE="<%=sCauseid%>"></td></tr>
+<TR><td width=180 class=bgLight align='right'><%=countrybean.getTranslation("Name")%>(English):</td><td>  <INPUT type='TEXT' size='26' maxlength='25' name='causa_en' VALUE="<%=Cause.causa_en%>"></td></tr>
 
 	<TR>
 	<TD colspan=3 height="20"></TD>

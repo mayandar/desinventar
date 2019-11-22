@@ -7,7 +7,8 @@
 <%@ page import="org.lared.desinventar.map.*" %>
 <%@ page import="org.lared.desinventar.chart.*" %>
 <%@ page import="org.lared.desinventar.webobject.*" %>
-<jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" /><%!
+<jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" />
+<%!
 public int clearRanges(org.lared.desinventar.util.DICountry countrybean)
 {
 		int j=0;
@@ -135,6 +136,7 @@ String sImageMap="<map name='mapselection'>";
 sImageMap+="</map>";
 %>
 <%@ include file="/layerControl.jspf" %>
+<%@ include file="/util/showDialog.jspf" %>
 <script src="/DesInventar/xmlHttp.js"></script>
 
 <script language="JavaScript">
@@ -385,6 +387,10 @@ if (dReturn)
 
 function gradientColor1Done(dReturn)
 {
+<% if (bIEBrowser || bIEdge){%>
+alert("<%=countrybean.getTranslation("Please select now the second color...")%>");
+<%}%>
+
 if (dReturn)
 	{
 	document.getElementById("gradcolor_1").value=dReturn;
@@ -401,7 +407,6 @@ sname="gradcolor_1";
 scolor=document.getElementById(sname).value.substring(1,7);
 var sPickerUrl = 'colorpick.jsp?gradient=y&callback=gradientColor1Done&color='+scolor+'&title=<%=countrybean.getTranslation("Select+color+for+gradient")%>[1]';
 dReturn = showDialogSz(sPickerUrl, 'gradientColor1Done', '', 320, 380, "no");
-gradientColor1Done(dReturn);
 }
 
 //------
@@ -471,6 +476,9 @@ if (dReturn)
 
 function gradient3Color2Done(dReturn)
 {
+<% if (bIEBrowser || bIEdge){%>
+alert("<%=countrybean.getTranslation("Please select now the third color...")%>");
+<%}%>
 if (dReturn)
 	{
 	document.getElementById("gradcolor_2").value=dReturn;
@@ -483,6 +491,10 @@ if (dReturn)
 
 function gradient3Color1Done(dReturn)
 {
+<% if (bIEBrowser || bIEdge){%>
+alert("<%=countrybean.getTranslation("Please select now the second color...")%>");
+<%}%>
+
 if (dReturn)
 	{
 	document.getElementById("gradcolor_1").value=dReturn;
@@ -531,7 +543,6 @@ full_regenerate();
 }
 
 </script>
-<%@ include file="/util/showDialog.jspf" %>
 <%
 int nTabActive=7; // thematic
 String[] sTabNames={countrybean.getTranslation("Profile"),countrybean.getTranslation("Query"),countrybean.getTranslation("ViewData"),countrybean.getTranslation("ViewMap"),
@@ -583,9 +594,9 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
               <tr>
                 <td><input class=bss size='6' maxlength='12' name="range_<%=j%>"  id="range_<%=j%>" value="<%=countrybean.asMapRanges[j]==0?"":countrybean.formatDouble(countrybean.asMapRanges[j])%>" onClick=" regenerate();"></td>
                 <td onClick="setColor(<%=j%>)"><div id="cell_<%=j%>"></div></td>
-                <td><input type=hidden name="color_<%=j%>" id="color_<%=j%>" value="<%=htmlServer.htmlEncode(countrybean.asMapColors[j])%>">
+                <td><input type=hidden name="color_<%=j%>" id="color_<%=j%>" value="<%=countrybean.asMapColors[j]%>">
                   &nbsp;
-                  <input class=bss size='15' maxlength='50' name="legend_<%=j%>"  id="legend_<%=j%>" value="<%=htmlServer.htmlEncode(countrybean.asMapLegends[j])%>" onClick=" regenerate();"></td>
+                  <input class=bss size='15' maxlength='50' name="legend_<%=j%>"  id="legend_<%=j%>" value="<%=countrybean.asMapLegends[j]%>" onClick=" regenerate();"></td>
                 <td><a href='javascript:setColor(<%=j%>)'><img src="/DesInventar/images/edit_row.gif" alt='<%=countrybean.getTranslation("Edit")%>' border=0></a></td>
                 <td><a href='javascript:delColor(<%=j%>)'><img src="/DesInventar/images/delete_row.gif" alt='<%=countrybean.getTranslation("Delete")%>' border=0></a></td>
               </tr>
@@ -595,11 +606,8 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
                   <input type=button class="bss" name="deflegend" value="<%=countrybean.getTranslation("Normal")%>" onclick='setNormal();'/>
                   <input type=button class="bss" name="gradbtn" value="<%=countrybean.getTranslation("Gradient")%>" onclick='setGradient()'/>
 
-<% if (!bIEBrowser && !bIEdge){%>
-<!-- NOT WORKING! fix! -- for IE -->
                   <input type=button class="bss" name="grad2btn" value="<%=countrybean.getTranslation("Gradient")%>-2" onclick='setDoubleGradient()'/>
-                  <input type=button class="bss" name="grad2btn" value="<%=countrybean.getTranslation("Gradient")%>-3" onclick='setTripleGradient()'/>
-<%}%>
+                  <input type=button class="bss" name="grad3btn" value="<%=countrybean.getTranslation("Gradient")%>-3" onclick='setTripleGradient()'/>
                   
                   <input type=hidden name="gradcolor_1" id="gradcolor_1" value="">
                   <input type=hidden name="gradcolor_2" id="gradcolor_2" value="">
@@ -642,7 +650,7 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
           <td colspan="5"><!-- MAP -->
             <table border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td align="center" colspan="2" ><span class="title"><%=htmlServer.htmlEncode(countrybean.sTitle)%></span> </td>
+                <td align="center" colspan="2" ><span class="title"><%=countrybean.sTitle%></span> </td>
               </tr>
               <tr>
                 <td align="left" bgcolor="#ffffff"><!-- MAP -->
@@ -651,7 +659,7 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
                   <img id='DI_legend'class='dragme' src='/DesInventar/MapLegendServer<%=imgparams %>&rnd=<%=Math.random()%>' border=0 style="position:absolute; left:900px; top:200px"></td>
               </tr>
               <tr>
-                <td align="center" colspan="2" ><span class="subtitle"><%=htmlServer.htmlEncode(countrybean.sSubTitle)%></span> </td>
+                <td align="center" colspan="2" ><span class="subtitle"><%=countrybean.sSubTitle%></span> </td>
               </tr>
             </table></td>
         </tr>
@@ -759,11 +767,11 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
               <tr>
                 <td colspan=3><br>
                   <%=countrybean.getTranslation("Title")%>:
-                  <input class=bs name="chartTitle" value="<%=htmlServer.htmlEncode(countrybean.sTitle)%>" size="50" maxlength="80"  onChange="regenerate();">
+                  <input class=bs name="chartTitle" value="<%=countrybean.sTitle%>" size="50" maxlength="80"  onChange="regenerate();">
                   <br>
                   <br>
                   <%=countrybean.getTranslation("Subtitle")%>:
-                  <input class=bs name="chartSubTitle" value="<%=htmlServer.htmlEncode(countrybean.sSubTitle)%>" size="50" maxlength="80"  onChange="regenerate();">
+                  <input class=bs name="chartSubTitle" value="<%=countrybean.sSubTitle%>" size="50" maxlength="80"  onChange="regenerate();">
                   <br>
                   &nbsp; </td>
               </tr>
@@ -780,9 +788,9 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
           <td colspan=4 align="left"><table  cellspacing="0" cellpadding="0" border="0">
               <tr>
                 <td class=bss><%=countrybean.getTranslation("Formula")%>&nbsp;&nbsp;</td>
-                <td><input type="text" class="bss" name="sDisabledExpertWhere" size="80" maxlength="255" disabled onDblClick="openExpert()" value="<%=htmlServer.htmlEncode(Parser.translateExpertExpression(countrybean.sExpertVariable, Parser.hmVarTrans))%>"/>
+                <td><input type="text" class="bss" name="sDisabledExpertWhere" size="80" maxlength="255" disabled onDblClick="openExpert()" value="<%=(Parser.translateExpertExpression(countrybean.sExpertVariable, Parser.hmVarTrans))%>"/>
                   &nbsp;&nbsp;
-                  <input type="hidden" name="sExpertVariable" value="<%=htmlServer.htmlEncode(Parser.translateExpertExpression(countrybean.sExpertVariable, Parser.hmVarTrans))%>"/>
+                  <input type="hidden" name="sExpertVariable" value="<%=(Parser.translateExpertExpression(countrybean.sExpertVariable, Parser.hmVarTrans))%>"/>
                   <input class="bss" type='button' name='expertbutton' value='<%=countrybean.getTranslation("Expert")%>' onClick="openExpert()"/>
                 </td>
               </tr>

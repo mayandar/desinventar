@@ -32,7 +32,7 @@ try
 		    ||(countrybean.asStatLevels[j].startsWith("lev1_name"))
 		    ||(countrybean.asStatLevels[j].startsWith("lev2_name")) )
 		   		{
-				out.print(sSpan+htmlServer.htmlEncode(countrybean.asLevels[Integer.parseInt(countrybean.asStatLevels[j].substring(3,4))])+"&nbsp;</th>");
+				out.print(sSpan+(countrybean.asLevels[Integer.parseInt(countrybean.asStatLevels[j].substring(3,4))])+"&nbsp;</th>");
 				if (j==0)
 					out.print("<th>"+countrybean.getTranslation("Code")+"</th>");
 				}
@@ -42,7 +42,7 @@ try
 				}
 		    else
 	   			{
-				out.print(sSpan+htmlServer.htmlEncode(countrybean.getColumnTitle(countrybean.asStatLevels[j]))+"&nbsp;</th>");
+				out.print(sSpan+(countrybean.getColumnTitle(countrybean.asStatLevels[j]))+"&nbsp;</th>");
 				}
 	}
 catch (Exception eout)
@@ -95,15 +95,13 @@ countrybean.nStatLevels=1;
 ArrayList sqlparams=new ArrayList();
 PreparedStatement pstmt=null;
 sSql=countrybean.getCrosstabSql(sqlparams);
-	%><!--ncols= <%=sSql%> -->
-	<%
 try	{
 	pstmt=con.prepareStatement(sSql);
 	for (int k=0; k<sqlparams.size(); k++)
 				pstmt.setString(k+1, (String)sqlparams.get(k));
 	rset=pstmt.executeQuery();
 	while (rset.next())
-		vHorizontal.add(htmlServer.htmlEncode(rset.getString(1)).trim());			
+		vHorizontal.add(rset.getString(1).trim());			
 	}
 catch (Exception exst)
 	{
@@ -160,7 +158,7 @@ try
 				   }
 		if (sSql.startsWith("extension."))
 					sCell=woExtension.getValue(sSql.substring(10),htmlServer.not_null(sCell));
-		out.print("<th colspan=\""+(nCols-col+1)+"\">"+htmlServer.htmlEncode(sCell)+"</th>");
+		out.print("<th colspan=\""+(nCols-col+1)+"\">"+sCell+"</th>");
 		}
     %></tr><tr class="bodydarklight">
 	<%
@@ -171,7 +169,7 @@ try
   		{
 		totals[k+j-col+1]=0;
 		sSql=meta.getColumnName(j);
-		out.print("<th>"+htmlServer.htmlEncode(countrybean.getColumnTitle(sSql))+"</th>");
+		out.print("<th>"+countrybean.getColumnTitle(sSql)+"</th>");
 		}
     %></tr><%
 	NumberFormat f = NumberFormat.getInstance();
@@ -184,7 +182,7 @@ try
 	String sBgClass="bss bodylight";
 	while (rset.next())
 		{
-		sCell=htmlServer.htmlEncode(rset.getString(1)).trim();
+		sCell=countrybean.not_null(rset.getString(1)).trim();
 		sSql=countrybean.sExtractVariable(countrybean.asStatLevels[0]);
 		if (countrybean.asStatLevels[0].equals(sFechanoFechames))
 		           {
