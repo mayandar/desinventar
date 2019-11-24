@@ -44,5 +44,5 @@
 	<classpathentry kind="lib" path="C:/osso/web/common/lib/jasper-runtime.jar"/>
 	<classpathentry kind="lib" path="C:/osso/web/common/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/osso/web/common/lib/servlet-api.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
