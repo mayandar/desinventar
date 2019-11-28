@@ -47,7 +47,8 @@ public class xuser extends users
   if (iusertype!=99 && bAccess && level<nMaxLevel && level>=0)
   {
 	  if (aLevel0[level]!=null)
-		  bAccess=aLevel0[level].contains(sCountryCode+":"+sSubAreaCode) || (iusertype==99);
+		  bAccess=aLevel0[level].isEmpty() || aLevel0[level].contains(sCountryCode+":"+sSubAreaCode) || (iusertype==99);
+	
   }
   return bAccess;
   }
@@ -91,7 +92,7 @@ public class xuser extends users
 
   public void setCountries(Connection con)
   {
-    Statement stmt=null;
+    PreparedStatement stmt=null;
     ResultSet rset=null;
     String sSql = "";
 
@@ -102,17 +103,20 @@ public class xuser extends users
 
     try
     {
-      stmt = con.createStatement ();
       // not using a nested query due to MySql limitations...
-      sSql="Select * from user_permissions where userid='"+suserid+"'";
-      rset = stmt.executeQuery(sSql);
+      sSql="Select * from user_permissions where userid=?";
+      stmt = con.prepareStatement (sSql);
+      stmt.setString(1, suserid);
+      rset = stmt.executeQuery();
       while (rset.next())
       {
         hCountries.add(rset.getString("country"));
       }
 
-      sSql="Select * from user_subpermissions where userid='"+suserid+"'";
-      rset = stmt.executeQuery(sSql);
+      sSql="Select * from user_subpermissions where userid=?";
+      stmt = con.prepareStatement (sSql);
+      stmt.setString(1, suserid);
+      rset = stmt.executeQuery();
       while (rset.next())
       	{
     	  aLevel0[rset.getInt("region_level")].add(rset.getString("country")+":"+rset.getString("region_code"));
