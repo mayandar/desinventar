@@ -55,7 +55,7 @@ if (request.getParameter("countrycode")!=null)
 	// MUST return this connection!
 	dbDefaultCon.close();
 	if (n_rows==0) // the country was not found
-		countrybean.countrycode="";
+		countrybean.countryname=countrybean.country.scountryname=countrybean.country.scountryid=countrybean.countrycode="";
 	}
 
 // checks for a session alive variable, or we have a new valid countrycode
