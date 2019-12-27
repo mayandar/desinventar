@@ -18,6 +18,58 @@
  <jsp:forward page="noaccess.jsp"/>
 <%}%>
 <%@ include file="/util/opendatabase.jspf" %>
+<%
+String sIndicatorKey = request.getParameter("indicator_key");
+if(sIndicatorKey != null)
+	indicator.indicator_key=indicator.extendedParseInt(sIndicatorKey);
+metaElement.init();
+metaElement.dbType=countrybean.dbType;
+MetadataElementIndicator metaElementIndicator=new MetadataElementIndicator();
+MetadataElementLang metalang=new MetadataElementLang();
+// if we are adding a new member
+metaElement.metadata_element_key=metaElement.extendedParseInt(request.getParameter("new_element_key"));
+if (request.getParameter("addMeta")!=null && metaElement.metadata_element_key>0)
+	{
+	//out.println("Adding key:"+metaElement.metadata_element_key);
+	String[] metaKeys=request.getParameterValues("new_element_key");
+	for (int j=0; j<metaKeys.length; j++)
+		{			
+			metaElement.metadata_element_key=metaElement.extendedParseInt(metaKeys[j]);
+			dbutils.generateMetadataEntry(indicator.indicator_key, metaElement.metadata_element_key, countrybean, con);	            			
+		}
+	}
+if (request.getParameter("retrieveMeta")!=null)
+{
+	request.setAttribute("country", countrybean.countrycode);
+	request.setAttribute("indicator_key", indicator.indicator_key);
+	dbCon.close();
+	%><jsp:forward page="importXMLInFrame.jsp?action=4" /><%
+}
+if (request.getParameter("newMeta")!=null)
+	{
+	metaElement.init();
+	metaElement.metadata_element_key=metaElement.getMaximum("metadata_element_key", "metadata_element",con)+1;
+	metaElement.metadata_country=countrybean.countrycode;
+	metaElement.addWebObject(con);
+	metaElementIndicator.indicator_key=indicator.indicator_key;
+	metaElementIndicator.metadata_element_key=metaElement.metadata_element_key;
+	metaElementIndicator.metadata_country=countrybean.countrycode;
+	metaElementIndicator.addWebObject(con);
+	dbutils.generateMetadataExtensions(con,metaElement);
+	}
+if (request.getParameter("maintaintMetadataElementCosts")!=null)
+	{
+	metaElement.metadata_element_key=metaElement.extendedParseInt(request.getParameter("element_key"));
+	metaElement.metadata_country=request.getParameter("element_country");
+	metaElement.getWebObject(con);
+	dbCon.close();
+	%><jsp:forward page="maintainMetadataElementCosts.jsp"/><%
+   }
+boolean bSave=(request.getParameter("newMeta")!=null) || (request.getParameter("edit_rice")!=null) || (request.getParameter("addMeta")!=null) || (request.getParameter("saveMeta")!=null) || (request.getParameter("deleteMeta")!=null);
+%>
+
+
+
 <%@ taglib uri="inventag.tld" prefix="inv" %>
 <link href="/DesInventar/html/desinventar.css" rel="stylesheet" type="text/css"/>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
@@ -76,55 +128,6 @@ function editField(eventId, key, country)
 }
 // -->
 </script>
-<%
-String sIndicatorKey = request.getParameter("indicator_key");
-if(sIndicatorKey != null)
-	indicator.indicator_key=indicator.extendedParseInt(sIndicatorKey);
-metaElement.init();
-metaElement.dbType=countrybean.dbType;
-MetadataElementIndicator metaElementIndicator=new MetadataElementIndicator();
-MetadataElementLang metalang=new MetadataElementLang();
-// if we are adding a new member
-metaElement.metadata_element_key=metaElement.extendedParseInt(request.getParameter("new_element_key"));
-if (request.getParameter("addMeta")!=null && metaElement.metadata_element_key>0)
-	{
-	//out.println("Adding key:"+metaElement.metadata_element_key);
-	String[] metaKeys=request.getParameterValues("new_element_key");
-	for (int j=0; j<metaKeys.length; j++)
-		{			
-			metaElement.metadata_element_key=metaElement.extendedParseInt(metaKeys[j]);
-			dbutils.generateMetadataEntry(indicator.indicator_key, metaElement.metadata_element_key, countrybean, con);	            			
-		}
-	}
-if (request.getParameter("retrieveMeta")!=null)
-{
-	request.setAttribute("country", countrybean.countrycode);
-	request.setAttribute("indicator_key", indicator.indicator_key);
-	%><jsp:forward page="importXMLInFrame.jsp?action=4" /><%
-}
-if (request.getParameter("newMeta")!=null)
-	{
-	metaElement.init();
-	metaElement.metadata_element_key=metaElement.getMaximum("metadata_element_key", "metadata_element",con)+1;
-	metaElement.metadata_country=countrybean.countrycode;
-	metaElement.addWebObject(con);
-	metaElementIndicator.indicator_key=indicator.indicator_key;
-	metaElementIndicator.metadata_element_key=metaElement.metadata_element_key;
-	metaElementIndicator.metadata_country=countrybean.countrycode;
-	metaElementIndicator.addWebObject(con);
-	dbutils.generateMetadataExtensions(con,metaElement);
-	}
-if (request.getParameter("maintaintMetadataElementCosts")!=null)
-	{
-	metaElement.metadata_element_key=metaElement.extendedParseInt(request.getParameter("element_key"));
-	metaElement.metadata_country=request.getParameter("element_country");
-	metaElement.getWebObject(con);
-	dbCon.close();
-	%><jsp:forward page="maintainMetadataElementCosts.jsp"/><%
-   }
-boolean bSave=(request.getParameter("newMeta")!=null) || (request.getParameter("edit_rice")!=null) || (request.getParameter("addMeta")!=null) || (request.getParameter("saveMeta")!=null) || (request.getParameter("deleteMeta")!=null);
-%>
-
 <FORM name="desinventar" method="post" action="metadataGroup.jsp">
 <input type="hidden" name="usrtkn" id="usrtkn" value="<%=countrybean.userHash%>">
 <input type="hidden" name="indicator_key" value="<%=indicator.indicator_key%>">
@@ -165,6 +168,7 @@ boolean bSave=(request.getParameter("newMeta")!=null) || (request.getParameter("
     <td>% Infra.</td>
     <td>% damage</td>
     <td># Workers</td>
+    <td>Costs</td>
     <td>Method/Formula</td>
 </tr>
 <%
@@ -282,11 +286,11 @@ while (rset.next())
 		out.println(" src='/DesInventar/images/edit_row.gif' alt='Submit' border='0'");
 		out.println(" onClick=\"editField("+"'editMetadataNationalValue', "+annualValue.metadata_year+", "+annualValue.metadata_value+")\"></td>");
      --%>
-    <input class="bss" name='editMetaElementCosts' id='editMetaElementCosts' type='image'  src='/DesInventar/images/edit_row.gif' 
+    <td>  <INPUT class="bss" type='TEXT' size='5' maxlength='11' name='metadata_element_workers<%=k%>' VALUE="<%=metaElement.metadata_element_workers%>"></td>
+    <td nowrap><input class="bss" name='editMetaElementCosts' id='editMetaElementCosts' type='image'  src='/DesInventar/images/edit_row.gif' 
     	alt='Submit' border='0' 
     	onClick="editField('maintaintMetadataElementCosts', <%=metaElement.metadata_element_key%>, '<%=metaElement.metadata_country%>')" >
     </td>
-    <td>  <INPUT class="bss" type='TEXT' size='5' maxlength='11' name='metadata_element_workers<%=k%>' VALUE="<%=metaElement.metadata_element_workers%>"></td>
     <td>  <INPUT class="bss" type='TEXT' size='50'                name='metadata_element_formula<%=k%>' VALUE="<%=metaElement.metadata_element_formula%>"></td>
 </tr>
 
@@ -332,6 +336,9 @@ String sField=countrybean.dbHelper[countrybean.dbType].sqlNvl("l.metadata_elemen
  </td></tr>
 
 </table>
+<%
+ dbCon.close();
+%>
 <br><br>
 </body>
 </html>

@@ -19,7 +19,10 @@ if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 	 	{%><jsp:forward page="noaccess.jsp"/><%}		
 if (countrybean.countrycode.length()==0)
 {%><jsp:forward page="/inv/index.jsp"/><%}%>
-<%@ include file="checkUserIsLoggedIn.jsp" %>
+<% if (user.iusertype < 20){ %>
+ <jsp:forward page="noaccess.jsp"/>
+ <%} %>  
+
 <title>DesInventar on-line : <%=countrybean.countryname%> <%=countrybean.getTranslation("Metadata National Value Manager")%> </title>
 </head>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
@@ -51,9 +54,6 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
  - [<jsp:getProperty name ="countrybean" property="countrycode"/>]
 </td></tr>
 </table>
- <% if (user.iusertype < 20){ %>
- <jsp:forward page="noaccess.jsp"/>
- <%} %>  
 <%@ include file="/util/opendatabase.jspf" %>
 <link href="/DesInventar/html/desinventar.css" rel="stylesheet" type="text/css"/>
  <body  marginheight="0" topmargin="0" leftmargin="0"  marginwidth="0" class='bodylight' dir="<%=countrybean.getTranslation("ltr")%>"> 

@@ -21,6 +21,10 @@ if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 if (countrybean.countrycode.length()==0)
 {%><jsp:forward page="/inv/index.jsp"/><%}%>
 <%@ include file="checkUserIsLoggedIn.jsp" %>
+ <% if (user.iusertype < 20){ %>
+ <jsp:forward page="noaccess.jsp"/>
+ <%} %>  
+
 <title>DesInventar on-line : <%=countrybean.countryname%> <%=countrybean.getTranslation("Metadata National Download Manager")%> </title>
 </head>
 <%@ include file="/util/opendatabase.jspf" %>
@@ -51,9 +55,6 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
  - [<jsp:getProperty name ="countrybean" property="countrycode"/>]
 </td></tr>
 </table>
- <% if (user.iusertype < 20){ %>
- <jsp:forward page="noaccess.jsp"/>
- <%} %>  
 <%-- open country database--%>
 <%-- 
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>

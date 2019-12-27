@@ -35,9 +35,11 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 <% 
 if(request.getParameter("retrieveMeta") != null){
 	request.setAttribute("country", countrybean.countrycode);
+    dbCon.close();
 	%><jsp:forward page="importXMLInFrame.jsp?action=3"/><%
 }
 if(request.getParameter("editMeta") != null){
+ dbCon.close();
 %><jsp:forward page="metadataGroup.jsp" /><%
 }
 %> 
@@ -106,5 +108,8 @@ return true;
 
 </table>
 <br><br>
+<%
+ dbCon.close();
+%>
 </body>
 </html>

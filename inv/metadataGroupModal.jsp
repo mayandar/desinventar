@@ -140,5 +140,9 @@ String sField=countrybean.dbHelper[countrybean.dbType].sqlNvl("l.metadata_elemen
 
 </table>
 <br><br>
+<%
+ dbCon.close();
+%>
+
 </body>
 </html>

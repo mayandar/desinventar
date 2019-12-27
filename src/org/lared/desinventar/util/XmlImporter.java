@@ -14,6 +14,8 @@ import org.lared.desinventar.util.DbImplementation;
 public class XmlImporter  extends DefaultHandler 
 {
 
+    public String sCountryCode="";
+
 	int level=0;
 	String sSection="DESINVENTAR";
 	String sTableNames[]={  "datamodel", 
@@ -149,6 +151,11 @@ public class XmlImporter  extends DefaultHandler
     ResultSet rset=null; 
 	
 	
+    public void setCountryCode (String scode)
+    {
+    	sCountryCode=scode;
+    }
+
 	public void setConnection(Connection con, int type)
 	{
 	this.con = con;
@@ -303,7 +310,14 @@ public class XmlImporter  extends DefaultHandler
 		    		sLastField="#$%"; // in tables with just ONE field, need o ensure this is not going to be seen as the next chunk of same record.
 		    		if (bTableTransfer[nCurrentTable])
 		    		{
-			    		woCurrentRecord.updateMembersFromHashTable();
+		    			// metadata tables are changed to reflect the (potentially) different country code.
+	    				if (woCurrentRecord.asFieldNames.containsKey("metadata_country"))
+    					{
+    					if (!"@@@".equals((String)woCurrentRecord.asFieldNames.get("metadata_country")))
+    						woCurrentRecord.asFieldNames.put("metadata_country", sCountryCode);
+    					}
+
+		    			woCurrentRecord.updateMembersFromHashTable();
 			    		int local_pkey=0;
 			    		int mapped_pkey=0;
 			    		switch (nCurrentTable)
@@ -341,7 +355,8 @@ public class XmlImporter  extends DefaultHandler
 			    				log("ERROR mapping record:"+nCurrentRecord+" local="+local_pkey+" ex="+e.toString());
 			    				}
 			    			((extension)woCurrentRecord).clave_ext=mapped_pkey;
-			    			break;		    			
+			    			break;
+			    				
 			    		}
 			    		// saves the record
 			    		int nrecs=woCurrentRecord.addWebObject(con);
@@ -351,9 +366,18 @@ public class XmlImporter  extends DefaultHandler
 			    			if (nrecs==1) // it was an new field
 			    			{   diccionario dct=(diccionario)woCurrentRecord;
 			    			
-				        		String sSql="alter table extension add "+dct.nombre_campo+" "+DbImplementation.typeNames[dbType][dct.fieldtype];
-								if (dct.fieldtype==0)  // several versions of DI were leaving this in 0 and 40 was default length 
+				        		String sSQLfieldType=DbImplementation.typeNames[dbType][dct.fieldtype];
+								// This is a horrible patch.  Under postgres we want to save space in Extension for variables
+								// with name of the form TOTAL_xxx, "DAMAGED_", "DESTRYD_"
+								if (dct.dbType==Sys.iPostgress)									
+									if (dct.nombre_campo.startsWith("TOTAL_") ||
+										dct.nombre_campo.startsWith("DAMAGED_") ||
+										dct.nombre_campo.startsWith("DESTRYD_"))
+										sSQLfieldType="real";
+				        		String sSql="alter table extension add "+dct.nombre_campo+" "+sSQLfieldType;
+				        		if (dct.fieldtype==0)  // several versions of DI were leaving this in 0 and 40 was default length 
 						   			sSql+="("+(dct.lon_x==0?40:dct.lon_x)+")";
+								
 								try
 									{
 					    			Statement stmt=con.createStatement();

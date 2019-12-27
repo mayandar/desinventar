@@ -19,7 +19,6 @@ if (false && !countrybean.userHash.equals(request.getParameter("usrtkn")))
 	 	{%><jsp:forward page="noaccess.jsp"/><%}		
 if (countrybean.countrycode.length()==0)
 {%><jsp:forward page="/inv/index.jsp"/><%}%>
-<%@ include file="checkUserIsLoggedIn.jsp" %>
 <title>DesInventar on-line : <%=countrybean.countryname%> <%=countrybean.getTranslation("Metadata National Language Manager")%> </title>
 </head>
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>

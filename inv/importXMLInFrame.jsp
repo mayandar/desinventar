@@ -120,6 +120,8 @@ if(iAction > 0){
 		XmlReader Xml = new XmlReader(in);
 //		Xml.setOptions(metadata, events,causes,levels,geography,data,definition,extension,maps);
 		Xml.setOptions("Y", null,null,null,null,null,null,null,null);
+		Xml.setCountryCode (countrybean.countrycode);
+		
 //		if (cleandatabase.equals("Y"))
 //		   dbutils.cleanDatabase( con,   countrybean);
 		try {
@@ -164,7 +166,8 @@ if(iAction > 0){
 		response.sendRedirect(returnPoint);
 		// response.sendRedirect(request.getHeader("referer"));
 } 
-else {
+else 
+{
 if (database.length()>0)
 	{
 		try{
@@ -177,10 +180,11 @@ if (database.length()>0)
 			out.println("INVALID FILE.  Exception thrown:"+ex.toString());
 			}
 	} // if (database.length()>0)
-if (ok)
+  if (ok)
 	{
 		XmlReader Xml = new XmlReader(database);
 		Xml.setOptions(metadata, events,causes,levels,geography,data,definition,extension,maps);
+		Xml.setCountryCode (countrybean.countrycode);
 		if (cleandatabase.equals("Y"))
 		   dbutils.cleanDatabase( con,   countrybean);
 		try {

@@ -133,6 +133,7 @@ else if (request.getParameter("delete")!=null)
 else if (request.getParameter("retrieve")!=null)
 {
 	request.setAttribute("country", countrybean.countrycode);
+	dbCon.close();
 	%><jsp:forward page="importXMLInFrame.jsp?action=1" /><%
 
 }

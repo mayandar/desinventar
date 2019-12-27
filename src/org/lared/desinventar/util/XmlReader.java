@@ -28,6 +28,9 @@ import javax.xml.parsers.*;
 	    /** inputsource for navigation file   */
 	    private InputSource filename;
 
+	    public String sCountryCode="";
+	    
+	    
         public XmlImporter dataParser = new XmlImporter();
 
 	    
@@ -46,6 +49,12 @@ import javax.xml.parsers.*;
         	this.filename = new InputSource(filename);
 	    }
 
+	    
+	    public void setCountryCode (String scode)
+	    {
+	    	sCountryCode=scode;
+	    }
+	    
 	    /**
 	     * intantiates parser and starts parsing of config file
 	     */
@@ -53,6 +62,7 @@ import javax.xml.parsers.*;
 	    	
 	        XMLReader parser = createParser();
 	        dataParser.setConnection(con, dbtype);
+	        dataParser.setCountryCode(sCountryCode);
 	        parser.setContentHandler(dataParser);
 
 	        try {
