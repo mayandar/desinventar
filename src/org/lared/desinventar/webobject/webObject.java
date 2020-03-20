@@ -1508,9 +1508,7 @@ public ArrayList extractFieldsFromTemplate(String filename)
   //--------------------------------------------------------------------------------
   public String assignValue(String fieldName)
   {
-    String retValue;
-
-    retValue = (String) asFieldNames.get(fieldName);
+    String retValue = (String) asFieldNames.get(fieldName);
     if (retValue == null)
       {
     	//System.out.println("[DI9]  Field name not found! "+fieldName);
@@ -1518,6 +1516,12 @@ public ArrayList extractFieldsFromTemplate(String filename)
       }
     else
       {
+		int pos=retValue.indexOf(".");
+		if (pos>0 && (retValue.length()-pos>5)) // must be posgres introducing lots of decimals ob float4 numbers
+			{
+				double numPostgres=extendedParseDouble(retValue);
+				retValue=webObject.formatDouble(numPostgres,2);
+			}
     	if (retValue.equals("0.0") || retValue.equals("0"))
     	      return "";
     	if (retValue.endsWith(".0") || retValue.endsWith(".00"))

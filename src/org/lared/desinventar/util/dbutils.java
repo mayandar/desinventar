@@ -2199,6 +2199,7 @@ public class dbutils extends webObject
 		{
 			System.out.println("DI9: error generating metadata extension, variable "+dict.nombre_campo+"-"+dict.label_campo+"  Err: "+emeta.toString());
 		}	
+
 		// damage, destroyed and total created in single precision in POSTGRES, to save space.
 		if (dict.dbType==Sys.iPostgress)
 			sSQLfieldType="real";

@@ -45,7 +45,15 @@ if (sCode=="%%OK%%")
 					}
 				}
 			else // default
-				vVariable.value=sValue;
+				{
+					pos=sValue.indexOf(".");
+					if (pos>0 && (sValue.length-pos>5)) // must be posgres introducing lots of decimals ob float4 numbers
+						{
+							var numPostgres=parseFloat(sValue);
+							sValue=numPostgres.toFixed(2);
+						}
+					vVariable.value=sValue;
+				}
 			}
 		// for testing purposes:	
 		// else if (vVariable==null)
