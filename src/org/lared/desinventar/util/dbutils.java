@@ -19,6 +19,7 @@ import javax.servlet.jsp.*;
 import java.io.*;
 import java.sql.*;
 import org.lared.desinventar.webobject.*;
+
 import org.lared.desinventar.util.DbImplementation;
 import org.lared.desinventar.dbase.DBase;
 import org.lared.desinventar.map.MapUtil;
@@ -2658,16 +2659,52 @@ public class dbutils extends webObject
 		return nRows;
 	}
 
-
-
+	
+	
+	
+	private static void showUsage() {
+		System.out.println("USAGE:\n");
+		System.out.println("org.lared.desinventar.util.bdutils [options]");
+		System.out.println("\t\t--targetdb <database code>");
+		System.out.println("\t\t--builduniverse [Y/n]");
+		System.out.println("\t\t--buildmap [N/y]");
+		System.out.println("\t\t--logoutput <output directory> [../output]");
+		System.out.println("\t\t--help");
+		System.out.println("");
+		System.exit(0);
+	}
+	
+	
 	public static void main(String[] args) 
 	{
 		Sys.getProperties();
 		DICountry countrybean= new DICountry();
 
+		// defaults
 		bConsolidateUniverse=true;
 		bGenerateMaps=true;
+		countrybean.country.scountryid="g20";
 
+		for (int i=0;i<args.length;i++) 
+		{
+			if (args[i].equals("--targetdb")) 
+			{
+				i++;
+				countrybean.country.scountryid = args[i];
+			}
+			else if (args[i].equals("--builduniverse")) {
+				i++;
+				bConsolidateUniverse = args[i].equalsIgnoreCase("Y");
+			}
+			else if (args[i].equals("--buildmap")) {
+				i++;
+				bGenerateMaps = args[i].equalsIgnoreCase("Y");
+			}
+			else if (args[i].equals("--help")) {
+				showUsage();
+				System.exit(-1);
+			}		
+		}
 
 
 		try{
@@ -2686,7 +2723,6 @@ public class dbutils extends webObject
 
 
 			// GAR 2013 settings in country bean...
-			countrybean.country.scountryid="g19";
 			countrybean.country.getWebObject(pc_connection);
 			countrybean.countrycode=countrybean.country.scountryid;
 			countrybean.countryname=countrybean.country.scountryname;
@@ -2700,6 +2736,7 @@ public class dbutils extends webObject
 			if (bConsolidateUniverse)
 				cleanDatabase(con,  countrybean);
 
+			// This set of statements copy the metadata defaults (countrycode=@@@) from MAIN database to the consolidated database 
 			copyTables(pc_connection, con,  "metadata_indicator",null, null,null);
 			copyTables(pc_connection, con,  "metadata_indicator_lang",null, null,null);
 			copyTables(pc_connection, con,  "metadata_national","metadata_country='@@@'", null,null);
