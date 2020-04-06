@@ -632,7 +632,8 @@ metadata_key INT not null,
 metadata_country VARCHAR(10) not null,
 metadata_year INT not null,
 metadata_value DOUBLE,
-metadata_value_us DOUBLE,constraint metadata_national_valuePK primary KEY (metadata_key, metadata_country, metadata_year),
+metadata_value_us DOUBLE,
+constraint metadata_national_valuePK primary KEY (metadata_key, metadata_country, metadata_year),
 constraint metadata_national_valueFK foreign KEY (metadata_key, metadata_country) references metadata_national(metadata_key, metadata_country)
 ) ;
 
@@ -748,6 +749,6 @@ constraint metadata_indFK2 foreign KEY (indicator_key) references metadata_indic
 
 
 delete from datamodel;
-insert into datamodel (revision, build) values (15,0);
+insert into datamodel (revision, build) values (16,0);
 
 

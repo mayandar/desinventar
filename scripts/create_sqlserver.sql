@@ -763,6 +763,6 @@ alter table metadata_element_indicator add constraint metadata_indFK2 foreign KE
 
 
 delete from datamodel;
-insert into datamodel (revision, build) values (15,0);
+insert into datamodel (revision, build) values (16,0);
 
 

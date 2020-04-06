@@ -131,7 +131,7 @@ male_var.value=Number(male_var.value);
 female_var.value=Number(female_var.value);
 with (document.desinventar)
 	{
-	if (checked_var!=mull)
+	if (checked_var!=null)
 		if (main_var.value+
 			female_var.value+
 			male_var.value!=0) 
@@ -154,7 +154,11 @@ with (document.desinventar)
     if (Number(female_var.value)+ Number(male_var.value)!=0)
     	main_var.value=Number(female_var.value)+ Number(male_var.value);
 	if (Number(main_var.value)!=0 && checked_var!=null) 
-			checked_var.checked=true;
+			if (checked_var.type=="checkbox")
+				checked_var.checked=true;
+			else
+				checked_var.value=1;
+
 	if (checked_var!=null) 
 			autosave(main_var,checked_var);	
 		else
@@ -179,7 +183,10 @@ function chkLoss(main_var, checked_var)
 with (document.desinventar)
 	{
 	if (Number(main_var.value)!=0) 
-    	checked_var.checked=true;
+			if (checked_var.type=="checkbox")
+				checked_var.checked=true;
+			else
+				checked_var.value=1;
 	autosave(main_var,checked_var);	
 	}
 }
@@ -351,21 +358,33 @@ function chkNhectareas()
 {
 with (document.desinventar)
 	{
-	if (nhectareas.value!=0) agropecuario.checked=true;
+	if (nhectareas.value!=0) 
+		if (agropecuario.type=="checkbox")
+			agropecuario.checked=true;
+		else
+			agropecuario.value=1;
 	}
 }
 function chkCabezas()
 {
 with (document.desinventar)
 	{
-	if (cabezas.value!=0) agropecuario.checked=true;
+	if (cabezas.value!=0) 
+			if (agropecuario.type=="checkbox")
+			agropecuario.checked=true;
+		else
+			agropecuario.value=1;
 	}
 }
 function chkNescuelas()
 {
 with (document.desinventar)
 	{
-	if (nescuelas.value!=0) educacion.checked=true;
+	if (nescuelas.value!=0) 
+ 	  if (educacion.type=="checkbox")
+			educacion.checked=true;
+		else
+			educacion.value=1;
 	}
 }
 function chkReubicados()
@@ -379,7 +398,11 @@ function chknHospitales()
 {
 with (document.desinventar)
 	{
-	if (nhospitales.value!=0) salud.checked=true;
+	if (nhospitales.value!=0) 
+	   	  if (salud.type=="checkbox")
+			salud.checked=true;
+		else
+			salud.value=1;
 	}
 }
 
@@ -387,7 +410,11 @@ function chkKmVias()
 {
 with (document.desinventar)
 	{
-	if (kmvias.value!=0) transporte.checked=true;
+	if (kmvias.value!=0) 
+   	  if (transporte.type=="checkbox")
+			transporte.checked=true;
+		else
+			transporte.value=1;
 	}
 }
 

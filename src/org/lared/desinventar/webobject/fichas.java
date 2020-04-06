@@ -171,12 +171,14 @@ public class fichas
   	if (vivdest!=0) hay_vivdest=-1;
   	if (vivafec!=0) hay_vivafec=-1;
   	if (evacuados!=0) hay_evacuados=-1;
-  	if (nhectareas!=0) agropecuario=-1;
-  	if (cabezas!=0) agropecuario=-1;
-  	if (nescuelas!=0) educacion=-1;
   	if (reubicados!=0) hay_reubicados=-1;
-  	if (nhospitales!=0) salud=-1;
-   	if (kmvias!=0) transporte=-1;
+
+  	// the following are now exclusively checked client side.  IN SENDAI MODE THESE BECAME NUMBER OF INTERRUPTIONS
+  	//if (nhectareas!=0) agropecuario=-1;
+  	//if (cabezas!=0) agropecuario=-1;
+  	//if (nescuelas!=0) educacion=-1;
+  	//if (nhospitales!=0) salud=-1;
+   	//if (kmvias!=0) transporte=-1;
 	  
 
    	updateHashTable();

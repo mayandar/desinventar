@@ -371,7 +371,7 @@ public class dbutils extends webObject
 			stmt.close();
 
 			//if (model==15) 
-			//	model=14;
+			// model=15;
 
 			int prevmodel=model;
 
@@ -435,8 +435,8 @@ public class dbutils extends webObject
 				}
 			}
 			stmt.close();
-
-
+			
+			
 			int prevmodel=model;
 
 			if (model<8 && idatabaseType==Sys.iAccessDb)  // only MS-ACCESS, DI 6 or before databases

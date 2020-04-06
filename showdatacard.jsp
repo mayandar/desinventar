@@ -465,35 +465,35 @@ alProcessedFields=new ArrayList();
  <td class="bs"><!-- vars with checks -->
 	<table witdh=100% cellspacing="0" cellpadding="0" border="0">
 	<tr>
-		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="transporte" VALUE="-1" <%=woFicha.strChecked(woFicha.transporte)%>></td>
+		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="transporte" VALUE="1" <%=woFicha.strChecked(woFicha.transporte)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Transportation")%>&nbsp;</td>
-		<td class="bs" align="right"><INPUT type="CHECKBOX" name="comunicaciones" VALUE="-1" <%=woFicha.strChecked(woFicha.comunicaciones)%>></td>
+		<td class="bs" align="right"><INPUT type="CHECKBOX" name="comunicaciones" VALUE="1" <%=woFicha.strChecked(woFicha.comunicaciones)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Communications")%>&nbsp;</td>
-		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="socorro" VALUE="-1" <%=woFicha.strChecked(woFicha.socorro)%>></td>
+		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="socorro" VALUE="1" <%=woFicha.strChecked(woFicha.socorro)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Relief")%>&nbsp;</td>
 	</tr>
 	<tr>
-		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="agropecuario" VALUE="-1" <%=woFicha.strChecked(woFicha.agropecuario)%>></td>
+		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="agropecuario" VALUE="1" <%=woFicha.strChecked(woFicha.agropecuario)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Agriculture")%>&nbsp;</td>
-		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="acueducto" VALUE="-1" <%=woFicha.strChecked(woFicha.acueducto)%>></td>
+		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="acueducto" VALUE="1" <%=woFicha.strChecked(woFicha.acueducto)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Water")%>&nbsp;&nbsp;</td>
-		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="alcantarillado" VALUE="-1" <%=woFicha.strChecked(woFicha.alcantarillado)%>></td>
+		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="alcantarillado" VALUE="1" <%=woFicha.strChecked(woFicha.alcantarillado)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Sewerage")%>&nbsp;&nbsp;</td>
 	</tr>
 	<tr>
-		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="energia" VALUE="-1" <%=woFicha.strChecked(woFicha.energia)%>></td>
+		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="energia" VALUE="1" <%=woFicha.strChecked(woFicha.energia)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Power")%>&nbsp;&nbsp;</td>
-		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="industrias" VALUE="-1" <%=woFicha.strChecked(woFicha.industrias)%>></td>
+		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="industrias" VALUE="1" <%=woFicha.strChecked(woFicha.industrias)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Industrial")%>&nbsp;</td>
-		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="educacion" VALUE="-1" <%=woFicha.strChecked(woFicha.educacion)%>></td>
+		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="educacion" VALUE="1" <%=woFicha.strChecked(woFicha.educacion)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Education")%>&nbsp;</td>
 	</tr>
 	<tr>
-		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="hay_otros" VALUE="-1" <%=woFicha.strChecked(woFicha.hay_otros)%>></td>
+		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="hay_otros" VALUE="1" <%=woFicha.strChecked(woFicha.hay_otros)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Othersectors")%>&nbsp;&nbsp;</td>
 		<td class="bs" align="right"></td>
 		<td class="bs"></td>
-		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="salud" VALUE="-1" <%=woFicha.strChecked(woFicha.salud)%>></td>
+		<td class="bs" align="right"><INPUT  type="CHECKBOX" name="salud" VALUE="1" <%=woFicha.strChecked(woFicha.salud)%>></td>
 		<td class="bs"><%=countrybean.getTranslation("Health")%></td>
 	</tr>
 	</table>

@@ -742,7 +742,7 @@ constraint metadata_indFK2 foreign KEY (indicator_key) references metadata_indic
 
  	
 delete from datamodel;
-insert into datamodel (revision, build) values (15,0);
+insert into datamodel (revision, build) values (16,0);
 
  
 CREATE OR REPLACE TRIGGER tr_ins_datacard BEFORE INSERT ON fichas REFERENCING NEW AS NEW OLD AS OLD FOR EACH ROW BEGIN SELECT fichas_seq.NEXTVAL INTO :NEW.clave FROM DUAL; END;

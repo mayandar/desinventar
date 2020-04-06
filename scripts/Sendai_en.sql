@@ -228,6 +228,12 @@ alter table extension add CULTURAL_MOBILE_DMGD int;
 insert into diccionario (orden,nombre_campo,descripcion_campo,label_campo,label_campo_en,pos_x,pos_y,lon_x,lon_y,color,tabnumber,fieldtype) values (319,'CULTURAL_MOBILE_DSTR','Cultural mobile destroyed','Cultural mobile destroyed','Cultural mobile destroyed',0,0,7,0,0,null,1);
 alter table extension add CULTURAL_MOBILE_DSTR int;
 
+insert into diccionario (orden,nombre_campo,descripcion_campo,label_campo,label_campo_en,pos_x,pos_y,lon_x,lon_y,color,tabnumber,fieldtype) values (320,'PUBLIC_ADMIN_SERVICE','Disruptions to Public Administration Service','Disruptions to Public Administration Service','Disruptions to Public Administration Service',0,0,7,0,0,null,1);
+alter table extension add PUBLIC_ADMIN_SERVICE int;
+insert into diccionario (orden,nombre_campo,descripcion_campo,label_campo,label_campo_en,pos_x,pos_y,lon_x,lon_y,color,tabnumber,fieldtype) values (321,'SOLID_WASTE_SERVICE','Disruptions to Solid Waste Service','Disruptions to Solid Waste Service','Disruptions to Solid Waste Service',0,0,7,0,0,null,1);
+alter table extension add SOLID_WASTE_SERVICE int;
+
+
 
 insert into metadata_indicator (indicator_key, indicator_code, indicator_description) values(5,'C-2A','Aquaculture');
 insert into metadata_indicator (indicator_key, indicator_code, indicator_description) values(1,'C-2C','Agricultural Crops');
