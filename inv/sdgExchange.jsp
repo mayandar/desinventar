@@ -6,7 +6,7 @@
 </head>
 <%@ page import = "org.lared.desinventar.util.dbConnection" %>
 <%@ page import="org.lared.desinventar.webobject.*" %>
-<%@ page import="org.lared.desinventar.util.dbutils" %>
+<%@ page import="org.lared.desinventar.util.login" %>
 <%@ page import="org.lared.desinventar.util.htmlServer" %>
 <%@ page import="org.lared.desinventar.sendai.sdgGenerationUtil" %>
 <%@ page import="org.lared.desinventar.webobject.diccionario" %>
@@ -27,39 +27,20 @@ if (user.iusertype<99)
 <%htmlServer.outputLanguageHtml(getServletConfig().getServletContext().getRealPath("html"),"/iheader",countrybean.getLanguage(),out);%>
 <script type="text/javascript" src="/DesInventar/html/iheader.js"></script> 
 <script language="javascript">
-function doConsolidate()
+
+function SyncScroll(rolling) 
 {
-if (confirm('<%=countrybean.getTranslation("Are you sure?")%>'))
-	 postTo("sdgManager.jsp?consolidate=yes");
+    
+	var div = document.getElementById(rolling);
+	aScrolls=["codes","years","names","rates"];
+    for (j=0;  j<4; j++)
+	  if (rolling!=aScrolls[j])
+		{
+		var div1 = document.getElementById(aScrolls[j]);
+    	div1.scrollTop = div.scrollTop;
+		}
 }
-
-function doImportSFM()
-{
-if (confirm('<%=countrybean.getTranslation("Are you sure?")%>'))
-	postTo("sdgManager.jsp?importSFM=yes");
-}
-
-
-function doEvaluate()
-{
-if (confirm('<%=countrybean.getTranslation("Are you sure?")%>'))
-	postTo("EL.jsp");
-}
-
-function doOverlap()
-{
-if (confirm('<%=countrybean.getTranslation("Are you sure?")%>'))
-	postTo("sdgManager.jsp?removeOverlap=true")
-}
-
-function doCompound()
-{
-if (confirm('<%=countrybean.getTranslation("Are you sure?")%>'))
-	postTo("sdgManager.jsp?calculateCompound=true")
-}
-
-
-</script>
+</script> 
 <%
 int nTabActive=9; // 
 String[] sTabNames={countrybean.getTranslation("Region"),countrybean.getTranslation("Geography"),countrybean.getTranslation("Events"),
@@ -75,12 +56,12 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 <%@ include file="/util/tabs.jspf" %>
 <br/><br/>
  
-<FORM name='desinventar' method="post" action="sdgManager.jsp">
+<FORM name='desinventar' method="post" action="sdgExchange.jsp">
 <input type="hidden" name="usrtkn" id="usrtkn" value="<%=countrybean.userHash%>"> 
 <table cellspacing="0" cellpadding="0" border="0" width="1024">
 <tr>
   <td align="center">
-  <%=countrybean.getTranslation("Sendai Framework Manager")%></span>
+  <%=countrybean.getTranslation("Uload and Edit Exchane rate values - Sendai Framework Manager")%></span>
   </td>
 </tr>
 <tr>
@@ -92,52 +73,50 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 </tr>
 <tr>
    <td height="25" class='bgDark' align="center">
-   <span class="subtitle"><%=countrybean.getTranslation("Using MySQL Sendai_prod database in localhost")%></span>
+   <span class="subtitle"><%=countrybean.getTranslation("Updating national_metadata_cost tables in localhost")%></span><br/>
+   <span class="bss"><%=countrybean.getTranslation("Fill the columns, one country per line on each list (Tip: from excel just copy the columnd and paste it here)")%></span>
    </td>
 </tr>
-<tr><td align="center">
+<tr>
+  <td align="center">
 	<br/>
-	<table border="1" cellpadding="0" cellspacing="0" width=450>
-	  <tr><td align="center">
-      <br/>
-<strong>DesInventar side steps:</strong>
-<br/>
-		<A class='linkText' href='javascript:doConsolidate()'><%=countrybean.getTranslation("Run DI consolidation program")%></a><br/>
-<br/>
-<strong>SFM only process steps:</strong>
-<br/><br/>
+    <table cellpadding="4" cellspacing="0" border=1>
+    <tr>
+    	<td><%=countrybean.getTranslation("Country Code")%></td>
+    	<td><%=countrybean.getTranslation("Country Name")%></td>
+    	<td><%=countrybean.getTranslation("Year")%></td>
+    	<td><%=countrybean.getTranslation("Exchange rate LCU to US")%></td>
+    </tr>
+	 <% 
+     // loads here whatever is in the metadata_national_values for Sendai Variable 4
+     sdgGenerationUtil  sdgImporter=new sdgGenerationUtil();
+	 
+	 if (request.getParameter("saveRates")!=null)
+		{
+			String sCodes=request.getParameter("codes");
+			String sYears=request.getParameter("years");
+			String sRates=request.getParameter("rates");			
+			sdgImporter.uploadRates(countrybean, out, sCodes, sYears, sRates);
+		}
 
-		<A class='linkText' href='javascript:postTo("sdgExchange.jsp")'><%=countrybean.getTranslation(" Upload or edit Exchange rate data from SFM")%></a><br/>
-        <A class='linkText' href='javascript:doImportSFM()'><%=countrybean.getTranslation(" Import all datacard and extension values from SFM")%></a><br/><br/>
-<br/>
-DI/SFM consolidated dataset steps<br/>
-<font class="bss">Please run manually the import of the SDG database into the consolidated DesInventar database</font><br/> 
-<br/>
-		<A class='linkText' href='javascript:doOverlap()'><%=countrybean.getTranslation("Removal of overlapping records")%></a><br/><br/>
-		<A class='linkText' href='javascript:doEvaluate()'><%=countrybean.getTranslation("Run Economic Loss calculation process")%></a><br/><br/>
-		<A class='linkText' href='javascript:doCompound()'><%=countrybean.getTranslation("Calculation of compound indicators")%></a><br/><br/>
-		<A class='linkText' href='javascript:postTo("sdgProduction.jsp")'><%=countrybean.getTranslation("Generation of final SDG indicators in DESA excel format")%></a><br/><br/>
- 	</table>
-	</td></tr>
-	</table>
+	 String[] arrRateStrings= new String[4];
+     sdgImporter.getRates(countrybean, out, arrRateStrings);
+   %>
+    <tr>
+    <td align="center"><textarea id="codes" name="codes" cols="10" rows="30" onScroll="SyncScroll('codes')"><%=arrRateStrings[0]%></textarea></td>
+   	<td valign="top"><textarea id="names" name="names" cols="30" rows="30"  onScroll="SyncScroll('names')" disabled><%=arrRateStrings[3]%></textarea></td>
+    <td align="center"><textarea id="years" name="years" cols="6" rows="30" onScroll="SyncScroll('years')"><%=arrRateStrings[1]%></textarea></td>
+    <td align="center"><textarea id="rates" name="rates" cols="15" rows="30" onScroll="SyncScroll('rates')"><%=arrRateStrings[2]%></textarea></td>
+    </tr> 
+  </table>    
   </td>
  </tr>
 </table>
+<input type="submit" name="saveRates" value="Save these values"> &nbsp;
+<input type="button" name="cencel" value="Cancel" onClick="window.location='sdgManager.jsp'"> &nbsp;
 </form>
-<br/>
 <strong>Process Log:</strong>
-<%
-sdgGenerationUtil  sdgImporter=new sdgGenerationUtil();
-if (request.getParameter("consolidate")!=null)
-	{
-	String[] args={"--targetdb",countrybean.countrycode};
-	dbutils.main(args);	
-	}
 
-if (request.getParameter("importSFM")!=null)
-		sdgImporter.importSFM(countrybean, out);
-
-%>	      
       
 </body>
 </html>
