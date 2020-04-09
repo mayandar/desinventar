@@ -435,8 +435,8 @@ public class dbutils extends webObject
 				}
 			}
 			stmt.close();
-			
-			
+
+
 			int prevmodel=model;
 
 			if (model<8 && idatabaseType==Sys.iAccessDb)  // only MS-ACCESS, DI 6 or before databases
@@ -787,7 +787,7 @@ public class dbutils extends webObject
 				// fixed: this would mean losing fields in target DB. woExtension.loadExtension(con,countrybean);
 
 				woExtension.loadExtension(diCon,countrybean);
-				
+
 
 				// transfer fichas and extension
 				if (sExtension.equals("Y") || data.equals("Y"))
@@ -2274,7 +2274,7 @@ public class dbutils extends webObject
 		}
 		catch(Exception emeta)
 		{
-			
+
 			System.out.println("DI9: error deleting metadata extension, variable "+dict.nombre_campo+"-"+dict.label_campo);
 		}	
 		try
@@ -2371,7 +2371,7 @@ public class dbutils extends webObject
 				//          2       2
 				if (nShift==1)
 					map.map_level+=1;
-				
+
 				File fmap=new File(map.filename);
 				//				if ((map.map_level==1 || map.map_level==2) && map.filename.length()>4 && fmap.exists())
 				if (map.map_level<=2 && map.filename.length()>4 && fmap.exists())
@@ -2659,9 +2659,9 @@ public class dbutils extends webObject
 		return nRows;
 	}
 
-	
-	
-	
+
+
+
 	private static void showUsage() {
 		System.out.println("USAGE:\n");
 		System.out.println("org.lared.desinventar.util.bdutils [options]");
@@ -2673,8 +2673,8 @@ public class dbutils extends webObject
 		System.out.println("");
 		System.exit(0);
 	}
-	
-	
+
+
 	public static void main(String[] args) 
 	{
 		Sys.getProperties();
@@ -2734,8 +2734,19 @@ public class dbutils extends webObject
 
 
 			if (bConsolidateUniverse)
+			{
 				cleanDatabase(con,  countrybean);
+				String sPathToClass=dbutils.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+				int p=sPathToClass.indexOf("WEB-INF");
+				sPathToClass=sPathToClass.substring(0,p);
+				String strFileName=sPathToClass+"scripts/Sendai_en.sql";
+				dbutils.executeFileScript(strFileName, con);
+			}
 
+
+/*
+******************** The following was replaced by running the  Sendai_en_sql *****
+ 			
 			// This set of statements copy the metadata defaults (countrycode=@@@) from MAIN database to the consolidated database 
 			copyTables(pc_connection, con,  "metadata_indicator",null, null,null);
 			copyTables(pc_connection, con,  "metadata_indicator_lang",null, null,null);
@@ -2747,7 +2758,8 @@ public class dbutils extends webObject
 			// enable later: copyTables(pc_connection, con,  "metadata_element_costs","metadata_country='@@@'", null,null); 
 			copyTables(pc_connection, con,  "metadata_element_lang","metadata_country='@@@'", null,null);
 			copyTables(pc_connection, con,  "metadata_element_indicator","metadata_country='@@@'", null,null);
-
+*/
+			
 
 			Statement stat = pc_connection.createStatement();
 			ResultSet rs = null;
@@ -2764,16 +2776,16 @@ public class dbutils extends webObject
 
 			if (!bHaveCountryData)
 				sCountryList=
-						"'ago','alb','arg','atg','bfa','blr','blz','bol','brb','btn','bwa','cam','chl','cmr','col','com','cpv','cri','dji','dma','dom','ecu','esp','eth','etm',mne"+
-						"'gin','gmb','gnb','gnq','grd','gtm','guy','hnd','idn','irn','jam','jor','kaz','ken','kgz','kna','lao','lbn','lbr','lca','lka','mdg','mdv','mex','mli','mmr',"+
-						"'mng','mor','moz','mus','mwi','nam','ner','nic','npl','pac','pak','pan','per','pry','pse','rdo','rwa','sen','slb','sle','slv','som','srb','swz','syc','syr',"+
-						"'tgo','tto','tun','tur','tza','uga','ury','vct','ven','vnm','yem','znz'";
+					"'ago','alb','arg','atg','bfa','blr','blz','bol','brb','btn','bwa','cam','chl','cmr','col','com','cpv','cri','dji','dma','dom','ecu','esp','eth','etm',mne"+
+					"'gin','gmb','gnb','gnq','grd','gtm','guy','hnd','idn','irn','jam','jor','kaz','ken','kgz','kna','lao','lbn','lbr','lca','lka','mdg','mdv','mex','mli','mmr',"+
+					"'mng','mor','moz','mus','mwi','nam','ner','nic','npl','pac','pak','pan','per','pry','pse','rdo','rwa','sen','slb','sle','slv','som','srb','swz','syc','syr',"+
+					"'tgo','tto','tun','tur','tza','uga','ury','vct','ven','vnm','yem','znz'";
 
-				rs.close();
-			
+			rs.close();
+
 			rs = stat.executeQuery("select * from country where upper(scountryid) in (" +	sCountryList + ") order by scountryid");
 			boolean bFirst=true;
-			
+
 			while (rs.next())
 			{
 				countrybean.country.loadWebObject(rs);
@@ -2795,10 +2807,10 @@ public class dbutils extends webObject
 					if (newlev0.equalsIgnoreCase("PAC") || // Pacific, and Uruguay dont transfer 0 level
 							newlev0.equalsIgnoreCase("URY")
 							||   ("'atg','dma','grd','kna','lca','vct'".indexOf(countrybean.countrycode)>0)  // caribbean countries have country level records
-					) // || newlev0.equals("LKA"))  // Pacific, Sri Lanka and Uruguay dont transfer 0 level
+					)  // Pacific, Caribbean and Uruguay dont transfer 0 level
 						shiftlevel="0";
 					// dragging this for years. It has to be changed in the main database, but there are permissions also. -> longer process there.
-					
+
 					try 
 					{
 						String sImportEvents="Y";
@@ -2810,8 +2822,9 @@ public class dbutils extends webObject
 						String sImportExtension="Y";
 
 						if (bFirst) // gets sendai fields from  first database, usually Albania
-							sImportDefinition="Y";
-						bFirst=false;	
+							//	sImportDefinition="Y";
+							bFirst=false;	
+
 						if (bConsolidateUniverse)
 							diLoader.importDI6 (con, diCon,   null , countrybean, "DONTCLEAN",sImportEvents,sImportCauses,
 									sImportLevels,sImportGeography,sImportData, sImportDefinition,sImportExtension, shiftlevel, newlev0, countrybean.countryname, countrybean.countryname);
@@ -2829,7 +2842,7 @@ public class dbutils extends webObject
 				}
 				else
 					System.out.println("[DI9] Error importing DesInventar [NO DB CONN]: "+countrybean.countrycode+" - "+countrybean.countryname +
-							  " Err="+cnt.strConnectionError);
+							" Err="+cnt.strConnectionError);
 
 			}
 		}
