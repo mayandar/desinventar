@@ -165,9 +165,12 @@ public class sdgGenerationUtil
 		String sSql;
 		// second step: RECORDS TO CREATE THE DATACARDS IN DI
 		sSql="SELECT distinct country.cca3, country.official_name as name, id.cycle_id+2004 as year "+
-		" FROM indicator_data  id  join indicator i on i.id=id.indicator_id join country on id.country_id=country.id"+ 
-		" where i.lang_key like 'indicator%'"+
-		" order by country.cca3, id.cycle_id"; 
+		" FROM indicator_data  id  join indicator i on i.id=id.indicator_id join country on id.country_id=country.id" 
+		+" where i.lang_key like 'indicator%'"
+		+" and (   coalesce(id.destroyed,0)>0 or coalesce(id.total,0)>0 or coalesce(id.amount,0)>0 or coalesce(id.number,0)>0 " 
+		+"      or coalesce(electricity_power,0)>0 or coalesce(ict_system,0)>0 or coalesce(sewage_service,0)>0 or coalesce(solid_waste_service,0)>0 or coalesce(water_supply,0)>0 "
+		+"      or coalesce(public_admin_service,0)>0 or coalesce(relief_and_emergency_service,0)>0 or coalesce(transportation_service,0)>0 )"
+		+" order by country.cca3, id.cycle_id"; 
 
 		rset=stmt.executeQuery(sSql);
 		int sequence=1;
@@ -279,6 +282,9 @@ public class sdgGenerationUtil
 			+ "public_admin_service, relief_and_emergency_service, transportation_service"
 			+" FROM indicator_data  id join indicator i on i.id=id.indicator_id join country on id.country_id=country.id" 
 			+" where i.lang_key like 'indicator%'"
+			+" and (   coalesce(id.destroyed,0)>0 or coalesce(id.total,0)>0 or coalesce(id.amount,0)>0 or coalesce(id.number,0)>0 " 
+			+"      or coalesce(electricity_power,0)>0 or coalesce(ict_system,0)>0 or coalesce(sewage_service,0)>0 or coalesce(solid_waste_service,0)>0 or coalesce(water_supply,0)>0 "
+			+"      or coalesce(public_admin_service,0)>0 or coalesce(relief_and_emergency_service,0)>0 or coalesce(transportation_service,0)>0 )"
 			+" order by cca3, year, Ind_metaname"; 
 
 		rset=stmt.executeQuery(sSql);
@@ -499,6 +505,7 @@ public class sdgGenerationUtil
 	    }
 	    return true;
 	}
+	
 	
 	public boolean uploadRates(DICountry countrybean, JspWriter out, String sCodes, String sYears, String sRates) throws IOException
 	{

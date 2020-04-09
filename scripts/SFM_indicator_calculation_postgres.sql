@@ -57,6 +57,12 @@ update metadata_national_values set metadata_value=4 where metadata_key=11 and (
 
 
 update extension e set  
+
+--update extension e set  
+--	T_LIVING_DMG=coalesce(LIVING_DMGD_DWELLINGS,0),vivafec * coalesce(metadata_value,4)),
+--    T_LIVING_DST=coalesce(LIVING_DSTR_DWELLINGS,0),vivdest * coalesce(metadata_value,4)) 
+--from fichas f left join metadata_national_values on metadata_country=level0 and metadata_key=11 and metadata_year=fechano where clave=clave_ext ;
+
 B_1A= coalesce(NULLIF(LIVING_DMGD_DWELLINGS,0),vivafec * coalesce(metadata_value,4)) +
       coalesce(NULLIF(LIVING_DSTR_DWELLINGS,0),vivdest * coalesce(metadata_value,4)) +
 	  coalesce(NULLIF(LIVELIHOOD_AFCTD,0),nhectareas * coalesce(workers,1)) +
@@ -66,10 +72,15 @@ from fichas f left join metadata_national_values on metadata_country=level0 and 
 where clave=clave_ext;
 
 
+
+
 update extension e set  
 A_1= case when coalesce(metadata_value,0)=0 then 0 else (muertos + desaparece)*100000.0 / metadata_value end,
 A_2= case when coalesce(metadata_value,0)=0 then 0 else muertos * 100000.0 / metadata_value end,
 A_3= case when coalesce(metadata_value,0)=0 then 0 else desaparece * 100000.0 / metadata_value end,
+
+
+
 B_1= case when coalesce(metadata_value,0)=0 then 0 else B_1A * 100000.0 / metadata_value end
 from fichas f left join metadata_national_values on metadata_country=level0 and metadata_key=1 and metadata_year=fechano where clave=clave_ext ;
 
@@ -132,10 +143,6 @@ update extension e set
 C_1= case when coalesce(metadata_value,0)=0 then 0 else  C_1a / metadata_value end
 from fichas f left join metadata_national_values on metadata_country=level0 and metadata_key=5 and metadata_year=fechano where clave=clave_ext ;
 
-update extension e set  
-	T_LIVING_DMG=coalesce(NULLIF(LIVING_DMGD_DWELLINGS,0),vivafec * coalesce(metadata_value,4)),
-    T_LIVING_DST=coalesce(NULLIF(LIVING_DSTR_DWELLINGS,0),vivdest * coalesce(metadata_value,4)) 
-from fichas f left join metadata_national_values on metadata_country=level0 and metadata_key=11 and metadata_year=fechano where clave=clave_ext ;
 
 
 

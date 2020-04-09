@@ -137,6 +137,14 @@ if (request.getParameter("consolidate")!=null)
 if (request.getParameter("importSFM")!=null)
 		sdgImporter.importSFM(countrybean, out);
 
+if (request.getParameter("calculateCompound")!=null)
+		{
+			// execute the scripts
+		ServletContext sc = getServletConfig().getServletContext();
+		String strFileName=sc.getRealPath("scripts")+"/SFM_indicator_calculation_postgres";
+		dbutils.executeFileScript(strFileName, con);
+		}
+
 %>	      
       
 </body>
