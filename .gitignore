@@ -3,5 +3,4 @@
 *.class
 *.class
 *.class
-derby.log
-*.log
+WEB-INF/classes/org/lared/desinventar/webobject/fichas.class
