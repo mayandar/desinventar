@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
+import javax.servlet.ServletContext;
 import javax.servlet.jsp.JspWriter;
 
 import org.lared.desinventar.system.Sys;
@@ -207,12 +208,12 @@ public class sdgGenerationUtil
 		String[] b1={"B_1","","","",""};	sdgMap.put("b1",b1 );
 		String[] b2={"heridos","","","",""};	sdgMap.put("b2",b2 );
 		String[] b3={"LIVING_DMGD_DWELLINGS","","","",""};	sdgMap.put("b3",b3 );
-		String[] b3a={"vivafec","","","",""};	sdgMap.put("b3a",b3a );
+		String[] b3a={"vivafec","","","","ECONOMIC_LOSS_C2"};	sdgMap.put("b3a",b3a );
 		String[] b4={"LIVING_DSTR_DWELLINGS","","","",""};	sdgMap.put("b4",b4 );
 		String[] b4a={"vivdest","","","",""};	sdgMap.put("b4a",b4a );
 		String[] b5={"LIVELIHOOD_AFCTD","","","",""};	sdgMap.put("b5",b5 );
 		String[] c1={"C_1","","","",""};	sdgMap.put("c1",c1 );
-		String[] c2={"","","","","LOSS_AGRI"};	sdgMap.put("c2",c2 );
+		String[] c2={"","","","","ECONOMIC_LOSS_C2"};	sdgMap.put("c2",c2 );
 		String[] c2a={"","HA_AQUACULTURE_DMGD","HA_AQUACULTURE_DSTR","HA_AQUACULTURE_TOTAL","LOSS_AQUACULTURE_TOTAL"};	sdgMap.put("c2a",c2a );
 		String[] c2c={"","HA_DMGD","HA_DSTR","nhectareas","LOSS_CROPS"};	sdgMap.put("c2c",c2c );
 		String[] c2l={"","LIVESTOCK_DMGD","cabezas","LIVESTOCK_TOTAL","LOSS_LIVESTOCK_TOTAL"};	sdgMap.put("c2l",c2l );
@@ -220,21 +221,22 @@ public class sdgGenerationUtil
 		String[] c2fi={"","VESSELS_DMGD","VESSELS_DSTR","VESSELS_TOTAL","LOSS_VESSELS_TOTAL"};	sdgMap.put("c2fi",c2fi );
 		String[] c2lb={"","STOCK_FACILITIES_DMGD","STOCK_FACILITIES_DSTR","STOCK_FACILITIES_AFCTD","STOCK_LOSS_AFCTD"};	sdgMap.put("c2lb",c2lb );
 		String[] c2la={"","AGRI_ASSETS_DMGD","AGRI_ASSETS_DSTR","AGRI_ASSETS_AFCTD","AGRI_ASSETS_LOSS_AFCTD"};	sdgMap.put("c2la",c2la );
-		String[] c3={"C_3","PRODUCTIVE_ASSETS_DMGD","PRODUCTIVE_ASSETS_DSTR","PRODUCTIVE_ASSETS_AFCTD","PRODUCTIVE_ASSETS_LOSS_AFCTD"};	sdgMap.put("c3",c3 );
-		String[] c4={"C_4","LOSS_DWELLINGS_DMGD","LOSS__DWELLINGSDSTR","LOSS_DWELLINGS",""};	sdgMap.put("c4",c4 );
-		String[] c5={"","C5_INFRASTRUCTURES_DMGD","C5_INFRASTRUCTURES_DSTR","C5_INFRASTRUCTURES","C5_INFRASTRUCTURES_LOSS"};	sdgMap.put("c5",c5 );
-		String[] c5a={"","HEALTH_FACILITIES_DMGD","HEALTH_FACILITIES_DSTR","nhospitales","LOSS_HEALTH_FACILITIES"};	sdgMap.put("c5a",c5a );
+		String[] c3={"","PRODUCTIVE_ASSETS_DMGD","PRODUCTIVE_ASSETS_DSTR","PRODUCTIVE_ASSETS_AFCTD","PRODUCTIVE_ASSETS_LOSS_AFCTD"};	sdgMap.put("c3",c3 );
+		String[] c4={"","","","","LOSS_DWELLINGS"};	sdgMap.put("c4",c4 );
+		String[] c5={"","NUMBER_DMGD_INFRASTRUCTURES","NUMBER_DSTR_INFRASTRUCTURES","NUMBER_INFRASTRUCTURES","LOSS_INFRASTRUCTURES"};	sdgMap.put("c5",c5 );
+		String[] c5a={"","","","","LOSS_HEALTH_FACILITIES"};	sdgMap.put("c5a",c5a );
 		String[] c5b={"","EDUCATION_DMGD","EDUCATION_DSTR","nescuelas","LOSS_EDUCATION"};	sdgMap.put("c5b",c5b );
 		String[] c5c={"","NUMBER_DMGD_INFRASTRUCTURES","NUMBER_DSTR_INFRASTRUCTURES","NUMBER_INFRASTRUCTURES","LOSS_INFRASTRUCTURES"};	sdgMap.put("c5c",c5c );
-		String[] c6={"","","","","C6_LOSS_CULTURAL"};	sdgMap.put("c6",c6 );
+		String[] c6={"","","","","ECONOMIC_LOSS_C6"};	sdgMap.put("c6",c6 );
 		String[] c6a={"CULTURAL_FIXED_DMGD","","","",""};	sdgMap.put("c6a",c6a );
 		String[] c6b={"CULTURAL_MOBILE_DMGD","","","",""};	sdgMap.put("c6b",c6b );
 		String[] c6c={"CULTURAL_MOBILE_DSTR","","","",""};	sdgMap.put("c6c",c6c );
 		String[] c6d={"","","","","LOSS_CULTURAL_FIXED"};	sdgMap.put("c6d",c6d );
 		String[] c6e={"","","","","LOSS_CULTURAL_MOBILE_DMGD"};	sdgMap.put("c6e",c6e );
-		String[] c6f={"","","","","LOSS_CULTURAL_MOBILE_DSTR"};	sdgMap.put("c6f",c6f );			
+		String[] c6f={"","","","","LOSS_CULTURAL_MOBILE_DSTR"};	sdgMap.put("c6f",c6f );
 		String[] d6={"educacion","","","",""};	sdgMap.put("d6",d6 );
 		String[] d7={"salud","","","",""};	sdgMap.put("d7",d7 );
+			
 
 
 
@@ -329,14 +331,27 @@ public class sdgGenerationUtil
 				dValues[4]=rset.getDouble("amount");
 
 				// we need to convert the amount to USD dollars here!!!
-				if (dValues[4]!=0.0 && mData.metadata_year!=nYear && !mData.metadata_country.equals(sCountry) )
+				if (dValues[4]!=0.0)
 				{
-					mData.metadata_key=8;
-					mData.metadata_country=sCountry;
-					mData.metadata_year=nYear;
-					nrecs=mData.getWebObject(con);
-					if (nrecs<=0)
-						mData.metadata_value=1;
+					if (mData.metadata_year!=nYear || !mData.metadata_country.equals(sCountry) )
+						{
+						mData.metadata_key=8;
+						mData.metadata_country=sCountry;
+						mData.metadata_year=nYear;
+						mData.metadata_value=0;
+						nrecs=mData.getWebObject(con);
+						if (nrecs<=0)
+						{
+							while (nrecs<=0 && mData.metadata_value==0 && mData.metadata_year>2005)
+							{
+								mData.metadata_year--;
+								nrecs=mData.getWebObject(con);		
+							}
+							
+						}
+						if (nrecs<=0)
+							mData.metadata_value=1;
+						}
 					// converts value to USD $ !!
 					dValues[4]*=mData.metadata_value;						
 				}
@@ -469,7 +484,7 @@ public class sdgGenerationUtil
 				arrRateStrings[3]=""; //"Country";
 
 				stmt=con.createStatement();
-				rset=stmt.executeQuery("select * from metadata_national_values left join lev0 on METADATA_COUNTRY=lev0_cod where METADATA_KEY=8");
+				rset=stmt.executeQuery("select * from metadata_national_values left join lev0 on METADATA_COUNTRY=lev0_cod where METADATA_KEY=8 order by METADATA_COUNTRY, METADATA_YEAR");
 				while (rset.next())
 				{
 					arrRateStrings[0]+=rset.getString("METADATA_COUNTRY")+"\n";	
@@ -493,25 +508,36 @@ public class sdgGenerationUtil
 
 	}
 
+
+
+	public static void calculateCompoundThread(ServletContext sc, DICountry countrybean)
+	{
+		sfmConsolidateThread threadCons=new sfmConsolidateThread();
+		threadCons.setEnv(sc, countrybean );
+		threadCons.start();		
+	}
+
+
+
 	public static boolean isNumeric(String strNum) 
 	{
-	    if (strNum == null) {
-	        return false;
-	    }
-	    try {
-	        double d = Double.parseDouble(strNum);
-	    } catch (NumberFormatException nfe) {
-	        return false;
-	    }
-	    return true;
+		if (strNum == null) {
+			return false;
+		}
+		try {
+			double d = Double.parseDouble(strNum);
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+		return true;
 	}
-	
-	
+
+
 	public boolean uploadRates(DICountry countrybean, JspWriter out, String sCodes, String sYears, String sRates) throws IOException
 	{
 
 		int nrec=0;
-		
+
 		try{
 			pooledConnection univ=new pooledConnection(countrybean.country.sdriver,countrybean.country.sdatabasename , countrybean.country.susername,countrybean.country.spassword);
 			boolean bOK=univ.getConnection();
@@ -526,7 +552,7 @@ public class sdgGenerationUtil
 				String[] aRates = sRates.split("\n");
 				if (aCodes.length!=aYears.length ||  aCodes.length!=aRates.length)
 					out.println("<strong>WARNING: columns have different size!</strong> Please review<br/>");
-				
+
 				MetadataNational mNational= new MetadataNational();
 				MetadataNationalValues mData= new MetadataNationalValues();
 				lev0 country=new lev0();
@@ -534,9 +560,9 @@ public class sdgGenerationUtil
 				{
 					mData.metadata_key=8;  // CURRENCY EXCHANGE RATE!
 					mData.metadata_country=country.lev0_cod=aCodes[j].trim();
-					
+
 					nrec=country.getWebObject(con);
-						
+
 					if ((nrec>0 || mData.metadata_country.length()==3) && this.isNumeric(aYears[j].trim()) && this.isNumeric(aRates[j].trim()))
 					{
 						// Checks foreign key exists on metadata national 
@@ -564,7 +590,7 @@ public class sdgGenerationUtil
 			}
 			else
 				out.println("Error importing DesInventar [NO DB CONN]: "+countrybean.countrycode+" - "+countrybean.countryname
-						    +" Err="+univ.strConnectionError+"<br/>");
+						+" Err="+univ.strConnectionError+"<br/>");
 		}
 		catch (Exception eImp)
 		{
@@ -577,3 +603,42 @@ public class sdgGenerationUtil
 	}
 
 }
+
+class sfmConsolidateThread extends Thread 
+{
+	ServletContext sc=null;
+	DICountry countrybean=null;
+
+	public void setEnv(ServletContext scx, DICountry countrybeanx )
+	{
+		sc=scx;
+		countrybean=countrybeanx;
+	}
+
+
+	public void run()
+	{
+		System.out.println("[DI9] SFM Consolidate  Thread running...");
+		// execute the scripts
+		pooledConnection univ=new pooledConnection(countrybean.country.sdriver,countrybean.country.sdatabasename , countrybean.country.susername,countrybean.country.spassword);
+		univ.getConnection();
+		Connection con=univ.connection;
+		// verify the require fields exist
+		try{
+			Statement stmt = con.createStatement();
+			ResultSet rset = stmt.executeQuery("select A_1, B_1, C_1 from extension");
+			rset.next();			
+		}
+		catch(Exception noInd)
+		{
+			String strFileName=sc.getRealPath("scripts")+"/SFM_Create_Indicator_fields_ABCD.sql";
+			dbutils.executeFileScript(strFileName, con);				
+		}
+		String strFileName=sc.getRealPath("scripts")+"/SFM_indicator_calculation_postgres.sql";
+		dbutils.executeFileScript(strFileName, con);
+		univ.close();
+	}
+
+}
+
+
