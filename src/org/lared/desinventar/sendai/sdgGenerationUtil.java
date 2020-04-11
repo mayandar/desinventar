@@ -224,7 +224,7 @@ public class sdgGenerationUtil
 		String[] c3={"","PRODUCTIVE_ASSETS_DMGD","PRODUCTIVE_ASSETS_DSTR","PRODUCTIVE_ASSETS_AFCTD","PRODUCTIVE_ASSETS_LOSS_AFCTD"};	sdgMap.put("c3",c3 );
 		String[] c4={"","","","","LOSS_DWELLINGS"};	sdgMap.put("c4",c4 );
 		String[] c5={"","NUMBER_DMGD_INFRASTRUCTURES","NUMBER_DSTR_INFRASTRUCTURES","NUMBER_INFRASTRUCTURES","LOSS_INFRASTRUCTURES"};	sdgMap.put("c5",c5 );
-		String[] c5a={"","","","","LOSS_HEALTH_FACILITIES"};	sdgMap.put("c5a",c5a );
+		String[] c5a={"","HEALTH_FACILITIES_DMGD","HEALTH_FACILITIES_DSTR","nhospitales","LOSS_HEALTH_FACILITIES"};	sdgMap.put("c5a",c5a );
 		String[] c5b={"","EDUCATION_DMGD","EDUCATION_DSTR","nescuelas","LOSS_EDUCATION"};	sdgMap.put("c5b",c5b );
 		String[] c5c={"","NUMBER_DMGD_INFRASTRUCTURES","NUMBER_DSTR_INFRASTRUCTURES","NUMBER_INFRASTRUCTURES","LOSS_INFRASTRUCTURES"};	sdgMap.put("c5c",c5c );
 		String[] c6={"","","","","ECONOMIC_LOSS_C6"};	sdgMap.put("c6",c6 );
