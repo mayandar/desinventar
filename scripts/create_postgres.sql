@@ -648,7 +648,7 @@ metadata_year INT not null,
 metadata_value float,
 metadata_value_us float,
 constraint metadata_national_valuePK primary KEY (metadata_key, metadata_country, metadata_year),
-constraint metadata_national_valueFK foreign KEY (metadata_key, metadata_country) references metadata_national(metadata_key, metadata_country)
+constraint metadata_national_valueFK foreign KEY (metadata_key, metadata_country) references metadata_national(metadata_key, metadata_country) on update cascade on delete cascade
 ) ;
 
 -- National parameters description translations(Population, GDP, No. of Households, Average per household, etc.)
@@ -660,7 +660,7 @@ metadata_lang VARCHAR(10) not null,
 metadata_description  VARCHAR(250)
 ) ;
 alter table metadata_national_lang add constraint metadata_national_langPK primary KEY (metadata_key, metadata_country, metadata_lang);
-alter table metadata_national_lang add constraint metadata_national_langFK foreign KEY (metadata_key, metadata_country) references metadata_national(metadata_key, metadata_country);
+alter table metadata_national_lang add constraint metadata_national_langFK foreign KEY (metadata_key, metadata_country) references metadata_national(metadata_key, metadata_country)  on update cascade on delete cascade;
 
 
 -- Tables required for metadata-based metadata-declared disaggregation (Agriculture, Productive Assets, Infrastructure, Services)

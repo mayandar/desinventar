@@ -353,7 +353,7 @@ public class sdgGenerationUtil
 							mData.metadata_value=1;
 						}
 					// converts value to USD $ !!
-					dValues[4]*=mData.metadata_value;						
+					dValues[4]=Math.round(dValues[4]*mData.metadata_value);						
 				}
 
 				String sIndicator=rset.getString("Ind_metaname"); 

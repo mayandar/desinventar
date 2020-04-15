@@ -2334,6 +2334,7 @@ insert into metadata_national(metadata_key, metadata_country,metadata_variable, 
 insert into metadata_national(metadata_key, metadata_country,metadata_variable, metadata_description, metadata_source, metadata_default_value) values(7,'@@@','Currency','Currency (World Bank or ISO code)','National Government / World Bank',0);
 insert into metadata_national(metadata_key, metadata_country,metadata_variable, metadata_description, metadata_source, metadata_default_value) values(8,'@@@','exrate','Exchange rate (average or end of year)','National Government / World Bank',0);
 insert into metadata_national(metadata_key, metadata_country,metadata_variable, metadata_description, metadata_source, metadata_default_value) values(9,'@@@','paved','Percentage of road network paved','National Government / World Bank',0);
+insert into metadata_national(metadata_key, metadata_country,metadata_variable, metadata_description, metadata_source, metadata_default_value) values(11,'@@@','hab_per_household','Number of habitants per household','National Government / World Bank',0);
 
 
 insert into metadata_national_lang (metadata_key, metadata_country, metadata_lang, metadata_description) values (1,'@@@','ar','تعداد السكان');
@@ -2404,6 +2405,13 @@ insert into metadata_national_lang (metadata_key, metadata_country, metadata_lan
 insert into metadata_national_lang (metadata_key, metadata_country, metadata_lang, metadata_description) values (9,'@@@','fr','Pourcentage du réseau routier asphalté');
 insert into metadata_national_lang (metadata_key, metadata_country, metadata_lang, metadata_description) values (9,'@@@','ru','Процент дорожной сети, проложенной');
 insert into metadata_national_lang (metadata_key, metadata_country, metadata_lang, metadata_description) values (9,'@@@','zn','道路网络铺设百分比');
+
+insert into metadata_national_lang (metadata_key, metadata_country, metadata_lang, metadata_description) values (11,'@@@','ar','Number of habitants per household');
+insert into metadata_national_lang (metadata_key, metadata_country, metadata_lang, metadata_description) values (11,'@@@','en','Number of habitants per household');
+insert into metadata_national_lang (metadata_key, metadata_country, metadata_lang, metadata_description) values (11,'@@@','es','Número de personas por vivienda');
+insert into metadata_national_lang (metadata_key, metadata_country, metadata_lang, metadata_description) values (11,'@@@','fr','Number of habitants per household');
+insert into metadata_national_lang (metadata_key, metadata_country, metadata_lang, metadata_description) values (11,'@@@','ru','Number of habitants per household');
+insert into metadata_national_lang (metadata_key, metadata_country, metadata_lang, metadata_description) values (11,'@@@','zn','Number of habitants per household');
 
 
 insert into diccionario (orden,nombre_campo,descripcion_campo,label_campo,label_campo_en,pos_x,pos_y,lon_x,lon_y,color,tabnumber,fieldtype) values (320,'PUBLIC_ADMIN_SERVICE','Disruptions to Public Administration Service','Disruptions to Public Administration Service','Disruptions to Public Administration Service',0,0,7,0,0,null,1);
