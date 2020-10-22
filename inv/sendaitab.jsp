@@ -87,6 +87,13 @@ String[] sTabLinks={"index.jsp","geographytab.jsp","eventab.jsp",
 		 <A class='linkText' href='javascript:postTo("metadataNationalManager.jsp")'><%=countrybean.getTranslation("Maintain National Metadata")%></a><br><br>
 		<A class='linkText' href='javascript:postTo("metadataManager.jsp")'><%=countrybean.getTranslation("Select Metadata to disaggregate Targets C and D ")%></a><br><br>
 		<A class='linkText' href='javascript:postTo("sendaiMappingExtension.jsp")'><%=countrybean.getTranslation("Map Extension fields to indicators")%></a><br><br> 
+
+<%
+if (user.iusertype==99) 
+ {%>
+		<A class='linkText' href='javascript:postTo("sdgManager.jsp")'><%=countrybean.getTranslation("Processes required to generate SDG data")%></a><br><br> 
+<%}%> 
+
  	  </td></tr>
 	</table>
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

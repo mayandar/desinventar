@@ -29,7 +29,7 @@ if (user.iusertype<20)
 <body  marginheight="0" topmargin="0" leftmargin="0"  marginwidth="0" class='bodylight' dir="<%=countrybean.getTranslation("ltr")%>"> 
 <script type="text/javascript" src="/DesInventar/html/iheader.js"></script> 
  
-<FORM name='desinventar' method="post" action="extendedManager.jsp">
+<FORM name='desinventar' method="post" action="sendaiManager.jsp">
 <input type="hidden" name="usrtkn" id="usrtkn" value="<%=countrybean.userHash%>"> 
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
 <tr>

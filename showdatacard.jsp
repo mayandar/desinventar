@@ -233,7 +233,6 @@ if (bConnectionOK)
      for (int k=0; k<countrybean.imLayerMaps.length; k++)
    		sLevelLayers+=",layer"+k;
     %>
-
         <style type="text/css">
             #map {
                 width: 100%;
@@ -248,7 +247,7 @@ if (bConnectionOK)
                 width: 512px;
             }
         </style>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByVWfVCeED7LjjNRgxgTluLPGSenzMgAw&sensor=false"></script>
+
 <script type="text/javascript">
 // best to declare your map variable outside of the function so that you can access it from other functions
 var map;
@@ -256,7 +255,7 @@ var geocoder;
 
 function initialize() 
 {
-
+/*
     var latlng = new google.maps.LatLng(<%=rPlace.ytext%>,<%=rPlace.xtext%>);    
 	var myOptions ={zoom: <%=nGoogleZoom%>,      
 					center: latlng,      
@@ -265,6 +264,7 @@ function initialize()
 					};    
 	map = new google.maps.Map(document.getElementById("map_canvas"),        myOptions);
 	geocoder = new google.maps.Geocoder(); 
+*/
 }
 
 
@@ -323,7 +323,57 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
   <td class="bs"><%=countrybean.getTranslation("Duration")%>: <INPUT NAME="duracion"  style="WIDTH: 40px;" value="<%=sBlankZero(woFicha.duracion)%>" size="4" maxlength="4"></td>
   <td class="bs"><%=countrybean.getTranslation("Source")%>: <INPUT type='TEXT' size='40' maxlength='250'name='fuentes' VALUE="<%=woFicha.fuentes%>"></td>
  </tr></table>
-</td></tr>
+</td>
+
+
+<td width="100%" valign="top" rowspan="10">
+<table border="1" cellpadding="0" cellspacing="0" width="350" height="450" id="map_canvasTable">
+ <tr>
+	<td id="map_cell" align="left" bgcolor="#ffffff" width="100%" height="100%" valign="top" >
+<!--
+	<div id="map_canvas" style="width: 100%; height: 100%"></div>
+
+<div>
+     <iframe width="350" height="450" frameborder="0" src="https://www.bing.com/maps/embed?h=450&w=350&cp=~<%=rPlace.xtext%>&lvl=<%=nGoogleZoom%>&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="yes">
+</div>
+
+-->
+<script type='text/javascript'>
+    function GetMap() {
+        var map = new Microsoft.Maps.Map('#myMap', 
+		 {  //  UNISDR user account for DEV.
+            credentials: 'AnSoKDSYWEvKDNdHIaNf7Kgyz1ilnZPqO7BbPQ7DHOF16cZT8-BHGuc74P4Dif5o',
+            //  UNISDR user account for WEBSITE, exclusive of desinventar.let
+            //credentials: 'As6UtKSPLk-8_JiCPPrOIHZ0WvTzVMP6gJ7I1CSMMfk0AY8NKOvLki3rDE5Brl52',
+            center: new Microsoft.Maps.Location(<%=rPlace.ytext%>, <%=rPlace.xtext%>),
+			zoom: <%=nGoogleZoom%>
+        });
+
+        var center = map.getCenter();
+
+        //Create custom Pushpin
+        var pin = new Microsoft.Maps.Pushpin(center, {
+            title: 'Aprox',
+			subTitle: '',
+			color: 'red'
+        });
+
+        //Add the pushpin to the map
+        map.entities.push(pin);
+    }
+    </script>
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+    <div id="myMap" style="position:relative; top:0;left:0;width:350px;height:450px;"></div>
+	</td>
+ </tr>
+ <tr>
+	<td colspan="2" class="bss"><%=countrybean.getTranslation("google_explanation")%></td>
+ </tr>
+</table> 
+</td>
+
+
+</tr>
 <tr class='bodymedlight'><td class="bs">
  <table class='bs' cellpadding="0" cellspacing="0" width="100%"><tr>
   <td class="bs"><%=countrybean.asLevels[0]%>: <input name="name0" size=20 value="<%=woFicha.name0%>"></td>
@@ -344,7 +394,8 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
 	<td class="bs"><%=countrybean.getTranslation("Cause")%>: <input name="Cause" size=20 value="<%=woFicha.causa%>"></td>
 	<td class="bs"><%=countrybean.getTranslation("DescriptionCause")%>: <INPUT type="TEXT" size="65" maxlength="60"name="descausa" VALUE="<%=woFicha.descausa%>"></td>
  </tr></table>
-</td></tr>
+</td>
+</tr>
 
 <tr class='bodydarklight'><td class="bs"><!-- Effects lines in light blue  -->
 <b><i><font class='subTitle'><%=countrybean.getTranslation("EFFECTS")%></font></i></b>
@@ -526,26 +577,7 @@ alProcessedFields=new ArrayList();
 
 <%}%>
 
-
 </td>
-
-<td width="100%" valign="top">
-<table border="0" cellpadding="0" cellspacing="0" width="350" height="450" id="map_canvasTable">
- <tr>
-	<td id="map_cell" align="left" bgcolor="#ffffff" width="100%" height="100%" >
-	<div id="map_canvas" style="width: 100%; height: 100%"></div>
-	</td>
- </tr>
- <tr>
-	<td colspan="2" class="bss"><%=countrybean.getTranslation("google_explanation")%></td>
- </tr>
-</table>
-</td>
-
-
-
-
-
 
 
 </tr>
@@ -712,61 +744,6 @@ document.getElementById("td_"+nCurrentTab).className='<%=sTabActiveColor%>';
 document.getElementById("link_"+nCurrentTab).className='<%=sTabTextActiveColor%>';
 }
 openTab(0);
-
-
-
-
-
-var iLev=-1;  // ready for next
-var sLocation="";
-var apAddresses=new Array(30);
-var sCountry="<%=countrybean.countryname%>";
-
-
-apAddresses[++iLev]="";
-
-apAddresses[++iLev]="<%=EncodeUtil.jsEncode(woFicha.name0)%>";
-
-<%int iLev=0;
-  if (woFicha.name1.length()>0){%>
-   apAddresses[++iLev]="<%=EncodeUtil.jsEncode(woFicha.name1)%>, <%=EncodeUtil.jsEncode(woFicha.name0)%>";
-<%}
-  if (woFicha.name2.length()>0){%>
-  apAddresses[++iLev]="<%=EncodeUtil.jsEncode(woFicha.name2)%>, <%=EncodeUtil.jsEncode(woFicha.name0)%>";
-  apAddresses[++iLev]="<%=EncodeUtil.jsEncode(woFicha.name2)%>, <%=EncodeUtil.jsEncode(woFicha.name1)%>, <%=EncodeUtil.jsEncode(woFicha.name0)%>";
-<%}
-  if (woFicha.lugar.length()>0){%>
-  apAddresses[++iLev]="<%=EncodeUtil.jsEncode(woFicha.lugar)%>, <%=EncodeUtil.jsEncode(woFicha.name0)%>";   
-<%	if (woFicha.name1.length()>0){%>
-  apAddresses[++iLev]="<%=EncodeUtil.jsEncode(woFicha.lugar)%>, <%=EncodeUtil.jsEncode(woFicha.name0)%>";	
-  apAddresses[++iLev]="<%=EncodeUtil.jsEncode(woFicha.lugar)%>, <%=EncodeUtil.jsEncode(woFicha.name1)%>, <%=EncodeUtil.jsEncode(woFicha.name0)%>";
-	<%}
-	if (woFicha.name2.length()>0){%>
-  apAddresses[++iLev]="<%=EncodeUtil.jsEncode(woFicha.lugar)%>, <%=EncodeUtil.jsEncode(woFicha.name2)%>, <%=EncodeUtil.jsEncode(woFicha.name0)%>";
-  apAddresses[++iLev]="<%=EncodeUtil.jsEncode(woFicha.lugar)%>, <%=EncodeUtil.jsEncode(woFicha.name2)%>, <%=EncodeUtil.jsEncode(woFicha.name1)%>, <%=EncodeUtil.jsEncode(woFicha.name0)%>";
-	 <%}
-  }%>
-
-
-
-
-var request;
-function checkResults()
-{
-if (request.readyState==4)
-  {// 4 = "loaded"
-  if (request.status==200)
-    {// 200 = OK
-	// do nothing
-    }
-  else
-    {
-    // alert("Problem updating coords.. data");
-    }
-  // continues geocoding.. alert ("continues geocoding..");
-  nextsLocation();
-  } 
-}
  
  
 function sendHttpRequest(url) 
@@ -788,73 +765,6 @@ function sendHttpRequest(url)
 }
  
 
-var not_found="";
-
-function nextsLocation()
-{
- // move to next (either next location or higher level in same location)
- sLocation="";
- if (iLev>=0)
- 	{
-	 sLocation=apAddresses[iLev];
-	 iLev--;
- 	 if (sCountry.indexOf("World")<0 && sCountry.indexOf("Universe")<0)
-	 	{
-		 if (sLocation.length>0)
-			sLocation+=", "
-		 sLocation+=sCountry;
-		}
-	 // alert ("starts new geocoding.."+sLocation+" l="+iLev);
-     geocoder.geocode({ 'address': sLocation}, geocodePlace );
-	}	
-}
-
-function geocodePlace(results, status) 
-{  
-
- //alert ("receives geocoding..");
-
- if (status == google.maps.GeocoderStatus.OK) // process did start, check the result.
-     {
- 	 // alert ("found:["+iLev+"] "+sLocation);
-   	 // not_found+= "<br>OK: "+iLev+"] "+sLocation;
-     if (marker)
-	   marker.setMap(null);
-     marker = new google.maps.Marker({map:map, position: results[0].geometry.location, title:sLocation});
-	 
-        if (!map.getBounds().contains(marker.getPosition())) 
-		{
-        var newCenterPointLng = (map.getBounds().getCenter().lng() + marker.getPosition().lng()) / 2;
-        var newCenterPointLat = (map.getBounds().getCenter().lat() + marker.getPosition().lat()) / 2;
-
-        map.panTo(marker.getPosition());
-        //map.setCenter(new google.maps.LatLng(newCenterPointLat, newCenterPointLng));
-
-        if (!map.getBounds().contains(marker.getPosition())){
-            map.zoomOut();
-            } 
-        }
-
-	 // move to next location
-	 iLev=0;
-	 }	  
- else if (status == 'OVER_QUERY_LIMIT') // wait half second, retry...
-     {
-	 setTimeout(function(){ geocoder.geocode({ 'address': sLocation}, geocodePlace );}); 
-	 }	  
- else 
-   {
-   // alert ("not found: "+sLocation+"  stat="+status);
-   if (iLev==0)
-   		{
-     	not_found+= "<br>NF: ["+iLev+"] "+sLocation;
-   	    //alert (not_found);
-		}
-	nextsLocation();
-	}
-		   
-}
-
 
 // checks if there is Internet, and if so, it tries google geo-location
 function doConnectFunction() 
@@ -862,15 +772,6 @@ function doConnectFunction()
 // Internet is available, display map
 bConnected2Internet=true;
 initialize();
-<% if (rPlace.ytext!=0.0 || rPlace.xtext!=0.0){%>
-   var FinalLoc=new google.maps.LatLng(<%=rPlace.ytext%>,<%=rPlace.xtext%>);
-   //map.removeOverlay(marker);
-   marker = new google.maps.Marker({map:map, position: FinalLoc , title:"<%=sLocationTitle%>"});
-<%}%>
-// starts geocoding, only if the record doesnt come with a location which must be respected
-<% if (woFicha.latitude==0.0 && woFicha.latitude==0.0){%>
-nextsLocation();
-<%}%>
 }
 function doNoConnectFunction() 
 {

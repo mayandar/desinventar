@@ -310,12 +310,13 @@ public class XmlImporter  extends DefaultHandler
 		    		sLastField="#$%"; // in tables with just ONE field, need o ensure this is not going to be seen as the next chunk of same record.
 		    		if (bTableTransfer[nCurrentTable])
 		    		{
+		    			// THIS PREVENTS CODES FROM MULTIPLE COUNTRIES (CONSOLIDATED, SFM DATABASES) REVIEW
 		    			// metadata tables are changed to reflect the (potentially) different country code.
-	    				if (woCurrentRecord.asFieldNames.containsKey("metadata_country"))
-    					{
-    					if (!"@@@".equals((String)woCurrentRecord.asFieldNames.get("metadata_country")))
-    						woCurrentRecord.asFieldNames.put("metadata_country", sCountryCode);
-    					}
+	    				if (woCurrentRecord.asFieldNames.containsKey("metadata_country_"))
+	    					{
+	    					if (!"@@@".equals((String)woCurrentRecord.asFieldNames.get("metadata_country")))
+	    						woCurrentRecord.asFieldNames.put("metadata_country", sCountryCode);
+	    					}
 
 		    			woCurrentRecord.updateMembersFromHashTable();
 			    		int local_pkey=0;
