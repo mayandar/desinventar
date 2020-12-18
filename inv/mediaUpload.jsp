@@ -76,7 +76,8 @@ if (user.iusertype>=10)
 	sFilePrefix=application.getRealPath(sFilePrefix);
 	java.io.File f=new java.io.File(sFilePrefix);
 	f.mkdirs();
-    // obtains sequence.
+    // obtains sequence, make sure the right SQL dialect is used
+	woMedia.dbType=countrybean.dbType;
 	woMedia.imedia=woMedia.getSequence("media_seq", con);
 	 
 	sFile_extension=sOriginalFilename.substring(sOriginalFilename.lastIndexOf(".")+1).toLowerCase();
