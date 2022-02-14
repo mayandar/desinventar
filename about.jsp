@@ -62,6 +62,7 @@ request.setCharacterEncoding("UTF-8");
           </td>
         </tr>
         <tr>
+          <td align="center"><a href="https://www.apache.org/"> <img src="/DesInventar/images/apache.gif" width=130 height=16 border=0 alt="Powered by Apache Web Server"><br />
             <img src="/DesInventar/images/tomcat_y.gif" width=50 height=36 border=0 alt="powered by Apache Tomcat JSP server"></a> </td>
           <td> DesInventar on-line is powered by wonderful and freely available Apache Software Foundation open source products: Apache HTTP server and Apache Tomcat (JSP/Servlet container). </td>
         </tr>
