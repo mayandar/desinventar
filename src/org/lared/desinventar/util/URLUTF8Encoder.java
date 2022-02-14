@@ -10,7 +10,7 @@ package org.lared.desinventar.util;
  * Created: 17 April 1997
  * Author: Bert Bos <bert@w3.org>
  *
- * URLUTF8Encoder: http://www.w3.org/International/URLUTF8Encoder.java
+ * URLUTF8Encoder: https://www.w3.org/International/URLUTF8Encoder.java
  *
  * Copyright © 1997 World Wide Web Consortium, (Massachusetts
  * Institute of Technology, European Research Consortium for
@@ -20,7 +20,7 @@ package org.lared.desinventar.util;
  * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
  * PURPOSE.
  *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+ * [1] https://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
  */
 
 public class URLUTF8Encoder

@@ -889,7 +889,7 @@ public class ChartServer implements chartConstants
 	private void setTickNiceVisibility(CategoryAxis axis) {
 		int nMaxClicks=this.dxMax/20;
 		int nClicks=nPoints;
-		double dSpace=1.0f;
+		double dSpace=1.0;
 		double dCurrent=0;
 		int dLast=-1;
 		
@@ -908,7 +908,7 @@ public class ChartServer implements chartConstants
 				if(this.sSetLabels[i] != null && this.sLabels[j] != null )
 				{
 					dCurrent=j*dSpace;
-					if (((int)Math.rint(dCurrent))>dLast)
+					if (((int)Math.floor(dCurrent))>dLast)
 						{
 						axis.setTickLabelPaint(this.sLabels[j], cYes);
 						dLast=(int)Math.rint(dCurrent);

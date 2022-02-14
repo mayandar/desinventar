@@ -38,23 +38,23 @@ request.setCharacterEncoding("UTF-8");
       <br />
       <table width = '100%' border="0" cellpadding="5"  class="pageBackground bss">
         <tr>
-          <td><div><a href="http://www.unisdr.org/"><IMG alt="UNDRR" border=0 height=50 src="/DesInventar/images/logo-isdr.png"></a></div></td>
+          <td><div><a href="https://www.undrr.org/"><IMG alt="UNDRR" border=0 height=50 src="/DesInventar/images/logo-isdr.png"></a></div></td>
           <td> UNDRR, the UNITED NATIONS OFFICE FOR DISASTER RISK REDUCTION is the host and main sponsor of the development and world-wide dissemination of DesInventar, especially in Asia, Africa and Oceania. </td>
         </tr>
         <tr>
-          <td align="center"><div> <a href="http://www.undp.org/"> <img src="/DesInventar/images/undp.gif" border="0" alt="UNDP"></a> </div></td>
+          <td align="center"><div> <a href="https://www.undp.org/"> <img src="/DesInventar/images/undp.gif" border="0" alt="UNDP"></a> </div></td>
           <td> UNDP, the  UNITED NATIONS DEVELOPMENT PROGRAMME supports, uses in many countries and has generously funded in part the effort of DesInventar-web. UNDP has also provided its continous support spreading the ideas, methodology and tools around the world. </td>
         </tr>
         <tr>
-          <td><div><a href="http://www.la-red.org/"><IMG alt="La Red" border=0  width="150" height="45" src="/DesInventar/images/lared.gif" width=50></a></div></td>
+          <td><div><a href="https://www.desenredando.org/"><IMG alt="La Red" border=0  width="150" height="45" src="/DesInventar/images/lared.gif" width=50></a></div></td>
           <td> DesInventar project was initiated by LA RED, The Network of Social Studies on Disaster Prevention in Latin America. LA RED is a non-profit NGO with over 17 years of activities mainly in Latin America, the Caribbean and now Asia and Africa. </td>
         </tr>
         <tr>
-          <td align="center"><div><a href="http://www.osso.org.co"><IMG alt=OSSO border=0 height=86 src="/DesInventar/images/osso.gif"></a></div></td>
+          <td align="center"><div><a href="https://www.osso.org.co"><IMG alt=OSSO border=0 height=86 src="/DesInventar/images/osso.gif"></a></div></td>
           <td>Special thanks to OSSO (Corporacion Observatorio Sismol&oacute;gico del Sur Occidente), where the inception of the project took place. OSSO support has been crucial for over 12 years to let DesInventar Project reach its maturity. </td>
         </tr>
         <tr>
-          <td><div> <a href="http://www.robotsearch.com/"> <img src="/DesInventar/images/robotsearch.jpg" border="0" width="140" height="35" alt="Internet Robots and Enterprise Applications"></a> </div></td>
+          <td><div> <a href="https://www.robotsearch.com/"> <img src="/DesInventar/images/robotsearch.jpg" border="0" width="140" height="35" alt="Internet Robots and Enterprise Applications"></a> </div></td>
           <td><br />
             RobotSearch Software has provided countless man-hour of development to the project as a contribution to make this planet a better place. 
             It also provides free hosting to www.desinventar.net<br />
@@ -62,7 +62,6 @@ request.setCharacterEncoding("UTF-8");
           </td>
         </tr>
         <tr>
-          <td align="center"><a href="http://www.apache.org/"> <img src="/DesInventar/images/apache.gif" width=130 height=16 border=0 alt="Powered by Apache Web Server"><br />
             <img src="/DesInventar/images/tomcat_y.gif" width=50 height=36 border=0 alt="powered by Apache Tomcat JSP server"></a> </td>
           <td> DesInventar on-line is powered by wonderful and freely available Apache Software Foundation open source products: Apache HTTP server and Apache Tomcat (JSP/Servlet container). </td>
         </tr>

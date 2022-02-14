@@ -9,7 +9,7 @@ String sWDDSFormatRequest=htmlServer.not_null(request.getParameter("FORMAT"));
 
 %><?xml version='1.0' encoding="UTF-8"?>
 <!-- Service Metadata -->
-<disaster_data_service xmlns="http://www.gripweb.org/wdds/wdds" version="1.0.0">
+<disaster_data_service xmlns="https://www.gripweb.org/wdds/wdds" version="1.0.0">
    <capabilities>
 	<service_request>GetCapabilities</service_request>
 	<service_request>GetDescriptor</service_request>

@@ -17,7 +17,7 @@ if (nPort!=80)
 initWebDisasterDataService();
 stmt=con.createStatement();
 %><!-- Disaster Database Metadata -->
-<disaster_database xmlns="http://www.gripweb.org/wdds/wdds_d" version="1.0.0">
+<disaster_database xmlns="https://www.gripweb.org/wdds/wdds_d" version="1.0.0">
 	<name_of_database><%=EncodeUtil.xmlEncode(countrybean.countryname)%></name_of_database>
 	<description>Disaster database built using DesInventar 7.0</description>
 	<format>XML</format>

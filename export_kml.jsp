@@ -111,7 +111,7 @@ MapObject   mao=WebMapService.getlayerMapObject(countrybean.lmMaps[countrybean.l
  int nRecs=(mao.lArcs.size());
  
 %>
-<kml xmlns="http://www.opengis.net/kml/2.2">
+<kml xmlns="https://www.opengis.net/kml/2.2">
 <Document>  
 <name>DesInventar Map</name>  
 <open>1</open>

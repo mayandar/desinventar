@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<disaster_record_data xmlns="http://www.gripweb.org/wdds/wdds_r" version="1.0.0">
+<disaster_record_data xmlns="https://www.gripweb.org/wdds/wdds_r" version="1.0.0">
 <!-- Disaster Database data: one record -->
 <%@ page import="java.io.*" %><%@ page import="java.sql.*" %><%@ page import="java.util.*" %><%@ page import="java.net.*" %><%@ page import="java.text.*" %>
 <%@ page import="org.lared.desinventar.system.Sys" %><%@ page import="org.lared.desinventar.util.*" %><%@ page import="org.lared.desinventar.webobject.*" %>

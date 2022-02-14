@@ -2,8 +2,8 @@
 Call generic wms service for GoogleMaps v2
 John Deck, UC Berkeley
 Inspiration & Code from:
-Mike Williams http://www.econym.demon.co.uk/googlemaps2/ V2 Reference & custommap code
-Brian Flood http://www.spatialdatalogic.com/cs/blogs/brian_flood/archive/2005/07/11/39.aspx V1 WMS code
+Mike Williams https://www.econym.demon.co.uk/googlemaps2/ V2 Reference & custommap code
+Brian Flood https://www.spatialdatalogic.com/cs/blogs/brian_flood/archive/2005/07/11/39.aspx V1 WMS code
 Kyle Mulka http://blog.kylemulka.com/?p=287  V1 WMS code modifications
 http://search.cpan.org/src/RRWO/GPS-Lowrance-0.31/lib/Geo/Coordinates/MercatorMeters.pm
 

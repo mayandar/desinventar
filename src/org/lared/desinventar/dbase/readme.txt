@@ -47,4 +47,4 @@ If there are problems installing, compiling, or in the operation of the server p
 Michael Lecuyer at mjl@theorem.com for help.
 
 Copyright 2001 - 2003 Michael Lecuyer. This code may be used under the Gnu
-General Public License [http://www.gnu.org/copyleft/gpl.html].
+General Public License [https://www.gnu.org/copyleft/gpl.html].

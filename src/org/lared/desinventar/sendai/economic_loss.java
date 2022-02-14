@@ -57,7 +57,9 @@ public class economic_loss {
             process(con, item_factory.getItem(con, country, 208), "LOSS_AQUACULTURE_TOTAL", "HA_AQUACULTURE_TOTAL", "HA_AQUACULTURE_DMGD", "HA_AQUACULTURE_DSTR");
 
             //Other : ???
-            //LOSS_FOREST_TOTAL/HA_FOREST_TOTAL/HA_FOREST_DMGD/HA_FOREST_DSTR
+            // Forestry
+            process(con, item_factory.getItem(con, country, 197), "LOSS_FOREST_TOTAL", "HA_FOREST_TOTAL", "HA_FOREST_DMGD", "HA_FOREST_DSTR");
+     
             //PRODUCTIVE_ASSETS_LOSS_AFCTD/PRODUCTIVE_ASSETS_AFCTD/PRODUCTIVE_ASSETS_DMGD/PRODUCTIVE_ASSETS_DSTR
             //LOSS_INFRASTRUCTURES/NUMBER_INFRASTRUCTURES, NUMBER_DMGD_INFRASTRUCTURES, NUMBER_DSTR_INFRASTRUCTURES
 
@@ -149,8 +151,12 @@ public class economic_loss {
             process(con, item_factory.getItem(con, country, 208), "T_LOSS_AQUACULTURE", "HA_AQUACULTURE_TOTAL", "HA_AQUACULTURE_DMGD", "HA_AQUACULTURE_DSTR");
             // System.out.println("[DI9] Aquaculture OK ");
 
+            // Forestry sector treatment
+            // TODO:     CREATE T_LOSS_FORESTRY, include it in  clean above, review other scripts!!!
+            // process(con, item_factory.getItem(con, country, 197), "T_LOSS_FORESTRY", "HA_FOREST_TOTAL", "HA_FOREST_DMGD", "HA_FOREST_DSTR");
+
+            
             //Other : ???
-            //LOSS_FOREST_TOTAL/HA_FOREST_TOTAL/HA_FOREST_DMGD/HA_FOREST_DSTR
             //PRODUCTIVE_ASSETS_LOSS_AFCTD/PRODUCTIVE_ASSETS_AFCTD/PRODUCTIVE_ASSETS_DMGD/PRODUCTIVE_ASSETS_DSTR
             //LOSS_INFRASTRUCTURES/NUMBER_INFRASTRUCTURES, NUMBER_DMGD_INFRASTRUCTURES, NUMBER_DSTR_INFRASTRUCTURES
 

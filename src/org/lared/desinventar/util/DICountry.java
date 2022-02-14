@@ -240,7 +240,7 @@ public class DICountry extends webObject  implements Serializable
   // Language Property (SP->spanish, EN->english, etc..)The language argument 
   // is a valid ISO Language Code. These codes are the lower-case, two-letter codes as defined by ISO-639. 
   // You can find a full list of these codes at a number of sites, such as: 
-  // http://www.loc.gov/standards/iso639-2/englangn.html 
+  // https://www.loc.gov/standards/iso639-2/englangn.html 
   //-----------------------------------------------------------------------
   public String getLanguage()
   {

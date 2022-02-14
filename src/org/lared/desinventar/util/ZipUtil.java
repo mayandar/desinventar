@@ -156,7 +156,8 @@ public class ZipUtil
     public static void unzip(String zipFilePath, String destDir) {
         File dir = new File(destDir);
         // create output directory if it doesn't exist
-        if(!dir.exists()) dir.mkdirs();
+        if(!dir.exists()) 
+        	dir.mkdirs();
         FileInputStream fis;
         //buffer for read and write data to file
         byte[] buffer = new byte[1024];
@@ -172,9 +173,10 @@ public class ZipUtil
                 new File(newFile.getParent()).mkdirs();
                 FileOutputStream fos = new FileOutputStream(newFile);
                 int len;
-                while ((len = zis.read(buffer)) > 0) {
-                fos.write(buffer, 0, len);
-                }
+                while ((len = zis.read(buffer)) > 0) 
+                   {
+                   fos.write(buffer, 0, len);
+                   }
                 fos.close();
                 //close this ZipEntry
                 zis.closeEntry();

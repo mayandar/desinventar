@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+  "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <%@ page info="DesConsultar simple results page" session="true" %><%@ page import="java.io.*"%><%@ page import="java.sql.*"%><%@ page import="java.util.*"%><%@page import="java.net.*" %><%@ page import="org.lared.desinventar.util.*" %><%@ page import="org.lared.desinventar.map.*" %><%@ page import="org.lared.desinventar.webobject.fichas" %><jsp:useBean id="countrybean" class="org.lared.desinventar.util.DICountry" scope="session" /><%@ include file="/util/opendatabase.jspf" %><%@ include file="/paramprocessor.jspf" %><%! 
 String getList(String[] asList)
 {
@@ -106,10 +106,10 @@ if (countrybean.htData==null)
 MapObject   mao=WebMapService.getlayerMapObject(countrybean.lmMaps[countrybean.level_map].filename);
  int nRecs=(mao.lArcs.size());
 /*
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 */  
 %><svg width="12cm" height="12cm" viewBox="<%=iCoo(Math.max(-179,xm))%> <%=iCooY(Math.min(80,yy))%> <%=iCoo(Math.min(179,xx))%> <%=iCooY(Math.max(-80,ym))%>"
-     xmlns="http://www.w3.org/2000/svg" version="1.1">
+     xmlns="https://www.w3.org/2000/svg" version="1.1">
 	 <desc>DesInventar Thematic Map - <jsp:getProperty name ="countrybean" property="countryname"/> [<jsp:getProperty name ="countrybean" property="countrycode"/>] </desc>
 <% 
    // the map has previously been used, first call triggered a full scan of the file, loading the index and polygons into memory

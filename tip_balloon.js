@@ -2,9 +2,9 @@
 tip_balloon.js  v. 1.81
 
 The latest version is available at
-http://www.walterzorn.com
-or http://www.devira.com
-or http://www.walterzorn.de
+https://www.walterzorn.com
+or https://www.devira.com
+or https://www.walterzorn.de
 
 Initial author: Walter Zorn
 Last modified: 2.2.2009

@@ -166,7 +166,7 @@ countrybean.init();
 	cCountry.getWebObject(con);
 	sSetDescriptors+=CountryTip.getInstance().getCountryTip(cCountry, countrybean);  %>
 	<td nowrap><a class="regionlink" href="/DesInventar/main.jsp?countrycode=<%=cCountry.scountryid%>">
-	Sri Lanka</a>&nbsp;&nbsp;&nbsp;[<a target="_blank" href="http://www.desinventar.lk/">open in original server</a>]</td>
+	Sri Lanka</a>&nbsp;&nbsp;&nbsp;[<a target="_blank" href="https://www.desinventar.lk/">open in original server</a>]</td>
 	<td><a  class="linkText" href="/DesInventar/profiletab.jsp?countrycode=<%=cCountry.scountryid%>"><%=countrybean.getTranslation("Profile")%></a></td>
 	<td nowrap><%=cCountry.speriod%>&nbsp;</td>
 	<td> Ministry of Disaster Management, DMC Sri Lanka - supported by UNDP Sri Lanka</td>

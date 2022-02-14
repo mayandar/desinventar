@@ -29,9 +29,9 @@ countrybean.init();
 </div>
 <table width="1000" cellspacing="2" cellpadding="2" border="1"  bordercolor="white" class="IE_TABLE bs" rules="none">
 <tr>
-	<td valign="middle"><a href="http://www.undrr.org"><img border="0" alt="ISDR site" src="/DesInventar/images/logo-isdr.gif" height="30"/></a></td>
-	<td valign="middle"><a href="http://www.preventionweb.net/gar"><img border="0" alt="GAR2011" src="/DesInventar/images/gar_brand.png" height="30"/></a></td>
-	<td valign="middle"><a href="http://www.undp.org"><img src="/DesInventar/images/undp.gif" border="0" height="40" alt="UNDP" /></a></td>
+	<td valign="middle"><a href="https://www.undrr.org"><img border="0" alt="ISDR site" src="/DesInventar/images/logo-isdr.gif" height="30"/></a></td>
+	<td valign="middle"><a href="https://www.preventionweb.net/gar"><img border="0" alt="GAR2011" src="/DesInventar/images/gar_brand.png" height="30"/></a></td>
+	<td valign="middle"><a href="https://www.undp.org"><img src="/DesInventar/images/undp.gif" border="0" height="40" alt="UNDP" /></a></td>
 </tr>
 <tr><td colspan=3>
 <table width="100%" cellspacing="2" cellpadding="2" border="0" class="bs">

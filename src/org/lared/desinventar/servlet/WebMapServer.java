@@ -26,9 +26,6 @@ import org.lared.desinventar.map.*;
 import org.lared.desinventar.util.*;
 import org.lared.desinventar.webobject.webObject;
 
-import sun.misc.Regexp;
-
-import net.jmge.gif.Gif89Encoder;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;

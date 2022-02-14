@@ -53,7 +53,7 @@
 				);
 				
 			//fecha
-			//http://www.sql-und-xml.de/sql-tutorial/update-aktualisieren-der-zeilen.html
+			//https://www.sql-und-xml.de/sql-tutorial/update-aktualisieren-der-zeilen.html
 			stmt.executeQuery("UPDATE LEC_IdSuceso LEFT JOIN fichas "
 							+ "ON LEC_IdSuceso.claveFichas = fichas.clave "
 							+ "SET LEC_IdSuceso.fecha = " 

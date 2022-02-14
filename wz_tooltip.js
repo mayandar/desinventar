@@ -4,11 +4,11 @@ Copyright (c) 2002-2008 Walter Zorn. All rights reserved.
 wz_tooltip.js	 v. 5.31
 
 The latest version is available at
-http://www.walterzorn.com
-or http://www.devira.com
-or http://www.walterzorn.de
+https://www.walterzorn.com
+or https://www.devira.com
+or https://www.walterzorn.de
 
-Created 1.12.2002 by Walter Zorn (Web: http://www.walterzorn.com )
+Created 1.12.2002 by Walter Zorn (Web: https://www.walterzorn.com )
 Last modified: 7.11.2008
 
 Easy-to-use cross-browser tooltips.
@@ -37,7 +37,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 For more details on the GNU Lesser General Public License,
-see http://www.gnu.org/copyleft/lesser.html
+see https://www.gnu.org/copyleft/lesser.html
 */
 
 var config = new Object();

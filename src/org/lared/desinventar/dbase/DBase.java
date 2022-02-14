@@ -34,7 +34,7 @@ import org.lared.desinventar.dbase.*;
 * FoxPro support does not include the P, Y, T, and I fields yet.
 * <p>
 * Copyright December 12, 2000 Michael Lecuyer.
-* This code may be used under the Gnu General Public License [http://www.gnu.org/copyleft/gpl.html].
+* This code may be used under the Gnu General Public License [https://www.gnu.org/copyleft/gpl.html].
 * <p> Example of use:
 * <pre>
 * DBase db = new DBase("/database/dbase");

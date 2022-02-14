@@ -2,9 +2,9 @@
 tip_followscroll.js	v. 1.11
 
 The latest version is available at
-http://www.walterzorn.com
-or http://www.devira.com
-or http://www.walterzorn.de
+https://www.walterzorn.com
+or https://www.devira.com
+or https://www.walterzorn.de
 
 Initial author: Walter Zorn
 Last modified: 3.6.2008

@@ -7,7 +7,7 @@ douglas@crockford.com
 
 
 JSON is a light-weight, language independent, data interchange format.
-See http://www.JSON.org/
+See https://www.JSON.org/
 
 The files in this package implement JSON encoders/decoders in Java.
 It also includes the capability to convert between JSON and XML, HTTP

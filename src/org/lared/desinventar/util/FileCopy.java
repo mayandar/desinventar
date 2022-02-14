@@ -1,8 +1,8 @@
-// This example is from _Java Examples in a Nutshell_. (http://www.oreilly.com)
+// This example is from _Java Examples in a Nutshell_. (https://www.oreilly.com)
 // Copyright (c) 1997 by David Flanagan
 // This example is provided WITHOUT ANY WARRANTY either expressed or implied.
 // You may study, use, modify, and distribute it for non-commercial purposes.
-// For any commercial use, see http://www.davidflanagan.com/javaexamples
+// For any commercial use, see https://www.davidflanagan.com/javaexamples
 
 package org.lared.desinventar.util;
 

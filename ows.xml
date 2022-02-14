@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<WMS_Capabilities xmlns:srv="http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd" xmlns:gmd="http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd" xmlns:gco="http://schemas.opengis.net/iso/19139/20060504/gco/gco.xsd" xmlns:inspire_vs="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0" xmlns:gml="http://schemas.opengis.net/gml" xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" version="1.3.0" updateSequence="767" xmlns="http://www.opengis.net/wms" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wms http://preview.grid.unep.ch:8080/geoserver/schemas/wms/1.3.0/capabilities_1_3_0.xsd http://inspire.ec.europa.eu/schemas/inspire_vs/1.0 http://preview.grid.unep.ch:8080/geoserver/www/inspire/inspire_vs.xsd">
+<WMS_Capabilities xmlns:srv="http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd" xmlns:gmd="http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd" xmlns:gco="http://schemas.opengis.net/iso/19139/20060504/gco/gco.xsd" xmlns:inspire_vs="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0" xmlns:gml="http://schemas.opengis.net/gml" xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" version="1.3.0" updateSequence="767" xmlns="https://www.opengis.net/wms" xmlns:xlink="https://www.w3.org/1999/xlink" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.opengis.net/wms http://preview.grid.unep.ch:8080/geoserver/schemas/wms/1.3.0/capabilities_1_3_0.xsd http://inspire.ec.europa.eu/schemas/inspire_vs/1.0 http://preview.grid.unep.ch:8080/geoserver/www/inspire/inspire_vs.xsd">
   <Service>
     <Name>WMS</Name>
     <Title>enviroSDI Web Map Service</Title>
-    <Abstract>enviroSDI is the Spatial Data Infrastructure of the UNEP/DEWA/GRID-Europe (http://www.grid.unep.ch).&#13;
+    <Abstract>enviroSDI is the Spatial Data Infrastructure of the UNEP/DEWA/GRID-Europe (https://www.grid.unep.ch).&#13;
 A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dynamic styling).</Abstract>
     <KeywordList>
       <Keyword>enviroSDI</Keyword>
@@ -13,7 +13,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
       <Keyword>WMS</Keyword>
       <Keyword>GEOSERVER</Keyword>
     </KeywordList>
-    <OnlineResource xlink:type="simple" xlink:href="http://www.grid.unep.ch/data/SDI/"/>
+    <OnlineResource xlink:type="simple" xlink:href="https://www.grid.unep.ch/data/SDI/"/>
     <ContactInformation>
       <ContactPersonPrimary>
         <ContactPerson>Gregory Giuliani</ContactPerson>
@@ -105,7 +105,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
     </inspire_vs:ExtendedCapabilities>
     <Layer>
       <Title>enviroSDI Web Map Service</Title>
-      <Abstract>enviroSDI is the Spatial Data Infrastructure of the UNEP/DEWA/GRID-Europe (http://www.grid.unep.ch).&#13;
+      <Abstract>enviroSDI is the Spatial Data Infrastructure of the UNEP/DEWA/GRID-Europe (https://www.grid.unep.ch).&#13;
 A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dynamic styling).</Abstract>
       <CRS>EPSG:3785</CRS>
       <CRS>EPSG:3857</CRS>
@@ -142,7 +142,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cs_ecoexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cs_ecoexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -170,7 +170,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>Cyclones surges events from 1976 to 2006</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cs_events"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cs_events"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -204,7 +204,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cs_frequency"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cs_frequency"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -232,7 +232,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cs_physexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cs_physexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -260,7 +260,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>Cyclones events from 1975 to 2007</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_buffers"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_buffers"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -294,7 +294,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_ecoexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_ecoexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -327,7 +327,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_frequency"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_frequency"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -360,7 +360,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_intensity"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_intensity"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -394,7 +394,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_physexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_physexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -427,7 +427,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_risk"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_risk"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -461,7 +461,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_sumwinds"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_sumwinds"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -489,7 +489,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>Cyclones events from 1975 to 2007</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_tracks"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=cy_tracks"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -517,7 +517,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=dr_cv"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=dr_cv"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -545,7 +545,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=dr_ecoexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=dr_ecoexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -573,7 +573,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>Droughts events from 1997 to 2007</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=dr_events"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=dr_events"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -601,7 +601,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=dr_physexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=dr_physexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -635,7 +635,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=eq_ecoexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=eq_ecoexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -668,7 +668,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=eq_frequency"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=eq_frequency"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -701,7 +701,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=eq_frequency3"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=eq_frequency3"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -734,7 +734,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=_0&amp;height=20&amp;layer=eq_intensity"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=_0&amp;height=20&amp;layer=eq_intensity"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -768,7 +768,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=eq_physexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=eq_physexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -801,7 +801,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=fi_average"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=fi_average"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -835,7 +835,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=fl_ecoexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=fl_ecoexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -868,7 +868,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=fl_frequency"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=fl_frequency"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -902,7 +902,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=fl_physexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=fl_physexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -935,7 +935,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=fl_risk"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=fl_risk"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -970,7 +970,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_ecoexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_ecoexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -1005,7 +1005,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_ecoexp2"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_ecoexp2"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -1039,7 +1039,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_eq"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_eq"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -1074,7 +1074,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_physexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_physexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -1109,7 +1109,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_physexp2"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_physexp2"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -1143,7 +1143,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_pr"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_pr"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -1176,7 +1176,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_risk"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ls_risk"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -1204,7 +1204,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ml_risk"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ml_risk"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -1238,7 +1238,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ts_ecoexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ts_ecoexp"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -1271,7 +1271,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ts_frequency"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ts_frequency"/>
           </LegendURL>
         </Style>
       </Layer>
@@ -1305,7 +1305,7 @@ A compliant implementation of WMS 1.1.1 plus most of the SLD 1.0 extension (dyna
           <Abstract>A sample style for rasters, good for displaying imagery</Abstract>
           <LegendURL width="20" height="20">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ts_physexp"/>
+            <OnlineResource xmlns:xlink="https://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://preview.grid.unep.ch:8080/geoserver/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=ts_physexp"/>
           </LegendURL>
         </Style>
       </Layer>

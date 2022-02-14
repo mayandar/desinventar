@@ -48,10 +48,10 @@ public class EmdatImport
 	Statement stmt=null; 
 	ResultSet rset=null;
 
-	// improve. get JSON object from http://www.emdat.be/disaster_list/php/listDisasterGroups.php
+	// improve. get JSON object from https://www.emdat.be/disaster_list/php/listDisasterGroups.php
 	String[] saGroups={"Biological","Climatological","Complex Disasters","Geophysical","Hydrological","Meteorological","Technological"};
 
-	// improve. get JSON from http://www.emdat.be/disaster_list/php/listRegions.php
+	// improve. get JSON from https://www.emdat.be/disaster_list/php/listRegions.php
 	String[] saRegions={"Eastern Africa","Middle Africa","Northern Africa","Southern Africa","Western Africa","Caribbean",
 			"Central America","Northern America","South America","Central Asia","Eastern Asia","South-Eastern Asia",
 			"Southern Asia","Western Asia","Eastern Europe","Northern Europe","Russian Federation","Southern Europe",
@@ -520,7 +520,7 @@ public class EmdatImport
 					for (jRegion=0; jRegion<saRegions.length; jRegion++)
 						for (jGroup=0; jGroup<saGroups.length; jGroup++)
 						{
-							sURL="http://www.emdat.be/disaster_list/php/search.php?group="+saGroups[jGroup]+"&region="+saRegions[jRegion];
+							sURL="https://www.emdat.be/disaster_list/php/search.php?group="+saGroups[jGroup]+"&region="+saRegions[jRegion];
 							sURL=sURL.replace(' ', '+');
 							sJsonData=openURL(sURL);
 							this.LoadDatacard(sJsonData, countrybean);

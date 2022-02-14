@@ -362,7 +362,7 @@ String[] sTabLinks={"javascript:routeTo('profiletab.jsp')","javascript:routeTo('
         map.entities.push(pin);
     }
     </script>
-    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
     <div id="myMap" style="position:relative; top:0;left:0;width:350px;height:450px;"></div>
 	</td>
  </tr>

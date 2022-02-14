@@ -241,7 +241,7 @@ public class Text
 
 	/**
 	* Is this an ISBN number?
-	* http://www.ee.unb.ca/tervo/ee4243/isbn4243.htm
+	* https://www.ee.unb.ca/tervo/ee4243/isbn4243.htm
 	*
 	* @param str String containing the ISBN number including any dashes, etc.
 	*/
